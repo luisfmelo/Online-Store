@@ -39,3 +39,5 @@ CREATE TABLE productsOrdered (
   bookId INTEGER NOT NULL REFERENCES books,
   orderId INTEGER NOT NULL REFERENCES orders
 );
+
+INSERT INTO users VALUES(DEFAULT, 'admin', 'admin', 'admin', 'admin@gmail.com', NULL, NULL, true);
