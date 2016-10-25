@@ -1,0 +1,9 @@
+body{
+  width: 100%;
+  background-color: red;
+}
+
+#books{
+  background-color: green;
+  margin: 0 10%;
+}
