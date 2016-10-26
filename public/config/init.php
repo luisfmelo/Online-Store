@@ -4,7 +4,7 @@
 
   include_once 'dbconfig.php';
 
-  $BASE_DIR = dirname(dirname(__FILE__)) . '/'; // '/var/www/public/';
+  $BASE_DIR = dirname(dirname(__FILE__)); // '/var/www/public/';
   $BASE_URL = '../..';
 
   $conn = new PDO('pgsql:host=' . $host . ';dbname=' . $db, $username, $password);

@@ -1,12 +1,13 @@
 <?php
   include '../common/header.php';
+  $ref = $_GET['id'];
 
-  $books = getAllBooks();
+  $booksByCategory = getBooksByCategory($ref);
 ?>
 
 <section id="books">
   <?php
-  foreach ($books as $book) {
+  foreach ($booksByCategory as $book) {
     echo "<article class='book'>";
       echo "<div class='book-data'>";
         echo "<span class='title'>" . $book['title'] . "</span>";
