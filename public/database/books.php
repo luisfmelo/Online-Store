@@ -18,4 +18,14 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+
+
+  function getBookCategories() {
+    global $conn;
+    $stmt = $conn->prepare('SELECT *
+                            FROM e_store.categories');
+                            //ORDER BY time DESC');
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 ?>
