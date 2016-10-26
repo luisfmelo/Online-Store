@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+}
+
 body{
   width: 100%;
   background-color: #CCC;
@@ -15,7 +19,8 @@ a{
 /*************************************************/
 header{
   margin: 0 20%;
-  background-color: #999
+  background-color: #333;
+  color: #DDD;
 }
 
 .row{
@@ -56,6 +61,35 @@ header{
 
 
 #books{
-  background-color: green;
+  background-color: #999;
   margin: 0 20%;
+}
+
+
+
+/*************************************************/
+/*              FOOTER STYLES                    */
+/*************************************************/
+
+footer {
+    margin-top: 2%;
+    padding: 1%;
+    text-align: center;
+    margin: 0 20%;
+    background-color: #333;
+    color: #DDD;
+}
+
+.social {
+    margin-bottom: 5px;
+}
+
+.socialIcons {
+    width: 1.5%;
+    margin: 0 3% 0 3%;
+    border-bottom: 2px solid #333;
+}
+
+.socialIcons:hover {
+    border-bottom: 2px solid white;
 }
