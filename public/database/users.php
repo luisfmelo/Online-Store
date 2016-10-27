@@ -10,5 +10,17 @@
 
     return $stmt->fetch() == true;
   }
-  
+
+  /* Return 1 or 0 if user is admin or not */
+  function isAdmin($user) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT admin
+                            FROM e_store.users
+                            WHERE username = '$user';");
+    $stmt->execute();
+    $res = $stmt->fetch();
+
+    return $res['admin'] ? 1 : 0;
+  }
+
 ?>

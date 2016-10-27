@@ -45,6 +45,7 @@ CREATE TABLE productsOrdered (
 );
 
 INSERT INTO users VALUES(DEFAULT, 'admin', 'admin', 'admin', 'admin@gmail.com', NULL, NULL, true);
+INSERT INTO users VALUES(DEFAULT, 'client', 'client', 'client', 'client@gmail.com', NULL, NULL, false);
 
 /*Categorias
 1- Ciência
