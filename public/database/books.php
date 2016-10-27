@@ -7,6 +7,8 @@
     if ($search != '')
       $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
 
+      //"OR e_store.books.author ILIKE '%" . $search . "%'""
+
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();

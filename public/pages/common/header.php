@@ -28,13 +28,13 @@
         </div>
 
         <div class="userMenu">
-          <span>Bom Dia,</span>
-          <form action="<?=$BASE_URL?>/actions/users/login.php" method="post">
-            <input type="text" name="username" value="" placeholder="username">
-            <input type="password" name="password" value="" placeholder="password">
-            <input type="submit" name="login" value="Login">
-          </form>
-          <span style="">Registar</span>
+          <span>Bom Dia, </span>
+          <?php
+            if ( isset($_SESSION['username']) )
+              include '../common/menu_logged_in.php';
+            else
+              include '../common/menu_logged_out.php';
+          ?>
         </div>
 
       </div>
