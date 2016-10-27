@@ -1,9 +1,11 @@
 <?php
   include '../common/header.php';
   $ref = $_GET['id'];
-
-  $booksByCategory = getBooksByCategory($ref);
+  $sort = $_GET['sort'];
+  $booksByCategory = getBooksByCategory($ref, $sort);
 ?>
+
+<?php include 'filter.php';?>
 
 <section id="books">
   <?php

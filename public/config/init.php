@@ -1,7 +1,6 @@
 <?php
   session_start();
   session_set_cookie_params(3600, '~/Online-Store/public'); //alterar quando estamos a trabalhar fora da root: ~/ee12103/Fritter
-  $_SESSION['error_messages'][] = '';
 
   include_once 'dbconfig.php';
 
@@ -15,6 +14,12 @@
 
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+
+
+  $FORM_VALUES = $_SESSION['form_values'];
+  $ERROR_MESSAGE =  $_SESSION['error_messages'];
+  $SUCCESS_MESSAGE = $_SESSION['success_messages'];
 
   unset($_SESSION['success_messages']);
   unset($_SESSION['error_messages']);

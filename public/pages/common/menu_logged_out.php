@@ -6,15 +6,6 @@
   <input type="text" name="username" placeholder="username">
   <input type="password" name="password" placeholder="password">
 
-  <div class="row error_messages">
-    <?php
-      if ( isset($_SESSION['error_messages']) )
-        foreach ( $_SESSION['error_messages'] as $error) {
-          if ( $error != '' )
-            echo "<span>" . $error . "</span>";
-        }
-    ?>
-  </div>
   <div class="row">
     <input type="submit" name="login" value="Login">
     <a href="<?=$BASE_URL?>/actions/users/register.php">
@@ -22,3 +13,7 @@
     </a>
   </div>
 </form>
+
+<?php
+  include_once('error_success_msgs.php');
+?>
