@@ -15,13 +15,18 @@
   <body>
     <header>
       <div class="row">
+
         <div class="logo">
-          <img src="<?=$BASE_URL?>/images/logo.png" alt="" />
+          <a href="<?=$BASE_URL?>/index.php"><img src="<?=$BASE_URL?>/images/logo.png" alt="" /></a>
         </div>
+
         <div class="searchBar">
-          <input type="text" name="search" value="" placeholder="Pesquise aqui">
-          <input type="submit" name="submitSearch" value="Search">
+          <form action="<?=$BASE_URL?>/actions/books/search.php" method="get">
+            <input type="text" name="search" placeholder="Pesquise aqui...">
+            <input type="submit" name="submit" value="Search">
+          </form>
         </div>
+
         <div class="userMenu">
           <span>Bom Dia,</span>
           <form action="<?=$BASE_URL?>/actions/users/login.php" method="post">
@@ -31,6 +36,7 @@
           </form>
           <span style="">Registar</span>
         </div>
+
       </div>
       <div class="row" style="margin: 2% 5%">
         <?php

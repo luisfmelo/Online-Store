@@ -1,7 +1,10 @@
 <?php
   include '../common/header.php';
 
-  $books = getAllBooks();
+  if ( isset($_GET['search']) )
+    $books = getAllBooks($_GET['search']);
+  else
+    $books = getAllBooks('');
 ?>
 
 <section id="books">

@@ -45,6 +45,16 @@ header{
   top: 40%;
 }
 
+/*.searchBar form input{
+  width: 20%;
+  margin: 0 30%;
+}
+
+.searchBar form input.focus{
+  width: 100%;
+  margin: 0 30%;
+}*/
+
 .userMenu{
   width: 30%;
 }

@@ -1,9 +1,13 @@
 <?php
-  function getAllBooks() {
+  function getAllBooks($search) {
     global $conn;
-    $stmt = $conn->prepare('SELECT *
-                            FROM e_store.books');
-                            //ORDER BY time DESC');
+    $query =           'SELECT *
+                        FROM e_store.books ';
+
+    if ($search != '')
+      $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
+
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
   }
@@ -21,7 +25,6 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
-
 
   function getBookCategories() {
     global $conn;
