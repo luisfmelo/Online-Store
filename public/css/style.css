@@ -96,6 +96,19 @@ header{
   padding: 2% 0;
 }
 
+#mainContent{
+  background-color: #999;
+  padding: 2% 0;
+}
+
+#content{
+  background-color: red;
+  padding: 2% 0;
+  margin-left: 50%;
+  margin-top:3%
+}
+
+
 article{
   width: 80%;
   margin: 2.5% 5%;
@@ -133,3 +146,13 @@ footer {
 .socialIcons:hover {
     border-bottom: 2px solid white;
 }*/
+
+/*************************************************/
+/*              LEFT-MENU STYLES                 */
+/*************************************************/
+.leftmenu{
+	margin-top: 10%;
+	margin-left:10%;
+	background-color: red;
+	text-align: center;
+}
