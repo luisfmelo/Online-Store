@@ -8,7 +8,7 @@
 
   <div class="row">
     <input type="submit" name="login" value="Login">
-    <a href="<?=$BASE_URL?>/actions/users/register.php">
+    <a href="<?=$BASE_URL?>/pages/users/new_regist.php">
       <input type="button" name="register" value="Registar">
     </a>
   </div>
