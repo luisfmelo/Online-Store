@@ -11,7 +11,7 @@
   }
 
   $username = $_POST['username'];
-  $password = $_POST['password'];
+  $password = hash("sha256", $_POST['password']);
 
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username'] = $username;
