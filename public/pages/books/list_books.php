@@ -1,7 +1,6 @@
 <?php
   include '../common/header.php';
 
-
   if (isset($_GET['id']))
     $books = getBooksByCategory($_GET['id'], $_GET['sort']);
   else
@@ -19,7 +18,7 @@
           echo "<span class='title'>" . $book['title'] . "</span>";
           echo "<span class='price'>€ " . $book['price'] . "</span>";
           if ( $_SESSION['username'] != '')
-            echo "<i class='fa fa-plus-circle' aria-hidden='true'></i>";
+            echo "<a href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
         echo "</div>";
       echo "</article>";
     }
