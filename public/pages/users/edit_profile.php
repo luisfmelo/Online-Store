@@ -1,51 +1,35 @@
 <?php
   include '../common/header.php';
   include_once('../../database/users.php');
-  
-  $username = $_SESSION['username'];
-  
-  $userProfile = getUserByUsername($username);
 
+  $username = $_SESSION['username'];
+
+  $userProfile = getUserByUsername($username);
+	print_r($userProfile[0]['email']);
 ?>
 
 
 <section id = "mainContent">
-	
+
 	<?php include '../common/left_menu.php'; ?>
-	
+
 
 	<section id = "content">
-<!--
-		<form method="POST" action= "<?=$BASE_URL?>/actions/users/change_profile.php"> 
-		
-				Nome: 				<input type = "text"		name="name"				size = 30	placeholder="Lidia Cerqueira"></input> <br>
-				Email:				<input type = "text"		name="email"			size = 30	placeholder="l@gmail.com"></input> <br>
-				Telefone:			<input type = "text"		name="phone"			size = 30	placeholder="123456789"></input> <br>
-				Morada:				<input type = "text"		name="address"			size = 30	placeholder="rua das flores"></input> <br>
-				Password:			<input type = "password"	name="password"			size = 30	></input> <br>
-				Confirmar Password: <input type = "password"	name="confirmPassword"	size = 30	></input> <br>
-				
-				<input type = "submit" name="cmdsubmit" value="Alterar"></input>
-		</form>
--->
-		
-		
+				<form method="POST" action= "<?=$BASE_URL?>/actions/users/change_profile.php">
 
-				<form method="POST" action= "<?=$BASE_URL?>/actions/users/change_profile.php"> 
-		
-				Nome: 				<input type = "text"		name="name"				size = 30	placeholder=<?$userProfile['name']?>></input> <br>
-				Email:				<input type = "text"		name="email"			size = 30	placeholder=$userProfile['email']></input> <br>
-				Telefone:			<input type = "text"		name="phone"			size = 30	placeholder=$userProfile['phone']></input> <br>
-				Morada:				<input type = "text"		name="address"			size = 30	placeholder=$userProfile['address']></input> <br>
-				Password:			<input type = "password"	name="password"			size = 30	></input> <br>
-				Confirmar Password: <input type = "password"	name="confirmPassword"	size = 30	></input> <br>
-				
+				Nome:			<input type = "text" name="name" value="<?=$userProfile[0]['name']?>"> <br>
+				Email:		<input type = "text" name="email" value="<?=$userProfile[0]['email']?>"> <br>
+				Telefone:	<input type = "text" name="phone" value="<?=$userProfile[0]['phone']?>"> <br>
+				Morada:		<input type = "text" name="address" value="<?=$userProfile[0]['address']?>"> <br>
+				Password:	<input type = "password" name="password"> <br>
+				Confirmar Password: <input type = "password"	name="confirmPassword" /> <br>
+
 				<input type = "submit" name="cmdsubmit" value="Alterar"></input>
-				
+
 		</form>
 
 
-		
+
 	</section>
 
 
