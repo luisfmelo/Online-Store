@@ -11,6 +11,7 @@
     <title>Flourish and Blotts</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?=$BASE_URL?>/css/style.css">
+    <link rel="stylesheet" href="<?=$BASE_URL?>/libs/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <header>
@@ -41,7 +42,7 @@
       <div class="row" style="margin: 2% 5%">
         <?php
         foreach ($categories as $cat) {
-          echo "<div class='category'><a href='../books/list_by_category.php?id=" . $cat['ref'] . "'>";
+          echo "<div class='category'><a href='../books/list_books.php?id=" . $cat['ref'] . "'>";
             echo $cat['categoryname'];
           echo "</a></div>";
         }

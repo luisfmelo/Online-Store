@@ -120,6 +120,10 @@ article{
   float: right;
 }
 
+.book_data img{
+  width: 70px!important;
+}
+
 
 /*************************************************/
 /*              FOOTER STYLES                    */
