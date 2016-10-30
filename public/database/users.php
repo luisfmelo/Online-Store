@@ -26,7 +26,7 @@
   function addNewUser($user, $password, $name, $email, $phone, $address ){
 	global $conn;
 	$stmt = $conn->prepare ("INSERT INTO e_store.users
-							VALUES (DEFAULT, '$user', '$password', '$name', '$email', '$phone', '$address', true);"); 
+							VALUES (DEFAULT, '$user', '$password', '$name', '$email', '$phone', '$address', false);"); 
 							
 	$stmt->execute();
   }
@@ -57,5 +57,16 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+  
+  function getCustomers(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM e_store.users
+							WHERE admin = false;");
+	
+	$stmt->execute();
+	return $stmt->fetchAll();
+  }
+	  
     
 ?>
