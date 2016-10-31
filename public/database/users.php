@@ -22,51 +22,60 @@
 
     return $res['admin'] ? 1 : 0;
   }
-  
-  function addNewUser($user, $password, $name, $email, $phone, $address ){
-	global $conn;
-	$stmt = $conn->prepare ("INSERT INTO e_store.users
-							VALUES (DEFAULT, '$user', '$password', '$name', '$email', '$phone', '$address', false);"); 
-							
-	$stmt->execute();
+
+  function addNewUser($user, $password, $email){
+  	global $conn;
+    $query = "INSERT INTO e_store.users
+              VALUES (DEFAULT, '$user', '$password', NULL, '$email', NULL, NULL, false);";
+  	$stmt = $conn->prepare ($query);
+
+  	$stmt->execute();
   }
-  
+
   function removeUser($user){
-	global $conn;
-	$stmt = $conn->prepare ("DELETE FROM e_store.users 
-							 WHERE username = '$user';");
-							 
-	$stmt->execute();
+  	global $conn;
+  	$stmt = $conn->prepare ("DELETE FROM e_store.users
+  							             WHERE username = '$user';");
+
+  	$stmt->execute();
   }
-  
+
   function editUser($user, $password, $name, $phone, $address, $email){
-	global $conn;
-	$stmt = $conn->prepare ("UPDATE e_store.users
-							 SET password='$password', name='$name', phone='$phone', address='$address', email='$email'
-							 WHERE username='$user';");
-						
-	$stmt->execute();
+    global $conn;
+    $query = "UPDATE e_store.users
+              SET password='$password', name='$name', phone='$phone', address='$address', email='$email'
+              WHERE username='$user';";
+	  $stmt = $conn->prepare ($query);
+    $stmt->execute();
   }
-  
+
   function getUserByUsername($username){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM e_store.users
-							WHERE username = '$username';");
+							              WHERE username = '$username';");
 
     $stmt->execute();
     return $stmt->fetchAll();
   }
-  
+
   function getCustomers(){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM e_store.users
-							WHERE admin = false;");
-	
-	$stmt->execute();
-	return $stmt->fetchAll();
+							              WHERE admin = false;");
+    $stmt->execute();
+	  return $stmt->fetchAll();
   }
-	  
-    
+
+  function userExists($user){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT *
+                            FROM e_store.users
+                            WHERE username = '" . $user . "';");
+    $stmt->execute();
+    return count($stmt->fetchAll()) == 0 ? 1 : 0;
+  }
+
 ?>

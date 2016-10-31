@@ -2,8 +2,8 @@
   include_once('../../config/init.php');
 ?>
 
-<a href="#">Login</a>
-<a href="#" id="registLink">Registo</a>
+<a href="<?=$BASE_URL?>/pages/users/login.php">Login</a>
+<a href="<?=$BASE_URL?>/pages/users/new_regist.php" id="registLink">Registo</a>
 <!--
 <form action="<?=$BASE_URL?>/actions/users/login.php" method="post">
   <input type="text" name="username" placeholder="username">

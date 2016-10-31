@@ -2,7 +2,7 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'/database/books.php');
 
-  $categories = getBookCategories();
+//  $categories = getBookCategories();
 ?>
 
 <!DOCTYPE html>

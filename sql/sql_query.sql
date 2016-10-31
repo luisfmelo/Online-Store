@@ -23,7 +23,7 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR NOT NULL,
   password VARCHAR NOT NULL,
-  name VARCHAR NOT NULL,
+  name VARCHAR,
   email VARCHAR NOT NULL,
   phone VARCHAR,
   address VARCHAR,
@@ -44,9 +44,6 @@ CREATE TABLE productsOrdered (
   bookId INTEGER NOT NULL REFERENCES books,
   orderId INTEGER NOT NULL REFERENCES orders
 );
-
-INSERT INTO users VALUES(DEFAULT, 'admin', 'admin', 'admin', 'admin@gmail.com', NULL, NULL, true);
-INSERT INTO users VALUES(DEFAULT, 'client', 'client', 'client', 'client@gmail.com', NULL, NULL, false);
 
 /*Categorias
 1- Ciência

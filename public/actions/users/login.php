@@ -20,6 +20,7 @@
   } else {
     $_SESSION['error_messages'] = 'Login Falhou';
   }
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+  header("Location: $BASE_URL" . '/pages/books/list_books.php');
   exit;
 ?>
