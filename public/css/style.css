@@ -59,17 +59,17 @@ ul{
 
 .login-form {
   width: 20%;
-  padding: 2% 5%;
+  padding: 2% 5% 2% 3%;
   background: #EEE;
   margin: auto;
   position: absolute;
-  margin: 10% 40%;
+  margin: 10% 40% 0 35%;
   z-index: 2;
 }
 
 .form-group {
   position: relative;
-s}
+}
 
 .login-form input:not([type="submit"]) {
   width: 100%;
