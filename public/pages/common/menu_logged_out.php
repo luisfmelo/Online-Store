@@ -1,9 +1,16 @@
 <?php
   include_once('../../config/init.php');
 ?>
-
-<a href="<?=$BASE_URL?>/pages/users/login.php">Login</a>
-<a href="<?=$BASE_URL?>/pages/users/new_regist.php" id="registLink">Registo</a>
+<li>
+  <a href="<?=$BASE_URL?>/pages/users/login.php">
+    Login
+  </a>
+</li>
+<li>
+  <a href="<?=$BASE_URL?>/pages/users/new_regist.php" id="registLink">
+    Registo
+  </a>
+</li>
 <!--
 <form action="<?=$BASE_URL?>/actions/users/login.php" method="post">
   <input type="text" name="username" placeholder="username">

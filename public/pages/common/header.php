@@ -19,17 +19,35 @@
     <header>
       <div class="row upper-bar">
         <div class="left">
-          <a href="<?=$BASE_URL?>/index.php"><i class="fa fa-home" aria-hidden="true"></i> </a>
-          <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos </a>
-          <a href="#">FAQ</a>
+          <ul>
+            <li>
+              <a href="<?=$BASE_URL?>/index.php">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </a>
+            </li>
+            
+            <li>
+              <a href="#">
+                <i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                FAQ
+              </a>
+            </li>
+          </ul>
         </div>
         <div class="right">
+          <ul>
           <?php
             if ( isset($_SESSION['username']) )
               include '../common/menu_logged_in.php';
             else
               include '../common/menu_logged_out.php';
           ?>
+          </ul>
         </div>
       </div>
 
