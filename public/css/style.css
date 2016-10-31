@@ -1,141 +1,244 @@
-*{
-  margin: 0;
+* {
+    margin: 0;
 }
 
-body{
-  width: 80%;
-  margin: 0 10%;
-  background-color: #CCC;
-  color: #111;
+body {
+    /*  width: 80%;
+  margin: 0 10%;*/
+    background-color: #CCC;
+    color: #111;
+    font-family: 'Quicksand', sans-serif;
 }
 
-a{
-  color: inherit;
-  text-decoration: none;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.error{
-  color: red !important;
-  font-weight: bold;
+.error {
+    color: red !important;
+    font-weight: bold;
 }
 
-.success{
-  color: green !important;
-  font-weight: bold;
+.success {
+    color: green !important;
+    font-weight: bold;
 }
 
 
 /*************************************************/
+
+
 /*              HEADER STYLES                    */
-/*************************************************/
-header{
-  background-color: #333;
-  color: #DDD;
-  margin-bottom: 10px;
-}
-
-.row{
-  width: 100%;
-  display: flex;
-
-}
-
-.logo{
-  width: 30%;
-}
-
-.logo img{
-  width: 50%;
-  padding: 0 25%;
-}
-
-.searchBar{
-  width: 40%;
-  height: 20%;
-  top: 40%;
-}
-
-/*.searchBar form input{
-  width: 20%;
-  margin: 0 30%;
-}
-
-.searchBar form input.focus{
-  width: 100%;
-  margin: 0 30%;
-}*/
-
-.userMenu{
-  width: 30%;
-}
-
-.category{
-  width: 10%;
-  margin: 1%;
-  padding: 1.5%;
-  text-align: center;
-  background-color: blue;
-}
-
-.filter{
-  width: 90%;
-  background-color: #333;
-  color: white;
-  padding: 1% 5%;
-  display: flex;
-}
-
-
-
-
-
-
-
-#books{
-  background-color: #999;
-  padding: 2% 0;
-}
-
-#mainContent{
-  background-color: #999;
-  padding: 2% 0;
-}
-
-#content{
-  background-color: red;
-  padding: 2% 0;
-  margin-left: 50%;
-  margin-top:3%
-}
-
-
-article{
-  width: 80%;
-  margin: 2.5% 5%;
-  padding: 5%;
-  border: 1px solid green;
-}
-
-.price{
-  float: right;
-}
-
-.book_data img{
-  width: 70px!important;
-}
 
 
 /*************************************************/
+
+header {
+    background-color: #111;
+    color: #EEE;
+}
+
+
+/** FIRST ROW **/
+
+.row {
+    display: flex;
+}
+
+.upper-bar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1%;
+    margin-bottom: 20px;
+}
+
+.right {
+    width: 29%;
+    display: inline;
+    order: 2;
+}
+
+.right a {
+    float: right;
+    display: inline;
+}
+
+.left {
+    width: 69%;
+    display: flex;
+    order: 1;
+}
+
+.right>a, .left>a {
+    font-size: 22px;
+    float: right;
+    padding: 1% 5%;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'EB Garamond', serif;
+}
+
+.right>a:last-child {
+    border-right: 0;
+}
+
+#registLink {
+    color: #111;
+    background-color: #C61017;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+    border: 1px solid #C61017;
+}
+
+#registLink:hover {
+    color: #EEE;
+    background-color: #111;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+
+/**********************************************/
+
+
+/** SECOND ROW **/
+
+.bottom-bar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1%;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: inline-block;
+    width: 100%;
+}
+
+
+/* logo */
+
+.logo {
+    width: 40%;
+    display: block;
+    float: left;
+}
+
+.logo img {
+    width: 200px;
+    padding: 0.5% 10%;
+}
+
+
+/** search bar **/
+
+#searchForm {
+    max-width: 950px;
+    float: right;
+    margin: 1%
+}
+
+#lupa {
+    font-size: 20px;
+    display: inline;
+    padding: 0 15px;
+    float: right;
+}
+
+#searchBar {
+    border-radius: 0px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 1px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    visibility: hidden;
+    display: inline;
+    float: right;
+}
+
+.expanded {
+    visibility: visible;
+    display: inline;
+}
+
+.expanded {
+    margin: 0;
+    background-color: #C61017;
+}
+
+/*******************************/
+
+.userMenu {
+    width: 30%;
+}
+
+.category {
+    width: 10%;
+    margin: 1%;
+    padding: 1.5%;
+    text-align: center;
+    background-color: blue;
+}
+
+.filter {
+    width: 90%;
+    background-color: #111;
+    color: white;
+    padding: 1% 5%;
+    display: flex;
+}
+
+#books {
+    background-color: #999;
+    padding: 2% 0;
+}
+
+#mainContent {
+    background-color: #999;
+    padding: 2% 0;
+}
+
+#content {
+    background-color: red;
+    padding: 2% 0;
+    margin-left: 50%;
+    margin-top: 3%
+}
+
+article {
+    /*  width: 80%;*/
+    margin: 2.5% 5%;
+    padding: 5%;
+    border: 1px solid green;
+}
+
+.price {
+    float: right;
+}
+
+.book_data img {
+    width: 70px!important;
+}
+
+
+/*************************************************/
+
+
 /*              FOOTER STYLES                    */
+
+
 /*************************************************/
 
 footer {
     padding: 1%;
     text-align: center;
-    background-color: #333;
-    color: #DDD;
+    background-color: #111;
+    color: #EEE;
     margin-top: 10px;
 }
+
 
 /*.social {
     margin-bottom: 5px;
@@ -144,19 +247,25 @@ footer {
 .socialIcons {
     width: 1.5%;
     margin: 0 3% 0 3%;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #111;
 }
 
 .socialIcons:hover {
     border-bottom: 2px solid white;
 }*/
 
+
 /*************************************************/
+
+
 /*              LEFT-MENU STYLES                 */
+
+
 /*************************************************/
-.leftmenu{
-	margin-top: 10%;
-	margin-left:10%;
-	background-color: red;
-	text-align: center;
+
+.leftmenu {
+    margin-top: 10%;
+    margin-left: 10%;
+    background-color: red;
+    text-align: center;
 }

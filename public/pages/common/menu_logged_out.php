@@ -2,6 +2,9 @@
   include_once('../../config/init.php');
 ?>
 
+<a href="#">Login</a>
+<a href="#" id="registLink">Registo</a>
+<!--
 <form action="<?=$BASE_URL?>/actions/users/login.php" method="post">
   <input type="text" name="username" placeholder="username">
   <input type="password" name="password" placeholder="password">
@@ -13,7 +16,7 @@
     </a>
   </div>
 </form>
-
+-->
 <?php
-  include_once('error_success_msgs.php');
+  //include_once('error_success_msgs.php');
 ?>

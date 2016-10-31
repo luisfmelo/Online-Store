@@ -27,3 +27,21 @@ console.log(cleanURL);
         cleanURL += '&sort=' + selectedID;
     window.location.assign(cleanURL);
 };
+
+function toggleSearchBar(){
+  var elem = document.getElementById("searchBar");
+
+  if ( elem.style.visibility == "hidden" )
+  {
+    elem.style.width= "300px";
+    elem.style.visibility = "visible";
+    elem.focus();
+    document.getElementById("searchForm").classList.add("expanded");
+  }
+  else
+  {
+    elem.style.width= "1px";
+    elem.style.visibility = "hidden";
+    document.getElementById("searchForm").classList.remove("expanded");
+  }
+};
