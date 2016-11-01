@@ -1,5 +1,6 @@
 <?php
   include_once('../../config/init.php');
+  print_r($_SESSION['form_values']);
 ?>
 
 <!DOCTYPE html>
@@ -23,19 +24,19 @@
 
       <!-- USERNAME -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="<?=$_SESSION['form_values']['username']?>">
         <i class="fa fa-user"></i>
       </div>
 
       <!-- EMAIL -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="E-mail" name="email">
+        <input type="text" class="form-control" placeholder="E-mail" name="email" value="<?=$_SESSION['form_values']['email']?>">
         <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
       <!-- PASSWORD -->
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="<?=$_SESSION['form_values']['password']?>">
         <i class="fa fa-lock"></i>
       </div>
 
@@ -45,7 +46,9 @@
         <i class="fa fa-lock"></i>
       </div>
 
-      <?php include_once('../common/error_success_msgs.php'); ?>
+      <div class="messages" style="margin-top: 10px;">
+        <?php include_once('../common/error_success_msgs.php'); ?>
+      </div>
 
       <input type="submit" class="log-btn" value="Registar" />
 

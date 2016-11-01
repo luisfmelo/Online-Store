@@ -19,7 +19,7 @@
       <?php
         if ( $_SESSION['admin'])
         {
-          echo "<a href='#'>Gerir Produtos</a>";
+          echo "<a href='#'>Gerir Stock</a>";
           echo "<a href='#'>Gerir Encomendas</a>";
           echo "<a href='#'>Gerir Clientes</a>";
         }

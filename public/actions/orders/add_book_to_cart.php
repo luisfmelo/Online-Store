@@ -20,6 +20,8 @@
     $_SESSION['cart'][$_GET['id']][0] = $qnt;
   }
 
+  $_SESSION['cart_messages'] = "Livro adicionado com sucesso";
+
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   exit;
 ?>

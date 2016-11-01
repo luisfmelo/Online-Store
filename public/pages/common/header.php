@@ -25,7 +25,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
               </a>
             </li>
-            
+
             <li>
               <a href="#">
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos
@@ -63,24 +63,8 @@
         </div>
       </div>
 
-
-
-
-<!--
-        <div class="userMenu">
-          <span>Bom Dia, </span>
-
-        </div>
-
-      </div>-->
-
-      <!--<div class="row" style="margin: 2% 5%">
-        <?php
-        /**foreach ($categories as $cat) {
-          echo "<div class='category'><a href='../books/list_books.php?id=" . $cat['ref'] . "'>";
-            echo $cat['categoryname'];
-          echo "</a></div>";
-        }*/
-        ?>
-      </div>-->
+      <div class="messages" style="margin-bottom: 20px;">
+        <?php include_once('../common/error_success_msgs.php'); ?>
+        <?php include_once('../common/msg_cart_added.php'); ?>
+      </div>
     </header>
