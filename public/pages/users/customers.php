@@ -19,6 +19,7 @@
 				<td> Email		</td>
 				<td> Telefone	</td>
 				<td> Morada		</td>
+				<td> Eliminar	</td>
 			</tr>
 			<?php
 			foreach ($customers as $customer) {
@@ -27,7 +28,10 @@
 						echo "<td>" . $customer['name']		.	"</td>";
 						echo "<td>" . $customer['email']	.	"</td>";
 						echo "<td>" . $customer['phone']	.	"</td>";
-						echo "<td>" . $customer['adress']	.	"</td>";
+						echo "<td>" . $customer['address']	.	"</td>";
+						echo "<td> <a href=\"$BASE_URL/actions/users/eliminate_account.php?id=$customer[username]\">
+										<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>
+								   </a> </td>";
 			   echo "</tr>";
 			}
 			?>
@@ -38,3 +42,5 @@
 </section>
 
 <?php include '../common/footer.php';?>
+
+

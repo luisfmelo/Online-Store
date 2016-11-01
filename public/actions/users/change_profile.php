@@ -1,5 +1,4 @@
 <?php
-  print_r("change profile");
 	
   include_once('../../database/users.php');
   include_once('../../config/init.php');

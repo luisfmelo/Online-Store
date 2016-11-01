@@ -32,10 +32,10 @@
   	$stmt->execute();
   }
 
-  function removeUser($user){
+  function removeUser($username){
   	global $conn;
   	$stmt = $conn->prepare ("DELETE FROM e_store.users
-  							             WHERE username = '$user';");
+  							             WHERE username = '$username';");
 
   	$stmt->execute();
   }
