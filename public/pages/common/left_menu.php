@@ -39,7 +39,7 @@
 		
 		echo "<div class=\"row\">";
 			echo "<div class='left_options'>";
-				echo "<a href='../users/stock_management.php'>";
+				echo "<a href='../users/stock_management.php?page_number=0'>";
 					echo "Gerir Stock";
 				echo "</a>";
 			echo "</div>";
