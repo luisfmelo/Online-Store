@@ -16,8 +16,6 @@
     else if ($order == 'price_c')
       $query = $query . " ORDER BY e_store.books.price ASC";
 
-
-
       //"OR e_store.books.author ILIKE '%" . $search . "%'""
 
     $stmt = $conn->prepare($query);
