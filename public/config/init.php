@@ -20,8 +20,10 @@
   $FORM_VALUES = $_SESSION['form_values'];
   $ERROR_MESSAGE =  $_SESSION['error_messages'];
   $SUCCESS_MESSAGE = $_SESSION['success_messages'];
+  $CART_MESSAGE = $_SESSION['cart_messages'];
 
   unset($_SESSION['success_messages']);
   unset($_SESSION['error_messages']);
   unset($_SESSION['form_values']);
+  unset($_SESSION['cart_messages']);
 ?>

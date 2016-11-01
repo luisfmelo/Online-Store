@@ -26,3 +26,15 @@
 </section>
 
 <?php include '../common/footer.php';?>
+
+
+
+<!--<div class="row" style="margin: 2% 5%">
+  <?php
+  /**foreach ($categories as $cat) {
+    echo "<div class='category'><a href='../books/list_books.php?id=" . $cat['ref'] . "'>";
+      echo $cat['categoryname'];
+    echo "</a></div>";
+  }*/
+  ?>
+</div>-->

@@ -1,5 +1,6 @@
 <?php
   include_once('../../config/init.php');
+  print_r($_SESSION['form_values']);
 ?>
 
 <!DOCTYPE html>
@@ -22,16 +23,18 @@
       </a>
 
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="<?=$_SESSION['form_values']['username']?>">
         <i class="fa fa-user"></i>
       </div>
 
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="<?=$_SESSION['form_values']['password']?>">
         <i class="fa fa-lock"></i>
       </div>
 
-      <?php include_once('../common/error_success_msgs.php'); ?>
+      <div class="messages msg_forms" style="margin-top: 10px;">
+        <?php include_once('../common/error_success_msgs.php'); ?>
+      </div>
 
       <input type="submit" class="log-btn" value="Log in" />
 

@@ -16,8 +16,6 @@
     else if ($order == 'price_c')
       $query = $query . " ORDER BY e_store.books.price ASC";
 
-
-
       //"OR e_store.books.author ILIKE '%" . $search . "%'""
 
     $stmt = $conn->prepare($query);
@@ -53,6 +51,16 @@
     global $conn;
     $stmt = $conn->prepare('SELECT *
                             FROM e_store.categories');
+                            //ORDER BY time DESC');
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+
+  function getBookPrice($ref){
+    global $conn;
+    $stmt = $conn->prepare("SELECT price
+                            FROM e_store.books
+                            WHERE ref='" . $ref . "'");
                             //ORDER BY time DESC');
     $stmt->execute();
     return $stmt->fetchAll();

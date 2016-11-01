@@ -1,29 +1,6 @@
-<!--<?php
-//  include '../common/header.php';
-?>
-
-
-<form method="POST" action= "<?=$BASE_URL?>/actions/users/register.php">
-	<section id = "books">
-
-		Username:			<input type = "text"		name="username"			size = 30></input> <br>
-		Nome: 				<input type = "text"		name="name"				size = 30></input> <br>
-		Email:				<input type = "text"		name="email"			size = 30></input> <br>
-		Telefone:			<input type = "text"		name="phone"			size = 30></input> <br>
-		Morada:				<input type = "text"		name="address"			size = 30></input> <br>
-		Password:			<input type = "password"	name="password"			size = 30></input> <br>
-		Confirmar Password: <input type = "password"	name="confirmPassword"	size = 30></input> <br>
-
-		<input type = "submit" name="cmdsubmit" value="OK"></input>
-
-	</section>
-</form>
-
-<?php //include '../common/footer.php';?>-->
-
-
 <?php
   include_once('../../config/init.php');
+  print_r($_SESSION['form_values']);
 ?>
 
 <!DOCTYPE html>
@@ -47,19 +24,19 @@
 
       <!-- USERNAME -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="<?=$_SESSION['form_values']['username']?>">
         <i class="fa fa-user"></i>
       </div>
 
       <!-- EMAIL -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="E-mail" name="email">
+        <input type="text" class="form-control" placeholder="E-mail" name="email" value="<?=$_SESSION['form_values']['email']?>">
         <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
       <!-- PASSWORD -->
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="<?=$_SESSION['form_values']['password']?>">
         <i class="fa fa-lock"></i>
       </div>
 
@@ -69,7 +46,9 @@
         <i class="fa fa-lock"></i>
       </div>
 
-      <?php print_r($_SESSION); include_once('../common/error_success_msgs.php'); ?>
+      <div class="messages" style="margin-top: 10px;">
+        <?php include_once('../common/error_success_msgs.php'); ?>
+      </div>
 
       <input type="submit" class="log-btn" value="Registar" />
 
