@@ -1,7 +1,12 @@
 /********  RESET DEFAULT  ***************/
 
-* {
+*, *:before, *:after {
+    box-sizing: inherit;
     margin: 0;
+}
+
+html {
+    height: 100%;
 }
 
 body {
@@ -9,6 +14,9 @@ body {
     background-color: #CCC;
     color: #111;
     font-family: 'Quicksand', sans-serif;
+    position: relative;
+    margin: 0;
+    min-height: 100%;
 }
 
 a {
@@ -126,9 +134,12 @@ ul {
     background: #FFF;
     border: 2px solid #ddd;
     outline: none;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
 }
 
 .login-form input:not([type="submit"]):focus+.fa {
@@ -365,18 +376,27 @@ ul li {
 
 
 /*******************************/
-/*            CONTENT:         */
-/*******************************/
 
+
+/*            CONTENT:         */
+
+
+/*******************************/
 
 .userMenu {
     width: 30%;
 }
-/*******************************/
-/*           LEFT MENU         */
+
+
 /*******************************/
 
-.leftContent{
+
+/*           LEFT MENU         */
+
+
+/*******************************/
+
+.leftContent {
     width: 25%;
     margin: 2.5%;
 }
@@ -391,12 +411,15 @@ ul li {
     border: 1px solid #C61017;
     font-weight: bold;
     letter-spacing: 2px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
 }
 
-.category:hover{
+.category:hover {
     color: #C61017;
     background-color: #EEE;
     -webkit-transition: all .5s ease;
@@ -404,16 +427,20 @@ ul li {
     transition: all .5s ease
 }
 
-.category:first-child{
+.category:first-child {
     margin-top: 0;
 }
 
 
+/*******************************/
+
+
+/*              BOOKS          */
+
 
 /*******************************/
-/*              BOOKS          */
-/*******************************/
-.rightContent{
+
+.rightContent {
     width: 65%;
     margin: 2.5%;
 }
@@ -432,6 +459,7 @@ ul li {
     padding: 2% 0;
 }
 
+
 /*
 #mainContent {
     background-color: #999;
@@ -445,6 +473,7 @@ ul li {
     margin-top: 3%
 }
 */
+
 .book {
     /*  width: 80%;*/
     margin: 2.5% 5%;
@@ -453,32 +482,31 @@ ul li {
     display: flex;
 }
 
-.cover{
+.cover {
     width: 100px;
     height: 140px;
 }
 
-.book-data, .addBtn{
+.book-data, .addBtn {
     width: 100%;
     padding: 4%;
 }
 
-.title{
+.title {
     font-weight: bold;
     font-size: 18px;
 }
 
-.author{
+.author {
     font-size: 13px;
 }
 
-.addBtn{
+.addBtn {
     width: 20%;
     display: flex;
     flex-direction: column;
     float: right;
 }
-
 
 
 /*************************************************/
@@ -495,6 +523,10 @@ footer {
     background-color: #111;
     color: #EEE;
     margin-top: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 
@@ -520,6 +552,7 @@ footer {
 
 
 /*************************************************/
+
 
 /*.leftmenu {
     margin-top: 10%;
