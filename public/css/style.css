@@ -480,10 +480,10 @@ header {
     padding: 2% 0;
 }
 
-.book {
-    /*  width: 80%;*/
+.book, .cartItem {
     margin: 2.5% 5%;
     padding: 3%;
+    padding-left: 0;
     border-bottom: 1px solid #222;
     display: flex;
 }
@@ -552,9 +552,32 @@ header {
 /*              CART           */
 /*******************************/
 
+.bigTitle{
+    letter-spacing: 2px;
+    padding-top:5px;
+    display: inline;
+}
+
+.bigTitle i{
+    float: right;
+    display: inline;
+    color: #222;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.bigTitle i:hover{
+    float: right;
+    display: inline;
+    color: #C61017;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
 .rightContent article{
     margin-top: 20px;
-    border: 1px solid red;
 }
 
 .rightContent .cartQtt{
@@ -563,6 +586,11 @@ header {
 
 .rightContent .cartQtt ul li input{
     width: 15%;
+}
+
+.checkoutBtn{
+    width: 50%;
+    float:right;
 }
 
 /*************************************************/

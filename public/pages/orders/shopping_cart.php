@@ -4,6 +4,11 @@
   include_once('../../database/books.php');
 
   include_once '../common/header.php';
+
+  if (count($_SESSION['cart']) != 0)
+    $books = getSelectedBooks($_SESSION['cart']);
+
+  print_r($_SESSION['cart']);
 ?>
 
 <div class="row">
@@ -11,39 +16,30 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      O meu Cesto
+      <span>O meu Cesto</span>
+      <i class="fa fa-refresh" aria-hidden="true" onclick="updateCart()"></i>
     </h2>
-    <!--<section id="cartItems">
-      <article class="cartItem row">
-        <div class='book-data'>
-          <span class='title'>Prevenção de Lesões no Desporto</span><br />
-          <span class='author'>Luís Horta</span><br />
-          <span class='cartQtt'>Quantidade: <input type="text" name="qnt" value="//$_SESSION['cart'][1]?>"></span><br />
-        </div>
-        <div class='addBtn'>
-          <span class='price'>€ 16.90</span><br />
-          <span class='soldOut'>
-            <small>Esgotado</small>
-          </span>
-        </div>
-      </article>
-    </section>-->
-    <section id="cartItems">
+
+    <section id="cart">
       <?php
+    if (count($_SESSION['cart'])!=0)
       foreach ($books as $book) {
         $cover =
           file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')      ?
                             $IMG_DIR . '/covers/' . $book['ref'] . '.png' :
                             $IMG_DIR . '/covers/default.png' ;
 
-        echo "<article class='cartItem'>";
+        echo "<article class='cartItem row'>";
           echo "<img class='cover' src=" . $cover . " />";
 
           echo "<div class='book-data'>";
-            echo "<span class='title'>" . $book['title'] . "</span><br />";
-            echo "<span class='author'>" . $book['author'] . "</span><br />";
-            echo "<span class='cartQtt'>Quantidade: <input type="text" name="qnt" value="$_SESSION['cart'][1]"></span><br />";
-
+            echo "<span class='title'>" . $book['title'] . "</span>
+                  <i class='fa fa-trash' aria-hidden='true' onclick=\"deleteItem('" . $book[ref] . "', '" . $book[title] . "')\"></i><br />";
+            echo "<span class='author'>" . $book['author'] . "</span><br /><br />";
+            echo "<small class='cartQtt'>
+                    Quantidade:
+                    <input type='text' name='" . $book['ref'] . "' value='" . $_SESSION['cart'][$book['ref']][0] . "'>
+                  </small>";
           echo "</div>";
 
           echo "<div class='addBtn'>";
@@ -66,8 +62,14 @@
 
   </div>
 
+</div>
 
 
+<div class="row">
+  <div class="checkoutBtn">
+    <strong>Portes e Envio: </strong> Grátis
+    <strong>Portes e Envio: </strong>
   </div>
+</div>
 
 <?php include '../common/footer.php';?>

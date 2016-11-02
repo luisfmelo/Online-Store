@@ -67,7 +67,7 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
-  
+
   function getNoBooks() {
 	global $conn;
     $stmt = $conn->prepare('SELECT COUNT(id) FROM e_store.books;');
@@ -90,9 +90,30 @@
   global $conn;
   $stmt = $conn->prepare("SELECT price
                           FROM e_store.books
-                          WHERE ref='" . $ref . "'");
+                          WHERE ref = '" . $ref . "'");
                           //ORDER BY time DESC');
   $stmt->execute();
   return $stmt->fetchAll();
+}
+
+function getSelectedBooks($cart)
+{
+  global $conn;
+
+  $query = "SELECT *
+            FROM e_store.books
+            WHERE ref in (";
+
+  foreach($cart as $key => $value) {
+      $query = $query . "'" . $key . "',";
+  }
+
+  $query = substr($query, 0, -1);
+  $query = $query . ');';
+
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  return $stmt->fetchAll();
+
 }
 ?>
