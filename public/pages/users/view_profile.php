@@ -5,6 +5,7 @@
   $username = $_SESSION['username'];
 
   $userProfile = getUserByUsername($username);
+
 ?>
 
 <section id = "mainContent">

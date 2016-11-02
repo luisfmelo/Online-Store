@@ -6,12 +6,21 @@
 	$limit = 10;
 	$page_number = $_GET['page_number'];
 	
-	$next = $page_number + 1;
+	$number_of_books = getNoBooks();
+	
+	print_r($number_of_books[0]['count']);
+	$max_no_page = $number_of_books[0]['count'] / $limit;
+	print_r($max_no_page);
+	
+	if ($page_number + 1 > $max_no_page)
+		$next = "NOTHING_TO_SHOW";
+	else 
+		$next = $page_number + 1;
+		
 	$previous = $page_number - 1;
 	
+	$books = getSomeBooks($limit, $page_number*$limit); //getSomeBooks(limit, offset)
 
-	$books = getSomeBooks($limit, $page_number*10); //getSomeBooks(limit, offset)
-	print_r($somebooks);
 ?>
 
 <section id = "mainContent">
@@ -25,8 +34,10 @@
 				<td> Título		</td>
 				<td> Autor		</td>
 				<td> Categoria	</td>
-				<td> Preço		</td>
+				<td> Preço 		</td>
 				<td> Stock		</td>
+				<td> 			</td>
+				<td> 			</td>
 			</tr>
 			<?php
 			foreach ($books as $book) {
@@ -35,18 +46,20 @@
 						echo "<td>" . $book['title']	.	"</td>";
 						echo "<td>" . $book['author']	.	"</td>";
 						echo "<td>" . $book['category']	.	"</td>";
-						echo "<td>" . $book['price']	.	"</td>";
-						echo "<td> <i class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
-			   echo "</tr>";
+						echo "<td> <input type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
+						echo "<td> <input type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
+						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
+						//~ echo "
+			 echo "</tr>";
 			}
 			?>
 		</table>
-		<a href="<?=$BASE_URL?>/pages/users/stock_management.php?page_number=<?=$next?>"> NEXT </a>
-		<?php if ($page_number != 0){
-			echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page_number=$previous\"> PREVIOUS </a>";
-		}
+		<?php if ($page_number != 0)
+				echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page_number=$previous\"> PREVIOUS </a>";
+				
+			  if ($next != "NOTHING_TO_SHOW")
+				echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page_number=$next\"> NEXT </a>";
 		?>
-	
 	
 </section>
 

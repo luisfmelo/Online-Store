@@ -67,6 +67,26 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+<<<<<<< HEAD
+  
+  function getNoBooks() {
+	global $conn;
+    $stmt = $conn->prepare('SELECT COUNT(id) FROM e_store.books;');
+                            
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+  
+    function deleteBook($ref) {
+	global $conn;
+	$query =           "DELETE FROM e_store.books
+							WHERE ref = '$ref';";              
+    $stmt = $conn->prepare($query);  
+
+                            
+    $stmt->execute();
+  }
+=======
 
   function getBookPrice($ref){
   global $conn;
@@ -77,4 +97,5 @@
   $stmt->execute();
   return $stmt->fetchAll();
 }
+>>>>>>> 012738d9cf9160f8250f579cfa255ce5346c8529
 ?>
