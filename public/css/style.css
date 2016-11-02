@@ -552,6 +552,18 @@ header {
 /*              CART           */
 /*******************************/
 
+.rightContent article{
+    margin-top: 20px;
+    border: 1px solid red;
+}
+
+.rightContent .cartQtt{
+    width: 30%;
+}
+
+.rightContent .cartQtt ul li input{
+    width: 15%;
+}
 
 /*************************************************/
 
@@ -566,7 +578,7 @@ footer {
     text-align: center;
     background-color: #111;
     color: #EEE;
-    margin-top: 10px;
+    margin-top: 50px;
     position: absolute;
     right: 0;
     bottom: 0;
