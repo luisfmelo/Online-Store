@@ -28,10 +28,10 @@
   function getSomeBooks($limit, $offset){
 	global $conn;
     $query =           "SELECT *
-                        FROM e_store.books 
+                        FROM e_store.books
                         LIMIT '$limit' OFFSET '$offset';";
-                        
-    $stmt = $conn->prepare($query);                    
+
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
 
@@ -67,4 +67,14 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+
+  function getBookPrice($ref){
+  global $conn;
+  $stmt = $conn->prepare("SELECT price
+                          FROM e_store.books
+                          WHERE ref='" . $ref . "'");
+                          //ORDER BY time DESC');
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
 ?>
