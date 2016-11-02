@@ -14,7 +14,7 @@ CREATE TABLE books (
   author VARCHAR NOT NULL,
   price NUMERIC(6,2) NOT NULL,
   category INTEGER REFERENCES categories,
-  decription VARCHAR,
+  description VARCHAR,
   stock INTEGER DEFAULT 0
 );
 

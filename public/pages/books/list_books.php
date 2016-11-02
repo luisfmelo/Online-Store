@@ -33,18 +33,24 @@
     <section id="books">
       <?php
       foreach ($books as $book) {
-        $cover = file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png') ? $IMG_DIR . '/covers/' . $book['ref'] . '.png' :
-                                                                              $IMG_DIR . '/covers/default.png' ;
+        $cover =
+          file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')      ?
+                            $IMG_DIR . '/covers/' . $book['ref'] . '.png' :
+                            $IMG_DIR . '/covers/default.png' ;
+
         echo "<article class='book'>";
           echo "<img class='cover' src=" . $cover . " />";
           echo "<div class='book-data'>";
             echo "<span class='title'>" . $book['title'] . "</span><br />";
             echo "<span class='author'>" . $book['author'] . "</span><br />";
+            echo "<span class='descript'>" . $book['description'] . "</span><br />";
           echo "</div>";
           echo "<div class='addBtn'>";
             echo "<span class='price'>€ " . $book['price'] . "</span><br />";
           if ( $_SESSION['username'] != '')
-            echo "<a href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
+            echo "<a href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-cart-plus' aria-hidden='true'></i>
+                    <small>Adicionar</small>
+                  </a>";
           echo "</div>";
         echo "</article>";
       }
