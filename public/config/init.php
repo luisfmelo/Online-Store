@@ -22,6 +22,7 @@
   $ERROR_MESSAGE =  $_SESSION['error_messages'];
   $SUCCESS_MESSAGE = $_SESSION['success_messages'];
   $CART_MESSAGE = $_SESSION['cart_messages'];
+  $WARN_MESSAGE = $_SESSION['warning_message'];
 
   unset($_SESSION['success_messages']);
   unset($_SESSION['error_messages']);

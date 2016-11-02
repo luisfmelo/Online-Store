@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?=$BASE_URL?>/libs/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+
+    <div class="wrapper">
     <header>
       <div class="row upper-bar">
         <div class="leftMenu">

@@ -19,6 +19,16 @@ body {
     min-height: 100%;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -100px;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -84,7 +94,6 @@ ul {
     /* Opera/IE 8+ */
     box-sizing: border-box;
 }
-
 
 /*************************************************/
 
@@ -221,6 +230,8 @@ header {
 
 .row {
     display: flex;
+    overflow: auto;
+    height: auto;
 }
 
 .upper-bar {
@@ -236,7 +247,7 @@ header {
     font-family: 'EB Garamond', serif;
 }
 
-.navbar li{
+.navbar li {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -250,7 +261,7 @@ header {
     padding-left: 0;
 }
 
-.leftMenu ul li:last-child{
+.leftMenu ul li:last-child {
     border-right: 0;
 }
 
@@ -260,7 +271,7 @@ header {
     display: inline;
 }
 
-.rightMenu ul li{
+.rightMenu ul li {
     float: right;
     margin-right: 5%;
     padding-right: 10%;
@@ -289,6 +300,7 @@ header {
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 
 /* DropDown Menu */
 
@@ -537,28 +549,37 @@ header {
     transition: all .5s ease;
 }
 
-.inStock{
-    color: green;
+.inStock {
+    color: #4F8A10;
     font-weight: bold;
 }
 
-.soldOut{
-    color: red;
+.warningStock {
+    color: #9F6000;
+    font-weight: bold;
+}
+
+.soldOut {
+    color: #D8000C;
     font-weight: bold;
 }
 
 
 /*******************************/
+
+
 /*              CART           */
+
+
 /*******************************/
 
-.bigTitle{
+.bigTitle {
     letter-spacing: 2px;
-    padding-top:5px;
+    padding-top: 5px;
     display: inline;
 }
 
-.bigTitle i{
+.bigTitle i {
     float: right;
     display: inline;
     color: #222;
@@ -567,7 +588,7 @@ header {
     transition: all .5s ease;
 }
 
-.bigTitle i:hover{
+.bigTitle i:hover {
     float: right;
     display: inline;
     color: #C61017;
@@ -576,22 +597,61 @@ header {
     transition: all .5s ease;
 }
 
-.rightContent article{
+.rightContent article {
     margin-top: 20px;
 }
 
-.rightContent .cartQtt{
+.rightContent .cartQtt {
     width: 30%;
 }
 
-.rightContent .cartQtt ul li input{
+.rightContent .cartQtt ul li input {
     width: 15%;
 }
 
-.checkoutBtn{
-    width: 50%;
-    float:right;
+.checkout {
+    margin-left:70%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
 }
+
+.checkoutRow{
+    width: 100%;
+    display: inline;
+    flex-direction: column;
+}
+
+.checkoutRow div{
+    width: 50%;
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.checkoutRow div:last-child{
+    float: right;
+}
+
+#checkoutBtn {
+    color: #111;
+    background-color: #C61017;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+    border: 1px solid #C61017;
+    padding: 6px;
+    width: 100%;
+    margin-left: 40%;
+}
+
+#checkoutBtn:hover {
+    color: #EEE;
+    background-color: #111;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
 
 /*************************************************/
 
@@ -606,13 +666,9 @@ footer {
     text-align: center;
     background-color: #111;
     color: #EEE;
-    margin-top: 50px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    height: 50px;
+    margin-top: 100px;
 }
-
 
 /*.social {
     margin-bottom: 5px;

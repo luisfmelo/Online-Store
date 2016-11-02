@@ -45,12 +45,19 @@ function toggleSearchBar() {
 
 function updateCart() {
     var inputs, index;
-
     var cart = document.getElementById('cart');
+    var url = "../../actions/orders/update_cart.php?";
+
     inputs = cart.getElementsByTagName('input');
-    for (index = 0; index < inputs.length; ++index) {
-        console.log(inputs[index].value);
-    }
+
+    for (index = 0; index < inputs.length; ++index)
+        if( Number(inputs[index].value) >= 0 )
+            url += inputs[index].name + "=" + inputs[index].value + '&';
+
+    if (url.charAt(url.length - 1) == '&')
+        url = url.substring(0, url.length - 1);
+
+    window.location.assign(url);
 };
 
 function deleteItem(ref, nome) {
