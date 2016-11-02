@@ -28,10 +28,10 @@
   function getSomeBooks($limit, $offset){
 	global $conn;
     $query =           "SELECT *
-                        FROM e_store.books 
+                        FROM e_store.books
                         LIMIT '$limit' OFFSET '$offset';";
-                        
-    $stmt = $conn->prepare($query);                    
+
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
 
@@ -43,7 +43,7 @@
               FROM e_store.categories
               INNER JOIN e_store.books
               ON e_store.categories.id = e_store.books.category
-              WHERE e_store.categories.ref = $ref";
+              WHERE e_store.categories.ref = '$ref'";
 
     if ($order == 'name_a')
       $query = $query . " ORDER BY e_store.books.title ASC";
@@ -67,6 +67,7 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+<<<<<<< HEAD
   
   function getNoBooks() {
 	global $conn;
@@ -85,4 +86,16 @@
                             
     $stmt->execute();
   }
+=======
+
+  function getBookPrice($ref){
+  global $conn;
+  $stmt = $conn->prepare("SELECT price
+                          FROM e_store.books
+                          WHERE ref='" . $ref . "'");
+                          //ORDER BY time DESC');
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+>>>>>>> 012738d9cf9160f8250f579cfa255ce5346c8529
 ?>

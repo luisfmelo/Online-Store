@@ -23,6 +23,7 @@ ul {
 
 /***********************************************/
 
+
 /*** MESSAGES STYLES ***/
 
 .errorMsg {
@@ -67,9 +68,12 @@ ul {
     margin: 0 auto;
     font-weight: bold;
     width: 100%;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
     padding: 10px 10px;
 }
 
@@ -361,32 +365,74 @@ ul li {
 
 
 /*******************************/
+/*            CONTENT:         */
+/*******************************/
+
 
 .userMenu {
     width: 30%;
 }
+/*******************************/
+/*           LEFT MENU         */
+/*******************************/
+
+.leftContent{
+    width: 25%;
+    margin: 2.5%;
+}
 
 .category {
-    width: 10%;
-    margin: 1%;
-    padding: 1.5%;
+    width: 100%;
+    padding: 12px;
+    margin: 2% 0;
     text-align: center;
-    background-color: blue;
+    background-color: #C61017;
+    color: #EEE;
+    border: 1px solid #C61017;
+    font-weight: bold;
+    letter-spacing: 2px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.category:hover{
+    color: #C61017;
+    background-color: #EEE;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.category:first-child{
+    margin-top: 0;
+}
+
+
+
+/*******************************/
+/*              BOOKS          */
+/*******************************/
+.rightContent{
+    width: 65%;
+    margin: 2.5%;
 }
 
 .filter {
-    width: 90%;
+    width: 80%;
     background-color: #111;
-    color: white;
+    color: #EEE;
     padding: 1% 5%;
     display: flex;
+    margin: 0 5%;
 }
 
 #books {
-    background-color: #999;
+    background-color: #CCC;
     padding: 2% 0;
 }
 
+/*
 #mainContent {
     background-color: #999;
     padding: 2% 0;
@@ -398,21 +444,41 @@ ul li {
     margin-left: 50%;
     margin-top: 3%
 }
-
-article {
+*/
+.book {
     /*  width: 80%;*/
     margin: 2.5% 5%;
-    padding: 5%;
-    border: 1px solid green;
+    padding: 3%;
+    border-bottom: 1px solid #222;
+    display: flex;
 }
 
-.price {
+.cover{
+    width: 100px;
+    height: 140px;
+}
+
+.book-data, .addBtn{
+    width: 100%;
+    padding: 4%;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.author{
+    font-size: 13px;
+}
+
+.addBtn{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
     float: right;
 }
 
-.book_data img {
-    width: 70px!important;
-}
 
 
 /*************************************************/
@@ -455,9 +521,9 @@ footer {
 
 /*************************************************/
 
-.leftmenu {
+/*.leftmenu {
     margin-top: 10%;
     margin-left: 10%;
     background-color: red;
     text-align: center;
-}
+}*/
