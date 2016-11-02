@@ -18,8 +18,8 @@
   <body>
     <header>
       <div class="row upper-bar">
-        <div class="left">
-          <ul>
+        <div class="leftMenu">
+          <ul class="navbar">
             <li>
               <a href="<?=$BASE_URL?>/index.php">
                 <i class="fa fa-home" aria-hidden="true"></i>
@@ -39,8 +39,8 @@
             </li>
           </ul>
         </div>
-        <div class="right">
-          <ul>
+        <div class="rightMenu">
+          <ul class="navbar">
           <?php
             if ( isset($_SESSION['username']) )
               include '../common/menu_logged_in.php';

@@ -229,33 +229,47 @@ header {
     margin-bottom: 20px;
 }
 
-.right {
-    width: 29%;
-    display: inline;
-    order: 2;
-}
-
-.right ul li {
-    float: right;
-    display: inline;
-}
-
-.left {
-    width: 69%;
-    display: inline;
-    order: 1;
-}
-
-.left ul li {
-    float: left;
-    display: inline;
-}
-
-ul li {
+.navbar li {
     font-size: 22px;
     padding: 1% 5%;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    float: left;
     font-family: 'EB Garamond', serif;
+}
+
+.navbar li{
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.leftMenu {
+    width: 70%;
+    order: 1;
+    display: inline;
+}
+
+.leftMenu ul li:first-child {
+    padding-left: 0;
+}
+
+.leftMenu ul li:last-child{
+    border-right: 0;
+}
+
+.rightMenu {
+    width: 30%;
+    order: 2;
+    display: inline;
+}
+
+.rightMenu ul li{
+    float: right;
+    margin-right: 5%;
+    padding-right: 10%;
+}
+
+.rightMenu ul li:first-child {
+    padding-right: 2.5%;
+    margin: auto 5%;
+    border-right: 0;
 }
 
 #registLink {
@@ -275,7 +289,6 @@ ul li {
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
-
 
 /* DropDown Menu */
 
@@ -318,7 +331,7 @@ ul li {
 
 .content {
     display: inline-block;
-    width: 50%;
+    width: 100%;
 }
 
 
@@ -398,7 +411,7 @@ ul li {
 
 .leftContent {
     width: 25%;
-    margin: 2.5%;
+    margin: 2.5% 0 2.5% 5%;
 }
 
 .category {
