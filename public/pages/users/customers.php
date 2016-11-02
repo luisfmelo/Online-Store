@@ -29,9 +29,7 @@
 						echo "<td>" . $customer['email']	.	"</td>";
 						echo "<td>" . $customer['phone']	.	"</td>";
 						echo "<td>" . $customer['address']	.	"</td>";
-						echo "<td> <a href=\"$BASE_URL/actions/users/eliminate_account.php?id=$customer[username]\">
-										<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>
-								   </a> </td>";
+						echo "<td> <i onclick=\"deleteCustomerAlert('" . $customer['username'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
 			   echo "</tr>";
 			}
 			?>

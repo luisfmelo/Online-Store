@@ -2,7 +2,7 @@
   include_once('../../database/users.php');
   include_once('../../config/init.php');
   
-  $username = $_GET['id'];
+  $username = $_GET['ref'];
   print_r($username);
   
   removeUser($username);

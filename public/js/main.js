@@ -45,3 +45,20 @@ function toggleSearchBar(){
     document.getElementById("searchForm").classList.remove("expanded");
   }
 };
+
+
+function deleteBookAlert(book_ref) {
+    
+    var r = confirm("Tem a certeza que pretende remover o livro com a referência " + book_ref +  "?" );
+	if (r == true) {
+		window.location.assign("../../actions/books/delete_book.php?ref=" + book_ref);
+	} 
+}
+
+function deleteCustomerAlert(username) {
+    
+    var r = confirm("Tem a certeza que pretende remover o cliente com a referência " + username +  "?" );
+	if (r == true) {
+		window.location.assign("../../actions/users/eliminate_account.php?ref=" + username);
+	} 
+}

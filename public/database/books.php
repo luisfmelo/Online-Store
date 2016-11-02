@@ -67,4 +67,22 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+  
+  function getNoBooks() {
+	global $conn;
+    $stmt = $conn->prepare('SELECT COUNT(id) FROM e_store.books;');
+                            
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+  
+    function deleteBook($ref) {
+	global $conn;
+	$query =           "DELETE FROM e_store.books
+							WHERE ref = '$ref';";              
+    $stmt = $conn->prepare($query);  
+
+                            
+    $stmt->execute();
+  }
 ?>
