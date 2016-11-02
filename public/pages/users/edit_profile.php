@@ -7,8 +7,7 @@
   $userProfile = getUserByUsername($username);
 
 ?>
-
-<section id = "mainContent">
+<div class="row">
 
 	<?php include '../common/left_menu.php'; ?>
 
@@ -28,6 +27,5 @@
 		</form>
 	</section>
 
-</section>
-
+</div>
 <?php include '../common/footer.php';?>

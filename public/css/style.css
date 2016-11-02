@@ -414,7 +414,7 @@ header {
     margin: 2.5% 0 2.5% 5%;
 }
 
-.category {
+.itemMenu {
     width: 100%;
     padding: 12px;
     margin: 2% 0;
@@ -432,7 +432,7 @@ header {
     box-sizing: border-box;
 }
 
-.category:hover {
+.itemMenu:hover {
     color: #C61017;
     background-color: #EEE;
     -webkit-transition: all .5s ease;
@@ -440,7 +440,7 @@ header {
     transition: all .5s ease
 }
 
-.category:first-child {
+.itemMenu:first-child {
     margin-top: 0;
 }
 
@@ -479,21 +479,6 @@ header {
     background-color: #CCC;
     padding: 2% 0;
 }
-
-
-/*
-#mainContent {
-    background-color: #999;
-    padding: 2% 0;
-}
-
-#content {
-    background-color: red;
-    padding: 2% 0;
-    margin-left: 50%;
-    margin-top: 3%
-}
-*/
 
 .book {
     /*  width: 80%;*/
@@ -551,6 +536,21 @@ header {
     -moz-transition: all .5s ease;
     transition: all .5s ease;
 }
+
+.inStock{
+    color: green;
+    font-weight: bold;
+}
+
+.soldOut{
+    color: red;
+    font-weight: bold;
+}
+
+
+/*******************************/
+/*              CART           */
+/*******************************/
 
 
 /*************************************************/

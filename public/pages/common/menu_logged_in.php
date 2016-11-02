@@ -25,7 +25,7 @@
           echo "<a href='$BASE_URL/pages/users/view_customers.php'>Gerir Clientes</a>";
         }
         else
-          echo "<a href='#'>Minhas Encomendas</a>";
+          echo "<a href='$BASE_URL/pages/orders/view_orders.php'>Minhas Encomendas</a>";
       ?>
 
       <a href="<?=$BASE_URL?>/actions/users/logout.php">Logout</a>
@@ -33,7 +33,10 @@
   </li>
 
   <li>
-    <a href="<?=$BASE_URL?>/pages/orders/shopping_cart.php">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-    </a>
+    <?php
+    if ( !$_SESSION['admin'])
+      echo "<a href='$BASE_URL/pages/orders/shopping_cart.php'>
+              <i class='fa fa-shopping-cart' aria-hidden='true'></i>
+            </a>";
+     ?>
   </li>
