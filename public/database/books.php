@@ -43,7 +43,7 @@
               FROM e_store.categories
               INNER JOIN e_store.books
               ON e_store.categories.id = e_store.books.category
-              WHERE e_store.categories.ref = $ref";
+              WHERE e_store.categories.ref = '$ref'";
 
     if ($order == 'name_a')
       $query = $query . " ORDER BY e_store.books.title ASC";

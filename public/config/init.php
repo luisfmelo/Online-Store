@@ -6,6 +6,7 @@
 
   $BASE_DIR = dirname(dirname(__FILE__)); // '/var/www/public/';
   $BASE_URL = '../..';
+  $IMG_DIR = '../../images';
 
   $conn = new PDO('pgsql:host=' . $host . ';dbname=' . $db, $username, $password);
 
