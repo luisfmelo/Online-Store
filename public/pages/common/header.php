@@ -59,7 +59,7 @@
             <a href="<?=$BASE_URL?>/index.php"><img src="<?=$BASE_URL?>/images/logo.png" alt="" /></a>
           </div>
             <form id="searchForm" action="<?=$BASE_URL?>/actions/books/search.php" method="get">
-              <div id="lupa" onclick="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></div>
+              <a class="divlink" id="lupa" onclick="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
               <input id="searchBar" name="search" type="search" placeholder="Pesquise aqui...">
             </form>
         </div>

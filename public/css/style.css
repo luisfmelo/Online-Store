@@ -337,11 +337,15 @@ header {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1
+    background-color: rgba(198,16,23,0.6);
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.dropdown-content a:last-child{
+  border-top: 2px solid #C61017;
 }
 
 

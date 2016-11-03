@@ -15,6 +15,8 @@
       $query = $query . " ORDER BY e_store.books.price DESC";
     else if ($order == 'price_c')
       $query = $query . " ORDER BY e_store.books.price ASC";
+    else
+      $query = $query . " ORDER BY e_store.books.title ASC";
 
 
 
@@ -127,12 +129,12 @@
 
   function updateBook($ref, $price, $stock){
 	global $conn;
-	
+
     $query = "UPDATE e_store.books
               SET price='$price', stock='$stock'
               WHERE ref='$ref';";
 	$stmt = $conn->prepare ($query);
-	
+
     $stmt->execute();
   }
   

@@ -20,8 +20,8 @@
       <?php
         if ( $_SESSION['admin'])
         {
-          echo "<a href='$BASE_URL/pages/users/stock_management.php'>Gerir Stock</a>";
           echo "<a href='$BASE_URL/pages/orders/view_orders.php'>Gerir Encomendas</a>";
+          echo "<a href='$BASE_URL/pages/users/stock_management.php'>Gerir Stock</a>";
           echo "<a href='$BASE_URL/pages/users/view_customers.php'>Gerir Clientes</a>";
         }
         else

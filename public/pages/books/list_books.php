@@ -10,11 +10,9 @@
 ?>
 <div class="row">
   <div class="leftContent">
-    <div class='itemMenu'>
-      <a href='../books/list_books.php?'>
+    <a class='itemMenu divlink' href='../books/list_books.php?'>
         Todos os Livros
-      </a>
-    </div>
+    </a>
   <?php
   foreach ($categories as $cat) {
     echo "<a class='itemMenu divlink' href='list_books.php?id=" . $cat['ref'] . "'>";
