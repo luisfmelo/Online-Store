@@ -25,8 +25,10 @@
   $INFO_MESSAGE = $_SESSION['info_messages'];
   $WARN_MESSAGE = $_SESSION['warning_message'];
 
-  unset($_SESSION['success_messages']);
-  unset($_SESSION['error_messages']);
   unset($_SESSION['form_values']);
+  unset($_SESSION['error_messages']);
+  unset($_SESSION['success_messages']);
   unset($_SESSION['cart_messages']);
+  unset($_SESSION['info_messages']);
+  unset($_SESSION['warning_message']);
 ?>
