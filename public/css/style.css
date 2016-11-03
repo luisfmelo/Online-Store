@@ -59,6 +59,22 @@ ul {
 
 /*** MESSAGES STYLES ***/
 
+
+.inStock {
+    color: #4F8A10;
+    font-weight: bold;
+}
+
+.warningStock {
+    color: #9F6000;
+    font-weight: bold;
+}
+
+.soldOut {
+    color: #D8000C;
+    font-weight: bold;
+}
+
 .errorMsg {
     color: #D8000C;
     background-color: #FFBABA;
@@ -479,6 +495,43 @@ header {
 /*******************************/
 
 
+/*            PROFILE          */
+
+
+/*******************************/
+
+#content{
+  width: 100%;
+  display: flex;
+}
+
+#content .left{
+  width: 50%;
+  padding: 30px;
+}
+
+#content .right{
+  width: 50%;
+}
+
+.left span{
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+.
+.photo img, .changePhoto{
+    margin: 0 30%;
+    width: 40%;
+}
+
+
+
+
+
+/*******************************/
+
+
 /*              BOOKS          */
 
 
@@ -566,21 +619,6 @@ header {
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
-}
-
-.inStock {
-    color: #4F8A10;
-    font-weight: bold;
-}
-
-.warningStock {
-    color: #9F6000;
-    font-weight: bold;
-}
-
-.soldOut {
-    color: #D8000C;
-    font-weight: bold;
 }
 
 
