@@ -10,8 +10,25 @@
     *   -> user unico
     */
 
-  if (!isset($_POST['username']) || !isset($_POST['password']) ||
-      !isset($_POST['confirmPassword']) || !isset($_POST['email']) ) {
+  if (!isset($_POST['username'])        ||
+      !isset($_POST['nome'])            ||
+      !isset($_POST['morada'])          ||
+      !isset($_POST['telefone'])        ||
+      !isset($_POST['password'])        ||
+      !isset($_POST['confirmPassword']) ||
+      !isset($_POST['email']) ) {
+		$_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
+		$_SESSION['form_values'] = $_POST;
+		header("Location: $BASE_URL" . '/pages/users/new_regist.php');
+		exit;
+  }
+  else if ( empty($_POST['username'])        ||
+            empty($_POST['nome'])            ||
+            empty($_POST['morada'])          ||
+            empty($_POST['telefone'])        ||
+            empty($_POST['password'])        ||
+            empty($_POST['confirmPassword']) ||
+            empty($_POST['email']) ) {
 		$_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
 		$_SESSION['form_values'] = $_POST;
 		header("Location: $BASE_URL" . '/pages/users/new_regist.php');
@@ -26,6 +43,13 @@
   else if( strlen($_POST['username']) < 5)
   {
     $_SESSION['error_messages'] = 'O Username deve ter pelo menos 5 caracteres';
+    $_SESSION['form_values'] = $_POST;
+    header("Location: $BASE_URL" . '/pages/users/new_regist.php');
+    exit;
+  }
+  else if( strlen($_POST['telefone']) != 9 || !ctype_digit($_POST['telefone']))
+  {
+    $_SESSION['error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
@@ -56,10 +80,12 @@
 
   $username = $_POST['username'];
   $password = hash("sha256", $_POST['password']);
-  $name 	= $_POST['name'];
-  $email 	= $_POST['email'];
+  $name 	  = $_POST['nome'];
+  $phone    = $_POST['telefone'];
+  $address  = $_POST['morada'];
+  $email 	  = $_POST['email'];
 
-  addNewUser($username, $password, $email);
+  addNewUser($username, $name, $phone, $address, $password, $email);
   header("Location: $BASE_URL" . '/pages/books/list_books.php');
   exit;
 ?>

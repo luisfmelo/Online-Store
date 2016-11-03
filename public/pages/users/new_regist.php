@@ -1,6 +1,6 @@
 <?php
   include_once('../../config/init.php');
-  print_r($_SESSION['form_values']);
+  print_r($FORM_VALUES);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" action="<?=$BASE_URL?>/actions/users/register.php" method="post">
+    <form class="login-form" action="<?=$BASE_URL?>/actions/users/register.php" method="post" onsubmit="return validateRegister();">
 
       <a href="<?=$BASE_URL?>/index.php" id="auth_logo">
         <img src="<?=$BASE_URL?>/images/logo.png" alt="" />
@@ -24,19 +24,37 @@
 
       <!-- USERNAME -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username" value="<?=$_SESSION['form_values']['username']?>">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="<?=$FORM_VALUES['username']?>">
         <i class="fa fa-user"></i>
+      </div>
+
+      <!-- NAME -->
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?=$FORM_VALUES['nome']?>">
+        <i class="fa fa-address-card" aria-hidden="true"></i>
+      </div>
+
+      <!-- MORADA -->
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Morada" name="morada" value="<?=$FORM_VALUES['morada']?>">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+      </div>
+
+      <!-- TELEFONE -->
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Telefone" name="telefone" value="<?=$FORM_VALUES['telefone']?>">
+        <i class="fa fa-phone"></i>
       </div>
 
       <!-- EMAIL -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="E-mail" name="email" value="<?=$_SESSION['form_values']['email']?>">
+        <input type="text" class="form-control" placeholder="E-mail" name="email" value="<?=$FORM_VALUES['email']?>">
         <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
       <!-- PASSWORD -->
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password" value="<?=$_SESSION['form_values']['password']?>">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="<?=$FORM_VALUES['password']?>">
         <i class="fa fa-lock"></i>
       </div>
 
@@ -61,4 +79,5 @@
 
     </form>
   </body>
+  <script src="../../js/main.js"></script>
 </html>
