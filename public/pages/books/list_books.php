@@ -17,9 +17,9 @@
     </div>
   <?php
   foreach ($categories as $cat) {
-    echo "<div class='itemMenu'><a href='list_books.php?id=" . $cat['ref'] . "'>";
+    echo "<a class='itemMenu divlink' href='list_books.php?id=" . $cat['ref'] . "'>";
       echo $cat['categoryname'];
-    echo "</a></div>";
+    echo "</a>";
   }
   ?>
   </div>

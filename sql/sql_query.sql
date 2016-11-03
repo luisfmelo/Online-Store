@@ -58,7 +58,7 @@ CREATE TABLE productsOrdered (
 INSERT INTO e_store.users VALUES(DEFAULT, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, 'admin@blooks.com', NULL, NULL, true);
 INSERT INTO e_store.users VALUES(DEFAULT, 'client', '948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d', NULL, 'client@blooks.com', NULL, NULL, false);
 
-INSERT INTO e_store.categories VALUES(DEFAULT, 'CIE', 'Ciência');
+INSERT INTO e_store.categories VALUES(DEFAULT, 'CIE', 'Ciencia');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'DES', 'Desporto');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'ROM', 'Romance');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'TEC', 'Tecnologia');
