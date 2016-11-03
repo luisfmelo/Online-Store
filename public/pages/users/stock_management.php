@@ -46,8 +46,8 @@
 						echo "<td>" . $book['title']	.	"</td>";
 						echo "<td>" . $book['author']	.	"</td>";
 						echo "<td>" . $book['category']	.	"</td>";
-						echo "<td> <input type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
-						echo "<td> <input type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
+						echo "<td> <input class=\"stock_input\" type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
+						echo "<td> <input class=\"stock_input\" type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
 						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
 						//~ echo "
 			 echo "</tr>";
