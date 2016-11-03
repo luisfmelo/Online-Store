@@ -641,6 +641,7 @@ header {
 
 .checkoutRow div:last-child{
     float: right;
+    margin-bottom: 20px;
 }
 
 #checkoutBtn {
@@ -652,7 +653,14 @@ header {
     border: 1px solid #C61017;
     padding: 6px;
     width: 100%;
-    margin-left: 40%;
+    margin-left: 25%;
+
+    /* Safari/Chrome, other WebKit */
+    -webkit-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box;
+    /* Opera/IE 8+ */
+    box-sizing: border-box;
 }
 
 #checkoutBtn:hover {
@@ -693,21 +701,4 @@ footer {
 
 .socialIcons:hover {
     border-bottom: 2px solid white;
-}*/
-
-
-/*************************************************/
-
-
-/*              LEFT-MENU STYLES                 */
-
-
-/*************************************************/
-
-
-/*.leftmenu {
-    margin-top: 10%;
-    margin-left: 10%;
-    background-color: red;
-    text-align: center;
 }*/

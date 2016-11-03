@@ -28,39 +28,58 @@ console.log(cleanURL);
     window.location.assign(cleanURL);
 };
 
-function toggleSearchBar(){
-  var elem = document.getElementById("searchBar");
+function toggleSearchBar() {
+    var elem = document.getElementById("searchBar");
 
-  if ( elem.style.visibility == "hidden" )
-  {
-    elem.style.width= "300px";
-    elem.style.visibility = "visible";
-    elem.focus();
-    document.getElementById("searchForm").classList.add("expanded");
-  }
-  else
-  {
-    elem.style.width= "1px";
-    elem.style.visibility = "hidden";
-    document.getElementById("searchForm").classList.remove("expanded");
-  }
+    if (elem.style.visibility == "hidden") {
+        elem.style.width = "300px";
+        elem.style.visibility = "visible";
+        elem.focus();
+        document.getElementById("searchForm").classList.add("expanded");
+    } else {
+        elem.style.width = "1px";
+        elem.style.visibility = "hidden";
+        document.getElementById("searchForm").classList.remove("expanded");
+    }
+};
+
+function updateCart(checkout) {
+    var inputs, index;
+    var cart = document.getElementById('cart');
+    var url = "../../actions/orders/update_cart.php?";
+
+    inputs = cart.getElementsByTagName('input');
+
+    for (index = 0; index < inputs.length; ++index)
+        if( Number(inputs[index].value) >= 0 )
+            url += inputs[index].name + "=" + inputs[index].value + '&';
+
+  //  if (url.charAt(url.length - 1) == '&')
+  //      url = url.substring(0, url.length - 1);
+
+    if (checkout)
+      url += "checkout=1";
+    else
+      url += "checkout=0";
+
+    window.location.assign(url);
 };
 
 
 function deleteBookAlert(book_ref) {
-    
+
     var r = confirm("Tem a certeza que pretende remover o livro com a referência " + book_ref +  "?" );
 	if (r == true) {
 		window.location.assign("../../actions/books/delete_book.php?ref=" + book_ref);
-	} 
+	}
 }
 
 function deleteCustomerAlert(username) {
-    
+
     var r = confirm("Tem a certeza que pretende remover o cliente com a referência " + username +  "?" );
 	if (r == true) {
 		window.location.assign("../../actions/users/eliminate_account.php?ref=" + username);
-	} 
+	}
 }
 
 function stockChangeCheck(ref, page_number) {
@@ -103,18 +122,16 @@ function stockChangeCheck(ref, page_number) {
 
 
 //~ function checkNewBook(title, author, category, price, description, stock){
-	
+
 	//~ if ( (title.length < 1) OR (author.lenght < 1) )
 		//~ alert("Title and Author must have more than one character");
-		
+
 	//~ if (stock < 0)
 		//~ alert("Check stock - it must be greater or equal to 0");
-	
+
 	//~ price = price.replace(/,/g, '.');
-		
+
 	//~ if (price < 0)
 		//~ alert("Check price - it must be greater or equal to 0");
-	
-//~ }	
 
-
+//~ }
