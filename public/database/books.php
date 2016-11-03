@@ -29,6 +29,7 @@
 	global $conn;
     $query =           "SELECT *
                         FROM e_store.books
+                        ORDER BY ref ASC
                         LIMIT '$limit' OFFSET '$offset';";
 
     $stmt = $conn->prepare($query);
@@ -96,24 +97,35 @@
   return $stmt->fetchAll();
 }
 
-function getSelectedBooks($cart)
-{
-  global $conn;
+  function getSelectedBooks($cart)
+  {
+	  global $conn;
 
-  $query = "SELECT *
-            FROM e_store.books
-            WHERE ref in (";
+	  $query = "SELECT *
+				FROM e_store.books
+				WHERE ref in (";
 
-  foreach($cart as $key => $value) {
-      $query = $query . "'" . $key . "',";
-  }
+	  foreach($cart as $key => $value) {
+		  $query = $query . "'" . $key . "',";
+      }
 
-  $query = substr($query, 0, -1);
-  $query = $query . ');';
+	  $query = substr($query, 0, -1);
+	  $query = $query . ');';
 
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-  return $stmt->fetchAll();
+	  $stmt = $conn->prepare($query);
+	  $stmt->execute();
+	  return $stmt->fetchAll();
 
 }
+
+  function updateBook($ref, $price, $stock){
+	global $conn;
+	
+    $query = "UPDATE e_store.books
+              SET price='$price', stock='$stock'
+              WHERE ref='$ref';";
+	$stmt = $conn->prepare ($query);
+	
+    $stmt->execute();
+  }
 ?>
