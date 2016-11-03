@@ -17,6 +17,8 @@
   // resetar carrinho
   unset($_SESSION['cart']);
 
+  $_SESSION['success_messages'] = "Encomenda efetuada com Sucesso!";
+
   // redirect
   header('Location: ' . $BASE_URL . '/pages/books/list_books.php');
   exit;

@@ -19,7 +19,7 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      <span>O meu Cesto</span>
+      <span>O meu Carrinho de Compras</span>
       <i class="fa fa-refresh" aria-hidden="true" onclick="updateCart(false)"></i>
     </h2>
 

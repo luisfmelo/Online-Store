@@ -33,12 +33,12 @@
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos
               </a>
             </li>
-
+<!--
             <li>
-              <a href="#">
+              <a href="$BASE_URL?>/pages/common/faq.php">
                 FAQ
               </a>
-            </li>
+            </li>-->
           </ul>
         </div>
         <div class="rightMenu">
