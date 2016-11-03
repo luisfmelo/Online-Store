@@ -29,11 +29,16 @@ CREATE TABLE users(
   admin BOOLEAN
 );
 
+CREATE TABLE ordersState (
+  id SERIAL PRIMARY KEY,
+  orderStateName VARCHAR
+);
+
 CREATE TABLE orders(
   id SERIAL PRIMARY KEY,
   ref VARCHAR NOT NULL,
   userId INTEGER NOT NULL REFERENCES users,
-  state VARCHAR DEFAULT 'PENDING',
+  state INTEGER REFERENCES ordersState DEFAULT 1,
   price NUMERIC(6,2) NOT NULL,
   orderDate timestamp DEFAULT now(),
   deliveryDate timestamp
@@ -46,6 +51,10 @@ CREATE TABLE productsOrdered (
   orderId INTEGER NOT NULL REFERENCES orders
 );
 
+
+INSERT INTO e_store.users VALUES(DEFAULT, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, 'admin@blooks.com', NULL, NULL, true);
+INSERT INTO e_store.users VALUES(DEFAULT, 'client', '948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d', NULL, 'client@blooks.com', NULL, NULL, false);
+
 /*Categorias
 1- Ciência
 2- Desporto
@@ -54,10 +63,6 @@ CREATE TABLE productsOrdered (
 5- Arte
 6- Drama
 */
-
-INSERT INTO e_store.users VALUES(DEFAULT, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, 'admin@blooks.com', NULL, NULL, true);
-INSERT INTO e_store.users VALUES(DEFAULT, 'client', '948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d', NULL, 'client@blooks.com', NULL, NULL, false);
-
 INSERT INTO e_store.categories VALUES(DEFAULT, 'CIE', 'Ciencia');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'DES', 'Desporto');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'ROM', 'Romance');
@@ -65,8 +70,14 @@ INSERT INTO e_store.categories VALUES(DEFAULT, 'TEC', 'Tecnologia');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'ART', 'Arte');
 INSERT INTO e_store.categories VALUES(DEFAULT, 'DRA', 'Drama');
 
-INSERT INTO e_store.books VALUES(DEFAULT, 'DES80009', 'A Arte da Guerra para Treinadores', 'Rui Vitória', 10.99, 2, 'O terreno de jogo é o campo de batalha. Cada partida, um duelo onde aquele que comete menos erros vencerá. Como se organiza uma estratégia para vencer? Qual a táctica que permitirá derrotar o inimigo?', 0);
+
+INSERT INTO e_store.ordersState VALUES(DEFAULT, 'PENDENTE');
+INSERT INTO e_store.ordersState VALUES(DEFAULT, 'ENVIADO');
+INSERT INTO e_store.ordersState VALUES(DEFAULT, 'RECEBIDO');
+
+
 /*Desporto*/
+INSERT INTO e_store.books VALUES(DEFAULT, 'DES80009', 'A Arte da Guerra para Treinadores', 'Rui Vitória', 10.99, 2, 'O terreno de jogo é o campo de batalha. Cada partida, um duelo onde aquele que comete menos erros vencerá. Como se organiza uma estratégia para vencer? Qual a táctica que permitirá derrotar o inimigo?', 0);
 INSERT INTO e_store.books VALUES(DEFAULT, 'DES19611', 'Prevenção de Lesões no Desporto', 'Luís Horta', 16.90, 2, 'A incidência de lesões na actividade desportiva tem aumentado nos últimos anos devido às grandes exigências físicas e psíquicas que essa actividade pressupõe. A prevenção de lesões é um tema fundamental na formação de todos os técnicos ligados ao fenómeno desportivo, assim como de todos os atletas. Prevenção de Lesões no Desporto será um livro fundamental para que treinadores, médicos, fisioterapeutas.', 0);
 INSERT INTO e_store.books VALUES(DEFAULT, 'DES60959', 'Running. Muito mais do que correr', 'José Soares', 14.40, 2, 'O exercício físico nunca esteve tanto na moda e a corrida, por ser uma atividade simples e acessível a todos, tem vindo a ganhar cada vez mais adeptos. Uns mais habituados à prática desportiva, outros que nunca tinham praticado exercício antes', 1);
 INSERT INTO e_store.books VALUES(DEFAULT, 'DES25478', 'Mitos do Futebol Português', 'Ricardo Serrado', 15.00, 2, 'Terá o Futebol Clube do Porto nascido em 1893 ou 1906? Cosme Damião terá sido mesmo o fundador do Sport Lisboa e Benfica? Fará sentido dizer que o Sporting é um clube de aristocratas? Qual é, afinal, a verdadeira história da criação dos três maiores clubes portugueses?', 2);

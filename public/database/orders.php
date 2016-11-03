@@ -31,6 +31,7 @@
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
+    
   }
 
   function updateStock(){
@@ -51,6 +52,39 @@
     }
 
     $stmt->execute();
+  }
+  
+  function getOrdersByUsername($isAdmin, $username){
+	global $conn;
+	
+	if ($isAdmin == 1)
+		$query = "SELECT * 
+				FROM e_store.orders 
+				INNER JOIN e_store.users
+				ON e_store.orders.userid = e_store.users.id;";
+				
+	else 			
+		$query = "SELECT * 
+				FROM e_store.orders 
+				INNER JOIN e_store.users
+				ON e_store.orders.userid = e_store.users.id
+				INNER JOIN e_store.ordersstate
+				ON e_store.orders.id = e_store.ordersstate.id
+				WHERE username='$username';";
+				
+    
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+  
+  function getOrdersState() {
+    global $conn;
+    $stmt = $conn->prepare('SELECT *
+                            FROM e_store.ordersstate');
+
+    $stmt->execute();
+    return $stmt->fetchAll();
   }
 
 ?>

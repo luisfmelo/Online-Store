@@ -171,4 +171,8 @@ function NewBookCheck(){
 	}
 }
 
-
+function alertStateChange(orderRef){
+	
+	var x = document.getElementById("selectState").value;
+	alert("Changed" +x +orderRef );
+}
