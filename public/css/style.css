@@ -318,7 +318,7 @@ header {
 }
 
 #registLink {
-    color: #111;
+    color: #EEE;
     background-color: #C61017;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -330,6 +330,7 @@ header {
 #registLink:hover {
     color: #EEE;
     background-color: #111;
+    border: 1px solid #111;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
@@ -580,6 +581,35 @@ header {
 /*******************************/
 
 
+/*    GERIR STOCK/CLIENTS      */
+
+
+/*******************************/
+
+.gerir, .gerir tr th{
+    border-bottom: 1px solid #C61017;
+}
+
+.arrows a{
+    margin: 20px 15px;
+}
+.gerir tr{
+    max-width: 90%;
+}
+.gerir tr td{
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+td{
+    padding-left: 10px;
+}
+
+
+/*******************************/
+
+
 /*              BOOKS          */
 
 
@@ -781,18 +811,3 @@ footer {
     height: 50px;
     margin-top: 100px;
 }
-
-
-/*.social {
-    margin-bottom: 5px;
-}
-
-.socialIcons {
-    width: 1.5%;
-    margin: 0 3% 0 3%;
-    border-bottom: 2px solid #111;
-}
-
-.socialIcons:hover {
-    border-bottom: 2px solid white;
-}*/

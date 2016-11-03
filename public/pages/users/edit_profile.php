@@ -13,7 +13,7 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      <span>O meu perfil</span>
+      <span>Editar Perfil</span>
     </h2>
 
     <section id = "content">
