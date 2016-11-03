@@ -1,51 +1,45 @@
 <?php
-	
 	include '../common/header.php';
-    include_once('../../database/users.php');
+  include_once('../../database/users.php');
 
 	$limit = 10;
 	$page = $_GET['page'];
-	
+
 	$number_of_books = getNoBooks();
-	
 	$max_no_page = $number_of_books[0]['count'] / $limit;
-	
+
 	if ($page + 1 > $max_no_page)
 		$next = "NOTHING_TO_SHOW";
-	else 
+	else
 		$next = $page + 1;
-		
+
 	$previous = $page - 1;
-	
 	$books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
-
-
 ?>
+<div class="row">
+  <?php   include '../common/left_menu.php';  ?>
 
-<section id = "mainContent">
-
-	<?php include '../common/left_menu.php'; ?>
-	
-	<section id = "content">
-		<table>
+  <div class="rightContent">
+    <h2 class="bigTitle">
+      <span>Gerir Stock</span>
+    </h2>
+		<table class="gerir">
 			<tr>
-				<td> Referência	</td>
-				<td> Título		</td>
-				<td> Autor		</td>
-				<td> Categoria	</td>
-				<td> Preço 		</td>
-				<td> Stock		</td>
+				<th> Ref	</th>
+				<th> Título		</th>
+				<th> Autor		</th>
+				<th> Preço 		</th>
+				<th> Stock		</th>
 				<td> 			</td>
 				<td> 			</td>
 				<td> 			</td>
 			</tr>
 			<?php
 			foreach ($books as $book) {
-			  echo "<tr class='". $book['ref'] ."'>";
+				echo "<tr class='". $book['ref'] ."'>";
 						echo "<td>" . $book['ref'] 		.	"</td>";
 						echo "<td>" . $book['title']	.	"</td>";
 						echo "<td>" . $book['author']	.	"</td>";
-						echo "<td>" . $book['categoryname']	.	"</td>";
 						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
 						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
 						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
@@ -54,14 +48,23 @@
 			}
 			?>
 		</table>
-		<?php if ($page != 0)
-				echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$previous\"> PREVIOUS </a>";
-				
-			  if ($next != "NOTHING_TO_SHOW")
-				echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$next\"> NEXT </a>";
+		<div class="row arrows">
+
+		<?php
+				if ($page != 0)
+					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$previous\">
+						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
+					</a>";
+
+				if ($next != "NOTHING_TO_SHOW")
+					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$next\">
+						<i class='fa fa-angle-double-right' aria-hidden='true'></i>
+					</a>";
 		?>
-		<a style="margin-bottom: 100px" href="<?=$BASE_URL?>/pages/books/new_book.php" id="registLink" > Novo Livro </a>
-	
-</section>
+		</div>
+
+		<a class="divlink row" href="<?=$BASE_URL?>/pages/books/new_book.php" id="registLink" > Novo Livro </a>
+
+</div>
 
 <?php include '../common/footer.php';?>

@@ -23,10 +23,10 @@
     return $res['admin'] ? 1 : 0;
   }
 
-  function addNewUser($user, $password, $email){
+  function addNewUser($user, $name, $phone, $address, $password, $email){
   	global $conn;
     $query = "INSERT INTO e_store.users
-              VALUES (DEFAULT, '$user', '$password', NULL, '$email', NULL, NULL, false);";
+              VALUES (DEFAULT, '$user', '$password', '".$name."', '$email', '".$phone."', '$address', false);";
   	$stmt = $conn->prepare ($query);
 
   	$stmt->execute();
