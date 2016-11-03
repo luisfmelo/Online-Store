@@ -106,7 +106,7 @@
 <div class="checkout">
   <div class="checkoutRow">
     <div>
-      <strong>Portes e Envio: </strong>
+      <strong>Portes de Envio: </strong>
     </div>
     <div>
       Grátis <br />

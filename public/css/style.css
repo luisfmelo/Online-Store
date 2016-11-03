@@ -20,27 +20,29 @@ body {
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .wrapper {
-  min-height: 100%;
-  margin-bottom: -100px;
+    min-height: 100%;
+    margin-bottom: -100px;
 }
 
 a {
     color: inherit;
     text-decoration: none;
 }
+
 a.divlink {
-     display:block;
-     float:left;
+    display: block;
+    float: left;
 }
 
 ul {
     list-style: none;
 }
+
 
 /*************************************************/
 
@@ -50,15 +52,15 @@ ul {
 
 /*************************************************/
 
-.stock_input{
-	width: 50px;
+.stock_input {
+    width: 50px;
 }
+
 
 /***********************************************/
 
 
 /*** MESSAGES STYLES ***/
-
 
 .inStock {
     color: #4F8A10;
@@ -125,6 +127,7 @@ ul {
     /* Opera/IE 8+ */
     box-sizing: border-box;
 }
+
 
 /*************************************************/
 
@@ -353,15 +356,15 @@ header {
 }
 
 .dropdown-content a:hover {
-    background-color: rgba(198,16,23,0.6);
+    background-color: rgba(198, 16, 23, 0.6);
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown-content a:last-child{
-  border-top: 2px solid #C61017;
+.dropdown-content a:last-child {
+    border-top: 2px solid #C61017;
 }
 
 
@@ -461,7 +464,7 @@ header {
     margin: 2.5% 0 2.5% 5%;
 }
 
-.itemMenu{
+.itemMenu {
     width: 100%;
     padding: 12px;
     margin: 2% 0;
@@ -500,33 +503,78 @@ header {
 
 /*******************************/
 
-#content{
-  width: 100%;
-  display: flex;
+#content {
+    width: 100%;
+    display: flex;
 }
 
-#content .left{
-  width: 50%;
-  padding: 30px;
+#content .left {
+    width: 50%;
+    padding: 30px;
 }
 
-#content .right{
-  width: 50%;
+#content .right {
+    width: 50%;
 }
 
-.left span{
-  line-height: 2;
-  letter-spacing: 2px;
+.left span, #editProfile {
+    line-height: 2;
+    letter-spacing: 2px;
 }
 
-.
-.photo img, .changePhoto{
+#editProfile input {
+    width: 70%;
+}
+
+. .photo img, .changePhoto {
     margin: 0 30%;
     width: 40%;
 }
 
+#editProfile input {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px 5px 15px 15px;
+    /* Safari/Chrome, other WebKit */
+    -webkit-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box;
+    /* Opera/IE 8+ */
+    box-sizing: border-box;
+}
 
+#editProfile input:not([type="submit"]) {
+    height: 50px;
+    border: 0px;
+    border-bottom: 1px solid #222;
+    background-color: #EEE;
+    ;
+    outline: none;
+    font-size: 16px;
+}
 
+#editProfile input:not([type="submit"]):focus {
+    color: #222;
+    border-bottom: 2px solid #C61017;
+}
+
+#editProfile input[type="submit"] {
+    color: #EEE;
+    background-color: #222;
+    border: 1px solid #222;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+#editProfile input[type="submit"]:hover {
+    background-color: #C61017;
+    border: 1px solid #C61017;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
 
 
 /*******************************/
@@ -667,25 +715,25 @@ header {
 }
 
 .checkout {
-    margin-left:70%;
+    margin-left: 70%;
     width: 30%;
     display: flex;
     flex-direction: column;
 }
 
-.checkoutRow{
+.checkoutRow {
     width: 100%;
     display: inline;
     flex-direction: column;
 }
 
-.checkoutRow div{
+.checkoutRow div {
     width: 50%;
     display: inline;
     margin-bottom: 10px;
 }
 
-.checkoutRow div:last-child{
+.checkoutRow div:last-child {
     float: right;
     margin-bottom: 20px;
 }
@@ -700,7 +748,6 @@ header {
     padding: 6px;
     width: 100%;
     margin-left: 25%;
-
     /* Safari/Chrome, other WebKit */
     -webkit-box-sizing: border-box;
     /* Firefox, other Gecko */
@@ -734,6 +781,7 @@ footer {
     height: 50px;
     margin-top: 100px;
 }
+
 
 /*.social {
     margin-bottom: 5px;

@@ -9,8 +9,6 @@
     file_exists($IMG_DIR . '/profiles/' . $username . '.png')      ?
                       $IMG_DIR . '/profiles/' . $username . '.png' :
                       $IMG_DIR . '/profiles/default.png' ;
-
-
 ?>
 
 <div class="row">
