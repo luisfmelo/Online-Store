@@ -11,7 +11,7 @@
 	<?php include '../common/left_menu.php'; ?>
 
 	<section id = "content">
-		<form accept-charset="utf-8" method="GET" action= "<?=$BASE_URL?>/actions/books/add_book.php">
+		<form id="BookForm">
 
 			Titulo:		<input type = "text"	name="title"		</input> <br>
 			Autor:		<input type = "text"	name="author"		</input> <br>
@@ -28,7 +28,7 @@
 			Preço: 		<input type = "text"	name="price"		</input> <br>
 			Stock: 		<input type = "text"	name="stock"		</input> <br>
 			
-			<input style="margin-bottom: 100px" type = "submit" name="cmdsubmit" value="Adicionar"></input>
+			<input type = "button" onClick="NewBookCheck()" value="Adicionar"></input>
 
 		</form>	
 

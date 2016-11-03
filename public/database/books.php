@@ -29,10 +29,17 @@
 
   function getSomeBooks($limit, $offset){
 	global $conn;
-    $query =           "SELECT *
+	$query =           "SELECT *
                         FROM e_store.books
-                        ORDER BY ref ASC
+                        INNER JOIN e_store.categories
+                        ON e_store.categories.id = e_store.books.category
+                        ORDER BY books.ref ASC
                         LIMIT '$limit' OFFSET '$offset';";
+                        
+    //~ $query =           "SELECT *
+                        //~ FROM e_store.books
+                        //~ ORDER BY ref ASC
+                        //~ LIMIT '$limit' OFFSET '$offset';";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -130,4 +137,25 @@
 
     $stmt->execute();
   }
+  
+  function addNewBook($ref, $title, $author, $price, $category, $description,  $stock){
+  	global $conn;
+    $query = "INSERT INTO e_store.books
+              VALUES (DEFAULT, '$ref', '$title', '$author', '$price', '$category', '$description', '$stock');";
+  	$stmt = $conn->prepare ($query);
+
+  	$stmt->execute();
+  }
+  
+  function getCategoryId($categoryName){
+	 global $conn;
+	
+     $query = "SELECT e_store.categories.id 
+			   FROM e_store.categories
+			   WHERE categoryName = '$categoryName';";
+			   
+	 $stmt = $conn->prepare($query);
+	 $stmt->execute();
+	 return $stmt->fetchAll();
+	}
 ?>
