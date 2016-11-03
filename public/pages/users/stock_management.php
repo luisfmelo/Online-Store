@@ -5,13 +5,10 @@
 
 	$limit = 10;
 	$page_number = $_GET['page_number'];
-	
 	$number_of_books = getNoBooks();
 	
-	print_r($number_of_books[0]['count']);
 	$max_no_page = $number_of_books[0]['count'] / $limit;
-	print_r($max_no_page);
-	
+
 	if ($page_number + 1 > $max_no_page)
 		$next = "NOTHING_TO_SHOW";
 	else 
@@ -49,7 +46,6 @@
 						echo "<td> <input class=\"stock_input\" type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
 						echo "<td> <input class=\"stock_input\" type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
 						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
-						//~ echo "
 			 echo "</tr>";
 			}
 			?>
@@ -60,6 +56,9 @@
 			  if ($next != "NOTHING_TO_SHOW")
 				echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page_number=$next\"> NEXT </a>";
 		?>
+		<a href="<?=$BASE_URL?>/pages/books/new_book.php" id="registLink">
+	
+	</section>
 	
 </section>
 
