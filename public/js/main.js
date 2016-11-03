@@ -43,7 +43,7 @@ function toggleSearchBar() {
     }
 };
 
-function updateCart() {
+function updateCart(checkout) {
     var inputs, index;
     var cart = document.getElementById('cart');
     var url = "../../actions/orders/update_cart.php?";
@@ -54,8 +54,13 @@ function updateCart() {
         if( Number(inputs[index].value) >= 0 )
             url += inputs[index].name + "=" + inputs[index].value + '&';
 
-    if (url.charAt(url.length - 1) == '&')
-        url = url.substring(0, url.length - 1);
+  //  if (url.charAt(url.length - 1) == '&')
+  //      url = url.substring(0, url.length - 1);
+
+    if (checkout)
+      url += "checkout=1";
+    else
+      url += "checkout=0";
 
     window.location.assign(url);
 };
