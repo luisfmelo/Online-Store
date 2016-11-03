@@ -1,44 +1,40 @@
 <?php
-	
+
 	include '../common/header.php';
     include_once('../../database/users.php');
 
 	$customers = getCustomers();
 
 ?>
+<div class="row">
+  <?php   include '../common/left_menu.php';  ?>
 
-<section id = "mainContent">
-
-	<?php include '../common/left_menu.php'; ?>
-	
-	<section id = "content">
-		<table>
+  <div class="rightContent">
+    <h2 class="bigTitle">
+      <span>Gerir Clientes</span>
+    </h2>
+		<table class="gerir gerirClientes">
 			<tr>
-				<td> Username	</td>
-				<td> Name		</td>
-				<td> Email		</td>
-				<td> Telefone	</td>
-				<td> Morada		</td>
-				<td> Eliminar	</td>
+				<th> Username	</th>
+				<th> Name		</th>
+				<th> Email		</th>
+				<th> Telefone	</th>
+				<th> Morada		</th>
+				<th> Eliminar	</th>
 			</tr>
 			<?php
 			foreach ($customers as $customer) {
-			  echo "<tr>";
-						echo "<td>" . $customer['username'] .	"</td>";
+				echo "<tr>";
+						echo "<td class='linkToUser'><a href='view_profile.php?user=".$customer['username']."'>" . $customer['username'] .	"</a></td>";
 						echo "<td>" . $customer['name']		.	"</td>";
 						echo "<td>" . $customer['email']	.	"</td>";
 						echo "<td>" . $customer['phone']	.	"</td>";
 						echo "<td>" . $customer['address']	.	"</td>";
 						echo "<td> <i onclick=\"deleteCustomerAlert('" . $customer['username'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
-			   echo "</tr>";
+				 echo "</tr>";
 			}
 			?>
 		</table>
-
-	</section>
-
-</section>
+</div>
 
 <?php include '../common/footer.php';?>
-
-

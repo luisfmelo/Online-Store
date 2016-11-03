@@ -577,6 +577,10 @@ header {
     transition: all .5s ease
 }
 
+.linkToUser a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 /*******************************/
 
@@ -606,6 +610,9 @@ td{
     padding-left: 10px;
 }
 
+.gerirClientes tr td{
+    max-width: 500px;
+}
 
 /*******************************/
 

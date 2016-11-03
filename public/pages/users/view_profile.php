@@ -2,8 +2,8 @@
   include '../common/header.php';
   include_once('../../database/users.php');
 
-  $username = $_SESSION['username'];
-
+  $username = isset($_GET['user']) ? $_GET['user'] :
+                                        $_SESSION['username'];
   $userProfile = getUserByUsername($username);
   $photo =
     file_exists($IMG_DIR . '/profiles/' . $username . '.png')      ?
