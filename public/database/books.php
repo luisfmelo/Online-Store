@@ -150,8 +150,8 @@
                           'author' => $author,
                           'price' => $price,
                           'category' => $category,
-                          'description' => $description,
-                          'stock' => $stock) );
+                          'description' => $description == "" ? NULL : $description,
+                          'stock' => $stock == "" ? 0 : $stock) );
   }
 
 /* Recebe o nome da categoria e retorna o seu id */
@@ -166,4 +166,18 @@
 	  $stmt->execute();
 	  return $stmt->fetchAll();
 	}
+
+  /* Returna 1 ou 0 se referencia do livro já existe ou não */
+  function refExist($ref) {
+    global $conn;
+    $query = "SELECT ref
+              FROM e_store.books
+              WHERE ref = :ref;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('ref' => $ref) );
+    $res = $stmt->fetch();
+
+    return $res['admin'] ? 1 : 0;
+  }
 ?>
