@@ -52,19 +52,42 @@
   }
 
 /* Edita dados do utilizador */
-  function editUser($user, $pass, $name, $phone, $addr, $email){
+  function editUser($user, $name, $phone, $addr, $email){
     global $conn;
     $query = "UPDATE e_store.users
-              SET password=:pass, name=:name, phone=:phone, address=:addr, email=:email
+              SET name=:name, phone=:phone, address=:addr, email=:email
               WHERE username='$user';";
 
 	  $stmt = $conn->prepare ($query);
-    $stmt->execute( array('pass' => $pass,
-                          'name' => $name,
+    $stmt->execute( array('name' => $name,
                           'email' => $email,
                           'phone' => $phone,
                           'addr' => $addr) );
   }
+  
+  //~ function editUserPassword($user, $pass){
+    //~ global $conn;
+    //~ $query = "UPDATE e_store.users
+              //~ SET password=:pass
+              //~ WHERE username='$user';";
+
+	  //~ $stmt = $conn->prepare ($query);
+    //~ $stmt->execute( array('pass' => $pass);
+  //~ } 
+  
+  
+ /* Edita a Password do utilizador */ 
+  function editUserPassword($user, $pass){
+    global $conn;
+    $query = "UPDATE e_store.users
+              SET password='".$pass."'
+              WHERE username='$user';";
+
+	  $stmt = $conn->prepare ($query);
+    $stmt->execute();
+  } 
+  
+   
 
 /* Recebe username e retorna a informação desse mesmo utilizador */
   function getUserByUsername($user){
