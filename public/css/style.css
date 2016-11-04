@@ -56,6 +56,55 @@ ul {
     width: 50px;
 }
 
+.myForms input {
+    width: 70%;
+}
+
+.myForms input {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px 5px 15px 15px;
+    /* Safari/Chrome, other WebKit */
+    -webkit-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box;
+    /* Opera/IE 8+ */
+    box-sizing: border-box;
+}
+
+.myForms input:not([type="submit"]) {
+    height: 50px;
+    border: 0px;
+    border-bottom: 1px solid #222;
+    background-color: #EEE;
+    outline: none;
+    font-size: 16px;
+}
+
+.myForms input:not([type="submit"]):focus {
+    color: #222;
+    border-bottom: 2px solid #C61017;
+}
+
+.myForms input[type="submit"], .myForms input[type="button"] {
+    color: #EEE;
+    background-color: #222;
+    border: 1px solid #222;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.myForms input[type="submit"]:hover, .myForms input[type="button"]:hover {
+    background-color: #C61017;
+    border: 1px solid #C61017;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+
 
 /***********************************************/
 
@@ -518,63 +567,13 @@ header {
     width: 50%;
 }
 
-.left span, #editProfile {
-    line-height: 2;
-    letter-spacing: 2px;
-}
-
-#editProfile input {
-    width: 70%;
-}
-
-. .photo img, .changePhoto {
+.photo img, .changePhoto {
     margin: 0 30%;
     width: 40%;
 }
-
-#editProfile input {
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px;
-    padding: 15px 5px 15px 15px;
-    /* Safari/Chrome, other WebKit */
-    -webkit-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    -moz-box-sizing: border-box;
-    /* Opera/IE 8+ */
-    box-sizing: border-box;
-}
-
-#editProfile input:not([type="submit"]) {
-    height: 50px;
-    border: 0px;
-    border-bottom: 1px solid #222;
-    background-color: #EEE;
-    ;
-    outline: none;
-    font-size: 16px;
-}
-
-#editProfile input:not([type="submit"]):focus {
-    color: #222;
-    border-bottom: 2px solid #C61017;
-}
-
-#editProfile input[type="submit"] {
-    color: #EEE;
-    background-color: #222;
-    border: 1px solid #222;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease
-}
-
-#editProfile input[type="submit"]:hover {
-    background-color: #C61017;
-    border: 1px solid #C61017;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease
+.left span, #editProfile {
+    line-height: 2;
+    letter-spacing: 2px;
 }
 
 .linkToUser a:hover{
@@ -592,6 +591,8 @@ header {
 
 .gerir, .gerir tr th{
     border-bottom: 1px solid #C61017;
+    margin-top: 20px;
+    margin-left: 30px;
 }
 
 .arrows a{
@@ -622,6 +623,29 @@ td{
 
 /*******************************/
 
+/*** ADICIONAR NOVO LIVRO ***/
+
+#newBook textarea, #newBook Select {
+    width: 100%;
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid #222;
+    background-color: #EEE;
+    font-size: 16px;
+}
+
+#newBook textarea:focus{
+    color: #222;
+    border-bottom: 2px solid #C61017;
+}
+
+#newBook Select{
+    height: 50px;
+}
+
+
+
+/**********************************/
 .rightContent {
     width: 65%;
     margin: 2.5%;
