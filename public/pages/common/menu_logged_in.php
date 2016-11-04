@@ -1,8 +1,8 @@
 <?php
   include_once('../../config/init.php');
-  $profilePic = file_exists($IMG_DIR . '/profiles/' . $_SESSION['username'] . '.png')      ?
-                                  $IMG_DIR . '/profiles/' . $_SESSION['username'] . '.png' :
-                                  $IMG_DIR . '/profiles/default.png' ;
+  $profilePic = file_exists($IMG_DIR . '/profiles/' . $_SESSION['username'] . '.png')   ?
+                            $IMG_DIR . '/profiles/' . $_SESSION['username'] . '.png'    :
+                            $IMG_DIR . '/profiles/default.png' ;
 ?>
   <li>
     <a href="<?=$BASE_URL?>/actions/users/logout.php">

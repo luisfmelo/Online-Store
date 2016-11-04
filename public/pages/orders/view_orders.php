@@ -5,6 +5,12 @@
   include_once('../../database/books.php');
   include_once '../common/header.php';
 
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+
   $username = $_SESSION['username'];
   $isAdmin = isAdmin($username);
 
@@ -18,11 +24,11 @@
   <?php   include '../common/left_menu.php';  ?>
 
   <div class="rightContent">
-	  
+
     <h2 class="bigTitle">
       <span>Gerir Encomendas</span>
     </h2>
-    
+
     <table class="gerir">
 			<tr>
 				<th> Referência			</th>

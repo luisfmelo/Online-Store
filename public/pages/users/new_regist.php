@@ -6,11 +6,13 @@
 <html>
   <head>
     <title>Blooks: Novo Registo</title>
-
     <meta charset="utf-8">
 
+    <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
+    <!-- Include da nossa folha de estilos CSS -->
     <link rel="stylesheet" href="<?=$BASE_URL?>/css/style.css">
+    <!-- Include Font Awesome lib - for icons -->
     <link rel="stylesheet" href="<?=$BASE_URL?>/libs/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>

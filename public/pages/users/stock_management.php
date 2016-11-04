@@ -2,6 +2,17 @@
 	include '../common/header.php';
   include_once('../../database/users.php');
 
+	if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+  else if( !isAdmin($_SESSION['username']) )
+  {
+    header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
+    exit;
+  }
+
 	$limit = 10;
 	$page = $_GET['page'];
 

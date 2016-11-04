@@ -2,8 +2,17 @@
   include '../common/header.php';
   include_once('../../database/users.php');
 
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+  else if( !isAdmin($_SESSION['username']) )
+  {
+    header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
+    exit;
+  }
   $categories = getBookCategories();
-
 ?>
 
 <div class="row">
@@ -17,14 +26,12 @@
     <section id = "content">
       <div class="left">
         <form id="newBook" class="myForms">
-
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />
           <input type = "text"	name="author"/> <br />
     			Descrição:		<br />
           <textarea rows="6" cols="50" name="description"></textarea> <br />
-
     			Categoria: <br />
           <Select name="category">
     				<?php
@@ -39,7 +46,6 @@
           <input type = "text"	name="stock"		</input> <br>
 
     			<input type = "button" onClick="NewBookCheck()" value="Adicionar"></input>
-
     		</form>
       </div>
     </section>
