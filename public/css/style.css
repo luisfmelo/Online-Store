@@ -593,6 +593,7 @@ header {
    border-collapse:collapse;
    margin-top: 20px;
    margin-left: 30px;
+   text-align: center;
 }
 .gerir tr:last-child td, .gerir tr th{
     border-bottom: 1px solid #C61017;

@@ -2,20 +2,18 @@
 	include '../common/header.php';
   include_once('../../database/users.php');
   include_once('../../database/orders.php');
+	$order = getOrderInfo($_GET['id']);
 
 	if ( $_SESSION['username'] == '' )
   {
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
-//  else if( !isAdmin($_SESSION['username']) )
-//  {
-  //  header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
-  //  exit;
-  //}
-
-	$order = getOrderInfo($_GET['id']);
-	print_r($order);
+  else if( !isAdmin($_SESSION['username']) && $_SESSION['username'] == $order['username'])
+  {
+  	header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
+    exit;
+  }
 ?>
 
 <div class="row">
@@ -31,18 +29,14 @@
 				<th> Titulo		</th>
 				<th> Preço		</th>
 				<th> Quantidade	</th>
-				<th> Encomendado a		</th>
-				<th> Recebido a	</th>
 			</tr>
 			<?php
 			foreach ($order as $info) {
 				echo "<tr>";
 						echo "<td>" . $info['ref'] .	"</a></td>";
 						echo "<td>" . $info['title']		.	"</td>";
-						echo "<td>" . $info['price']	.	"</td>";
+						echo "<td>" . $info['price']	.	" €</td>";
 						echo "<td>" . $info['quantity']	.	"</td>";
-						echo "<td>" . $info['orderdate']	.	"</td>";
-						echo "<td>" . $info['deliverydate']	.	"</td>";
 				 echo "</tr>";
 			}
 			?>

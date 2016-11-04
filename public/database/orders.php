@@ -172,13 +172,18 @@ $stmt = $conn->prepare($query);
 function getOrderInfo($ref){
 global $conn;
 
-$query = "SELECT *
-          FROM productsordered
-          INNER JOIN books ON productsordered.bookid = books.id
-          INNER JOIN orders ON productsordered.orderid = orders.id
-          INNER JOIN users ON orders.userid = users.id
-          WHERE orderid = (select id from e_store.orders where ref = '$ref')";
-
+$query = "SELECT e_store.books.ref,
+                 e_store.books.title,
+                 e_store.books.price,
+                 e_store.productsordered.quantity,
+                 e_store.orders.orderdate,
+                 e_store.orders.deliverydate,
+                 e_store.users.username
+          FROM e_store.productsordered
+          INNER JOIN e_store.orders ON productsordered.orderid = orders.id
+          INNER JOIN e_store.books ON productsordered.bookid = books.id
+          INNER JOIN e_store.users ON orders.userid = users.id
+          WHERE orders.ref = '".$ref."';";
 $stmt = $conn->prepare($query);
 $stmt->execute( );
 return $stmt->fetchAll();
