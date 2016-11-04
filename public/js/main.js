@@ -83,44 +83,45 @@ function deleteCustomerAlert(username) {
 }
 
 function stockChangeCheck(ref, page) {
-
+	
 	var row = document.getElementsByClassName(ref)[0];
 	var price = row.getElementsByTagName('input')[0].value;
 	var stock = row.getElementsByTagName('input')[1].value;
 	var can_update = 1;
-
+	
 	/* price - replace , for . */
     price = price.replace(/,/g, '.');
-
+	
 	/* check if price and stock contain letters */
 	if (isNaN(Number(price)) || isNaN(Number(stock)) ){
 		alert("O preço e o stock não devem conter letras.");
 		can_update = 0;
 	}
-
+	
 	/* price must be greater than 0*/
 	if ( price <= 0){
 		alert ("O preço deve ser maior que 0.");
 		can_update = 0;
 	}
-
+	
 	/* stock must be equal or greater than 0*/
 	if ( stock < 0 ){
 		alert ("O stock deve ser um número não-negativo");
 		can_update = 0;
 	}
-
+	
 	if (can_update == 1){
 		var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price +" ?");
 		if (r == true)
 			window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
 	}
+
 }
 
 
 
 function NewBookCheck(){
-
+	
 	var title 		= BookForm.title.value;
 	var author 		= BookForm.author.value;
 	var description = BookForm.description.value;
@@ -139,52 +140,50 @@ function NewBookCheck(){
 	/* price - replace , for . */
     price = price.replace(/,/g, '.');
     console.log(price);
-
+    
 	/* check if stock and price are not letters */
 	if (isNaN(Number(price)) || isNaN(Number(stock)) ){
 		alert("O preço e o stock não devem conter letras.");
 		can_update = 0;
 	}
-
-	/* stock must be a positive value */
+	
+	/* stock must be a positive value */		
 	if (stock < 0){
 		alert("Stock deve ser um número positivo.");
 		can_create = 0;
 	}
-
+	
 	/*price must be a positive value */
 	if (price <= 0){
 		alert("Preço deve ser um valor positivo.");
-		can_create = 0;
+		can_create = 0;	
 	}
-
+	
 	if (can_create == 1){
-		var r = confirm("Confirma que pretende criar um novo livro com o titulo "
-				+ title + ", o autor " + author + ", com stock de "
+		var r = confirm("Confirma que pretende criar um novo livro com o titulo " 
+				+ title + ", o autor " + author + ", com stock de " 
 				+ stock + " e o preço " + price + " ?");
 		if (r == true)
-			window.location.assign("../../actions/books/add_book.php?&title=" + title
+			window.location.assign("../../actions/books/add_book.php?&title=" + title 
 									+ "&author=" + author + "&description=" + description
-									+ "&category=" + category + "&price=" + price
+									+ "&category=" + category + "&price=" + price 
 									+ "&stock=" + stock);
 	}
 }
 
-<<<<<<< HEAD
-function alertStateChange(orderRef){
+function alertStateChange(orderRef, isAdmin){
 	
-	var x = document.getElementById("selectState").value;
-	alert("Changed" +x +orderRef );
-=======
-
-
-function validateRegister(){
-
-    /**
-     *  TODO - not critic
-     *  Verificar Campos do Registo no lado do cliente para otimização.
-     *  Verificação já feita no servidor
-     */
-    return true;
->>>>>>> e799b478c1d08c8433d3f830881389b1707aa28f
+	var r;
+	
+	if (isAdmin == 1)
+		r = confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?");
+	else
+		r = confirm("Confirma que recebeu a encomenda " + orderRef + "?");
+	
+	console.log(isAdmin);
+	console.log(orderRef);
+	if (r==true)
+		window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin
+									+ "&orderref=" + orderRef);
+		
 }

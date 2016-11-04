@@ -7,13 +7,13 @@
   
   $username = $_SESSION['username'];
   $isAdmin = isAdmin($username);
-  //~ print_r($isAdmin);
+  print_r($isAdmin);
 
-  $orders = getOrdersByUsername($isAdmin, $username);
-  //~ print_r($orders);
+  if ($isAdmin)
+	$orders = getOrdersAdmin();
+  else
+     $orders = getOrdersCustomer($username);
 
-  $states = getOrdersState();
-  print_r($states);
 ?>
 
 <section id = "mainContent">
@@ -33,6 +33,12 @@
 				<td> Data de encomenda	</td>
 				<td> Data de entrega	</td>
 				<td> Estado				</td>
+				<?php 
+					if ($isAdmin == 1)
+						echo "<td> Enviar encomenda </td>";
+					else 
+						echo "<td> Encomenda recebida </td>";
+				?>
 			</tr>
 			<?php
 			foreach ($orders as $order) {
@@ -42,21 +48,16 @@
 						echo "<td>" . $order['username'] .	"</td>";
 					echo "<td>" . $order['price'].			"</td>";
 					echo "<td>" . $order['orderdate']	.	"</td>";
-					echo "<td>" . $order['deliverydate']	.	"</td>";
-					if ($isAdmin == 1){
-						echo"<td>
-							 <select id=\"selectState\" onchange=\"alertStateChange('" . $order['ref'] ."' )\">";
-									foreach ($states as $state) 
-										echo "<option value='" .$state['orderstatename']. "'>" . $state['orderstatename'] . "</option>";
-							echo"</select>";
-						echo"</td>";
-					}
-					else
-						echo "<td>" .$order['orderstatename']. "</td>";
-				echo "<tr>";
+					echo "<td>" . $order['deliverydate'].	"</td>";
+					echo "<td>" .$order['orderstatename'].  "</td>";
+					if ( $isAdmin && ($order['orderstatename'] == "PENDENTE"))
+							echo "<td> <input type=\"checkbox\" onchange=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" name=\"orderstate\" > </td>";
+					else if ( !$isAdmin && ($order['orderstatename'] == "ENVIADO"))
+							echo "<td> <input type=\"checkbox\" onchange=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" name=\"orderstate\" > </td>";
+				echo "</tr>";
 			}						
 		   ?>		
-		</table>
+		</table>	
 	</section>
 
 </section>
