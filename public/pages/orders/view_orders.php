@@ -14,28 +14,32 @@
      $orders = getOrdersCustomer($username);
 ?>
 
-<section id = "mainContent">
+<div class="row">
+  <?php   include '../common/left_menu.php';  ?>
 
-	<?php include '../common/left_menu.php'; ?>
-
-	<section id = "content">
-		<table>
+  <div class="rightContent">
+	  
+    <h2 class="bigTitle">
+      <span>Gerir Encomendas</span>
+    </h2>
+    
+    <table class="gerir">
 			<tr>
-				<td> Referência			</td>
+				<th> Referência			</th>
 
 				<?php
 					if ($isAdmin == 1)
-						echo "<td> Cliente </td>";
+						echo "<th> Cliente </th>";
 				?>
-				<td> Preço				</td>
-				<td> Data de encomenda	</td>
-				<td> Data de entrega	</td>
-				<td> Estado				</td>
+				<th> Preço				</th>
+				<th> Data de encomenda	</th>
+				<th> Data de entrega	</th>
+				<th> Estado				</th>
 				<?php
 					if ($isAdmin == 1)
-						echo "<td> Enviar encomenda </td>";
+						echo "<th> Enviar encomenda </th>";
 					else
-						echo "<td> Encomenda recebida </td>";
+						echo "<th> Encomenda recebida </th>";
 				?>
 			</tr>
 			<?php
@@ -44,7 +48,7 @@
 					echo "<td>" . $order['ref'] .	"</td>";
 					if ($isAdmin)
 						echo "<td>" . $order['username'] .	"</td>";
-					echo "<td>" . $order['price'].			"</td>";
+					echo "<td>" . $order['price'].			" € </td>";
 					echo "<td>" . $order['orderdate']	.	"</td>";
 					echo "<td>" . $order['deliverydate'].	"</td>";
 					echo "<td>" .$order['orderstatename'].  "</td>";
@@ -56,8 +60,8 @@
 			}
 		   ?>
 		</table>
-	</section>
+  </div>
 
-</section>
+</div>
 
 <?php include '../common/footer.php';?>
