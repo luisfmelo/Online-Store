@@ -458,7 +458,7 @@ header {
 }
 
 #lupa {
-    font-size: 20px;
+    font-size: 25px;
     display: inline;
     padding: 0 15px;
     float: right;
@@ -466,6 +466,7 @@ header {
 
 #searchBar {
     border-radius: 0px;
+    font-size: 20px;
     border: 1px solid #ccc;
     padding: 5px;
     width: 1px;
@@ -668,6 +669,20 @@ td{
     box-sizing: border-box;
 }
 
+.filter div Select{
+    background-color: transparent;
+    height: 30px;
+    color: #EEE;
+    font-size: medium;
+    border: 0;
+    border-bottom: 2px solid #C61017;
+    outline: none;
+    margin-left: 20px;
+}
+
+.filter div Select Option{
+    color: #222;
+}
 #books {
     background-color: #CCC;
     padding: 2% 0;
