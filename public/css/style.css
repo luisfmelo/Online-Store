@@ -589,11 +589,13 @@ header {
 
 
 /*******************************/
-
-.gerir, .gerir tr th{
+.gerir{
+   border-collapse:collapse;
+   margin-top: 20px;
+   margin-left: 30px;
+}
+.gerir tr:last-child td, .gerir tr th{
     border-bottom: 1px solid #C61017;
-    margin-top: 20px;
-    margin-left: 30px;
 }
 
 .arrows a{
@@ -728,7 +730,7 @@ td{
     text-align: center;
 }
 
-.addBtn a {
+.btn {
     padding: 5px;
     background-color: #222;
     border: 1px solid #222;
@@ -736,9 +738,17 @@ td{
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
+
+    /* Safari/Chrome, other WebKit */
+    -webkit-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box;
+    /* Opera/IE 8+ */
+    box-sizing: border-box;
+    cursor:pointer;
 }
 
-.addBtn a:hover {
+.btn:hover {
     background-color: #C61017;
     border: 1px solid #C61017;
     -webkit-transition: all .5s ease;
@@ -816,30 +826,11 @@ td{
 }
 
 #checkoutBtn {
-    color: #111;
-    background-color: #C61017;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    transition: all 1s ease;
-    border: 1px solid #C61017;
     padding: 6px;
     width: 100%;
     margin-left: 25%;
-    /* Safari/Chrome, other WebKit */
-    -webkit-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    -moz-box-sizing: border-box;
-    /* Opera/IE 8+ */
-    box-sizing: border-box;
 }
 
-#checkoutBtn:hover {
-    color: #EEE;
-    background-color: #111;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    transition: all 1s ease;
-}
 
 
 /*************************************************/

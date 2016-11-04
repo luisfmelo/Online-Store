@@ -125,7 +125,7 @@
     </div>
   </div>
   <div>
-    <a onclick="updateCart(1)" id="checkoutBtn">
+    <a onclick="updateCart(1)" id="checkoutBtn" class='btn'>
       Checkout
     </a>
   </div>

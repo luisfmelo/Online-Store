@@ -38,7 +38,6 @@
 			<tr>
 				<th> Ref	</th>
 				<th> Título		</th>
-				<th> Autor		</th>
 				<th> Preço 		</th>
 				<th> Stock		</th>
 				<td> 			</td>
@@ -50,7 +49,6 @@
 				echo "<tr class='". $book['ref'] ."'>";
 						echo "<td>" . $book['ref'] 		.	"</td>";
 						echo "<td>" . $book['title']	.	"</td>";
-						echo "<td>" . $book['author']	.	"</td>";
 						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
 						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
 						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";

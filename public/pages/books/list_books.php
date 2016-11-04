@@ -82,8 +82,8 @@
 
             // So mostra botão de adicionar se não for admin, tiver sessao iniciada e ainda haver em stock
             if ( $_SESSION['username'] != '' && !$_SESSION['admin']  && $book['stock'] != 0)
-              echo "<a href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-cart-plus' aria-hidden='true'></i>
-                      <small>Adicionar</small>
+              echo "<a class='btn' href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-cart-plus' aria-hidden='true'></i>
+                      Adicionar
                     </a>";
 
             // Caso não tenha em stock, mostra Esgotado

@@ -37,32 +37,32 @@
 					if ($isAdmin == 1)
 						echo "<th> Cliente </th>";
 				?>
-				<th> Preço				</th>
+				<th> Valor				</th>
 				<th> Data de encomenda	</th>
 				<th> Data de entrega	</th>
 				<th> Estado				</th>
-				<?php
-					if ($isAdmin == 1)
-						echo "<th> Enviar encomenda </th>";
-					else
-						echo "<th> Encomenda recebida </th>";
-				?>
+				<th style="border-bottom:0x;"> 				</th>
+
 			</tr>
 			<?php
+			if (count($orders) == 0)
+				echo "<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>";
 			foreach ($orders as $order) {
 				echo "<tr>";
 					echo "<td>" . $order['ref'] .	"</td>";
 					if ($isAdmin)
-						echo "<td>" . $order['username'] .	"</td>";
+						echo "<td class='linkToUser'><a href='../users/view_profile.php?user=".$order['username']."'>" . $order['username'] .	"</a></td>";
 					echo "<td>" . $order['price'].			" € </td>";
 					echo "<td>" . $order['orderdate']	.	"</td>";
 					echo "<td>" . $order['deliverydate'].	"</td>";
 					echo "<td>" .$order['orderstatename'].  "</td>";
 					if ( $isAdmin && ($order['orderstatename'] == "PENDENTE"))
-							echo "<td> <input type=\"checkbox\" onchange=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" name=\"orderstate\" > </td>";
+            echo "<td style='border-bottom:0x;'><a class='btn' onclick=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" >Enviar</td>";
 					else if ( !$isAdmin && ($order['orderstatename'] == "ENVIADO"))
-							echo "<td> <input type=\"checkbox\" onchange=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" name=\"orderstate\" > </td>";
-				echo "</tr>";
+            echo "<td style='border-bottom:0x;'><a class='btn' onclick=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" >Receber</td>";
+          else
+             echo "<td></td>";
+        echo "</tr>";
 			}
 		   ?>
 		</table>
