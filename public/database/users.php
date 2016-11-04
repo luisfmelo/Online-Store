@@ -1,81 +1,104 @@
 <?php
-  /* Return 1 or 0 if login is correct or not */
+  /* Returna 1 ou 0 se login está correto ou não */
   function isLoginCorrect($user, $pass) {
     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM e_store.users
-                            WHERE username = '$user' AND
-                                  password = '$pass';");
-    $stmt->execute();
+    $query = "SELECT *
+              FROM e_store.users
+              WHERE username = :user AND
+                    password = :pass;";
 
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('user' => $user, 'pass' => $pass) );
     return $stmt->fetch() == true;
   }
 
-  /* Return 1 or 0 if user is admin or not */
+  /* Returna 1 ou 0 se user é admin ou não */
   function isAdmin($user) {
     global $conn;
-    $stmt = $conn->prepare("SELECT admin
-                            FROM e_store.users
-                            WHERE username = '$user';");
-    $stmt->execute();
+    $query = "SELECT admin
+              FROM e_store.users
+              WHERE username = :user;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('user' => $user) );
     $res = $stmt->fetch();
 
     return $res['admin'] ? 1 : 0;
   }
 
-  function addNewUser($user, $name, $phone, $address, $password, $email){
+/* Adiciona um novo utilizador à Base de Dados */
+  function addNewUser($user, $name, $phone, $addr, $pass, $email){
   	global $conn;
     $query = "INSERT INTO e_store.users
-              VALUES (DEFAULT, '$user', '$password', '".$name."', '$email', '".$phone."', '$address', false);";
-  	$stmt = $conn->prepare ($query);
+              VALUES (DEFAULT, :user, :pass, :name, :email, :phone, :addr, false);";
 
-  	$stmt->execute();
+    $stmt = $conn->prepare ($query);
+  	$stmt->execute( array('user' => $user,
+                          'pass' => $pass,
+                          'name' => $name,
+                          'email' => $email,
+                          'phone' => $phone,
+                          'addr' => $addr) );
   }
 
-  function removeUser($username){
+/* Remove utilizador da Base de Dados */
+  function removeUser($user){
   	global $conn;
-  	$stmt = $conn->prepare ("DELETE FROM e_store.users
-  							             WHERE username = '$username';");
+    $query = "DELETE FROM e_store.users
+  						WHERE username = :user;";
 
-  	$stmt->execute();
+  	$stmt = $conn->prepare ($query);
+    $stmt->execute( array('user' => $user) );
   }
 
-  function editUser($user, $password, $name, $phone, $address, $email){
+/* Edita dados do utilizador */
+  function editUser($user, $pass, $name, $phone, $addr, $email){
     global $conn;
     $query = "UPDATE e_store.users
-              SET password='$password', name='$name', phone='$phone', address='$address', email='$email'
+              SET password=:pass, name=:name, phone=:phone, address=:addr, email=:email
               WHERE username='$user';";
+
 	  $stmt = $conn->prepare ($query);
-    $stmt->execute();
+    $stmt->execute( array('pass' => $pass,
+                          'name' => $name,
+                          'email' => $email,
+                          'phone' => $phone,
+                          'addr' => $addr) );
   }
 
-  function getUserByUsername($username){
+/* Recebe username e retorna a informação desse mesmo utilizador */
+  function getUserByUsername($user){
     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM e_store.users
-							              WHERE username = '$username';");
+    $query = "SELECT *
+              FROM e_store.users
+							WHERE username = :user;";
 
-    $stmt->execute();
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('user' => $user) );
     return $stmt->fetchAll();
   }
 
+/* Retorna todos os clientes da loja (não administradores) e suas informações*/
   function getCustomers(){
     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM e_store.users
-							              WHERE admin = false;");
+    $query = "SELECT *
+              FROM e_store.users
+							WHERE admin = false;";
+
+    $stmt = $conn->prepare($query);
     $stmt->execute();
 	  return $stmt->fetchAll();
   }
 
+/* Verifica se um utilizador existe */
   function userExists($user){
     global $conn;
+    $query = "SELECT *
+              FROM e_store.users
+              WHERE username = :user;";
 
-    $stmt = $conn->prepare("SELECT *
-                            FROM e_store.users
-                            WHERE username = '" . $user . "';");
-    $stmt->execute();
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('user' => $user) );
     return count($stmt->fetchAll()) == 0 ? 1 : 0;
   }
-
 ?>
