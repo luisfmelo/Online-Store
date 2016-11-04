@@ -1,8 +1,6 @@
 <?php
   include_once('../../config/init.php');
   include_once($BASE_DIR .'/database/books.php');
-
-//  $categories = getBookCategories();
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +9,11 @@
     <title>Blooks</title>
     <meta charset="utf-8">
 
+    <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
+    <!-- Include da nossa folha de estilos CSS -->
     <link rel="stylesheet" href="<?=$BASE_URL?>/css/style.css">
+    <!-- Include Font Awesome lib - for icons -->
     <link rel="stylesheet" href="<?=$BASE_URL?>/libs/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -33,7 +34,7 @@
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos
               </a>
             </li>
-<!--
+<!-- A implementar: não critico
             <li>
               <a href="$BASE_URL?>/pages/common/faq.php">
                 FAQ

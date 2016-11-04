@@ -5,7 +5,11 @@
   $username = $_SESSION['username'];
 
   $userProfile = getUserByUsername($username);
-
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
 ?>
 
 <div class="row">
@@ -19,7 +23,6 @@
     <section id = "content">
       <div class="left">
         <form method="POST" action= "<?=$BASE_URL?>/actions/users/change_profile.php" class="myForms" id="editProfile">
-
     			Nome:  <br />
           <input type = "text" name="name" value="<?=$userProfile[0]['name']?>"/><br>
     			Email:  <br />

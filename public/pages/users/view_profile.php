@@ -2,13 +2,19 @@
   include '../common/header.php';
   include_once('../../database/users.php');
 
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+
   $username = isset($_GET['user']) ? $_GET['user'] :
                                         $_SESSION['username'];
   $userProfile = getUserByUsername($username);
   $photo =
-    file_exists($IMG_DIR . '/profiles/' . $username . '.png')      ?
-                      $IMG_DIR . '/profiles/' . $username . '.png' :
-                      $IMG_DIR . '/profiles/default.png' ;
+    file_exists($IMG_DIR . '/profiles/' . $username . '.png')   ?
+                $IMG_DIR . '/profiles/' . $username . '.png'    :
+                $IMG_DIR . '/profiles/default.png' ;
 ?>
 
 <div class="row">
@@ -22,19 +28,19 @@
     <section id = "content">
       <div class="left">
         <span>
-          <strong>Username:</strong>	<?=$userProfile[0]['username'];?> <br>
+          <strong>Username:</strong>	<?=$userProfile[0]['username'];?> <br />
         </span>
         <span>
-          <strong>Nome:</strong>	  	<?=$userProfile[0]['name'];?> <br>
+          <strong>Nome:</strong>	  	<?=$userProfile[0]['name'];?> <br />
         </span>
         <span>
-          <strong>Email:</strong>		  <?=$userProfile[0]['email'];?> <br>
+          <strong>Email:</strong>		  <?=$userProfile[0]['email'];?> <br />
         </span>
         <span>
-          <strong>Telefone:</strong>	<?=$userProfile[0]['phone'];?> <br>
+          <strong>Telefone:</strong>	<?=$userProfile[0]['phone'];?> <br />
         </span>
         <span>
-          <strong>Morada:</strong>		<?=$userProfile[0]['address'];?> <br>
+          <strong>Morada:</strong>		<?=$userProfile[0]['address'];?> <br />
         </span>
       </div>
       <div class="right">

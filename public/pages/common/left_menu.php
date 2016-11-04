@@ -26,16 +26,16 @@
 	<?php
 	if ($isAdmin){
 		echo "<a class='itemMenu divlink' href='../users/stock_management.php?page_number=0'>";
-				echo "Gerir Stock";
+			echo "Gerir Stock";
 		echo "</a>";
 
 		echo "<a class='itemMenu divlink' href='../users/view_customers.php'>";
-				echo "Gerir Clientes";
+			echo "Gerir Clientes";
 		echo "</a>";
 	}
 	else{
 		echo "<a class='itemMenu divlink' href='../orders/shopping_cart.php'>";
-				echo "Carrinho de Compras";
+			echo "Carrinho de Compras";
 		echo "</a>";
 	}
 	?>

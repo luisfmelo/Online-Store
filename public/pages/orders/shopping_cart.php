@@ -4,13 +4,22 @@
   include_once('../../database/books.php');
   include_once '../common/header.php';
 
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+  else if( isAdmin($_SESSION['username']) )
+  {
+    header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
+    exit;
+  }
+
   $WARN_MESSAGE = '';
   $total = 0;
 
   if (count($_SESSION['cart']) != 0)
     $books = getSelectedBooks($_SESSION['cart']);
-
-
 ?>
 
 
@@ -28,9 +37,9 @@
     if (count($_SESSION['cart'])!=0)
       foreach ($books as $book) {
         $cover =
-          file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')      ?
-                            $IMG_DIR . '/covers/' . $book['ref'] . '.png' :
-                            $IMG_DIR . '/covers/default.png' ;
+          file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')  ?
+                      $IMG_DIR . '/covers/' . $book['ref'] . '.png'   :
+                      $IMG_DIR . '/covers/default.png' ;
 
           $_SESSION['cart'][$book['ref']] = array($_SESSION['cart'][$book['ref']][0]);
           if ( $book['stock'] < $_SESSION['cart'][$book['ref']][0])
@@ -86,14 +95,9 @@
             }
           echo "</div>";
         echo "</article>";
-
-
       }
-
       ?>
-
     </section>
-
 
     <div class="messages" style="margin-bottom: 20px;">
       <?php include_once('../common/cart_msgs.php'); ?>
@@ -121,7 +125,7 @@
     </div>
   </div>
   <div>
-    <a onclick="updateCart(true)" id="checkoutBtn">
+    <a onclick="updateCart(1)" id="checkoutBtn">
       Checkout
     </a>
   </div>
