@@ -13,6 +13,23 @@ function sortTheBooksNow() {
     window.location.assign(cleanURL);
 };
 
+function sortTheNumberBooksNow() {
+    var selectedID = event.target.value;
+    var url = window.location.href;
+    var cleanURL = url.replace(/\?*number_Books=\w+&/g, "");
+    var cleanURL = url.replace(/\&*number_Books=\w+&*/g, "");
+
+    console.log(cleanURL);
+
+    if (cleanURL.substring(cleanURL.length - 3) == 'php')
+        cleanURL += '?number_Books=' + selectedID;
+    else
+        cleanURL += '&number_Books=' + selectedID;
+            console.log(cleanURL);
+
+    window.location.assign(cleanURL);
+};
+
 function toggleSearchBar() {
     var elem = document.getElementById("searchBar");
 

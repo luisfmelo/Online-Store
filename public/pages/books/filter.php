@@ -12,4 +12,16 @@
         ?>
       </select>
   </div>
+  <div>
+    Livros por Pag:
+      <select name="numberBooks" onchange="sortTheNumberBooksNow()">
+        <?php
+          echo $_GET['number_Books'];
+          echo "<option value='6'" . (($_GET['number_Books']=='6' || !isset($_GET['number_Books']))?'selected':" ") . " >6</option>";
+          echo "<option value='8'" . (($_GET['number_Books']=='8')?' selected':" ") . " >8</option>";
+          echo "<option value='10'" . (($_GET['number_Books']=='10')?' selected':" ") . " >10</option>";
+          echo "<option value='12'" . (($_GET['number_Books']=='12')?' selected':" ") . " >12</option>";
+        ?>
+      </select>
+  </div>
 </div>
