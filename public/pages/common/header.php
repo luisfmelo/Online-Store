@@ -24,13 +24,13 @@
         <div class="leftMenu">
           <ul class="navbar">
             <li>
-              <a href="<?=$BASE_URL?>/index.php">
+              <a href="<?=$BASE_URL?>/pages/books/list_books.php">
                 <i class="fa fa-home" aria-hidden="true"></i>
               </a>
             </li>
 
             <li>
-              <a href="#">
+              <a href="<?=$BASE_URL?>/index.php">
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contactem-nos
               </a>
             </li>
@@ -57,7 +57,7 @@
       <div class="row bottom-bar">
         <div class="content">
           <div class="logo">
-            <a href="<?=$BASE_URL?>/index.php"><img src="<?=$BASE_URL?>/images/logo.png" alt="" /></a>
+            <a href="<?=$BASE_URL?>/pages/books/list_books.php"><img src="<?=$BASE_URL?>/images/logo.png" alt="" /></a>
           </div>
             <form id="searchForm" action="<?=$BASE_URL?>/actions/books/search.php" method="get">
               <a class="divlink" id="lupa" onclick="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
