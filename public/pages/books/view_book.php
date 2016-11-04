@@ -2,7 +2,9 @@
 	include '../common/header.php';
   include_once('../../database/users.php');
   include_once('../../database/orders.php');
-	$order = getOrderInfo($_GET['id']);
+  include_once('../../database/book.php');
+  
+  $book = getBookInfo($_GET['id']); //falta getBookInfo em books.php (database)
 
 	if ( $_SESSION['username'] == '' )
   {
@@ -21,22 +23,24 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      <span>Encomenda: <?=$_GET['id']?></span>
+      <span>Livro: <?=$_GET['id']?></span>
     </h2>
 		<table class="gerir gerirClientes">
 			<tr>
-				<th> Livro	</th>
+				<th> Referência	</th>
 				<th> Titulo		</th>
-				<th> Preço		</th>
-				<th> Quantidade	</th>
+				<th> Autor		</th>
+				<th> Stock  	</th>
+				<th> Preço   	</th>
 			</tr>
 			<?php
-			foreach ($order as $info) {
+			foreach ($book as $info) {
 				echo "<tr>";
-						echo "<td class='linkToUser'><a href='../books/view_book.php?id=".$info['ref']."'>" . $info['ref'] .	"</a></td>";
+						echo "<td>" . $info['ref'] .	"</a></td>";
 						echo "<td>" . $info['title']		.	"</td>";
-						echo "<td>" . $info['price']	.	" €</td>";
-						echo "<td>" . $info['quantity']	.	"</td>";
+						echo "<td>" . $info['author']	.	" </td>";
+						echo "<td>" . $info['stock']	.	"</td>";
+						echo "<td>" . $info['price']	.	"€</td>";
 				 echo "</tr>";
 			}
 			?>
