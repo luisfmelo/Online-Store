@@ -15,9 +15,9 @@
   $isAdmin = isAdmin($username);
 
   if ($isAdmin)
-	 $orders = getOrdersAdmin();
+		$orders = getOrdersAdmin();
   else
-     $orders = getOrdersCustomer($username);
+  	$orders = getOrdersCustomer($username);
 ?>
 
 <div class="row">
@@ -49,7 +49,7 @@
 				echo "<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>";
 			foreach ($orders as $order) {
 				echo "<tr>";
-					echo "<td>" . $order['ref'] .	"</td>";
+					echo "<td class='linkToUser'><a href='../orders/view_order.php?id=".$order['ref']."'>" . $order['ref'] .	"</a></td>";
 					if ($isAdmin)
 						echo "<td class='linkToUser'><a href='../users/view_profile.php?user=".$order['username']."'>" . $order['username'] .	"</a></td>";
 					echo "<td>" . $order['price'].			" € </td>";

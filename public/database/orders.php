@@ -168,4 +168,19 @@ function changeOrdersStateCustomer($orderref, $orderStateId) {
 $stmt = $conn->prepare($query);
   $stmt->execute();
 }
+
+function getOrderInfo($ref){
+global $conn;
+
+$query = "SELECT *
+          FROM productsordered
+          INNER JOIN books ON productsordered.bookid = books.id
+          INNER JOIN orders ON productsordered.orderid = orders.id
+          INNER JOIN users ON orders.userid = users.id
+          WHERE orderid = (select id from e_store.orders where ref = '$ref')";
+
+$stmt = $conn->prepare($query);
+$stmt->execute( );
+return $stmt->fetchAll();
+}
 ?>
