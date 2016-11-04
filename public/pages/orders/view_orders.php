@@ -4,16 +4,14 @@
   include_once('../../database/orders.php');
   include_once('../../database/books.php');
   include_once '../common/header.php';
-  
+
   $username = $_SESSION['username'];
   $isAdmin = isAdmin($username);
-  print_r($isAdmin);
 
   if ($isAdmin)
-	$orders = getOrdersAdmin();
+	 $orders = getOrdersAdmin();
   else
      $orders = getOrdersCustomer($username);
-
 ?>
 
 <section id = "mainContent">
@@ -25,18 +23,18 @@
 			<tr>
 				<td> Referência			</td>
 
-				<?php 
-					if ($isAdmin == 1) 
+				<?php
+					if ($isAdmin == 1)
 						echo "<td> Cliente </td>";
 				?>
 				<td> Preço				</td>
 				<td> Data de encomenda	</td>
 				<td> Data de entrega	</td>
 				<td> Estado				</td>
-				<?php 
+				<?php
 					if ($isAdmin == 1)
 						echo "<td> Enviar encomenda </td>";
-					else 
+					else
 						echo "<td> Encomenda recebida </td>";
 				?>
 			</tr>
@@ -44,7 +42,7 @@
 			foreach ($orders as $order) {
 				echo "<tr>";
 					echo "<td>" . $order['ref'] .	"</td>";
-					if ($isAdmin)				
+					if ($isAdmin)
 						echo "<td>" . $order['username'] .	"</td>";
 					echo "<td>" . $order['price'].			"</td>";
 					echo "<td>" . $order['orderdate']	.	"</td>";
@@ -55,9 +53,9 @@
 					else if ( !$isAdmin && ($order['orderstatename'] == "ENVIADO"))
 							echo "<td> <input type=\"checkbox\" onchange=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" name=\"orderstate\" > </td>";
 				echo "</tr>";
-			}						
-		   ?>		
-		</table>	
+			}
+		   ?>
+		</table>
 	</section>
 
 </section>

@@ -51,11 +51,11 @@
               echo "<a href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-cart-plus' aria-hidden='true'></i>
                       <small>Adicionar</small>
                     </a>";
-            if ( $book['stock'] != 0 )
+            if ( $book['stock'] !== 0 && $_SESSION['username'] != '' )
                 echo "<span class='inStock'>
                         <small>Em Stock</small>
                       </span>";
-            else
+            else if ( $book['stock'] === 0 && $_SESSION['username'] != '')
                 echo "<span class='soldOut'>
                         <small>Esgotado</small>
                       </span>";
