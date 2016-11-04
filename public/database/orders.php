@@ -24,7 +24,7 @@
               VALUES ";
 
 
-// Percorre carrinho de compras e constroi query
+/* Percorre carrinho de compras e constroi query*/
     foreach ($_SESSION['cart'] as $k => $b) {
       if ( $k == "total" || $k == "checkout" )
         continue;
@@ -102,6 +102,7 @@
     return $stmt->fetchAll();
   }
 
+/*Retorna as encomendas de um dado utilizador */
   function getOrdersCustomer($username){
     global $conn;
 
@@ -118,6 +119,7 @@
   return $stmt->fetchAll();
 }
 
+/*Retorna todas as encomendas*/
 function getOrdersAdmin(){
 global $conn;
 
@@ -134,6 +136,7 @@ $stmt->execute();
 return $stmt->fetchAll();
 }
 
+/*Retorna o id correspondente a um determinado estado de encomenda */
 function getIdByOrderState ($orderState) {
  global $conn;
  $query = "SELECT id
@@ -145,7 +148,7 @@ function getIdByOrderState ($orderState) {
  return $stmt->fetchAll();
 }
 
-
+/*Atualiza o estado de uma encomenda para ENVIADO*/
 function changeOrdersStateAdmin($orderref, $orderStateId) {
   global $conn;
 
@@ -169,6 +172,7 @@ $stmt = $conn->prepare($query);
   $stmt->execute();
 }
 
+/*Retorna detalhes de uma Encomenda */
 function getOrderInfo($ref){
 global $conn;
 
