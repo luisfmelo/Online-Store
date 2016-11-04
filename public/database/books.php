@@ -1,6 +1,6 @@
 <?php
 /* Retorna num array todos os livros bem como suas informações */
-  function getAllBooks($search, $order ) {
+  function listSomeBooks($search, $order, $limit, $offset) {
     global $conn;
     $query =           "SELECT *
                         FROM e_store.books ";
@@ -18,9 +18,11 @@
       $query = $query . " ORDER BY e_store.books.price ASC";
     else
       $query = $query . " ORDER BY e_store.books.ref ASC";
+      
+    $query = $query . " LIMIT :limit OFFSET :offset;";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
   }
 /* Recebe array com a informação de apens alguns livros -> páginas */
@@ -39,7 +41,7 @@
    }
 
 /* Recebe Array com informação de todos os livros de uma dada categoria */
-  function getBooksByCategory($ref, $order) {
+  function listSomeBooksByCategory($ref, $order, $limit, $offset) {
     global $conn;
     $query =           "SELECT *
                         FROM e_store.categories
@@ -55,9 +57,11 @@
       $query = $query . "ORDER BY e_store.books.price DESC";
     else if ($order == 'price_c')
       $query = $query . "ORDER BY e_store.books.price ASC";
+      
+    $query = $query . " LIMIT :limit OFFSET :offset;";  
 
     $stmt = $conn->prepare($query);
-    $stmt->execute( array('ref' => $ref) );
+    $stmt->execute( array('ref' => $ref, 'limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
   }
 
