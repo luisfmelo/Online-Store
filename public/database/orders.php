@@ -5,15 +5,15 @@
     global $conn;
     $query = "INSERT INTO e_store.orders
               VALUES (DEFAULT,
-                      '" . $ref . "',
-                      (select id from e_store.users where username = '" . $_SESSION['username'] . "'),
+                      :ref,
+                      (select id from e_store.users where username = :user),
                       DEFAULT,
-                      " . $total . ",
+                      :total,
                       '" . date('Y-m-d G:i:s') . "',
                       NULL);";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('ref' => $ref ,'total' => $total ,'user' => $_SESSION['username']) );
   }
 
 /* Adiciona livros que estão na variavel de sessao do carrinho de compras
@@ -67,7 +67,7 @@
 
 /* retorna todas as encomendas se utilizador é admin
    Caso contrário, retorna as encomenda desse mesmo utilizador */
-  function getOrdersByUsername($isAdmin, $username){
+  function getOrdersByUsername($isAdmin, $user){
 	  global $conn;
 
 	  if ($isAdmin == 1)
@@ -76,14 +76,16 @@
   				      INNER JOIN e_store.users
   				      ON e_store.orders.userid = e_store.users.id;";
 
-    else
+    else{
 		  $query = "SELECT *
 				        FROM e_store.orders
 				        INNER JOIN e_store.users
 				        ON e_store.orders.userid = e_store.users.id
 				        INNER JOIN e_store.ordersstate
 				        ON e_store.orders.id = e_store.ordersstate.id
-				        WHERE username='$username';";
+				        WHERE username = :user";
+      $stmt->bindParam(':user', $user);
+    }
 
     $stmt = $conn->prepare($query);
     $stmt->execute();

@@ -2,8 +2,8 @@
 /* Retorna num array todos os livros bem como suas informações */
   function getAllBooks($search, $order ) {
     global $conn;
-    $query =           'SELECT *
-                        FROM e_store.books ';
+    $query =           "SELECT *
+                        FROM e_store.books ";
 
     if ($search != '')
       $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
@@ -31,21 +31,21 @@
             INNER JOIN e_store.books
             ON e_store.categories.id = e_store.books.category
             ORDER BY books.ref ASC
-            LIMIT '$limit' OFFSET '$offset';";
+            LIMIT :limit OFFSET :offset;";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
    }
 
 /* Recebe Array com informação de todos os livros de uma dada categoria */
   function getBooksByCategory($ref, $order) {
     global $conn;
-    $query = "SELECT *
+    $query =           "SELECT *
                         FROM e_store.categories
                         INNER JOIN e_store.books
                         ON e_store.categories.id = e_store.books.category
-                        WHERE e_store.categories.ref = '$ref' ";
+                        WHERE e_store.categories.ref = :ref ";
 
     if ($order == 'name_a')
       $query = $query . "ORDER BY e_store.books.title ASC";
@@ -57,7 +57,7 @@
       $query = $query . "ORDER BY e_store.books.price ASC";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('ref' => $ref) );
     return $stmt->fetchAll();
   }
 
@@ -85,10 +85,10 @@
   function deleteBook($ref) {
     global $conn;
     $query = "DELETE FROM e_store.books
-							WHERE ref = '$ref';";
+							WHERE ref = :ref;";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('ref' => $ref) );
   }
 
 /* Retorna o preço do livro com a referencia dada */
@@ -96,10 +96,10 @@
     global $conn;
     $query = "SELECT price
               FROM e_store.books
-              WHERE ref = '" . $ref . "'";
+              WHERE ref = :ref;";
 
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute( array('ref' => $ref) );
     return $stmt->fetchAll();
 }
 
@@ -131,21 +131,27 @@
     global $conn;
 
     $query = "UPDATE e_store.books
-              SET price='$price', stock='$stock'
-              WHERE ref='$ref';";
+              SET price = :price, stock = :$stock
+              WHERE ref = :ref;";
 
 	  $stmt = $conn->prepare ($query);
-    $stmt->execute();
+    $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
   }
 
 /* Adiciona um novo livro à Base de Dados */
   function addNewBook($ref, $title, $author, $price, $category, $description,  $stock){
   	global $conn;
     $query = "INSERT INTO e_store.books
-              VALUES (DEFAULT, '$ref', '$title', '$author', '$price', '$category', '$description', '$stock');";
+              VALUES (DEFAULT, :ref, :title, :author, :price, :category, :description, :stock);";
 
     $stmt = $conn->prepare ($query);
-  	$stmt->execute();
+    $stmt->execute( array('ref' => $ref,
+                          'title' => $title,
+                          'author' => $author,
+                          'price' => $price,
+                          'category' => $category,
+                          'description' => $description,
+                          'stock' => $stock) );
   }
 
 /* Recebe o nome da categoria e retorna o seu id */
