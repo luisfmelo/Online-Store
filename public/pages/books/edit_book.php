@@ -7,7 +7,6 @@
 
   $book = getBookInfo($_GET['id']);
   $categories = getBookCategories();
-  print_r($categories);
   if ( $_SESSION['username'] == '' )
   {
     header("Location: " . $BASE_URL . '/pages/users/login.php');
@@ -18,8 +17,6 @@
     header("Location: " . $BASE_URL . '/pages/books/list_books.php');
     exit;
   }
-print_r($book);
-
 ?>
 
 <div class="row">

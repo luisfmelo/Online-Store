@@ -76,7 +76,7 @@
 
           echo "<div class='book-data'>";
             echo "<span class='title'>
-                    <a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>
+                    <a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."' class='titleLink'>
                       ".$book['title']."
                     </a>
                   </span><br />";

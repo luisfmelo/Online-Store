@@ -47,12 +47,12 @@
 			<?php
 			foreach ($books as $book) {
 				echo "<tr class='". $book['ref'] ."'>";
-						echo "<td>" . $book['ref'] 		.	"</td>";
-						echo "<td>" . $book['title']	.	"</td>";
-						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
-						echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
-						echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
-						echo "<td> <i onclick=\"stockChangeCheck('" . $book['ref'] ."' , '" . $page ."' )\" class=\"fa fa-floppy-o\" aria-hidden=\"true\"> </i> </td>";
+					echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['ref'] .	"</a></td>";
+				echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['title'] .	"</a></td>";
+					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
+					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
+					echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
+					echo "<td> <i onclick=\"stockChangeCheck('" . $book['ref'] ."' , '" . $page ."' )\" class=\"fa fa-floppy-o\" aria-hidden=\"true\"> </i> </td>";
 			 echo "</tr>";
 			}
 			?>

@@ -240,6 +240,10 @@ ul {
     color: #222;
 }
 
+td i:hover{
+  color: #C61017;
+}
+
 .form-group .fa {
     position: absolute;
     right: 20px;
@@ -292,8 +296,21 @@ ul {
     transition: all 0.5s ease;
 }
 
-.goToRegister a:hover {
+.goToRegister a:hover, .titleLink:hover {
     color: #C61017;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.titleLink{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 
