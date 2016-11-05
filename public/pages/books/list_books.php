@@ -32,8 +32,6 @@
   else
     $next = $page + 1;
   $previous = $page - 1;
-
-  /* controlo << 1 2 3 4 5 >> */
   
   $param = "";
 
@@ -124,7 +122,10 @@
 					</a>";
 				for ($i = 0; $i < $max_no_page; $i++){
 					$number = $i + 1;
-					echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
+					if ($i == $page)
+						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
+					else
+						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
 				}
 				if ($next != "NOTHING_TO_SHOW")
 					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$next" . $param . "\">

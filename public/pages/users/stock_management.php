@@ -11,21 +11,27 @@
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
-  }
-
-	$limit = 10;
+  }	
+	
+  /* página atual */
+  if(!isset($_GET['page']))
+	$page = 0;
+  else
 	$page = $_GET['page'];
 
-	$number_of_books = getNoBooks();
-	$max_no_page = $number_of_books[0]['count'] / $limit;
+  /* controlo icons previous/next */
+  $limit = 10;
+  $number_of_books = getNoBooks();
+  $max_no_page = $number_of_books[0]['count'] / $limit;
 
-	if ($page + 1 > $max_no_page)
-		$next = "NOTHING_TO_SHOW";
-	else
-		$next = $page + 1;
+  if ($page + 1 > $max_no_page)
+	$next = "NOTHING_TO_SHOW";
+  else
+	$next = $page + 1;
 
-	$previous = $page - 1;
-	$books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
+  $previous = $page - 1;
+  
+  $books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
 ?>
 <div class="row">
   <?php   include '../common/left_menu.php';  ?>
@@ -64,7 +70,13 @@
 					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$previous\">
 						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
 					</a>";
-
+				for ($i = 0; $i < $max_no_page; $i++){
+					$number = $i + 1;
+					if ($i == $page)
+						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/users/stock_management.php?page=$i\">" .$number . "</a>";
+					else
+						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/users/stock_management.php?page=$i\">" .$number . "</a>";
+				}
 				if ($next != "NOTHING_TO_SHOW")
 					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$next\">
 						<i class='fa fa-angle-double-right' aria-hidden='true'></i>

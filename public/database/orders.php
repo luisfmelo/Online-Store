@@ -1,4 +1,16 @@
 <?php
+
+/* Retorna o numero de encomendas existentes na BD */
+  function getNoOrders() {
+    global $conn;
+    $query = "SELECT COUNT(id)
+              FROM e_store.orders;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+  
 /* Recebe uma referencia gerada e o total da transação e
    Adiciona uma nova encomenda ao utiliador atual da Sessão*/
   function new_Order($ref, $total){
@@ -103,7 +115,7 @@
   }
 
 /*Retorna as encomendas de um dado utilizador */
-  function getOrdersCustomer($username){
+  function getOrdersCustomer($username, $limit, $offset){
     global $conn;
 
     $query = "SELECT *
@@ -112,7 +124,8 @@
         ON e_store.orders.userid = e_store.users.id
         INNER JOIN e_store.ordersstate
         ON e_store.orders.state = e_store.ordersstate.id
-        WHERE username='$username';";
+        WHERE username='$username'
+        LIMIT '$limit' OFFSET '$offset';";
 
   $stmt = $conn->prepare($query);
   $stmt->execute();
@@ -120,7 +133,7 @@
 }
 
 /*Retorna todas as encomendas*/
-function getOrdersAdmin(){
+function getOrdersAdmin($limit, $offset){
 global $conn;
 
 $query = "SELECT *
@@ -128,8 +141,8 @@ $query = "SELECT *
     INNER JOIN e_store.users
     ON e_store.orders.userid = e_store.users.id
     INNER JOIN e_store.ordersstate
-    ON e_store.orders.state = e_store.ordersstate.id;";
-
+    ON e_store.orders.state = e_store.ordersstate.id
+	LIMIT '$limit' OFFSET '$offset';";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();

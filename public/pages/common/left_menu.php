@@ -25,7 +25,7 @@
 
 	<?php
 	if ($isAdmin){
-		echo "<a class='itemMenu divlink' href='../users/stock_management.php?page_number=0'>";
+		echo "<a class='itemMenu divlink' href='../users/stock_management.php'>";
 			echo "Gerir Stock";
 		echo "</a>";
 

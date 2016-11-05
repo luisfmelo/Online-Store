@@ -533,6 +533,9 @@ header {
 	
 }
 
+.pageNumberSelected{
+	color: #C61017; 
+}
 .pageNumber:hover{
     color: #C61017;
     -webkit-transition: all .5s ease;
