@@ -25,6 +25,21 @@
     $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
   }
+
+/* Retorna o número total de livros resultantes de uma dada pesquisa */  
+    function TotalNumberSearchedBooks($search) {
+    global $conn;
+    $query =           "SELECT COUNT(*)
+                        FROM e_store.books ";
+
+    if ($search != '')
+      $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+  
 /* Recebe array com a informação de apens alguns livros -> páginas */
   function getSomeBooks($limit, $offset){
 	global $conn;
@@ -64,6 +79,20 @@
     $stmt->execute( array('ref' => $ref, 'limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
   }
+
+/* Retorna o número total de livros de uma dada categoria */
+  function TotalNumberBooksByCategory($ref) {
+    global $conn;
+    $query =           "SELECT COUNT(*)
+                        FROM e_store.categories
+                        INNER JOIN e_store.books
+                        ON e_store.categories.id = e_store.books.category
+                        WHERE e_store.categories.ref = :ref;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('ref' => $ref) );
+    return $stmt->fetchAll();
+  }  
 
 /* Retorna todas as categorias existentes */
   function getBookCategories() {

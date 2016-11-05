@@ -8,14 +8,22 @@
     $number_books_per_page = $_GET['number_Books'];
   else
     $number_books_per_page = 6;
-
+	
   if(!isset($_GET['page']))
 	$page = 0;
   else
 	$page = $_GET['page'];
-
-  $number_of_books = getNoBooks();
-  $max_no_page = $number_of_books[0]['count'] / $number_books_per_page;
+	
+  if (isset($_GET['id'])){
+	$number_of_books = TotalNumberBooksByCategory($_GET['id']);  
+    $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
+  }
+  else {
+	$number_of_books = TotalNumberSearchedBooks($_GET['search']);   
+    $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);	
+  }
+  
+  $max_no_page = $number_of_books[0]['count']/ $number_books_per_page;
 
   if ($page + 1 > $max_no_page)
     $next = "NOTHING_TO_SHOW";
@@ -23,11 +31,6 @@
     $next = $page + 1;
 
   $previous = $page - 1;
-
-  if (isset($_GET['id']))
-    $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
-  else
-    $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
 
   $param = "";
 
