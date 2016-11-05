@@ -53,7 +53,7 @@
           <strong>Stock:</strong>
           <?php
           if (isAdmin($_SESSION['username']))
-            echo "$book[0]['stock'] <br />";
+            echo $book[0]['stock'] . " <br />";
           else if ( $book['stock'] !== 0 )
               echo "<span class='inStock'>
                       <small>Em Stock</small>

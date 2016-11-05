@@ -1,73 +1,47 @@
 <?php
-
-  include_once('../../database/users.php');
   include_once('../../config/init.php');
+  include_once('../../database/books.php');
 
-  $password_was_set = 0;
+  $catRef = getCategoryRef($_POST['category'])[0][ref];
+  $ref = $_GET['id'];
 
-  //~ if (!isset($_POST['password'])	||
-      //~ !isset($_POST['name']) 		||
-      //~ !isset($_POST['email']) 		||
-      //~ !isset($_POST['phone']) 		||
-      //~ !isset($_POST['address'])		||
-       //~ !isset($_POST['confirmPassword'])) {
-		//~ $_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
-		//~ $_SESSION['form_values'] = $_POST;
-		//~ header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-		//~ exit;
-  //~ }
-  //~ if ( empty($_POST['password'])	||
-            //~ empty($_POST['name'])		||
-            //~ empty($_POST['email'])      ||
-            //~ empty($_POST['phone'])		||
-            //~ empty($_POST['address'])	||
-            //~ empty($_POST['confirmPassword']) ){
-		//~ $_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
-		//~ $_SESSION['form_values'] = $_POST;
-		//~ header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-		//~ exit;
-  //~ }
-  if ( $_POST['password'] !== ""){
-	  $password_was_set = 1;
-      if ( $_POST['password'] !== $_POST['confirmPassword']){
-				$_SESSION['error_messages'] = 'Passwords não são iguais';
-				$_SESSION['form_values'] = $_POST;
-				header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-				exit;
-			}
-	  else if( strlen($_POST['password']) < 5){
-			$_SESSION['error_messages'] = 'A Password deve ter pelo menos 5 caracteres';
-			$_SESSION['form_values'] = $_POST;
-			header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-			exit;
-	  }
-  }
-  else if( strlen($_POST['phone']) != 9 || !ctype_digit($_POST['phone'])){
-    $_SESSION['error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
-    $_SESSION['form_values'] = $_POST;
-    header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-    exit;
-  }
-  else if( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-    $_SESSION['error_messages'] = 'Email inválido';
-    $_SESSION['form_values'] = $_POST;
-    header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
+  if ( $_POST['title'] === ""){
+    $_SESSION['error_messages'] = 'O Titulo não pode estar em branco';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
     exit;
   }
 
-  $username = $_SESSION['username'];
-  $name 	= $_POST['name'];
-  $phone    = $_POST['phone'];
-  $address  = $_POST['address'];
-  $email 	= $_POST['email'];
-
-  editUser($username, $name, $phone, $address, $email);
-
-  if ($password_was_set == 1){
-	 $password = hash("sha256", $_POST['password']);
-	 editUserPass($username, $password);
+  else if ( $_POST['author'] === ""){
+    $_SESSION['error_messages'] = 'O nome do Autor não pode estar em branco';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
   }
 
-  header("Location: $BASE_URL" . '/pages/users/view_profile.php');
+  else if ( $_POST['price'] < 0 || $_POST['price'] === ""){
+    $_SESSION['error_messages'] = 'O Preço tem de ser positivo';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
+
+  else if ( $_POST['stock'] < 0 || $_POST['stock'] === ""){
+    $_SESSION['error_messages'] = 'O Stock tem de ser positivo';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
+  // se alterar a categoria
+  else if ($catRef !== strtoupper(substr($_GET['id'], 0, 3)))
+  {
+    $catRef = getCategoryRef($_POST['category'])[0][ref];
+
+    do{
+      // RANDOM NUMBER entre 00000 e 99999
+      $categoryNumber = str_pad(rand(0, pow(10, 5)-1), 5, '0', STR_PAD_LEFT);
+      $ref = $catRef . $categoryNumber; // CAT + NUMBER
+    } while (refExist($ref));
+  }
+
+  updateBookInfo($_GET['id'], $ref, $_POST['title'], $_POST['author'], $_POST['price'], $_POST['category'], $_POST['stock'], $_POST['description']);
+
+  header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;
 ?>

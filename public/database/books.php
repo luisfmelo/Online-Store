@@ -131,16 +131,36 @@
   }
 
 /* Atualiza informações de um livro com uma dada referencia - preço e stock apenas */
-  function updateBook($ref, $price, $stock){
-    global $conn;
+function updateBook($ref, $price, $stock){
+  global $conn;
 
-    $query = "UPDATE e_store.books
-              SET price = :price, stock = :$stock
-              WHERE ref = :ref;";
+  $query = "UPDATE e_store.books
+            SET price = :price, stock = :$stock
+            WHERE ref = :ref;";
 
-	  $stmt = $conn->prepare ($query);
-    $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
-  }
+  $stmt = $conn->prepare ($query);
+  $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
+}
+
+function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript){
+  global $conn;
+
+  $query = "UPDATE e_store.books
+            SET ref = '$newRef', title = '$title', author = '$author', price = $price, category = $cat, stock = $stock, description = '$descript'
+            WHERE ref = '$ref';";
+//return $query;
+  $stmt = $conn->prepare ($query);
+$stmt->execute();/*
+  $stmt->execute( array('ref' => $ref,
+                        'newRef' => $newRref,
+                        'title' => $title,
+                        'author' => $author,
+                        'price' => $price,
+                        'cat' => $cat,
+                        'descript' => $descript == "" ? NULL : $descript,
+                        'stock' => $stock == "" ? 0 : $stock) );
+                        $stmt->debugDumpParams();*/
+}
 
 /* Adiciona um novo livro à Base de Dados */
   function addNewBook($ref, $title, $author, $price, $category, $description,  $stock){
@@ -165,6 +185,19 @@
     $query = "SELECT e_store.categories.id
               FROM e_store.categories
 			        WHERE categoryName = '$categoryName';";
+
+	  $stmt = $conn->prepare($query);
+	  $stmt->execute();
+	  return $stmt->fetchAll();
+	}
+
+/* Recebe o nome da categoria e retorna o seu id */
+  function getCategoryRef($catId){
+	  global $conn;
+
+    $query = "SELECT e_store.categories.ref
+              FROM e_store.categories
+			        WHERE id = $catId;";
 
 	  $stmt = $conn->prepare($query);
 	  $stmt->execute();

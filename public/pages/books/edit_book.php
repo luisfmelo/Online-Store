@@ -32,7 +32,7 @@
         <span>
           <strong>Referência:</strong>	<?=$_GET['id']?> <br />
         </span>
-        <form method="POST" action= "<?=$BASE_URL?>/actions/books/change_book.php" class="myForms" id="editBook">
+        <form method="POST" action= "<?=$BASE_URL?>/actions/books/change_book.php?id=<?=$_GET['id']?>" class="myForms" id="editBook">
     			Titulo:  <br />
           <input type = "text" name="title" value="<?=$book[0]['title']?>"/><br>
     			Autor:  <br />

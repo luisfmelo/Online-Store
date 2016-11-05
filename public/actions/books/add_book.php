@@ -23,8 +23,6 @@
 		$ref = $shorterCategory . $categoryNumber; // CAT + NUMBER
 	} while (refExist($ref));
 
-	print_r($ref);
-
   addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
 	header("Location: " . $BASE_URL . '/pages/users/stock_management.php?');
 	exit;
