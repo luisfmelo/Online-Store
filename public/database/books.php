@@ -18,7 +18,7 @@
       $query = $query . " ORDER BY e_store.books.price ASC";
     else
       $query = $query . " ORDER BY e_store.books.ref ASC";
-      
+
     $query = $query . " LIMIT :limit OFFSET :offset;";
 
     $stmt = $conn->prepare($query);
@@ -57,8 +57,8 @@
       $query = $query . "ORDER BY e_store.books.price DESC";
     else if ($order == 'price_c')
       $query = $query . "ORDER BY e_store.books.price ASC";
-      
-    $query = $query . " LIMIT :limit OFFSET :offset;";  
+
+    $query = $query . " LIMIT :limit OFFSET :offset;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref, 'limit' => $limit, 'offset' => $offset) );
@@ -183,5 +183,16 @@
     $res = $stmt->fetch();
 
     return $res['admin'] ? 1 : 0;
+  }
+  /*Retorna detalhes de uma Encomenda */
+  function getBookInfo($ref){
+  global $conn;
+
+  $query = "SELECT *
+            FROM e_store.books
+            WHERE ref = '".$ref."';";
+  $stmt = $conn->prepare($query);
+  $stmt->execute( );
+  return $stmt->fetchAll();
   }
 ?>

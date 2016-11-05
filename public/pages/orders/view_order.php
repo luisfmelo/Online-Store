@@ -41,6 +41,19 @@
 			}
 			?>
 		</table>
+
+		<div class="orderInfo left">
+			<span>
+				<strong>Data da encomenda:</strong>	<?=$order[0]['orderdate'];?> <br />
+			</span>
+			<span>
+				<strong>Data de entrega:</strong>	  	<?=$order[0]['deliverydate'];?> <br />
+			</span>
+			<span>
+				<strong>Valor Total:</strong>		  <?=$order[0]['price'];?> <br />
+			</span>
+
+		</div>
 </div>
 
 <?php include '../common/footer.php';?>
