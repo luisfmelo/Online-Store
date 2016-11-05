@@ -110,8 +110,9 @@ ul {
 
 /***********************************************/
 
-
 /*** MESSAGES STYLES ***/
+
+/***********************************************/
 
 .inStock {
     color: #4F8A10;
@@ -518,6 +519,25 @@ header {
 
 .userMenu {
     width: 30%;
+}
+/*******************************/
+
+
+/*        Numerate Pages       */
+
+
+/*******************************/
+
+.pageNumber{
+	width:0.1%;
+	
+}
+
+.pageNumber:hover{
+    color: #C61017;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
 }
 
 
