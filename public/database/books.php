@@ -190,7 +190,8 @@
 
   $query = "SELECT *
             FROM e_store.books
-            WHERE ref = '".$ref."';";
+            INNER JOIN e_store.categories ON category=categories.id
+            WHERE books.ref = '".$ref."';";
   $stmt = $conn->prepare($query);
   $stmt->execute( );
   return $stmt->fetchAll();

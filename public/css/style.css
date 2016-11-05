@@ -60,7 +60,7 @@ ul {
     width: 70%;
 }
 
-.myForms input {
+.myForms input, .myForms Select, .myForms textarea {
     font-size: 16px;
     width: 100%;
     margin-top: 10px;
@@ -73,16 +73,18 @@ ul {
     box-sizing: border-box;
 }
 
-.myForms input:not([type="submit"]) {
+.myForms input:not([type="submit"]), .myForms Select {
     height: 50px;
-    border: 0px;
-    border-bottom: 1px solid #222;
-    background-color: #EEE;
-    outline: none;
-    font-size: 16px;
 }
+.myForms input:not([type="submit"]), .myForms Select, .myForms textarea{
+     border: 0px;
+     border-bottom: 1px solid #222;
+     background-color: #EEE;
+     outline: none;
+     font-size: 16px;
+ }
 
-.myForms input:not([type="submit"]):focus {
+.myForms input:not([type="submit"]):focus, .myForms Select:focus, .myForms textarea:focus {
     color: #222;
     border-bottom: 2px solid #C61017;
 }
@@ -575,7 +577,7 @@ header {
     margin: 20px 30% 0 20%;
     width: 40%;
 }
-.left span, #editProfile {
+.left span, #editProfile, #editBook {
     line-height: 2;
     letter-spacing: 2px;
 }
@@ -793,6 +795,7 @@ td{
     float: right;
     display: inline;
     color: #222;
+    margin-right: 20%;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
@@ -904,6 +907,11 @@ td{
 
 
 /*************************************************/
+
+
+table tr td{
+    padding: 0 15px;
+}
 
 footer {
     padding: 1%;

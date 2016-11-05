@@ -40,9 +40,9 @@
 				<th> Título		</th>
 				<th> Preço 		</th>
 				<th> Stock		</th>
-				<td> 			</td>
-				<td> 			</td>
-				<td> 			</td>
+				<th> 			</th>
+				<th> 			</th>
+				<th> 			</th>
 			</tr>
 			<?php
 			foreach ($books as $book) {

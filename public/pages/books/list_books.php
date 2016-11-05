@@ -30,14 +30,15 @@
     $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
 
   $param = "";
+
   if (isset($_GET['id']))
-	$param = $param . "&id=" . $_GET['id'];
+    $param = $param . "&id=" . $_GET['id'];
   if (isset($_GET['search']))
-	$param = $param . "&search=" . $_GET['search'];
+    $param = $param . "&search=" . $_GET['search'];
   if (isset($_GET['sort']))
-	$param = $param . "&sort=" . $_GET['sort'];
+    $param = $param . "&sort=" . $_GET['sort'];
   if (isset($_GET['number_Books']))
-	$param = $param . "&number_Books=" . $_GET['number_Books'];
+    $param = $param . "&number_Books=" . $_GET['number_Books'];
 
 ?>
 
@@ -69,10 +70,17 @@
                       $IMG_DIR . '/covers/default.png' ;
 
         echo "<article class='book'>";
-          echo "<img class='cover' src=" . $cover . " />";
+          echo "<a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>
+                  <img class='cover' src=" . $cover . " />
+                </a>";
 
           echo "<div class='book-data'>";
-            echo "<span class='title'>" . $book['title'] . "</span><br />";
+            echo "<span class='title'>
+                    <a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>
+                      ".$book['title']."
+                    </a>
+                  </span><br />";
+
             echo "<span class='author'>" . $book['author'] . "</span><br />";
             echo "<span class='descript'>" . $book['description'] . "</span><br />";
           echo "</div>";

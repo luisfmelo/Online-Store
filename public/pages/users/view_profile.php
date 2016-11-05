@@ -7,9 +7,14 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
+  else if ( !isAdmin($_SESSION['username']) && isset($_GET['user']) && $_SESSION['username'] !== $_GET['user'] )
+  {
+    header("Location: " . $BASE_URL . '/pages/books/list_books.php');
+    exit;
+  }
 
   $username = isset($_GET['user']) ? $_GET['user'] :
-                                        $_SESSION['username'];
+                                     $_SESSION['username'];
   $userProfile = getUserByUsername($username);
   $photo =
     file_exists($IMG_DIR . '/profiles/' . $username . '.png')   ?
@@ -22,7 +27,16 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      <span>O meu perfil</span>
+      <?php
+        if ( $_SESSION['username'] !== $_GET['user'] && isset($_GET['user'])) //é admin a ver outro perfil
+          echo "<span>".$userProfile[0]['name']."</span>";
+        else
+          echo "<span>O meu perfil
+                  <a href=\"$BASE_URL/pages/users/edit_profile.php?id=$username\">
+                    <i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>
+                  </a>
+                </span>";
+      ?>
     </h2>
 
     <section id = "content">

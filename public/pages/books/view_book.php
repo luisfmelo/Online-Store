@@ -12,8 +12,8 @@
   $book = getBookInfo($_GET['id']);
 
   $cover =
-    file_exists($IMG_DIR . '/covers/' . $book[0]['ref'] . '.png')   ?
-                $IMG_DIR . '/covers/' . $book[0]['ref'] . '.png'    :
+    file_exists($IMG_DIR . '/covers/' . $_GET['id'] . '.png')   ?
+                $IMG_DIR . '/covers/' . $_GET['id'] . '.png'    :
                 $IMG_DIR . '/covers/default.png' ;
 ?>
 
@@ -22,14 +22,20 @@
 
   <div class="rightContent">
     <h2 class="bigTitle">
-      <span>Livro: <?=$book[0]['title']?> <i class="fa fa-pencil" aria-hidden="true"></i>
-</span>
+      <span><?=$book[0]['title']?>
+        <?php
+        if (isAdmin($_SESSION['username']))
+          echo "<a href='$BASE_URL/pages/books/edit_book.php?id=".$_GET['id']."'>
+                  <i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>
+                </a>";
+        ?>
+      </span>
     </h2>
 
     <section id = "content">
       <div class="left">
         <span>
-          <strong>Referência:</strong>	<?=$book[0]['ref'];?> <br />
+          <strong>Referência:</strong>	<?=$_GET['id']?> <br />
         </span>
         <span>
           <strong>Titulo:</strong>	  	<?=$book[0]['title'];?> <br />
@@ -38,13 +44,25 @@
           <strong>Autor:</strong>		  <?=$book[0]['author'];?> <br />
         </span>
         <span>
-          <strong>Preço:</strong>	<?=$book[0]['price'];?> <br />
+          <strong>Preço:</strong>	<?=$book[0]['price'];?> €<br />
         </span>
         <span>
-          <strong>Categoria:</strong>		<?=$book[0]['category'];?> <br />
+          <strong>Categoria:</strong>		<?=$book[0]['categoryname'];?> <br />
         </span>
         <span>
-          <strong>Stock:</strong>		<?=$book[0]['stock'];?> <br />
+          <strong>Stock:</strong>
+          <?php
+          if (isAdmin($_SESSION['username']))
+            echo "$book[0]['stock'] <br />";
+          else if ( $book['stock'] !== 0 )
+              echo "<span class='inStock'>
+                      <small>Em Stock</small>
+                    </span><br />";
+          else if ( $book['stock'] === 0 )
+              echo "<span class='soldOut'>
+                      <small>Esgotado</small>
+                    </span><br />";
+          ?>
         </span>
 
       </div>
