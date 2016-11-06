@@ -47,12 +47,23 @@
       <p>
         <strong>Estado do Trabalho 2: </strong> Concluído
       </p>
-      <p>
+      <!--<p>
         <strong>Estado do Trabalho 3: </strong> A Desenvolver
-      </p>
+      </p>-->
       <p>
         <strong>Optimizado para: </strong> Chrome &amp; Brave Browser com monitor 15''
       </p>
+    </div>
+    <div class="row linkButtons">
+      <a href="../downloads/201206020_SIEM_ppt.pptx" target="_blank" download>
+          <span>PPT</span>
+      </a>
+      <a href="../downloads/201206020_SIEM_css.css" target="_blank" download>
+          CSS
+      </a>
+      <a href="../downloads/201206020_SIEM_T1.rar" target="_blank" download>
+          ZIP
+      </a>
     </div>
   </div>
 </div>

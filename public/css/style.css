@@ -268,6 +268,13 @@ td i:hover{
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+
+    /* Safari/Chrome, other WebKit */
+    -webkit-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box;
+    /* Opera/IE 8+ */
+    box-sizing: border-box;
 }
 
 .log-btn:hover {
@@ -951,6 +958,34 @@ td{
 
 table tr td{
     padding: 0 15px;
+}
+
+.linkButtons a{
+    text-align: center;
+    border: 3px solid #222;//#C61017;
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    height: 0;
+    margin: 30px 5%;
+    padding: 6% 0 10% 0;
+    border-radius: 100%;
+    font-size: 20px;
+
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.linkButtons a:hover{
+    box-shadow: 0 0 50px #C61017;
+    color: #C61017;
+    border-color: #C61017;
+    font-weight: bolder;
+
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 footer {
