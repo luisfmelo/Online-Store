@@ -7,7 +7,7 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
-  else if( !isAdmin($_SESSION['username']) )
+  else if( !$_SESSION['admin'] )
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
@@ -15,9 +15,9 @@
 
   /* página atual */
   if(!isset($_GET['page']))
-	$page = 0;
+		$page = 0;
   else
-	$page = $_GET['page'];
+		$page = $_GET['page'];
 
   /* controlo icons previous/next */
   $limit = 10;
@@ -25,9 +25,9 @@
   $max_no_page = $number_of_books[0]['count'] / $limit;
 
   if ($page + 1 > $max_no_page)
-	$next = "NOTHING_TO_SHOW";
+		$next = "NOTHING_TO_SHOW";
   else
-	$next = $page + 1;
+		$next = $page + 1;
 
   $previous = $page - 1;
 
@@ -63,13 +63,14 @@
 			}
 			?>
 		</table>
+
 		<div class="row arrows">
 
 		<?php
 				if ($page != 0)
 					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$previous\">
-						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
-					</a>";
+									<i class='fa fa-angle-double-left' aria-hidden='true'></i>
+								</a>";
 				for ($i = 0; $i < $max_no_page; $i++){
 					$number = $i + 1;
 					if ($i == $page)
@@ -79,8 +80,8 @@
 				}
 				if ($next != "NOTHING_TO_SHOW")
 					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$next\">
-						<i class='fa fa-angle-double-right' aria-hidden='true'></i>
-					</a>";
+									<i class='fa fa-angle-double-right' aria-hidden='true'></i>
+								</a>";
 		?>
 		</div>
 

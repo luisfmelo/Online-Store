@@ -83,7 +83,7 @@
 
 
     <div class="messages" style="margin-bottom: 20px;">
-      <?php include_once('../common/cart_msgs.php'); ?>
+      <?php include_once('../_messages/warn_msgs.php'); ?>
     </div>
 
   </div>

@@ -67,7 +67,7 @@
       </div>
 
       <div class="messages" style="margin-bottom: 20px;">
-        <?php include_once('../common/error_success_msgs.php'); ?>
-        <?php include_once('../common/msg_cart_added.php'); ?>
+        <?php include_once('../_messages/error_success_msgs.php'); ?>
+        <?php include_once('../_messages/msg_cart_added.php'); ?>
       </div>
     </header>

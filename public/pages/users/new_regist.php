@@ -66,7 +66,7 @@
       </div>
 
       <div class="messages" style="margin-top: 10px;">
-        <?php include_once('../common/error_success_msgs.php'); ?>
+        <?php include_once('../_messages/error_success_msgs.php'); ?>
       </div>
 
       <input type="submit" class="log-btn" value="Registar" />

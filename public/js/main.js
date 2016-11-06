@@ -1,10 +1,9 @@
+/* Cria um novo url com um parametro para ordenar os livros*/
 function sortTheBooksNow() {
     var selectedID = event.target.value;
     var url = window.location.href;
     var cleanURL = url.replace(/\?*sort=\w+&/g, "");
     var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
-
-    console.log(cleanURL);
 
     if (cleanURL.substring(cleanURL.length - 3) == 'php')
         cleanURL += '?sort=' + selectedID;
@@ -13,23 +12,35 @@ function sortTheBooksNow() {
     window.location.assign(cleanURL);
 };
 
+/* Cria um novo url com um parametro para ordenar as encomendas*/
+function sortOrders(pos){
+    var url = window.location.href;
+    var cleanURL = url.replace(/\?*sort=\w+&/g, "");
+    var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
+
+    if (cleanURL.substring(cleanURL.length - 3) == 'php')
+        cleanURL += '?sort=' + pos;
+    else
+        cleanURL += '&sort=' + pos;
+    window.location.assign(cleanURL);
+}
+
+/* Cria um novo url com um parametro para numero de livros*/
 function sortTheNumberBooksNow() {
     var selectedID = event.target.value;
     var url = window.location.href;
     var cleanURL = url.replace(/\?*number_Books=\w+&/g, "");
     var cleanURL = url.replace(/\&*number_Books=\w+&*/g, "");
 
-    console.log(cleanURL);
-
     if (cleanURL.substring(cleanURL.length - 3) == 'php')
         cleanURL += '?number_Books=' + selectedID;
     else
         cleanURL += '&number_Books=' + selectedID;
-            console.log(cleanURL);
 
     window.location.assign(cleanURL);
 };
 
+/* Faz Toggle à visibilidade da caixa de texto quando deteta click na lupa*/
 function toggleSearchBar() {
     var elem = document.getElementById("searchBar");
 
@@ -45,6 +56,7 @@ function toggleSearchBar() {
     }
 };
 
+/* Informa a action sobre o modo a proceder */
 function updateCart(checkout) {
     var inputs, index;
     var cart = document.getElementById('cart');
@@ -63,35 +75,30 @@ function updateCart(checkout) {
     else
         url += "checkout=0";
 
-
     window.location.assign(url);
 };
 
-
+/* Pede confirmação para eliminar um livro */
 function deleteBookAlert(book_ref) {
-
     var r = confirm("Tem a certeza que pretende remover o livro com a referência " + book_ref + "?");
-    if (r == true) {
+    if ( r )
         window.location.assign("../../actions/books/delete_book.php?ref=" + book_ref);
-    }
 }
 
+/* Pede confirmação para eliminar um user */
 function deleteCustomerAlert(username) {
-
     var r = confirm("Tem a certeza que pretende remover o cliente com a referência " + username + "?");
-    if (r == true) {
+    if ( r )
         window.location.assign("../../actions/users/eliminate_account.php?ref=" + username);
-    }
 }
 
 function stockChangeCheck(ref, page) {
-
 	var row = document.getElementsByClassName(ref)[0];
 	var price = row.getElementsByTagName('input')[0].value;
 	var stock = row.getElementsByTagName('input')[1].value;
 	var can_update = 1;
 
-	/* price - replace , for . */
+	/* price - replace ',' for '.' */
     price = price.replace(/,/g, '.');
 
 	/* check if price and stock contain letters */
@@ -117,11 +124,9 @@ function stockChangeCheck(ref, page) {
 		if (r == true)
 			window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
 	}
-
 }
 
-
-
+/* Verificação dos dados de um novo livro do lado do cliente */
 function NewBookCheck(){
 
 	var title 		= BookForm.title.value;
@@ -163,8 +168,8 @@ function NewBookCheck(){
 
 	if (can_create == 1){
 		var r = confirm("Confirma que pretende criar um novo livro com o titulo "
-				+ title + ", o autor " + author + ", com stock de "
-				+ stock + " e o preço " + price + " ?");
+        				+ title + ", o autor " + author + ", com stock de "
+        				+ stock + " e o preço " + price + " ?");
 		if (r == true)
 			window.location.assign("../../actions/books/add_book.php?&title=" + title
 									+ "&author=" + author + "&description=" + description
@@ -173,6 +178,7 @@ function NewBookCheck(){
 	}
 }
 
+/* Pede confirmação para mudança de estado de uma encomenda */
 function alertStateChange(orderRef, isAdmin){
 
 	var r;
@@ -187,19 +193,6 @@ function alertStateChange(orderRef, isAdmin){
 	if (r==true)
 		window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin
 									+ "&orderref=" + orderRef);
-
-}
-
-function sortOrders(pos){
-    var url = window.location.href;
-    var cleanURL = url.replace(/\?*sort=\w+&/g, "");
-    var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
-
-    if (cleanURL.substring(cleanURL.length - 3) == 'php')
-        cleanURL += '?sort=' + pos;
-    else
-        cleanURL += '&sort=' + pos;
-    window.location.assign(cleanURL);
 }
 
 function validateRegister(){

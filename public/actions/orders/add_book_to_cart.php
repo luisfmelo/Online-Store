@@ -9,10 +9,9 @@
   // Vai buscar o preço do livro em questão
   $arr = array(0, getBookPrice($_GET['id'])[0][price]);
 
-  // divide por itens.
   // $_SESSION['cart'] é um objecto do tipo key=>value
-  //  Key:   id do livro em questão
-  //  Value: array com 2 elementos: Quantidade do produto e preço
+      //  Key:   id do livro em questão
+      //  Value: array com 2 elementos: Quantidade do produto e preço
   if ( is_null($_SESSION['cart'][$_GET['id']]) )
     $_SESSION['cart'][$_GET['id']] = array( 1 , getBookPrice($_GET['id'])[0][price] );
   else {

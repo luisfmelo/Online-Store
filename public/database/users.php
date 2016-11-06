@@ -41,13 +41,31 @@
                           'addr' => $addr) );
   }
 
-/* Remove utilizador da Base de Dados */
+/* Remove utilizador da Base de Dados, suas encomendas e livros encomendados */
   function removeUser($user){
   	global $conn;
     $query = "DELETE FROM e_store.users
   						WHERE username = :user;";
 
-  	$stmt = $conn->prepare ($query);
+    $query = "DELETE
+              FROM e_store.productsordered
+              WHERE orderid in
+                     (select id from orders where userid=
+                                  (select id from users where username=:user));";
+
+    $stmt = $conn->prepare ($query);
+
+    $query = "DELETE
+              FROM e_store.orders
+              WHERE userid = (select id from users where username=:user);";
+
+    $stmt = $conn->prepare ($query);
+
+    $query = "DELETE
+              FROM e_store.users
+              WHERE username=:user";
+
+    $stmt = $conn->prepare ($query);
     $stmt->execute( array('user' => $user) );
   }
 
@@ -64,30 +82,18 @@
                           'phone' => $phone,
                           'addr' => $addr) );
   }
-  
-  //~ function editUserPassword($user, $pass){
-    //~ global $conn;
-    //~ $query = "UPDATE e_store.users
-              //~ SET password=:pass
-              //~ WHERE username='$user';";
 
-	  //~ $stmt = $conn->prepare ($query);
-    //~ $stmt->execute( array('pass' => $pass);
-  //~ } 
-  
-  
- /* Edita a Password do utilizador */ 
-  function editUserPassword($user, $pass){
+ /* Edita a Password do utilizador */
+  function editUserPass($user, $pass){
     global $conn;
     $query = "UPDATE e_store.users
-              SET password='".$pass."'
-              WHERE username='$user';";
+              SET password   = :pass
+              WHERE username = :user";
 
 	  $stmt = $conn->prepare ($query);
-    $stmt->execute();
-  } 
-  
-   
+    $stmt->execute( array('user' => $user,
+                          'pass' => $pass) );
+  }
 
 /* Recebe username e retorna a informação desse mesmo utilizador */
   function getUserByUsername($user){

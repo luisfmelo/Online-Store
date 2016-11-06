@@ -16,8 +16,7 @@
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-
-
+/** VARIAVEIS DE SESSAO: MENSAGENS **/
   $FORM_VALUES = $_SESSION['form_values'];
   $ERROR_MESSAGE =  $_SESSION['error_messages'];
   $SUCCESS_MESSAGE = $_SESSION['success_messages'];

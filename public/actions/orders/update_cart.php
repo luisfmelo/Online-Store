@@ -16,8 +16,8 @@
   }
   // Nenhum item no carrinho
   else if ($_GET['checkout'] == -1){
-    header('Location: ' . $BASE_URL . '/pages/orders/shopping_cart.php');
     $_SESSION['info_messages'] = "Nenhum Item no Carrinho!";
+    header('Location: ' . $BASE_URL . '/pages/orders/shopping_cart.php');
     exit;
   }
   // Faz Update ao carrinho

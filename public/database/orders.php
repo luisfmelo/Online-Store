@@ -1,5 +1,4 @@
 <?php
-
 /* Retorna o numero de encomendas existentes na BD */
   function getNoOrders() {
     global $conn;
@@ -76,6 +75,7 @@
 
     $stmt->execute();
   }
+
 /* retorna todas as encomendas se utilizador é admin
    Caso contrário, retorna as encomenda desse mesmo utilizador */
   function getOrdersByUsername($isAdmin, $user){
@@ -119,95 +119,95 @@
     global $conn;
 
     $query = "SELECT *
-        FROM e_store.orders
-        INNER JOIN e_store.users
-        ON e_store.orders.userid = e_store.users.id
-        INNER JOIN e_store.ordersstate
-        ON e_store.orders.state = e_store.ordersstate.id
-        WHERE username='$username'
-        LIMIT '$limit' OFFSET '$offset';";
+              FROM e_store.orders
+              INNER JOIN e_store.users
+              ON e_store.orders.userid = e_store.users.id
+              INNER JOIN e_store.ordersstate
+              ON e_store.orders.state = e_store.ordersstate.id
+              WHERE username = '$username'
+              LIMIT '$limit' OFFSET '$offset';";
 
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-  return $stmt->fetchAll();
-}
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 
 /*Retorna todas as encomendas*/
-function getOrdersAdmin($limit, $offset, $sort){
-global $conn;
+  function getOrdersAdmin($limit, $offset, $sort){
+    global $conn;
 
-$query =             "SELECT *
-                      FROM e_store.orders
-                      INNER JOIN e_store.users
-                      ON e_store.orders.userid = e_store.users.id
-                      INNER JOIN e_store.ordersstate
-                      ON e_store.orders.state = e_store.ordersstate.id ";
+    $query =             "SELECT *
+                          FROM e_store.orders
+                          INNER JOIN e_store.users
+                          ON e_store.orders.userid = e_store.users.id
+                          INNER JOIN e_store.ordersstate
+                          ON e_store.orders.state = e_store.ordersstate.id ";
 
-if ( $sort === "up")
-  $query = $query .  "ORDER BY username ASC ";
-else if ( $sort === "down")
-  $query = $query .  "ORDER BY username DESC ";
+    if ( $sort === "up")
+      $query = $query .  "ORDER BY username ASC ";
+    else if ( $sort === "down")
+      $query = $query .  "ORDER BY username DESC ";
 
-$query = $query .    "LIMIT '$limit' OFFSET '$offset' ";
-$stmt = $conn->prepare($query);
-$stmt->execute();
-return $stmt->fetchAll();
-}
+    $query = $query .    "LIMIT '$limit' OFFSET '$offset' ";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 
 /*Retorna o id correspondente a um determinado estado de encomenda */
-function getIdByOrderState ($orderState) {
- global $conn;
- $query = "SELECT id
-       FROM e_store.ordersstate
-       WHERE orderstatename='$orderState';";
+  function getIdByOrderState ($orderState) {
+    global $conn;
+    $query = "SELECT id
+              FROM e_store.ordersstate
+              WHERE orderstatename='$orderState';";
 
- $stmt = $conn->prepare($query);
-   $stmt->execute();
- return $stmt->fetchAll();
-}
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 
 /*Atualiza o estado de uma encomenda para ENVIADO*/
-function changeOrdersStateAdmin($orderref, $orderStateId) {
-  global $conn;
+  function changeOrdersStateAdmin($orderref, $orderStateId) {
+    global $conn;
 
-  $query = "UPDATE e_store.orders
-      SET state='$orderStateId'
-      WHERE ref='$orderref';";
+    $query = "UPDATE e_store.orders
+              SET state='$orderStateId'
+              WHERE ref='$orderref';";
 
-$stmt = $conn->prepare($query);
-  $stmt->execute();
-}
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  }
 
 /*Atualiza o Estado para RECEBIDO e a Data de Entrega*/
-function changeOrdersStateCustomer($orderref, $orderStateId) {
-  global $conn;
+  function changeOrdersStateCustomer($orderref, $orderStateId) {
+    global $conn;
 
-  $query = "UPDATE e_store.orders
-      SET state='$orderStateId', deliverydate='" . date('Y-m-d G:i:s') . "'
-      WHERE ref='$orderref';";
+    $query = "UPDATE e_store.orders
+              SET state='$orderStateId', deliverydate='" . date('Y-m-d G:i:s') . "'
+              WHERE ref='$orderref';";
 
-$stmt = $conn->prepare($query);
-  $stmt->execute();
-}
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  }
 
 /*Retorna detalhes de uma Encomenda */
-function getOrderInfo($ref){
-global $conn;
+  function getOrderInfo($ref){
+    global $conn;
 
-$query = "SELECT e_store.books.ref,
-                 e_store.books.title,
-                 e_store.books.price,
-                 e_store.productsordered.quantity,
-                 e_store.orders.orderdate,
-                 e_store.orders.deliverydate,
-                 e_store.users.username
-          FROM e_store.productsordered
-          INNER JOIN e_store.orders ON productsordered.orderid = orders.id
-          INNER JOIN e_store.books ON productsordered.bookid = books.id
-          INNER JOIN e_store.users ON orders.userid = users.id
-          WHERE orders.ref = '".$ref."';";
-$stmt = $conn->prepare($query);
-$stmt->execute( );
-return $stmt->fetchAll();
-}
+    $query = "SELECT e_store.books.ref,
+                     e_store.books.title,
+                     e_store.books.price,
+                     e_store.productsordered.quantity,
+                     e_store.orders.orderdate,
+                     e_store.orders.deliverydate,
+                     e_store.users.username
+              FROM e_store.productsordered
+              INNER JOIN e_store.orders ON productsordered.orderid = orders.id
+              INNER JOIN e_store.books ON productsordered.bookid = books.id
+              INNER JOIN e_store.users ON orders.userid = users.id
+              WHERE orders.ref = '".$ref."';";
+    $stmt = $conn->prepare($query);
+    $stmt->execute( );
+    return $stmt->fetchAll();
+  }
 ?>

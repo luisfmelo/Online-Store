@@ -9,7 +9,7 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
-  else if( isAdmin($_SESSION['username']) )
+  else if( $_SESSION['admin'] )
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
@@ -100,7 +100,7 @@
     </section>
 
     <div class="messages" style="margin-bottom: 20px;">
-      <?php include_once('../common/cart_msgs.php'); ?>
+      <?php include_once('../_messages/warn_msgs.php'); ?>
     </div>
 
   </div>

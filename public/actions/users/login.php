@@ -18,7 +18,8 @@
     $_SESSION['username'] = $username;
     $_SESSION['admin'] = isAdmin($username);
     $_SESSION['success_messages'] = 'Login efetuado com Sucesso';
-  } else {
+  }
+  else {
     $_SESSION['error_messages'] = 'Login Falhou';
     $_SESSION['form_values'] = $_POST;
     header('Location: ' . $_SERVER['HTTP_REFERER']);

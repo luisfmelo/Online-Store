@@ -2,35 +2,35 @@
 /* Retorna num array todos os livros bem como suas informações */
   function listSomeBooks($search, $order, $limit, $offset) {
     global $conn;
-    $query =           "SELECT *
-                        FROM e_store.books ";
+    $query =            "SELECT *
+                         FROM e_store.books ";
 
     if ($search != '')
-      $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
+      $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%' ";
 
     if ($order == 'name_a')
-      $query = $query . " ORDER BY e_store.books.title ASC";
+      $query = $query . "ORDER BY e_store.books.title ASC ";
     else if ($order == 'name_z')
-      $query = $query . " ORDER BY e_store.books.title DESC";
+      $query = $query . "ORDER BY e_store.books.title DESC ";
     else if ($order == 'price_d')
-      $query = $query . " ORDER BY e_store.books.price DESC";
+      $query = $query . "ORDER BY e_store.books.price DESC ";
     else if ($order == 'price_c')
-      $query = $query . " ORDER BY e_store.books.price ASC";
+      $query = $query . "ORDER BY e_store.books.price ASC ";
     else
-      $query = $query . " ORDER BY e_store.books.ref ASC";
+      $query = $query . "ORDER BY e_store.books.ref ASC ";
 
-    $query = $query . " LIMIT :limit OFFSET :offset;";
+    $query = $query .   "LIMIT :limit OFFSET :offset;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
     return $stmt->fetchAll();
   }
 
-/* Retorna o número total de livros resultantes de uma dada pesquisa */  
+/* Retorna o número total de livros resultantes de uma dada pesquisa */
     function TotalNumberSearchedBooks($search) {
     global $conn;
-    $query =           "SELECT COUNT(*)
-                        FROM e_store.books ";
+    $query =            "SELECT COUNT(*)
+                         FROM e_store.books ";
 
     if ($search != '')
       $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%'";
@@ -39,7 +39,7 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
-  
+
 /* Recebe array com a informação de apens alguns livros -> páginas */
   function getSomeBooks($limit, $offset){
 	global $conn;
@@ -58,11 +58,11 @@
 /* Recebe Array com informação de todos os livros de uma dada categoria */
   function listSomeBooksByCategory($ref, $order, $limit, $offset) {
     global $conn;
-    $query =           "SELECT *
-                        FROM e_store.categories
-                        INNER JOIN e_store.books
-                        ON e_store.categories.id = e_store.books.category
-                        WHERE e_store.categories.ref = :ref ";
+    $query =            "SELECT *
+                         FROM e_store.categories
+                         INNER JOIN e_store.books
+                         ON e_store.categories.id = e_store.books.category
+                         WHERE e_store.categories.ref = :ref ";
 
     if ($order == 'name_a')
       $query = $query . "ORDER BY e_store.books.title ASC";
@@ -83,22 +83,24 @@
 /* Retorna o número total de livros de uma dada categoria */
   function TotalNumberBooksByCategory($ref) {
     global $conn;
-    $query =           "SELECT COUNT(*)
-                        FROM e_store.categories
-                        INNER JOIN e_store.books
-                        ON e_store.categories.id = e_store.books.category
-                        WHERE e_store.categories.ref = :ref;";
+    $query = "SELECT COUNT(*)
+              FROM e_store.categories
+              INNER JOIN e_store.books
+              ON e_store.categories.id = e_store.books.category
+              WHERE e_store.categories.ref = :ref;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref) );
     return $stmt->fetchAll();
-  }  
+  }
 
 /* Retorna todas as categorias existentes */
   function getBookCategories() {
     global $conn;
-    $stmt = $conn->prepare('SELECT *
-                            FROM e_store.categories');
+    $query = "SELECT *
+              FROM e_store.categories";
+
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
   }
@@ -160,36 +162,34 @@
   }
 
 /* Atualiza informações de um livro com uma dada referencia - preço e stock apenas */
-function updateBook($ref, $price, $stock){
-  global $conn;
+  function updateBook($ref, $price, $stock){
+    global $conn;
 
-  $query = "UPDATE e_store.books
-            SET price = :price, stock = :$stock
-            WHERE ref = :ref;";
+    $query = "UPDATE e_store.books
+              SET price = :price, stock = :$stock
+              WHERE ref = :ref;";
 
-  $stmt = $conn->prepare ($query);
-  $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
-}
+    $stmt = $conn->prepare ($query);
+    $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
+  }
 
-function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript){
-  global $conn;
+  /* Atualiza informações de um livro com uma dada referencia */
+  function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript){
+    global $conn;
 
-  $query = "UPDATE e_store.books
-            SET ref = '$newRef', title = '$title', author = '$author', price = $price, category = $cat, stock = $stock, description = '$descript'
-            WHERE ref = '$ref';";
-//return $query;
-  $stmt = $conn->prepare ($query);
-$stmt->execute();/*
-  $stmt->execute( array('ref' => $ref,
-                        'newRef' => $newRref,
-                        'title' => $title,
-                        'author' => $author,
-                        'price' => $price,
-                        'cat' => $cat,
-                        'descript' => $descript == "" ? NULL : $descript,
-                        'stock' => $stock == "" ? 0 : $stock) );
-                        $stmt->debugDumpParams();*/
-}
+    $query = "UPDATE e_store.books
+              SET ref = '$newRef',
+                  title = '$title',
+                  author = '$author',
+                  price = $price,
+                  category = $cat,
+                  stock = $stock,
+                  description = '$descript'
+              WHERE ref = '$ref';";
+
+    $stmt = $conn->prepare ($query);
+    $stmt->execute();
+  }
 
 /* Adiciona um novo livro à Base de Dados */
   function addNewBook($ref, $title, $author, $price, $category, $description,  $stock){

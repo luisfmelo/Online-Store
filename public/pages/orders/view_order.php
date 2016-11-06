@@ -9,7 +9,7 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
-  else if( !isAdmin($_SESSION['username']) && $_SESSION['username'] == $order['username'])
+  else if( !$_SESSION['admin'] && $_SESSION['username'] == $order['username'])
   {
   	header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
@@ -33,10 +33,10 @@
 			<?php
 			foreach ($order as $info) {
 				echo "<tr>";
-						echo "<td class='linkToUser'><a href='../books/view_book.php?id=".$info['ref']."'>" . $info['ref'] .	"</a></td>";
-						echo "<td>" . $info['title']		.	"</td>";
-						echo "<td>" . $info['price']	.	" €</td>";
-						echo "<td>" . $info['quantity']	.	"</td>";
+					echo "<td class='linkToUser'><a href='../books/view_book.php?id=".$info['ref']."'>" . $info['ref'] .	"</a></td>";
+					echo "<td>" . $info['title']		.	"</td>";
+					echo "<td>" . $info['price']	.	" €</td>";
+					echo "<td>" . $info['quantity']	.	"</td>";
 				 echo "</tr>";
 			}
 			?>

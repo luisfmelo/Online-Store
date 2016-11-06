@@ -4,7 +4,10 @@
 
   /**
     * TESTA FORMULARIO
-    *   -> minimo 5 letras para user e pass
+    *   -> Todos os dados devem ser preenchidos
+    *   -> passwords iguais
+    *   -> minimo 5 caracteres para user e pass
+    *   -> telefone deve ter 9 caracteres (numéricos)
     *   -> formato de email correto
     *   -> user unico
     */

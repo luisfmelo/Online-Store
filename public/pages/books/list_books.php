@@ -17,14 +17,14 @@
 
   /* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id'])){
-	$number_of_books = TotalNumberBooksByCategory($_GET['id']);  
-    $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
+	   $number_of_books = TotalNumberBooksByCategory($_GET['id']);
+     $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
   }
   else {
-	$number_of_books = TotalNumberSearchedBooks($_GET['search']);   
-    $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);	
+	   $number_of_books = TotalNumberSearchedBooks($_GET['search']);
+     $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
   }
-  
+
   /* controlo icons previous/next */
   $max_no_page = $number_of_books[0]['count']/ $number_books_per_page;
   if ($page + 1 > $max_no_page)
@@ -32,7 +32,7 @@
   else
     $next = $page + 1;
   $previous = $page - 1;
-  
+
   $param = "";
 
   if (isset($_GET['id']))
@@ -114,12 +114,13 @@
       }
       ?>
     </section>
+
     <div class="row arrows">
 		<?php
 				if ($page != 0)
 					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$previous" . $param . "\">
-						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
-					</a>";
+      						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
+      					</a>";
 				for ($i = 0; $i < $max_no_page; $i++){
 					$number = $i + 1;
 					if ($i == $page)
@@ -129,8 +130,8 @@
 				}
 				if ($next != "NOTHING_TO_SHOW")
 					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$next" . $param . "\">
-						<i class='fa fa-angle-double-right' aria-hidden='true'></i>
-					</a>";
+      						<i class='fa fa-angle-double-right' aria-hidden='true'></i>
+      					</a>";
 		?>
 	</div>
 

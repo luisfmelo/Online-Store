@@ -76,13 +76,14 @@ ul {
 .myForms input:not([type="submit"]), .myForms Select {
     height: 50px;
 }
-.myForms input:not([type="submit"]), .myForms Select, .myForms textarea{
-     border: 0px;
-     border-bottom: 1px solid #222;
-     background-color: #EEE;
-     outline: none;
-     font-size: 16px;
- }
+
+.myForms input:not([type="submit"]), .myForms Select, .myForms textarea {
+    border: 0px;
+    border-bottom: 1px solid #222;
+    background-color: #EEE;
+    outline: none;
+    font-size: 16px;
+}
 
 .myForms input:not([type="submit"]):focus, .myForms Select:focus, .myForms textarea:focus {
     color: #222;
@@ -107,10 +108,11 @@ ul {
 }
 
 
-
 /***********************************************/
 
+
 /*** MESSAGES STYLES ***/
+
 
 /***********************************************/
 
@@ -241,8 +243,8 @@ ul {
     color: #222;
 }
 
-td i:hover{
-  color: #C61017;
+td i:hover {
+    color: #C61017;
 }
 
 .form-group .fa {
@@ -268,7 +270,6 @@ td i:hover{
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-
     /* Safari/Chrome, other WebKit */
     -webkit-box-sizing: border-box;
     /* Firefox, other Gecko */
@@ -313,7 +314,7 @@ td i:hover{
     transition: all 0.5s ease;
 }
 
-.titleLink{
+.titleLink {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -527,6 +528,8 @@ header {
 .userMenu {
     width: 30%;
 }
+
+
 /*******************************/
 
 
@@ -535,16 +538,21 @@ header {
 
 /*******************************/
 
-.pageNumber{
-	width:0.1%;
-
+.pageNumber {
+    width: 0.1%;
 }
 
-.pageNumberSelected{
-	color: #C61017;
-}
-.pageNumber:hover{
+.pageNumberSelected {
     color: #C61017;
+    font-weight: bolder;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.pageNumber:hover {
+    color: #C61017;
+    text-decoration: underline;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease
@@ -617,22 +625,25 @@ header {
     width: 50%;
 }
 
-.left{
+.left {
     padding-bottom: 0!importANT;
 }
+
 .photo img, .changePhoto {
     margin: 20px 30% 0 20%;
     width: 40%;
 }
+
 .left span, #editProfile, #editBook {
     line-height: 2;
     letter-spacing: 2px;
 }
 
-.linkToUser a:hover{
+.linkToUser a:hover {
     text-decoration: underline;
     font-weight: bold;
 }
+
 
 /*******************************/
 
@@ -641,42 +652,47 @@ header {
 
 
 /*******************************/
-.gerir{
-   border-collapse:collapse;
-   margin-top: 20px;
-   margin-left: 30px;
-   text-align: center;
+
+.gerir {
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 30px;
+    text-align: center;
 }
-.gerir tr:last-child td, .gerir tr th{
+
+.gerir tr:last-child td, .gerir tr th {
     border-bottom: 1px solid #C61017;
 }
 
-.arrows a{
+.arrows a {
     margin: 20px 15px;
 }
-.gerir tr{
+
+.gerir tr {
     max-width: 90%;
 }
-.gerir tr td{
-    white-space:nowrap;
+
+.gerir tr td {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 300px;
 }
-td{
+
+td {
     padding-left: 10px;
 }
 
-.gerirClientes tr td{
+.gerirClientes tr td {
     max-width: 500px;
 }
 
-.orderInfo{
+.orderInfo {
     margin-top: 30px;
     margin-left: 30px;
 }
 
-.description{
+.description {
     width: 80%;
     line-height: 2;
     letter-spacing: 2px;
@@ -685,6 +701,7 @@ td{
     font-size: 16px;
 }
 
+
 /*******************************/
 
 
@@ -692,6 +709,7 @@ td{
 
 
 /*******************************/
+
 
 /*** ADICIONAR NOVO LIVRO ***/
 
@@ -704,18 +722,18 @@ td{
     font-size: 16px;
 }
 
-#newBook textarea:focus{
+#newBook textarea:focus {
     color: #222;
     border-bottom: 2px solid #C61017;
 }
 
-#newBook Select{
+#newBook Select {
     height: 50px;
 }
 
 
-
 /**********************************/
+
 .rightContent {
     width: 65%;
     margin: 2.5%;
@@ -738,7 +756,7 @@ td{
     box-sizing: border-box;
 }
 
-.filter div Select{
+.filter div Select {
     background-color: transparent;
     height: 30px;
     color: #EEE;
@@ -750,9 +768,10 @@ td{
     margin-right: 40px;
 }
 
-.filter div Select Option{
+.filter div Select Option {
     color: #222;
 }
+
 #books {
     background-color: #CCC;
     padding: 2% 0;
@@ -805,14 +824,13 @@ td{
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
-
     /* Safari/Chrome, other WebKit */
     -webkit-box-sizing: border-box;
     /* Firefox, other Gecko */
     -moz-box-sizing: border-box;
     /* Opera/IE 8+ */
     box-sizing: border-box;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -900,7 +918,6 @@ td{
 }
 
 
-
 /*************************************************/
 
 
@@ -908,45 +925,51 @@ td{
 
 
 /*************************************************/
-.team{
+
+.team {
     display: inline-block;
-    width:50%;
+    width: 50%;
     text-align: center;
 }
 
-.info{
+.info {
     display: inline-block;
-    float:right;
+    float: right;
     width: 40%;
 }
 
-.memberInfo{
-    width:40%;
+.memberInfo {
+    width: 40%;
     margin: 0;
     display: inline-block;
 }
 
-.memberInfo img{
+.memberInfo img {
     margin: 0 25%;
-    width:50%;
+    width: 50%;
     border-radius: 100%;
     float: right;
     margin-bottom: 40px;
 }
 
-.team p{
+.team p {
     font-size: 14px;
 }
 
-.memberInfo p, .team p:last-child, .info p{
+.memberInfo p, .team p:last-child, .info p {
     font-size: 15px;
     padding: 10px 0;
 }
 
-
-.info .map{
-    margin-bottom: 5px;
+.info .map, .memberInfo {
+    margin-bottom: 15px;
 }
+
+.map iframe, .additionalInfo{
+    width:90%!important;
+}
+
+
 /*************************************************/
 
 
@@ -955,14 +978,13 @@ td{
 
 /*************************************************/
 
-
-table tr td{
+table tr td {
     padding: 0 15px;
 }
 
-.linkButtons a{
+.linkButtons a {
     text-align: center;
-    border: 3px solid #222;//#C61017;
+    border: 3px solid #222; //#C61017;
     position: relative;
     display: inline-block;
     width: 20%;
@@ -971,18 +993,16 @@ table tr td{
     padding: 6% 0 10% 0;
     border-radius: 100%;
     font-size: 20px;
-
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.linkButtons a:hover{
+.linkButtons a:hover {
     box-shadow: 0 0 50px #C61017;
     color: #C61017;
     border-color: #C61017;
     font-weight: bolder;
-
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;

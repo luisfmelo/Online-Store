@@ -7,7 +7,7 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
-  else if( !isAdmin($_SESSION['username']) )
+  else if( !$_SESSION['admin'] )
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
@@ -30,7 +30,7 @@
 				<th> Email		</th>
 				<th> Telefone	</th>
 				<th> Morada		</th>
-				<th> Eliminar	</th>
+				<th>	</th>
 			</tr>
 			<?php
 			foreach ($customers as $customer) {

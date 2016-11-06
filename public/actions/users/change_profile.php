@@ -1,10 +1,15 @@
 <?php
-
   include_once('../../database/users.php');
   include_once('../../config/init.php');
 
   $password_was_set = 0;
 
+  /* Testa novos dados do User:
+        - Password em branco -> não pretende altera-la
+        - Password com 5 ou mais caracteres
+        - Telefone tem que ter 9 caracteres (numéricos)
+        - Email tem que obedecer ao estilo xx@yy.zz
+  */
   if ( $_POST['password'] !== ""){
 	  $password_was_set = 1;
       if ( $_POST['password'] !== $_POST['confirmPassword']){
@@ -37,8 +42,9 @@
 
   editUser($username, $name, $phone, $address, $email);
 
-  if ($password_was_set == 1){
+  if ($password_was_set){
 	 $password = hash("sha256", $_POST['password']);
+
 	 editUserPass($username, $password);
   }
 

@@ -1,6 +1,6 @@
 <?php
   include_once '../common/header.php';
-    include_once '../../config/init.php';
+  include_once '../../config/init.php';
 ?>
 
 
@@ -56,7 +56,7 @@
     </div>
     <div class="row linkButtons">
       <a href="../downloads/201206020_SIEM_ppt.pptx" target="_blank" download>
-          <span>PPT</span>
+          PPT
       </a>
       <a href="../downloads/201206020_SIEM_css.css" target="_blank" download>
           CSS
