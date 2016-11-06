@@ -190,6 +190,18 @@ function alertStateChange(orderRef, isAdmin){
 
 }
 
+function sortOrders(pos){
+    var url = window.location.href;
+    var cleanURL = url.replace(/\?*sort=\w+&/g, "");
+    var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
+
+    if (cleanURL.substring(cleanURL.length - 3) == 'php')
+        cleanURL += '?sort=' + pos;
+    else
+        cleanURL += '&sort=' + pos;
+    window.location.assign(cleanURL);
+}
+
 function validateRegister(){
 
     /**

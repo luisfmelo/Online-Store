@@ -12,28 +12,32 @@
   }
   $username = $_SESSION['username'];
   $isAdmin = isAdmin($username);
-    
+
   /* página atual */
   if(!isset($_GET['page']))
 	$page = 0;
   else
-	$page = $_GET['page'];	
-  	
+	$page = $_GET['page'];
+
   /* controlo icons previous/next */
-  $number_books_per_page = 6;
+  $number_books_per_page = 10;
   $number_of_orders = getNoOrders();
   $max_no_page = $number_of_orders[0]['count'] /  $number_books_per_page;
 
   if ($page + 1 > $max_no_page)
-	$next = "NOTHING_TO_SHOW";
+		$next = "NOTHING_TO_SHOW";
   else
-	$next = $page + 1;
+		$next = $page + 1;
 
   $previous = $page - 1;
-  
+
+	$sort 			= isset($_GET['sort']) ?  $_GET['sort'] :
+																				"-";
+	$sortParams = isset($_GET['sort']) ?  "&sort=$sort" :
+																				"";
   /* obter encomendas conforme se trate de um cliente ou admin */
   if ($isAdmin)
-	$orders = getOrdersAdmin($number_books_per_page, $page * $number_books_per_page);
+		$orders = getOrdersAdmin($number_books_per_page, $page * $number_books_per_page, $_GET['sort']);
   else
   	$orders = getOrdersCustomer($username,$number_books_per_page, $page * $number_books_per_page);
 
@@ -54,9 +58,13 @@
 
 				<?php
 					if ($isAdmin == 1)
-						echo "<th> Cliente </th>";
+						echo "<th>
+										Cliente
+										<i class='fa fa-arrow-down' aria-hidden='true' onclick='sortOrders(\"down\")'></i>
+										<i class='fa fa-arrow-up' aria-hidden='true' onclick='sortOrders(\"up\")'></i>
+									</th>";
 				?>
-				<th> Valor				</th>
+				<!--<th> Valor				</th>-->
 				<th> Data de encomenda	</th>
 				<th> Data de entrega	</th>
 				<th> Estado				</th>
@@ -71,7 +79,7 @@
 					echo "<td class='linkToUser'><a href='../orders/view_order.php?id=".$order['ref']."'>" . $order['ref'] .	"</a></td>";
 					if ($isAdmin)
 						echo "<td class='linkToUser'><a href='../users/view_profile.php?user=".$order['username']."'>" . $order['username'] .	"</a></td>";
-					echo "<td>" . $order['price'].			" € </td>";
+					//echo "<td>" . $order['price'].			" € </td>";
 					echo "<td>" . $order['orderdate']	.	"</td>";
 					echo "<td>" . $order['deliverydate'].	"</td>";
 					echo "<td>" .$order['orderstatename'].  "</td>";
@@ -94,9 +102,9 @@
 			for ($i = 0; $i < $max_no_page; $i++){
 				$number = $i + 1;
 				if ($i == $page)
-					echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i\">" .$number . "</a>";
+					echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
 				else
-					echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i\">" .$number . "</a>";
+					echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
 			}
 			if ($next != "NOTHING_TO_SHOW")
 				echo "<a href=\"$BASE_URL/pages/orders/view_orders.php?page=$next\">

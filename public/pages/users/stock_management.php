@@ -11,8 +11,8 @@
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
-  }	
-	
+  }
+
   /* página atual */
   if(!isset($_GET['page']))
 	$page = 0;
@@ -30,7 +30,7 @@
 	$next = $page + 1;
 
   $previous = $page - 1;
-  
+
   $books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
 ?>
 <div class="row">
@@ -54,7 +54,7 @@
 			foreach ($books as $book) {
 				echo "<tr class='". $book['ref'] ."'>";
 					echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['ref'] .	"</a></td>";
-				echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['title'] .	"</a></td>";
+					echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['title'] .	"</a></td>";
 					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
 					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
 					echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";

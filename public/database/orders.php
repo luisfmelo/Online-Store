@@ -10,7 +10,7 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
-  
+
 /* Recebe uma referencia gerada e o total da transação e
    Adiciona uma nova encomenda ao utiliador atual da Sessão*/
   function new_Order($ref, $total){
@@ -133,17 +133,22 @@
 }
 
 /*Retorna todas as encomendas*/
-function getOrdersAdmin($limit, $offset){
+function getOrdersAdmin($limit, $offset, $sort){
 global $conn;
 
-$query = "SELECT *
-    FROM e_store.orders
-    INNER JOIN e_store.users
-    ON e_store.orders.userid = e_store.users.id
-    INNER JOIN e_store.ordersstate
-    ON e_store.orders.state = e_store.ordersstate.id
-	LIMIT '$limit' OFFSET '$offset';";
+$query =             "SELECT *
+                      FROM e_store.orders
+                      INNER JOIN e_store.users
+                      ON e_store.orders.userid = e_store.users.id
+                      INNER JOIN e_store.ordersstate
+                      ON e_store.orders.state = e_store.ordersstate.id ";
 
+if ( $sort === "up")
+  $query = $query .  "ORDER BY username ASC ";
+else if ( $sort === "down")
+  $query = $query .  "ORDER BY username DESC ";
+
+$query = $query .    "LIMIT '$limit' OFFSET '$offset' ";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 return $stmt->fetchAll();
