@@ -1,6 +1,7 @@
 <?php
   session_start();
-  session_set_cookie_params(3600, '~/Online-Store/public'); //alterar quando estamos a trabalhar fora da root: ~/ee12103/Fritter
+//  session_set_cookie_params(3600, '~/Online-Store/public'); // usando vagrant
+  session_set_cookie_params(3600, '~/ee12103/trabalhosSIEM/Online-Store/public'); // servidor da feup
 
   include_once 'dbconfig.php';
 
