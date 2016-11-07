@@ -1,5 +1,5 @@
 <?php
 //phpinfo();
-  header('Location: pages/common/contactus.php');
-  exit;
+ header("Location: pages/common/contactus.php");
+ exit;
 ?>
