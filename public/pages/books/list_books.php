@@ -121,13 +121,14 @@
 					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$previous" . $param . "\">
       						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
       					</a>";
-				for ($i = 0; $i < $max_no_page; $i++){
-					$number = $i + 1;
-					if ($i == $page)
-						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
-					else
-						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
-				}
+        if ($max_no_page > 1)
+    				for ($i = 0; $i < $max_no_page; $i++){
+    					$number = $i + 1;
+    					if ($i == $page)
+    						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
+    					else
+    						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
+    				}
 				if ($next != "NOTHING_TO_SHOW")
 					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$next" . $param . "\">
       						<i class='fa fa-angle-double-right' aria-hidden='true'></i>

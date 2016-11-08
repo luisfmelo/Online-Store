@@ -7,7 +7,7 @@
 <div class="row">
   <div class="leftContent team" style="width:60%;">
     <div class="memberInfo">
-      <img src="../../images/lidia.png" alt="Lídia Cerqueira" />
+      <img src="<?=$BASE_URL?>/images/lidia.png" alt="Lídia Cerqueira" />
       <p>
         Lídia Cerqueira
       </p>
@@ -19,7 +19,7 @@
       </p>
     </div>
     <div class="memberInfo">
-      <img src="../../images/luis.png" alt="Luís Melo" />
+      <img src="<?=$BASE_URL?>/images/luis.png" alt="Luís Melo" />
       <p>
         Luís Melo
       </p>
@@ -53,15 +53,21 @@
       <p>
         <strong>Optimizado para: </strong> Chrome &amp; Brave Browser com monitor 15''
       </p>
+      <p>
+        <strong>Credenciais Cliente: </strong> client/client
+      </p>
+      <p>
+        <strong>Credenciais Administrador: </strong> admin/admin
+      </p>
     </div>
     <div class="row linkButtons">
-      <a href="../downloads/201206020_SIEM_ppt.pptx" target="_blank" download>
+      <a href="<?=$BASE_URL?>/../downloads/201205960_201206020_SIEM_ppt.pptx" target="_blank" download>
           PPT
       </a>
-      <a href="../downloads/201206020_SIEM_css.css" target="_blank" download>
+      <a href="<?=$BASE_URL?>/../downloads/201205960_201206020_SIEM_css.css" target="_blank" download>
           CSS
       </a>
-      <a href="../downloads/201206020_SIEM_T1.rar" target="_blank" download>
+      <a href="<?=$BASE_URL?>/../downloads/201205960_201206020_SIEM_T2.rar" target="_blank" download>
           ZIP
       </a>
     </div>

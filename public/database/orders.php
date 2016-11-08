@@ -1,10 +1,13 @@
 <?php
 /* Retorna o numero de encomendas existentes na BD */
-  function getNoOrders() {
+  function getNoOrders($user, $isadmin) {
     global $conn;
-    $query = "SELECT COUNT(id)
-              FROM e_store.orders;";
-
+    $query =             "SELECT COUNT(*)
+                          FROM e_store.orders";
+    if (!isadmin)
+      $query = $query . " INNER JOIN e_store.users ON orders.userid = users.id
+                          WHERE username = '".$user."';";
+                          return $query;
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();

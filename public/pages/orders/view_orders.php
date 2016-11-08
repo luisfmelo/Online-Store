@@ -21,7 +21,7 @@
 
   /* controlo icons previous/next */
   $number_books_per_page = 10;
-  $number_of_orders = getNoOrders();
+  $number_of_orders = getNoOrders($username, $isAdmin);
   $max_no_page = $number_of_orders[0]['count'] /  $number_books_per_page;
 
   if ($page + 1 > $max_no_page)
@@ -49,7 +49,12 @@
   <div class="rightContent">
 
     <h2 class="bigTitle">
-      <span>Gerir Encomendas</span>
+      <?php
+      if ($isAdmin)
+        echo "<span>Gerir Encomendas</span>";
+      else
+        echo "<span>Minhas Encomendas</span>";
+      ?>
     </h2>
 
 	<table class="gerir">
@@ -99,13 +104,14 @@
 				echo "<a href=\"$BASE_URL/pages/orders/view_orders.php?page=$previous\">
 								<i class='fa fa-angle-double-left' aria-hidden='true'></i>
 							</a>";
-			for ($i = 0; $i < $max_no_page; $i++){
-				$number = $i + 1;
-				if ($i == $page)
-					echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
-				else
-					echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
-			}
+			if ($max_no_page !== 1)
+				for ($i = 0; $i < $max_no_page; $i++){
+					$number = $i + 1;
+					if ($i == $page)
+						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
+					else
+						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/orders/view_orders.php?page=$i".$sortParams."\">" .$number . "</a>";
+				}
 			if ($next != "NOTHING_TO_SHOW")
 				echo "<a href=\"$BASE_URL/pages/orders/view_orders.php?page=$next\">
 								<i class='fa fa-angle-double-right' aria-hidden='true'></i>
