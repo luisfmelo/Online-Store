@@ -1,13 +1,18 @@
 <?php
   session_start();
-//  session_set_cookie_params(3600, '~/Online-Store/public'); // usando vagrant
-  session_set_cookie_params(3600, '~/ee12103/trabalhosSIEM/Online-Store/public'); // servidor da feup
+  if ( $_SERVER['HTTP_HOST'] === '192.168.33.10')
+    session_set_cookie_params(3600, '~/Online-Store/public'); // usando vagrant
+  else
+    session_set_cookie_params(3600, '~/ee12103/trabalhosSIEM/Online-Store/public'); // servidor da feup
 
   include_once 'dbconfig.php';
 
-  $BASE_DIR = dirname(dirname(__FILE__)); // '/var/www/public/';
-  $BASE_URL = '../..';
+  $BASE_DIR = dirname(__DIR__); // '/var/www/public/';
+  $BASE_URL = '../..';//$_SERVER['HTTP_HOST'];
   $IMG_DIR = '../../images';
+
+// include Smarty Template Engine library
+  include_once($BASE_DIR . '/libs/smarty/Smarty.class.php');
 
   $conn = new PDO('pgsql:host=' . $host . ';dbname=' . $db, $username, $password);
 
@@ -24,6 +29,26 @@
   $CART_MESSAGE = $_SESSION['cart_messages'];
   $INFO_MESSAGE = $_SESSION['info_messages'];
   $WARN_MESSAGE = $_SESSION['warning_message'];
+
+// Smarty Template Engine
+  $smarty = new Smarty();
+
+  $smarty->error_reporting = E_ALL & ~E_NOTICE;
+  $smarty->template_dir = $BASE_DIR . '/templates/';
+  $smarty->compile_dir = $BASE_DIR . '/libs/smarty/templates_c/';
+
+  $smarty->assign('BASE_URL', $BASE_URL);
+  $smarty->assign('BASE_DIR', $BASE_DIR);
+  $smarty->assign('IMG_DIR', $IMG_DIR);
+  $smarty->assign('GMAPS_API_KEY', $GMAPS_API_KEY);
+  $smarty->assign('USERNAME', $_SESSION['username']);
+  $smarty->assign('isADMIN', $_SESSION['admin']);
+  $smarty->assign('FORM_VALUES', $_SESSION['form_values']);
+  $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);
+  $smarty->assign('SUCCESS_MESSAGES', $_SESSION['success_messages']);
+  $smarty->assign('CART_MESSAGES', $_SESSION['cart_messages']);
+  $smarty->assign('INFO_MESSAGES', $_SESSION['info_messages']);
+  $smarty->assign('WARNING_MESSAGES', $_SESSION['warning_messages']);
 
   unset($_SESSION['form_values']);
   unset($_SESSION['error_messages']);

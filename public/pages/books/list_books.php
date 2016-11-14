@@ -1,5 +1,6 @@
 <?php
-  include '../common/header.php';
+  include_once('../../config/init.php');
+  include_once($BASE_DIR .'/database/books.php');
 
   $categories = getBookCategories();
 
@@ -11,9 +12,9 @@
 
   /* página atual */
   if(!isset($_GET['page']))
-	$page = 0;
+    $page = 0;
   else
-	$page = $_GET['page'];
+	  $page = $_GET['page'];
 
   /* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id'])){
@@ -44,98 +45,13 @@
   if (isset($_GET['number_Books']))
     $param = $param . "&number_Books=" . $_GET['number_Books'];
 
+
+  $smarty->assign('page', $page);
+  $smarty->assign('next', $next);
+  $smarty->assign('previous', $previous);
+  $smarty->assign('max_no_page', $max_no_page);
+  $smarty->assign('param', $param);
+  $smarty->assign('CATEGORIES', $categories);
+  $smarty->assign('BOOKS', $books);
+  $smarty->display('books/list_books.tpl');
 ?>
-
-<!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
-<div class="row">
-  <div class="leftContent">
-    <a class='itemMenu divlink' href='../books/list_books.php?'>
-        Todos os Livros
-    </a>
-  <?php
-  foreach ($categories as $cat) {
-    echo "<a class='itemMenu divlink' href='list_books.php?id=" . $cat['ref'] . "'>";
-      echo $cat['categoryname'];
-    echo "</a>";
-  }
-  ?>
-  </div>
-
-<!-- LISTA DE LIVROS - ALINHADOS A DIREITA -->
-  <div class="rightContent">
-  <?php include 'filter.php';?>
-
-    <section id="books">
-      <?php
-      foreach ($books as $book) {
-        $cover =
-          file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')  ?
-                      $IMG_DIR . '/covers/' . $book['ref'] . '.png'   :
-                      $IMG_DIR . '/covers/default.png' ;
-
-        echo "<article class='book'>";
-          echo "<a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>
-                  <img class='cover' src=" . $cover . " />
-                </a>";
-
-          echo "<div class='book-data'>";
-            echo "<span class='title'>
-                    <a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."' class='titleLink'>
-                      ".$book['title']."
-                    </a>
-                  </span><br />";
-
-            echo "<span class='author'>" . $book['author'] . "</span><br />";
-            echo "<span class='descript'>" . $book['description'] . "</span><br />";
-          echo "</div>";
-
-          echo "<div class='addBtn'>";
-              echo "<span class='price'>€ " . $book['price'] . "</span><br />";
-
-            // So mostra botão de adicionar se não for admin, tiver sessao iniciada e ainda haver em stock
-            if ( $_SESSION['username'] != '' && !$_SESSION['admin']  && $book['stock'] != 0)
-              echo "<a class='btn' href='" . $BASE_URL . "/actions/orders/add_book_to_cart.php?id=" . $book['ref'] . "'><i class='fa fa-cart-plus' aria-hidden='true'></i>
-                      Adicionar
-                    </a>";
-
-            // Caso não tenha em stock, mostra Esgotado
-            // Em caso de não haver user logado, não mostra informação de stock
-            if ( $book['stock'] !== 0 && $_SESSION['username'] != '' )
-                echo "<span class='inStock'>
-                        <small>Em Stock</small>
-                      </span>";
-            else if ( $book['stock'] === 0 && $_SESSION['username'] != '')
-                echo "<span class='soldOut'>
-                        <small>Esgotado</small>
-                      </span>";
-
-          echo "</div>";
-        echo "</article>";
-      }
-      ?>
-    </section>
-
-    <div class="row arrows">
-		<?php
-				if ($page != 0)
-					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$previous" . $param . "\">
-      						<i class='fa fa-angle-double-left' aria-hidden='true'></i>
-      					</a>";
-        if ($max_no_page > 1)
-    				for ($i = 0; $i < $max_no_page; $i++){
-    					$number = $i + 1;
-    					if ($i == $page)
-    						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
-    					else
-    						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/books/list_books.php?page=$i" . $param . "\"> " . $number . " </a>";
-    				}
-				if ($next != "NOTHING_TO_SHOW")
-					echo "<a href=\"$BASE_URL/pages/books/list_books.php?page=$next" . $param . "\">
-      						<i class='fa fa-angle-double-right' aria-hidden='true'></i>
-      					</a>";
-		?>
-	</div>
-
-</div>
-
-<?php include '../common/footer.php';?>
