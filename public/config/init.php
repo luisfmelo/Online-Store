@@ -44,11 +44,11 @@
   $smarty->assign('USERNAME', $_SESSION['username']);
   $smarty->assign('isADMIN', $_SESSION['admin']);
   $smarty->assign('FORM_VALUES', $_SESSION['form_values']);
-  $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);
-  $smarty->assign('SUCCESS_MESSAGES', $_SESSION['success_messages']);
-  $smarty->assign('CART_MESSAGES', $_SESSION['cart_messages']);
-  $smarty->assign('INFO_MESSAGES', $_SESSION['info_messages']);
-  $smarty->assign('WARNING_MESSAGES', $_SESSION['warning_messages']);
+  $smarty->assign('ERROR_MESSAGE', $ERROR_MESSAGE);
+  $smarty->assign('SUCCESS_MESSAGE', $SUCCESS_MESSAGE);
+  $smarty->assign('CART_MESSAGE', $CART_MESSAGE);
+  $smarty->assign('INFO_MESSAGE', $INFO_MESSAGE);
+  $smarty->assign('WARNING_MESSAGE', $WARN_MESSAGE);
 
   unset($_SESSION['form_values']);
   unset($_SESSION['error_messages']);
