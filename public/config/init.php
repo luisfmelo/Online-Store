@@ -8,7 +8,7 @@
   include_once 'dbconfig.php';
 
   $BASE_DIR = dirname(__DIR__); // '/var/www/public/';
-  $BASE_URL = '../..';//$_SERVER['HTTP_HOST'];
+  $BASE_URL = '../..'; //$_SERVER['HTTP_HOST'];
   $IMG_DIR = '../../images';
 
 // include Smarty Template Engine library
