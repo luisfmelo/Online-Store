@@ -1,61 +1,57 @@
-<?php
-	include '../common/header.php';
-  include_once('../../database/users.php');
-  include_once('../../database/orders.php');
-	$order = getOrderInfo($_GET['id']);
-
-	if ( $_SESSION['username'] == '' )
-  {
-    header("Location: " . $BASE_URL . '/pages/users/login.php');
-    exit;
-  }
-  else if( !$_SESSION['admin'] && $_SESSION['username'] == $order['username'])
-  {
-  	header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
-    exit;
-  }
-?>
-
 <div class="row">
-  <?php   include '../common/left_menu.php';  ?>
+	<div class="rightContent">
 
-  <div class="rightContent">
-    <h2 class="bigTitle">
-      <span>Encomenda: <?=$_GET['id']?></span>
-    </h2>
-		<table class="gerir gerirClientes">
-			<tr>
-				<th> Livro	</th>
-				<th> Titulo		</th>
-				<th> Preço		</th>
-				<th> Quantidade	</th>
-			</tr>
-			<?php
-			foreach ($order as $info) {
-				echo "<tr>";
-					echo "<td class='linkToUser'><a href='../books/view_book.php?id=".$info['ref']."'>" . $info['ref'] .	"</a></td>";
-					echo "<td>" . $info['title']		.	"</td>";
-					echo "<td>" . $info['price']	.	" €</td>";
-					echo "<td>" . $info['quantity']	.	"</td>";
-				 echo "</tr>";
-			}
-			?>
+		<h2 class="bigTitle">
+		  
+		  {if ($isAdmin)}
+			<span>Gerir Encomendas</span>
+		  {else}
+			<span>Minhas Encomendas</span>
+		  
+		</h2>
+
+		<table class="gerir">
+				<tr>
+					<th> Referência			</th>
+
+					
+					{if ($isAdmin == 1)}
+						<th> Cliente
+								<i class='fa fa-arrow-down' aria-hidden='true' onclick='sortOrders(\"down\")'></i>
+								<i class='fa fa-arrow-up' aria-hidden='true' onclick='sortOrders(\"up\")'></i>
+						</th>
+					{/if }
+						<th> Data de encomenda	</th>
+						<th> Data de entrega	</th>
+						<th> Estado				</th>
+						<th style="border-bottom:0x;"> </th>
+
+				</tr>
+				
+				{if (count($orders) == 0)}
+					<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+				
+				{foreach $orders as $order} 
+					<tr>
+						<td class='linkToUser'> <a href='../orders/view_order.php?id={$order.ref}'> $order.ref </a></td>
+						{if ($isAdmin)}
+							<td class='linkToUser'><a href='../users/view_profile.php?user={$order.username}'> $order.username </a></td>
+							<td> $order.orderdate			</td>
+							<td> $order.deliverydate	   	</td>
+							<td> $order.orderstatename		</td>
+	<!--
+						{if ( $isAdmin && ($order['orderstatename'] == "PENDENTE"))}
+							<td style='border-bottom:0x;'><a class='btn' onclick=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" >Enviar</td>";
+						else if ( !$isAdmin && ($order['orderstatename'] == "ENVIADO"))
+				<td style='border-bottom:0x;'><a class='btn' onclick=\"alertStateChange('" . $order['ref'] ."', '" . $isAdmin ."')\" >Receber</td>";
+			  else
+				<td></td>
+	-->
+					</tr>
+				
+			   {/foreach}
 		</table>
-		<div class="orderInfo left">
-			<span>
-				<strong>Data da encomenda:</strong>	<?=$order[0]['orderdate']?> <br />
-			</span>
-			<?php
-			if ( !is_null($order[0]['deliverydate']) )
-			echo "<span>
-							<strong>Data de entrega:</strong> ".$order[0]['deliverydate']." <br />
-						</span>";
-			?>
-			<span>
-				<strong>Valor Total:</strong>		  <?=$order[0]['price'];?> €<br />
-			</span>
 
-		</div>
+	</div>
 </div>
 
-<?php include '../common/footer.php';?>
