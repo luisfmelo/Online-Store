@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 09:31:47
+/* Smarty version 3.1.30, created on 2016-11-18 11:52:07
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582eca83202cd6_42586015',
+  'unifunc' => 'content_582eeb67d37867_64029580',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1479461506,
+      1 => 1479470054,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_582eca83202cd6_42586015 (Smarty_Internal_Template $_smarty_tpl) {
+function content_582eeb67d37867_64029580 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -96,7 +96,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
 
           
           <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value != '' && !$_smarty_tpl->tpl_vars['isADMIN']->value && $_smarty_tpl->tpl_vars['book']->value['stock'] != 0) {?>
-            <a class='btn' href='$BASE_URL/actions/orders/add_book_to_cart.php?id=$book.ref'>
+            <a class='btn' href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/orders/add_book_to_cart.php?id=<?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
+'>
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>

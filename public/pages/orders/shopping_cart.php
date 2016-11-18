@@ -2,7 +2,6 @@
   include_once('../../config/init.php');
   include_once('../../database/users.php');
   include_once('../../database/books.php');
-  include_once '../common/header.php';
 
   if ( $_SESSION['username'] == '' )
   {
@@ -20,115 +19,47 @@
 
   if (count($_SESSION['cart']) != 0)
     $books = getSelectedBooks($_SESSION['cart']);
-?>
 
+  $cart_items = array();
+  $i = 0;
 
-<div class="row">
-  <?php   include '../common/left_menu.php';  ?>
+  foreach ($books as $book) {
+    $cover =
+      file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')  ?
+                  $IMG_DIR . '/covers/' . $book['ref'] . '.png'   :
+                  $IMG_DIR . '/covers/default.png' ;
 
-  <div class="rightContent">
-    <h2 class="bigTitle">
-      <span>O meu Carrinho de Compras</span>
-      <i class="fa fa-refresh" aria-hidden="true" onclick="updateCart(false)"></i>
-    </h2>
-
-    <section id="cart">
-      <?php
-    if (count($_SESSION['cart'])!=0)
-      foreach ($books as $book) {
-        $cover =
-          file_exists($IMG_DIR . '/covers/' . $book['ref'] . '.png')  ?
-                      $IMG_DIR . '/covers/' . $book['ref'] . '.png'   :
-                      $IMG_DIR . '/covers/default.png' ;
-
-          $_SESSION['cart'][$book['ref']] = array($_SESSION['cart'][$book['ref']][0]);
-          if ( $book['stock'] < $_SESSION['cart'][$book['ref']][0])
-          {
-            $_SESSION['cart'][$book['ref']]['stock'] = $book['stock'];
-            $total = $total + $book['price'] * $book['stock'];
-          }
-          else {
-            unset($_SESSION['cart'][$book['ref']]['stock']);
-            $total = $total + $book['price'] * $_SESSION['cart'][$book['ref']][0];
-          }
-          $_SESSION['cart']['total'] = $total;
-
-        /*
-/**************************************************************************************/
-
-        echo "<article class='cartItem row'>";
-          echo "<img class='cover' src=" . $cover . " />";
-
-          echo "<div class='book-data'>";
-            echo "<span class='title'>" . $book['title'] . "</span>
-                  <i class='fa fa-trash' aria-hidden='true' onclick=\"deleteItem('" . $book[ref] . "', '" . $book[title] . "')\"></i><br />";
-            echo "<span class='author'>" . $book['author'] . "</span><br /><br />";
-            echo "<small class='cartQtt'>
-                    Quantidade:
-                    <input type='text' name='" . $book['ref'] . "' value='" . $_SESSION['cart'][$book['ref']][0] . "'>
-                  </small>";
-          echo "</div>";
-
-          echo "<div class='addBtn'>";
-          if ( $book['stock'] == 0)
-            {
-              echo "<span class='price'>€ " . 0 . "</span><br />";
-              echo "<span class='soldOut'>
-                      <small>Esgotado</small>
-                    </span>";
-              $WARN_MESSAGE = "Nem todos os livros serão expedidos";
-            }
-            else if ( $book['stock'] < $_SESSION['cart'][$book['ref']][0] )
-            {
-              echo "<span class='price'>€ " . $book['price'] * $book['stock'] . "</span><br />";
-              echo "<span class='warningStock'>
-                        <small>Stock Insuficiente<br />(" . $book['stock'] . " unidades)</small>
-                      </span>";
-              $WARN_MESSAGE = "Nem todos os livros serão expedidos";
-            }
-            else
-            {
-              echo "<span class='price'>€ " . $book['price'] * $_SESSION['cart'][$book['ref']][0] . "</span><br />";
-              echo "<span class='inStock'>
-                      <small>Em Stock</small>
-                    </span>";
-            }
-          echo "</div>";
-        echo "</article>";
+      $_SESSION['cart'][$book['ref']] = array($_SESSION['cart'][$book['ref']][0]);
+      if ( $book['stock'] < $_SESSION['cart'][$book['ref']][0])
+      {
+        $_SESSION['cart'][$book['ref']]['stock'] = $book['stock'];
+        $total = $total + $book['price'] * $book['stock'];
       }
-      ?>
-    </section>
+      else {
+        unset($_SESSION['cart'][$book['ref']]['stock']);
+        $total = $total + $book['price'] * $_SESSION['cart'][$book['ref']][0];
+      }
+      $_SESSION['cart']['total'] = $total;
 
-    <div class="messages" style="margin-bottom: 20px;">
-      <?php include_once('../_messages/warn_msgs.php'); ?>
-    </div>
+      $cart_items[$i]['cover'] = $cover;
+      $cart_items[$i]['title'] = $book['title'];
+      $cart_items[$i]['author'] = $book['author'];
+      $cart_items[$i]['ref'] = $book['ref'];
+      $cart_items[$i]['stock'] = $book['stock'];
+      $cart_items[$i]['price'] = $book['price'];
+      $cart_items[$i]['qnt'] = $_SESSION['cart'][$book['ref']][0];
 
-  </div>
-</div>
+      $i++;
+    }
 
 
-<div class="checkout">
-  <div class="checkoutRow">
-    <div>
-      <strong>Portes de Envio: </strong>
-    </div>
-    <div>
-      Grátis <br />
-    </div>
-  </div>
-  <div class="checkoutRow">
-    <div>
-      <strong>Total: </strong>
-    </div>
-    <div>
-      <?=$total?> €
-    </div>
-  </div>
-  <div>
-    <a onclick="updateCart(1)" id="checkoutBtn" class='btn'>
-      Checkout
-    </a>
-  </div>
-</div>
 
-<?php include '../common/footer.php';?>
+    $smarty->assign('CART_COUNTER', count($_SESSION['cart']));
+    $smarty->assign('CART_ITEMS', $cart_items);
+    $smarty->assign('BOOKS', $books);
+    $smarty->assign('TOTAL', $total);
+
+    $smarty->display('common/header.tpl');
+    $smarty->display('orders/shopping_cart.tpl');
+    $smarty->display('common/footer.tpl');
+?>

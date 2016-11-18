@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 11:16:50
+/* Smarty version 3.1.30, created on 2016-11-18 11:49:04
   from "/var/www/public/templates/users/stock_management.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ee3222359e4_40516403',
+  'unifunc' => 'content_582eeab0663de0_94669473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0263e5ae122531e5a363c2d817dc709048eb91b' => 
     array (
       0 => '/var/www/public/templates/users/stock_management.tpl',
-      1 => 1479467939,
+      1 => 1479467946,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/left_menu.tpl' => 1,
   ),
 ),false)) {
-function content_582ee3222359e4_40516403 (Smarty_Internal_Template $_smarty_tpl) {
+function content_582eeab0663de0_94669473 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
 	<?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -104,13 +104,13 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 }
 ?>
 
-			<?php if ($_smarty_tpl->tpl_vars['NEXT']->value != "NOTHING_TO_SHOW") {?>
-				<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+		<?php if ($_smarty_tpl->tpl_vars['NEXT']->value != "NOTHING_TO_SHOW") {?>
+			<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/users/stock_management.php?page=<?php echo $_smarty_tpl->tpl_vars['NEXT']->value;?>
 ">
-					<i class='fa fa-angle-double-right' aria-hidden='true'></i>
-				</a>
-			<?php }?>
+				<i class='fa fa-angle-double-right' aria-hidden='true'></i>
+			</a>
+		<?php }?>
 		</div>
 		<a class="divlink row" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/books/new_book.php" id="registLink" > Novo Livro </a>
