@@ -1,4 +1,3 @@
-{include file='common/header.tpl'}
 <div class="row">
   <div class="leftContent team" style="width:60%;">
     <div class="memberInfo">
@@ -68,5 +67,3 @@
     </div>
   </div>
 </div>
-
-{include file='common/footer.tpl'}

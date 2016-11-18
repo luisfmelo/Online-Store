@@ -1,5 +1,3 @@
-{include file='common/header.tpl'}
-
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
   <div class="leftContent">
@@ -87,7 +85,4 @@
       </a>
     {/if}
 	</div>
-
 </div>
-
-{include file='common/footer.tpl'}

@@ -1,33 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 18:56:37
+/* Smarty version 3.1.30, created on 2016-11-18 09:12:19
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582a08e58ffc56_45586677',
+  'unifunc' => 'content_582ec5f37cc7d3_85310957',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1479149747,
+      1 => 1479460334,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:common/header.tpl' => 1,
     'file:books/filter.tpl' => 1,
-    'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_582a08e58ffc56_45586677 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_subTemplateRender("file:common/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+function content_582ec5f37cc7d3_85310957 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-
-
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
   <div class="leftContent">
@@ -170,11 +165,6 @@ echo $_smarty_tpl->tpl_vars['param']->value;?>
       </a>
     <?php }?>
 	</div>
-
 </div>
-
-<?php $_smarty_tpl->_subTemplateRender("file:common/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
 <?php }
 }

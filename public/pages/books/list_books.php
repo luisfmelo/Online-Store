@@ -53,5 +53,7 @@
   $smarty->assign('param', $param);
   $smarty->assign('CATEGORIES', $categories);
   $smarty->assign('BOOKS', $books);
+  $smarty->display('common/header.tpl');
   $smarty->display('books/list_books.tpl');
+  $smarty->display('common/footer.tpl');
 ?>

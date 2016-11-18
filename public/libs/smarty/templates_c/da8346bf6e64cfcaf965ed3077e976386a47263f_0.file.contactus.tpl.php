@@ -1,31 +1,27 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 12:33:09
+/* Smarty version 3.1.30, created on 2016-11-18 09:11:22
   from "/var/www/public/templates/common/contactus.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5829af051dd0a0_61491852',
+  'unifunc' => 'content_582ec5baf04066_36513005',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8346bf6e64cfcaf965ed3077e976386a47263f' => 
     array (
       0 => '/var/www/public/templates/common/contactus.tpl',
-      1 => 1479126788,
+      1 => 1479460279,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:common/header.tpl' => 1,
-    'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5829af051dd0a0_61491852 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_subTemplateRender("file:common/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+function content_582ec5baf04066_36513005 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-
 <div class="row">
   <div class="leftContent team" style="width:60%;">
     <div class="memberInfo">
@@ -101,9 +97,5 @@ $_smarty_tpl->_subTemplateRender("file:common/header.tpl", $_smarty_tpl->cache_i
     </div>
   </div>
 </div>
-
-<?php $_smarty_tpl->_subTemplateRender("file:common/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
 <?php }
 }
