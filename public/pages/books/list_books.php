@@ -1,6 +1,6 @@
 <?php
   include_once('../../config/init.php');
-  include_once($BASE_DIR .'/database/books.php');
+  include_once("$BASE_DIR/database/books.php");
 
   $categories = getBookCategories();
 
@@ -53,6 +53,7 @@
   $smarty->assign('param', $param);
   $smarty->assign('CATEGORIES', $categories);
   $smarty->assign('BOOKS', $books);
+
   $smarty->display('common/header.tpl');
   $smarty->display('books/list_books.tpl');
   $smarty->display('common/footer.tpl');

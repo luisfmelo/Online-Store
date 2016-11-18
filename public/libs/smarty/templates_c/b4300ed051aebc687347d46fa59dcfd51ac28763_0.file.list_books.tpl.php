@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 09:12:19
+/* Smarty version 3.1.30, created on 2016-11-18 09:31:47
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ec5f37cc7d3_85310957',
+  'unifunc' => 'content_582eca83202cd6_42586015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1479460334,
+      1 => 1479461506,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_582ec5f37cc7d3_85310957 (Smarty_Internal_Template $_smarty_tpl) {
+function content_582eca83202cd6_42586015 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -77,7 +77,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
           <div class='book-data'>
             <span class='title'>
               <a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/pages/books/view_book.php?id=<?php echo $_smarty_tpl->tpl_vars['bookref']->value;?>
+/pages/books/view_book.php?id=<?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
 ' class='titleLink'>
                 <?php echo $_smarty_tpl->tpl_vars['book']->value['title'];?>
 

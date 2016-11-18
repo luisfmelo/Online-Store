@@ -1,22 +1,5 @@
-<?php
-  include '../common/header.php';
-  include_once('../../database/users.php');
-
-  if ( $_SESSION['username'] == '' )
-  {
-    header("Location: " . $BASE_URL . '/pages/users/login.php');
-    exit;
-  }
-  else if( !$_SESSION['admin']) )
-  {
-    header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
-    exit;
-  }
-  $categories = getBookCategories();
-?>
-
 <div class="row">
-  <?php   include '../common/left_menu.php';  ?>
+  {include file='common/left_menu.tpl'}
 
   <div class="rightContent">
     <h2 class="bigTitle">
@@ -34,10 +17,9 @@
           <textarea rows="6" cols="50" name="description"></textarea> <br />
     			Categoria: <br />
           <Select name="category">
-    				<?php
-    				foreach ($categories as $category)
-    					echo "<Option value='" .$category['categoryname']. "'>" . $category['categoryname'] . "</Option> <br/>";
-    				?>
+    				{foreach $CATEGORIES as $CAT}
+    					<Option value='{$CAT.categoryname}'>{$CAT.categoryname}</Option> <br/>";
+    				{/foreach}
     			</Select>
     			<br>
     			Preço:		<br />
@@ -51,9 +33,8 @@
     </section>
 
     <div class="messages" style="margin-bottom: 20px;">
-      <?php include_once('../_messages/warn_msgs.php'); ?>
+      {include file='_messages/warn_msgs.tpl'}
     </div>
 
   </div>
 </div>
-<?php include '../common/footer.php';?>

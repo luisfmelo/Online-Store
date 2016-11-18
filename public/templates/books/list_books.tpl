@@ -28,7 +28,7 @@
 
           <div class='book-data'>
             <span class='title'>
-              <a href='{$BASE_URL}/pages/books/view_book.php?id={$bookref}' class='titleLink'>
+              <a href='{$BASE_URL}/pages/books/view_book.php?id={$book.ref}' class='titleLink'>
                 {$book.title}
               </a>
             </span><br />
