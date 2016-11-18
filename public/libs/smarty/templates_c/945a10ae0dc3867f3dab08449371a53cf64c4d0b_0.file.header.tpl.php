@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 12:31:30
+/* Smarty version 3.1.30, created on 2016-11-18 12:18:31
   from "/var/www/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5829aea23dcad9_97615277',
+  'unifunc' => 'content_582ef1977d67f1_10704110',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '945a10ae0dc3867f3dab08449371a53cf64c4d0b' => 
     array (
       0 => '/var/www/public/templates/common/header.tpl',
-      1 => 1479126687,
+      1 => 1479471635,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:common/menu_logged_in.tpl' => 1,
     'file:common/menu_logged_out.tpl' => 1,
-    'file:../messages/error_success_msgs.tpl' => 1,
-    'file:../messages/msg_cart_added.tpl' => 1,
+    'file:_messages/error_success_msgs.tpl' => 1,
+    'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_5829aea23dcad9_97615277 (Smarty_Internal_Template $_smarty_tpl) {
+function content_582ef1977d67f1_10704110 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,14 +99,12 @@ function content_5829aea23dcad9_97615277 (Smarty_Internal_Template $_smarty_tpl)
         </div>
 
         <div class="messages" style="margin-bottom: 20px;">
-          <?php if ($_smarty_tpl->tpl_vars['success']->value != '') {?>
-            <?php $_smarty_tpl->_subTemplateRender("file:../messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+          <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-            <?php $_smarty_tpl->_subTemplateRender("file:../messages/msg_cart_added.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+          <?php $_smarty_tpl->_subTemplateRender("file:_messages/msg_cart_added.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-          <?php }?>
         </div>
       </header>
 <?php }

@@ -60,9 +60,7 @@
         </div>
 
         <div class="messages" style="margin-bottom: 20px;">
-          {if $success != ''}
-            {include file='../messages/error_success_msgs.tpl'}
-            {include file='../messages/msg_cart_added.tpl'}
-          {/if}
+          {include file='_messages/error_success_msgs.tpl'}
+          {include file='_messages/msg_cart_added.tpl'}
         </div>
       </header>
