@@ -1,6 +1,6 @@
 <?php
-	include '../common/header.php';
-  include_once('../../database/users.php');
+	include_once('../../config/init.php');
+  include_once('../../database/books.php');
 
 	if ( $_SESSION['username'] == '' )
   {
@@ -32,61 +32,14 @@
   $previous = $page - 1;
 
   $books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
+
+  $smarty->assign('BOOKS', $books);
+  $smarty->assign('MAX_NO_PAGE', $max_no_page);
+  $smarty->assign('PAGE', $page);
+  $smarty->assign('NEXT', $next);
+  $smarty->assign('PREVIOUS', $previous);
+
+	$smarty->display('common/header.tpl');
+	$smarty->display('users/stock_management.tpl');
+	$smarty->display('common/footer.tpl');
 ?>
-<div class="row">
-  <?php   include '../common/left_menu.php';  ?>
-
-  <div class="rightContent">
-    <h2 class="bigTitle">
-      <span>Gerir Stock</span>
-    </h2>
-		<table class="gerir">
-			<tr>
-				<th> Ref	</th>
-				<th> Título		</th>
-				<th> Preço 		</th>
-				<th> Stock		</th>
-				<th> 			</th>
-				<th> 			</th>
-				<th> 			</th>
-			</tr>
-			<?php
-			foreach ($books as $book) {
-				echo "<tr class='". $book['ref'] ."'>";
-					echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['ref'] .	"</a></td>";
-					echo "<td class='linkToUser'><a href='$BASE_URL/pages/books/view_book.php?id=".$book['ref']."'>" . $book['title'] .	"</a></td>";
-					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['price'] . "'> </td>";
-					echo "<td> <input class=\"stock_input\"  type=\"text\" name=\"stock\" value='" . $book['stock'] . "'> </td>";
-					echo "<td> <i onclick=\"deleteBookAlert('" . $book['ref'] ."')\" class=\"fa fa-trash\" aria-hidden=\"true\"></i> </td>";
-					echo "<td> <i onclick=\"stockChangeCheck('" . $book['ref'] ."' , '" . $page ."' )\" class=\"fa fa-floppy-o\" aria-hidden=\"true\"> </i> </td>";
-			 echo "</tr>";
-			}
-			?>
-		</table>
-
-		<div class="row arrows">
-
-		<?php
-				if ($page != 0)
-					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$previous\">
-									<i class='fa fa-angle-double-left' aria-hidden='true'></i>
-								</a>";
-				for ($i = 0; $i < $max_no_page; $i++){
-					$number = $i + 1;
-					if ($i == $page)
-						echo "<a class=\"pageNumberSelected\" href=\"$BASE_URL/pages/users/stock_management.php?page=$i\">" .$number . "</a>";
-					else
-						echo "<a class=\"pageNumber\" href=\"$BASE_URL/pages/users/stock_management.php?page=$i\">" .$number . "</a>";
-				}
-				if ($next != "NOTHING_TO_SHOW")
-					echo "<a href=\"$BASE_URL/pages/users/stock_management.php?page=$next\">
-									<i class='fa fa-angle-double-right' aria-hidden='true'></i>
-								</a>";
-		?>
-		</div>
-
-		<a class="divlink row" href="<?=$BASE_URL?>/pages/books/new_book.php" id="registLink" > Novo Livro </a>
-
-</div>
-
-<?php include '../common/footer.php';?>
