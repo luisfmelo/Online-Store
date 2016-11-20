@@ -7,7 +7,7 @@
     if (!isadmin)
       $query = $query . " INNER JOIN e_store.users ON orders.userid = users.id
                           WHERE username = '".$user."';";
-                          return $query;
+                          
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();

@@ -19,7 +19,7 @@
 		$page = $_GET['page'];
 
   /* controlo icons previous/next */
-  $number_books_per_page = 10;
+  $number_books_per_page = 7;
   $number_of_orders = getNoOrders($username, $isAdmin);
   $max_no_page = $number_of_orders[0]['count'] /  $number_books_per_page;
 
@@ -40,10 +40,15 @@
   else
   	$orders = getOrdersCustomer($username,$number_books_per_page, $page * $number_books_per_page);
   	
+  $smarty->assign('page', $page);
+  $smarty->assign('next', $next);
+  $smarty->assign('previous', $previous);
+  $smarty->assign('max_no_page', $max_no_page);	
+  	
   $smarty->assign('ORDERS', $orders);
   $smarty->assign('ISADMIN', $isAdmin);
+  
   $smarty->display('common/header.tpl');
-  $smarty->display('common/left_menu.tpl');
   $smarty->display('orders/view_orders.tpl');
   $smarty->display('common/footer.tpl');
 
