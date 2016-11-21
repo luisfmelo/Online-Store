@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 12:18:31
+/* Smarty version 3.1.30, created on 2016-11-21 11:14:17
   from "/var/www/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ef1977d67f1_10704110',
+  'unifunc' => 'content_5832d7094a9c99_78390612',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '945a10ae0dc3867f3dab08449371a53cf64c4d0b' => 
     array (
       0 => '/var/www/public/templates/common/header.tpl',
-      1 => 1479471635,
+      1 => 1479726826,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_582ef1977d67f1_10704110 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5832d7094a9c99_78390612 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,8 +92,8 @@ function content_582ef1977d67f1_10704110 (Smarty_Internal_Template $_smarty_tpl)
             </div>
               <form id="searchForm" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /actions/books/search.php" method="get">
-                <a class="divlink" id="lupa" onclick="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
-                <input id="searchBar" name="search" type="search" placeholder="Pesquise aqui...">
+                <a class="divlink" id="lupa"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <input class="searchBar" name="search" type="search" placeholder="Pesquise aqui...">
               </form>
           </div>
         </div>

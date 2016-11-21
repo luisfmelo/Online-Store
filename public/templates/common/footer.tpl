@@ -8,5 +8,7 @@
     <small>Copyright 2016 &#169; Lídia Cerqueira &amp; Luís Melo - SIEM 2016/2017</small>
   </footer>
 </body>
+<script src="{$BASE_URL}/libs/jquery/jquery-3.1.1.min.js"></script>
+<script src="{$BASE_URL}/js/validate.js"></script>
 <script src="{$BASE_URL}/js/main.js"></script>
 </html>
