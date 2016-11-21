@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form method="POST" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
+        <form enctype="multipart/form-data" method="POST" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
     			Nome:  <br />
           <input type = "text" name="name" value="{$PROFILE.0.name}"/><br>
     			Email:  <br />
@@ -21,10 +21,11 @@
           <input type = "password"	name="password"/><br>
     			Confirmar Password:  <br />
           <input type = "password"	name="confirmPassword"/><br>
-
-    			<input type = "submit" name="cmdsubmit" value="Alterar"/>
-
-    		</form>
+		
+    	  <input type = "submit" name="cmdsubmit" value="Alterar"/>
+    	
+    	</form>
+    			
       </div>
     </section>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-20 14:59:00
+/* Smarty version 3.1.30, created on 2016-11-21 18:12:31
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/view_profile.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5831ba34a49968_05208611',
+  'unifunc' => 'content_5833390f36ba68_47976617',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd7f53c99749f56bdb70120d1e967407d74ac9fb' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/view_profile.tpl',
-      1 => 1479653191,
+      1 => 1479751858,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5831ba34a49968_05208611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5833390f36ba68_47976617 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -74,7 +74,15 @@ function content_5831ba34a49968_05208611 (Smarty_Internal_Template $_smarty_tpl)
 " alt="" />
         </div>
         <div class="changePhoto">
-        <!--  <input type="file" id="photoUp" multiple size="50" onchange="uploadPhoto()">-->
+			<form enctype="multipart/form-data" method="POST" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/users/upload_profileImage.php?username=<?php echo $_smarty_tpl->tpl_vars['PROFILE']->value[0]['username'];?>
+" >
+<!--
+				<input type="file" id="photoUp" multiple size="50">
+-->
+					<input name="userfile" type="file" id="photoUp"  />
+				<input type="submit">
+			</form>
         </div>
       </div>
     </section>

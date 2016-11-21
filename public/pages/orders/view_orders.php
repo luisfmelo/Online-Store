@@ -14,7 +14,7 @@
 
   /* página atual */
   if(!isset($_GET['page']))
-		$page = 0;
+		$page = 1;
   else
 		$page = $_GET['page'];
 
@@ -23,7 +23,7 @@
   $number_of_orders = getNoOrders($username, $isAdmin);
   $max_no_page = $number_of_orders[0]['count'] /  $number_books_per_page;
 
-  if ($page + 1 > $max_no_page)
+  if ($page > $max_no_page)
 		$next = "NOTHING_TO_SHOW";
   else
 		$next = $page + 1;
@@ -36,9 +36,9 @@
 																				"";
   /* obter encomendas conforme se trate de um cliente ou admin */
   if ($isAdmin)
-		$orders = getOrdersAdmin($number_books_per_page, $page * $number_books_per_page, $_GET['sort']);
+		$orders = getOrdersAdmin($number_books_per_page, ($page-1) * $number_books_per_page, $_GET['sort']);
   else
-  	$orders = getOrdersCustomer($username,$number_books_per_page, $page * $number_books_per_page);
+  	$orders = getOrdersCustomer($username,$number_books_per_page, ($page-1) * $number_books_per_page);
   	
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);

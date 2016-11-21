@@ -37,7 +37,13 @@
           <img src="{$PHOTO}" alt="" />
         </div>
         <div class="changePhoto">
-        <!--  <input type="file" id="photoUp" multiple size="50" onchange="uploadPhoto()">-->
+			<form enctype="multipart/form-data" method="POST" action= "{$BASE_URL}/actions/users/upload_profileImage.php?username={$PROFILE.0.username}" >
+<!--
+				<input type="file" id="photoUp" multiple size="50">
+-->
+					<input name="userfile" type="file" id="photoUp"  />
+				<input type="submit">
+			</form>
         </div>
       </div>
     </section>

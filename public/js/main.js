@@ -145,3 +145,5 @@ function alertStateChange(orderRef, isAdmin) {
         window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin +
             "&orderref=" + orderRef);
 }
+
+

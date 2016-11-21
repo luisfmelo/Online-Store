@@ -12,23 +12,23 @@
 
   /* página atual */
   if(!isset($_GET['page']))
-    $page = 0;
+    $page = 1;
   else
 	  $page = $_GET['page'];
 
   /* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id'])){
 	   $number_of_books = TotalNumberBooksByCategory($_GET['id']);
-     $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
+     $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, ($page-1) * $number_books_per_page);
   }
   else {
 	   $number_of_books = TotalNumberSearchedBooks($_GET['search']);
-     $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, $page * $number_books_per_page);
+     $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, ($page-1) * $number_books_per_page);
   }
 
   /* controlo icons previous/next */
   $max_no_page = $number_of_books[0]['count']/ $number_books_per_page;
-  if ($page + 1 > $max_no_page)
+  if ($page >= $max_no_page)
     $next = "NOTHING_TO_SHOW";
   else
     $next = $page + 1;
@@ -44,7 +44,6 @@
     $param = $param . "&sort=" . $_GET['sort'];
   if (isset($_GET['number_Books']))
     $param = $param . "&number_Books=" . $_GET['number_Books'];
-
 
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);
