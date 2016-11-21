@@ -1,50 +1,56 @@
 /* Show/Hide Search Bar */
 $("#lupa").click(function() {
-  $('.searchBar').toggleClass('expanded')
-  $('.searchBar').focus();
+    $('.searchBar').toggleClass('expanded')
+    $('.searchBar').focus();
 });
 
 /* Filter Books: number per page & order*/
-$('.filter div select').change(function(){
-  var params = get_url_params();
+$('.filter div select').change(function() {
+    var params = get_url_params();
 
-  params['sort'] = $( "#changeOrderBooks option:selected" ).val();
-  params['number_Books'] = $( "#changeNoBooks option:selected" ).val();
-  redirect_url(params);
+    params['sort'] = $("#changeOrderBooks option:selected").val();
+    params['number_Books'] = $("#changeNoBooks option:selected").val();
+    var url = get_new_url(params);
+
+    $.get( "../../api/getBooks.php?" + url, function( data ) {
+        $('#books').html(data);
+    });
+
 });
 
 /* Sort Order Client*/
 $(".sortOrders").click(function() {
-  var params = get_url_params();
+    var params = get_url_params();
 
-  params['sort'] = $(this).hasClass('fa-arrow-down')? "down" :
-                                                      "up";
-  redirect_url(params);
+    params['sort'] = $(this).hasClass('fa-arrow-down') ? "down" :
+                                                         "up";
+    var url = get_new_url(params);
+    window.location.assign(window.location.href.split('?')[0] + '?' + url);
 });
 
 
 /* Get each GET parameter from URL*/
-function get_url_params(){
-  var params = {};
-  var search = location.search.substring(1);
-  search = search.split('&');
-  $.each( search, function( key, value ) {
-    if ( value != "" )
-    {
-      temp = value.split('=');
-      params[temp[0]] = temp[1];
-    }
-  });
-  return params;
+function get_url_params() {
+    var params = {};
+    var search = location.search.substring(1);
+    search = search.split('&');
+    $.each(search, function(key, value) {
+        if (value != "") {
+            temp = value.split('=');
+            params[temp[0]] = temp[1];
+        }
+    });
+    return params;
 }
 
 /* Reconstruct URL with old and new parameters*/
-function redirect_url(params){
-  var url = window.location.href.split('?')[0] + '?';
-  $.each( params, function( key, value ) {
-    url += key + "=" + value + "&";
-  });
-  window.location.assign(url);
+function get_new_url(params) {
+    var url = ""//window.location.href.split('?')[0] + '?';
+    $.each(params, function(key, value) {
+        url += key + "=" + value + "&";
+    });
+    return url;
+    //window.location.assign(url);
 }
 
 
@@ -82,64 +88,60 @@ function updateCart(checkout) {
 /* Pede confirmação para eliminar um livro */
 function deleteBookAlert(book_ref) {
     var confirm_str = "Tem a certeza que pretende remover o livro com a referência " + book_ref + "?";
-    if ( confirm(confirm_str) )
+    if (confirm(confirm_str))
         window.location.assign("../../actions/books/delete_book.php?ref=" + book_ref);
 }
 
 /* Pede confirmação para eliminar um user */
 function deleteCustomerAlert(username) {
-    var r = confirm("Tem a certeza que pretende remover o cliente com a referência " + username + "?");
-    if ( r )
+    var confirm_str = "Tem a certeza que pretende remover o cliente com a referência " + username + "?";
+    if (confirm(confirm_str))
         window.location.assign("../../actions/users/eliminate_account.php?ref=" + username);
 }
 
 function stockChangeCheck(ref, page) {
-	var row = document.getElementsByClassName(ref)[0];
-	var price = row.getElementsByTagName('input')[0].value;
-	var stock = row.getElementsByTagName('input')[1].value;
-	var can_update = 1;
+    var row = document.getElementsByClassName(ref)[0];
+    var price = row.getElementsByTagName('input')[0].value;
+    var stock = row.getElementsByTagName('input')[1].value;
+    var can_update = 1;
 
-	/* price - replace ',' for '.' */
+    /* price - replace ',' for '.' */
     price = price.replace(/,/g, '.');
 
-	/* check if price and stock contain letters */
-	if (isNaN(Number(price)) || isNaN(Number(stock)) ){
-		alert("O preço e o stock não devem conter letras.");
-		can_update = 0;
-	}
+    /* check if price and stock contain letters */
+    if (isNaN(Number(price)) || isNaN(Number(stock))) {
+        alert("O preço e o stock não devem conter letras.");
+        can_update = 0;
+    }
 
-	/* price must be greater than 0*/
-	if ( price <= 0){
-		alert ("O preço deve ser maior que 0.");
-		can_update = 0;
-	}
+    /* price must be greater than 0*/
+    if (price <= 0) {
+        alert("O preço deve ser maior que 0.");
+        can_update = 0;
+    }
 
-	/* stock must be equal or greater than 0*/
-	if ( stock < 0 ){
-		alert ("O stock deve ser um número não-negativo");
-		can_update = 0;
-	}
+    /* stock must be equal or greater than 0*/
+    if (stock < 0) {
+        alert("O stock deve ser um número não-negativo");
+        can_update = 0;
+    }
 
-	if (can_update == 1){
-		var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price +" ?");
-		if (r == true)
-			window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
-	}
+    if (can_update == 1) {
+        var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price + " ?");
+        if (r == true)
+            window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
+    }
 }
 
 /* Pede confirmação para mudança de estado de uma encomenda */
-function alertStateChange(orderRef, isAdmin){
+function alertStateChange(orderRef, isAdmin) {
 
-	var r;
+    var r;
 
-	if (isAdmin == 1)
-		r = confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?");
-	else
-		r = confirm("Confirma que recebeu a encomenda " + orderRef + "?");
+    r = (isAdmin == 1) ? confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?") :
+                         confirm("Confirma que recebeu a encomenda " + orderRef + "?");
 
-	console.log(isAdmin);
-	console.log(orderRef);
-	if (r==true)
-		window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin
-									+ "&orderref=" + orderRef);
+    if (r == true)
+        window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin +
+            "&orderref=" + orderRef);
 }
