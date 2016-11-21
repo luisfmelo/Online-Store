@@ -17,7 +17,7 @@
   $WARN_MESSAGE = '';
   $total = 0;
 
-  if (count($_SESSION['cart']) != 0)
+  if ($_SESSION['cart_counter'] != 0)
     $books = getSelectedBooks($_SESSION['cart']);
 
   $cart_items = array();
@@ -29,17 +29,10 @@
                   $IMG_DIR . '/covers/' . $book['ref'] . '.png'   :
                   $IMG_DIR . '/covers/default.png' ;
 
-      $_SESSION['cart'][$book['ref']] = array($_SESSION['cart'][$book['ref']][0]);
-      if ( $book['stock'] < $_SESSION['cart'][$book['ref']][0])
-      {
-        $_SESSION['cart'][$book['ref']]['stock'] = $book['stock'];
+      if ( $book['stock'] < $_SESSION['cart'][$book['ref']])
         $total = $total + $book['price'] * $book['stock'];
-      }
-      else {
-        unset($_SESSION['cart'][$book['ref']]['stock']);
-        $total = $total + $book['price'] * $_SESSION['cart'][$book['ref']][0];
-      }
-      $_SESSION['cart']['total'] = $total;
+      else
+        $total = $total + $book['price'] * $_SESSION['cart'][$book['ref']];
 
       $cart_items[$i]['cover'] = $cover;
       $cart_items[$i]['title'] = $book['title'];
@@ -47,14 +40,15 @@
       $cart_items[$i]['ref'] = $book['ref'];
       $cart_items[$i]['stock'] = $book['stock'];
       $cart_items[$i]['price'] = $book['price'];
-      $cart_items[$i]['qnt'] = $_SESSION['cart'][$book['ref']][0];
+      $cart_items[$i]['qnt'] = $_SESSION['cart'][$book['ref']];
 
       $i++;
     }
 
+    $_SESSION['total'] = $total;
 
 
-    $smarty->assign('CART_COUNTER', count($_SESSION['cart']));
+    $smarty->assign('CART_COUNTER', $_SESSION['cart_counter']);
     $smarty->assign('CART_ITEMS', $cart_items);
     $smarty->assign('BOOKS', $books);
     $smarty->assign('TOTAL', $total);

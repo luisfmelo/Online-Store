@@ -43,6 +43,7 @@
   $smarty->assign('GMAPS_API_KEY', $GMAPS_API_KEY);
   $smarty->assign('USERNAME', $_SESSION['username']);
   $smarty->assign('isADMIN', $_SESSION['admin']);
+  $smarty->assign('CART_COUNTER', $_SESSION['cart_counter']);
   $smarty->assign('FORM_VALUES', $_SESSION['form_values']);
   $smarty->assign('ERROR_MESSAGE', $ERROR_MESSAGE);
   $smarty->assign('SUCCESS_MESSAGE', $SUCCESS_MESSAGE);

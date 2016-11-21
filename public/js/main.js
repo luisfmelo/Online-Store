@@ -48,6 +48,15 @@ function redirect_url(params){
 }
 
 
+
+
+
+
+
+
+
+
+/******************************************************************************/
 /* Informa a action sobre o modo a proceder */
 function updateCart(checkout) {
     var inputs, index;
@@ -115,58 +124,6 @@ function stockChangeCheck(ref, page) {
 		var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price +" ?");
 		if (r == true)
 			window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
-	}
-}
-
-/* Verificação dos dados de um novo livro do lado do cliente */
-function NewBookCheck(){
-
-	var title 		= BookForm.title.value;
-	var author 		= BookForm.author.value;
-	var description = BookForm.description.value;
-	var category	= BookForm.category.value;
-	var price 		= BookForm.price.value;
-	var stock 		= BookForm.stock.value;
-
-	var can_create = 1;
-
-	/* title and author can't be null */
-	if( (title.length==0) || (author.length==0) ){
-		alert("Titulo e Autor têm de ser preenchidos obrigatoriamente.");
-		can_create = 0;
-	}
-
-	/* price - replace , for . */
-    price = price.replace(/,/g, '.');
-    console.log(price);
-
-	/* check if stock and price are not letters */
-	if (isNaN(Number(price)) || isNaN(Number(stock)) ){
-		alert("O preço e o stock não devem conter letras.");
-		can_update = 0;
-	}
-
-	/* stock must be a positive value */
-	if (stock < 0){
-		alert("Stock deve ser um número positivo.");
-		can_create = 0;
-	}
-
-	/*price must be a positive value */
-	if (price <= 0){
-		alert("Preço deve ser um valor positivo.");
-		can_create = 0;
-	}
-
-	if (can_create == 1){
-		var r = confirm("Confirma que pretende criar um novo livro com o titulo "
-        				+ title + ", o autor " + author + ", com stock de "
-        				+ stock + " e o preço " + price + " ?");
-		if (r == true)
-			window.location.assign("../../actions/books/add_book.php?&title=" + title
-									+ "&author=" + author + "&description=" + description
-									+ "&category=" + category + "&price=" + price
-									+ "&stock=" + stock);
 	}
 }
 

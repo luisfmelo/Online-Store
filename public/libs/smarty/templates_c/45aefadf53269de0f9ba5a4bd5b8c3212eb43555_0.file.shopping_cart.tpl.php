@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 12:13:40
+/* Smarty version 3.1.30, created on 2016-11-21 12:33:49
   from "/var/www/public/templates/orders/shopping_cart.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ef07451d7d3_05936538',
+  'unifunc' => 'content_5832e9ad5af898_55851064',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45aefadf53269de0f9ba5a4bd5b8c3212eb43555' => 
     array (
       0 => '/var/www/public/templates/orders/shopping_cart.tpl',
-      1 => 1479471347,
+      1 => 1479731628,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_582ef07451d7d3_05936538 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5832e9ad5af898_55851064 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -36,7 +36,7 @@ function content_582ef07451d7d3_05936538 (Smarty_Internal_Template $_smarty_tpl)
     </h2>
 
     <section id="cart">
-    <?php if ($_smarty_tpl->tpl_vars['CART_COUNTER']->value != 0) {?>
+    
       <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['CART_ITEMS']->value, 'item');
 if ($_from !== null) {
@@ -94,7 +94,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-    <?php }?>
+    
     </section>
 
     <div class="messages" style="margin-bottom: 20px;">
@@ -120,7 +120,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
       <strong>Total: </strong>
     </div>
     <div>
-      <?php echo $_smarty_tpl->tpl_vars['total']->value;?>
+      <?php echo $_smarty_tpl->tpl_vars['TOTAL']->value;?>
  €
     </div>
   </div>
