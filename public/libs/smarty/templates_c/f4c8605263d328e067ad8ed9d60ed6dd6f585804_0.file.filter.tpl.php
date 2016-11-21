@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-17 09:35:52
+/* Smarty version 3.1.30, created on 2016-11-21 11:39:06
   from "/var/www/public/templates/books/filter.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582d79f806cb86_64111905',
+  'unifunc' => 'content_5832dcda6a2fe6_26222018',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f4c8605263d328e067ad8ed9d60ed6dd6f585804' => 
     array (
       0 => '/var/www/public/templates/books/filter.tpl',
-      1 => 1479375350,
+      1 => 1479728344,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_582d79f806cb86_64111905 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5832dcda6a2fe6_26222018 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row filter">
   <div>
     Ordenar:
-      <select name="order" onchange="sortTheBooksNow()">
+      <select name="order" id="changeOrderBooks">
           <?php echo $_GET['sort'];?>
 
           <option value='defaut'>Escolher</option>
@@ -41,7 +41,7 @@ function content_582d79f806cb86_64111905 (Smarty_Internal_Template $_smarty_tpl)
   </div>
   <div>
     Livros por Pag:
-      <select name="numberBooks" onchange="sortTheNumberBooksNow()">
+      <select name="numberBooks" id="changeNoBooks">
           <?php echo $_GET['number_Books'];?>
 
           <option value='6'>6</option>

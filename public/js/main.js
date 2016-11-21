@@ -1,49 +1,52 @@
+/* Show/Hide Search Bar */
 $("#lupa").click(function() {
   $('.searchBar').toggleClass('expanded')
   $('.searchBar').focus();
 });
 
-/* Cria um novo url com um parametro para ordenar os livros*/
-function sortTheBooksNow() {
-    var selectedID = event.target.value;
-    var url = window.location.href;
-    var cleanURL = url.replace(/\?*sort=\w+&/g, "");
-    var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
+/* Filter Books: number per page & order*/
+$('.filter div select').change(function(){
+  var params = get_url_params();
 
-    if (cleanURL.substring(cleanURL.length - 3) == 'php')
-        cleanURL += '?sort=' + selectedID;
-    else
-        cleanURL += '&sort=' + selectedID;
-    window.location.assign(cleanURL);
-};
+  params['sort'] = $( "#changeOrderBooks option:selected" ).val();
+  params['number_Books'] = $( "#changeNoBooks option:selected" ).val();
+  redirect_url(params);
+});
 
-/* Cria um novo url com um parametro para ordenar as encomendas*/
-function sortOrders(pos){
-    var url = window.location.href;
-    var cleanURL = url.replace(/\?*sort=\w+&/g, "");
-    var cleanURL = url.replace(/\&*sort=\w+&*/g, "");
+/* Sort Order Client*/
+$(".sortOrders").click(function() {
+  var params = get_url_params();
 
-    if (cleanURL.substring(cleanURL.length - 3) == 'php')
-        cleanURL += '?sort=' + pos;
-    else
-        cleanURL += '&sort=' + pos;
-    window.location.assign(cleanURL);
+  params['sort'] = $(this).hasClass('fa-arrow-down')? "down" :
+                                                      "up";
+  redirect_url(params);
+});
+
+
+/* Get each GET parameter from URL*/
+function get_url_params(){
+  var params = {};
+  var search = location.search.substring(1);
+  search = search.split('&');
+  $.each( search, function( key, value ) {
+    if ( value != "" )
+    {
+      temp = value.split('=');
+      params[temp[0]] = temp[1];
+    }
+  });
+  return params;
 }
 
-/* Cria um novo url com um parametro para numero de livros*/
-function sortTheNumberBooksNow() {
-    var selectedID = event.target.value;
-    var url = window.location.href;
-    var cleanURL = url.replace(/\?*number_Books=\w+&/g, "");
-    var cleanURL = url.replace(/\&*number_Books=\w+&*/g, "");
+/* Reconstruct URL with old and new parameters*/
+function redirect_url(params){
+  var url = window.location.href.split('?')[0] + '?';
+  $.each( params, function( key, value ) {
+    url += key + "=" + value + "&";
+  });
+  window.location.assign(url);
+}
 
-    if (cleanURL.substring(cleanURL.length - 3) == 'php')
-        cleanURL += '?number_Books=' + selectedID;
-    else
-        cleanURL += '&number_Books=' + selectedID;
-
-    window.location.assign(cleanURL);
-};
 
 /* Informa a action sobre o modo a proceder */
 function updateCart(checkout) {
