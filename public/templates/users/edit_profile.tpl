@@ -21,12 +21,20 @@
           <input type = "password"	name="password"/><br>
     			Confirmar Password:  <br />
           <input type = "password"	name="confirmPassword"/><br>
-
-    			<input type = "submit" name="cmdsubmit" value="Alterar"/>
-
-    		</form>
+				Upload Profile Image: 
+		  <input type="file" name="img">
+		
+    	  <input type = "submit" name="cmdsubmit" value="Alterar"/>
+    	
+    	</form>
+    			
       </div>
     </section>
+    
+    <form onSubmit="validateImage()">
+	  Select a file: <input type="file" name="img">
+	  <input type="submit">
+	</form>
 
     <div class="messages" style="margin-bottom: 20px;">
       {include file='_messages/warn_msgs.tpl'}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-20 14:49:57
+/* Smarty version 3.1.30, created on 2016-11-21 15:57:20
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5831b8159663e9_36805074',
+  'unifunc' => 'content_583319600cbae2_24310230',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '076f84e176ade8f1bcdf6629af4b1ac93a995433' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/list_books.tpl',
-      1 => 1479653189,
+      1 => 1479743838,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_5831b8159663e9_36805074 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583319600cbae2_24310230 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -126,31 +126,31 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </section>
 
     <div class="row arrows">
-		<?php if ($_smarty_tpl->tpl_vars['page']->value != 0) {?>
-		  <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+	<?php if ($_smarty_tpl->tpl_vars['page']->value != 1) {?>
+		<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['previous']->value;
 echo $_smarty_tpl->tpl_vars['param']->value;?>
 \">
-        <i class='fa fa-angle-double-left' aria-hidden='true'></i>
-      </a>
+			<i class='fa fa-angle-double-left' aria-hidden='true'></i>
+		</a>
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['max_no_page']->value > 1) {?>
       <?php
-$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['max_no_page']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['max_no_page']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['max_no_page']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['max_no_page']->value)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
-for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
         <?php if ($_smarty_tpl->tpl_vars['i']->value == $_smarty_tpl->tpl_vars['page']->value) {?>
           <a class="pageNumberSelected" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['i']->value;
 echo $_smarty_tpl->tpl_vars['param']->value;?>
-"> <?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
  </a>
         <?php } else { ?>
           <a class="pageNumber" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['i']->value;
 echo $_smarty_tpl->tpl_vars['param']->value;?>
-"> <?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
  </a>
         <?php }?>
       <?php }

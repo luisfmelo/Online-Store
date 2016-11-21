@@ -61,17 +61,17 @@
 	
 	
 		<div class="row arrows">
-			{if $page != 0}
+			{if $page != 1}
 				  <a href="{$BASE_URL}/pages/orders/view_orders.php?page={$previous}{$param}\">
 				<i class='fa fa-angle-double-left' aria-hidden='true'></i>
 			  </a>
 			{/if}
 			{if $max_no_page > 1}
-			  {for $i=0 to $max_no_page - 1}
+			  {for $i=1 to $max_no_page}
 				{if $i == $page}
-				  <a class="pageNumberSelected" href="{$BASE_URL}/pages/orders/view_orders.php?page={$i}{$param}"> {$i + 1} </a>
+				  <a class="pageNumberSelected" href="{$BASE_URL}/pages/orders/view_orders.php?page={$i}{$param}"> {$i} </a>
 				{else}
-				  <a class="pageNumber" href="{$BASE_URL}/pages/orders/view_orders.php?page={$i}{$param}"> {$i + 1} </a>
+				  <a class="pageNumber" href="{$BASE_URL}/pages/orders/view_orders.php?page={$i}{$param}"> {$i} </a>
 				{/if}
 			  {/for}
 			{/if}
