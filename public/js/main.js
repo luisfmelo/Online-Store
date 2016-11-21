@@ -263,6 +263,4 @@ function validateRegister(){
 
 }
 
-function validateImage(){
-	alert("OLA");
-}
+

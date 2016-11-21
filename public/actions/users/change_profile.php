@@ -47,7 +47,7 @@
 
 	 editUserPass($username, $password);
   }
-
+  
   header("Location: $BASE_URL" . '/pages/users/view_profile.php');
 	exit;
 ?>
