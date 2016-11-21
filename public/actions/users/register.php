@@ -80,12 +80,12 @@
 
   $_SESSION['username'] = $_POST['username'];
 
-  $username = $_POST['username'];
-  $password = hash("sha256", $_POST['password']);
-  $name 	  = $_POST['nome'];
-  $phone    = $_POST['telefone'];
-  $address  = $_POST['morada'];
-  $email 	  = $_POST['email'];
+  $username = strip_tags($_POST['username']);
+  $password = hash("sha256", $_POST['password']); //strip_tags(?)
+  $name 	= strip_tags($_POST['nome']);
+  $phone    = strip_tags($_POST['telefone']);
+  $address  = strip_tags($_POST['morada']);
+  $email 	= strip_tags($_POST['email']);
 
   addNewUser($username, $name, $phone, $address, $password, $email);
   header("Location: $BASE_URL" . '/pages/books/list_books.php');

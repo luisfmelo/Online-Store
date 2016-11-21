@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" action="{$BASE_URL}/actions/users/register.php" method="post" onsubmit="return validateRegister();">
+    <form class="login-form" name="NewRegist" method="post" onsubmit="validateRegister()">
 
       <a href="{$BASE_URL}/index.php" id="auth_logo">
         <img src="{$BASE_URL}/images/logo.png" alt="" />

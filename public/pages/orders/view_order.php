@@ -23,7 +23,7 @@
   
   $smarty->display('common/header.tpl');
   $smarty->display('orders/view_order.tpl');
-  //~ $smarty->display('common/footer.tpl');
+  $smarty->display('common/footer.tpl');
 
 ?>
 
