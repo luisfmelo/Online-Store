@@ -5,29 +5,23 @@
   $categories = getBookCategories();
 
   /* número de livros por página */
-  if(isset($_GET['number_Books']))
-    $number_books_per_page = $_GET['number_Books'];
-  else
-    $number_books_per_page = 6;
+  $n_books_per_page = isset($_GET['number_Books']) ? $_GET['number_Books'] : 6;
 
   /* página atual */
-  if(!isset($_GET['page']))
-    $page = 1;
-  else
-	  $page = $_GET['page'];
+  $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
   /* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id'])){
-	   $number_of_books = TotalNumberBooksByCategory($_GET['id']);
-     $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $number_books_per_page, ($page-1) * $number_books_per_page);
+	   $number_of_books = TotalNumberBooksByCategory($_GET['id'])['count'];
+     $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $n_books_per_page, ($page-1) * $n_books_per_page);
   }
   else {
-	   $number_of_books = TotalNumberSearchedBooks($_GET['search']);
-     $books = listSomeBooks($_GET['search'], $_GET['sort'], $number_books_per_page, ($page-1) * $number_books_per_page);
+	   $number_of_books = TotalNumberSearchedBooks($_GET['search'])['count'];
+     $books = listSomeBooks($_GET['search'], $_GET['sort'], $n_books_per_page, ($page-1) * $n_books_per_page);
   }
 
   /* controlo icons previous/next */
-  $max_no_page = $number_of_books[0]['count']/ $number_books_per_page;
+  $max_no_page = $number_of_books/ $n_books_per_page;
   if ($page >= $max_no_page)
     $next = "NOTHING_TO_SHOW";
   else

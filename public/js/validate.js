@@ -67,52 +67,42 @@ function validateRegister(){
 
 /* Verificação dos dados de um novo livro do lado do cliente */
 function NewBookCheck(){
+	var tmp = $('#newBook')[0];
+	var BookForm = {};
+	var msg = "";
 
-	var title 		= BookForm.title.value;
-	var author 		= BookForm.author.value;
-	var description = BookForm.description.value;
-	var category	= BookForm.category.value;
-	var price 		= BookForm.price.value;
-	var stock 		= BookForm.stock.value;
+	for (var i= 0; i < 6; i++)
+		BookForm[tmp[i].name] = tmp[i].value;
 
-	var can_create = 1;
+	BookForm.price = BookForm.price.replace(/,/g, '.');
 
-	/* title and author can't be null */
-	if( (title.length==0) || (author.length==0) ){
-		alert("Titulo e Autor têm de ser preenchidos obrigatoriamente.");
-		can_create = 0;
+	if( (BookForm.title.length == 0) || (BookForm.author.length == 0) )
+		msg = "Titulo e Autor têm de ser preenchidos obrigatoriamente.";
+	else if ( BookForm.price === "" || BookForm.stock === "" )
+		msg = "O preço e o stock devem ser preenchidos.";
+	else if ( isNaN(Number(BookForm.price)) || isNaN(parseInt(BookForm.stock) ) )
+		msg = "O preço e o stock não devem conter letras.";
+	else if (BookForm.stock < 0)
+		msg = "Stock deve ser um número positivo ou 0.";
+	else if (BookForm.price <= 0)
+		msg = "Preço deve ser um valor positivo.";
+
+	if ( msg !== "" )
+	{
+		$('.formMessages').html("<div class='errorMsg'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> "+msg+"</div>");
+		return;
 	}
 
-	/* price - replace , for . */
-    price = price.replace(/,/g, '.');
-    console.log(price);
+	$('.formMessages').html("");
 
-	/* check if stock and price are not letters */
-	if (isNaN(Number(price)) || isNaN(Number(stock)) ){
-		alert("O preço e o stock não devem conter letras.");
-		can_update = 0;
-	}
-
-	/* stock must be a positive value */
-	if (stock < 0){
-		alert("Stock deve ser um número positivo.");
-		can_create = 0;
-	}
-
-	/*price must be a positive value */
-	if (price <= 0){
-		alert("Preço deve ser um valor positivo.");
-		can_create = 0;
-	}
-
-	if (can_create == 1){
-		var r = confirm("Confirma que pretende criar um novo livro com o titulo "
-        				+ title + ", o autor " + author + ", com stock de "
-        				+ stock + " e o preço " + price + " ?");
-		if (r == true)
-			window.location.assign("../../actions/books/add_book.php?&title=" + title
-									+ "&author=" + author + "&description=" + description
-									+ "&category=" + category + "&price=" + price
-									+ "&stock=" + stock);
-	}
+	var r = confirm("Confirma que pretende criar um novo livro com o titulo \'"
+							+ BookForm.title + "\', o autor " + BookForm.author + ", com stock de "
+							+ BookForm.stock + " e o preço " + BookForm.price + " ?");
+	if ( r )
+		window.location.assign("../../actions/books/add_book.php?title=" + encodeURIComponent(BookForm.title) +
+																													 "&author=" + encodeURIComponent(BookForm.author) +
+																													 "&description=" + encodeURIComponent(BookForm.description) +
+																													 "&category=" + encodeURIComponent(BookForm.category) +
+																													 "&price=" + encodeURIComponent(BookForm.price) +
+																													 "&stock=" + encodeURIComponent(BookForm.stock));
 }

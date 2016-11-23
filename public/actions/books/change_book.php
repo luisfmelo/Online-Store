@@ -43,8 +43,9 @@
     } while (refExist($ref));
   }
 
+  updateBookInfo($_GET['id'], $ref, $_POST['title'], $_POST['author'], $_POST['price'], $_POST['category'],$_POST['stock'], $_POST['description']);
 
-  updateBookInfo($_GET['id'], $ref, $_POST['title'], $_POST['author'], $_POST['price'], $_POST['category'], $_POST['stock'], $_POST['description']);
+  $_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
 
   header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;

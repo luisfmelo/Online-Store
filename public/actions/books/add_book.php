@@ -4,12 +4,12 @@
 
 	$max_catRef_numbers = 5;
 
-	$title 			= $_GET['title'];
-	$author 		= $_GET['author'];
+	$title 		  	= $_GET['title'];
+	$author 		  = $_GET['author'];
 	$category 		= $_GET['category'];
-	$price 			= $_GET['price'];
+	$price 			  = $_GET['price'];
 	$description 	= $_GET['description'];
-	$stock		 	= $_GET['stock'];
+	$stock		 	  = $_GET['stock'];
 
 	$categoryId = getCategoryId($category);
 
@@ -22,7 +22,8 @@
 		$ref = $shorterCategory . $categoryNumber; // CAT + NUMBER
 	} while (refExist($ref));
 
-  addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
-	header("Location: " . $BASE_URL . '/pages/users/stock_management.php?');
+	addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
+
+	header("Location: " . $BASE_URL . '/pages/books/view_book.php?id='.$ref);
 	exit;
 ?>

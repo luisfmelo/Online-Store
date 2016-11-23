@@ -27,14 +27,15 @@
     			Stock:		<br />
           <input type = "text"	name="stock"		</input> <br>
 
+          <div class="messages formMessages" style="margin-top: 20px;">
+            {include file='_messages/warn_msgs.tpl'}
+          </div>
+
     			<input type = "button" onClick="NewBookCheck()" value="Adicionar"></input>
     		</form>
       </div>
     </section>
 
-    <div class="messages" style="margin-bottom: 20px;">
-      {include file='_messages/warn_msgs.tpl'}
-    </div>
 
   </div>
 </div>

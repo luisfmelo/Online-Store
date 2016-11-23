@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 09:09:53
+/* Smarty version 3.1.30, created on 2016-11-23 21:03:10
   from "/var/www/public/templates/users/new_regist.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ec561177db5_47380489',
+  'unifunc' => 'content_5836040ebec870_06589032',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4f8bd5dbaf57e9d0e0b9ae93a69b88bcc972a0c3' => 
     array (
       0 => '/var/www/public/templates/users/new_regist.tpl',
-      1 => 1479460187,
+      1 => 1479723110,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/error_success_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_582ec561177db5_47380489 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5836040ebec870_06589032 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +40,7 @@ function content_582ec561177db5_47380489 (Smarty_Internal_Template $_smarty_tpl)
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/actions/users/register.php" method="post" onsubmit="return validateRegister();">
+    <form class="login-form" name="NewRegist" method="post" onsubmit="validateRegister()">
 
       <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /index.php" id="auth_logo">
