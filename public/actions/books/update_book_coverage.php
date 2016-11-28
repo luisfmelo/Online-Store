@@ -2,11 +2,12 @@
   include_once('../../database/users.php');
   include_once('../../config/init.php');
   
-  if ($_FILES['userfile']['type'] == "image/png"){
-	 $username = $_GET['username'];
-	 
-	 $originalFileName = $IMG_DIR . '/profiles/' . $username . '.png';
-	 move_uploaded_file($_FILES['userfile']['tmp_name'], $originalFileName);
+  $id = $_GET['id'];
+  
+  if ($_FILES['bookcover']['type'] == "image/png"){
+	 	 
+	 $originalFileName = $IMG_DIR . '/covers/' . $id . '.png';
+	 move_uploaded_file($_FILES['bookcover']['tmp_name'], $originalFileName);
 	 
 	 $result = @imagecreatefrompng($originalFileName);
 	 if(!$result)
@@ -16,7 +17,7 @@
 	$_SESSION['error_messages'] = 'Formato Inválido - Introduza Imagem com Extensão PNG';
 	
 
-  header("Location: $BASE_URL" . '/pages/users/view_profile.php');
+  header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $id);
 	exit;
 	
 ?>  

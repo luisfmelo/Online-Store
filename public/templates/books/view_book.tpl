@@ -49,7 +49,9 @@
           <img src="{$COVER}" alt="" />
         </div>
         <div class="changePhoto">
-        <!--  <input type="file" id="photoUp" multiple size="50" onchange="uploadPhoto()">-->
+			<form enctype="multipart/form-data" method="POST" action= "{$BASE_URL}/actions/books/update_book_coverage.php?id={$smarty.get.id}" >
+				<input name="bookcover" type="file" id="photoUp"  />
+			<input type="submit">
         </div>
       </div>
     </section>
