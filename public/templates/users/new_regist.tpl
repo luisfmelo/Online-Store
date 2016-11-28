@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" name="NewRegist" method="post" onsubmit="validateRegister()">
+    <form class="login-form" name="NewRegist" id="newRegist" method="post" action= "{$BASE_URL}/actions/users/register.php">
 
       <a href="{$BASE_URL}/index.php" id="auth_logo">
         <img src="{$BASE_URL}/images/logo.png" alt="" />
@@ -27,19 +27,19 @@
 
       <!-- NAME -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Nome" name="nome" value="{$FORM_VALUES.nome}">
+        <input type="text" class="form-control" placeholder="Nome" name="name" value="{$FORM_VALUES.name}">
         <i class="fa fa-address-card" aria-hidden="true"></i>
       </div>
 
       <!-- MORADA -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Morada" name="morada" value="{$FORM_VALUES.morada}">
+        <input type="text" class="form-control" placeholder="Morada" name="address" value="{$FORM_VALUES.address}">
         <i class="fa fa-map-marker" aria-hidden="true"></i>
       </div>
 
       <!-- TELEFONE -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Telefone" name="telefone" value="{$FORM_VALUES.telefone}">
+        <input type="text" class="form-control" placeholder="Telefone" name="phone" value="{$FORM_VALUES.phone}">
         <i class="fa fa-phone"></i>
       </div>
 
@@ -65,6 +65,10 @@
         {include file='_messages/error_success_msgs.tpl'}
       </div>
 
+      <div class="messages formMessages" style="margin-top: 20px;">
+        {include file='_messages/warn_msgs.tpl'}
+      </div>
+
       <input type="submit" class="log-btn" value="Registar" />
 
       <div class="goToRegister">
@@ -76,5 +80,7 @@
 
     </form>
   </body>
+  <script src="{$BASE_URL}/libs/jquery/jquery-3.1.1.min.js"></script>
+  <script src="{$BASE_URL}/js/validate.js"></script>
   <script src="{$BASE_URL}/js/main.js"></script>
 </html>

@@ -7,30 +7,25 @@
     *   -> Todos os dados devem ser preenchidos
     *   -> passwords iguais
     *   -> minimo 5 caracteres para user e pass
-    *   -> telefone deve ter 9 caracteres (numéricos)
+    *   -> phone deve ter 9 caracteres (numéricos)
     *   -> formato de email correto
     *   -> user unico
     */
 
   if (!isset($_POST['username'])        ||
-      !isset($_POST['nome'])            ||
-      !isset($_POST['morada'])          ||
-      !isset($_POST['telefone'])        ||
+      !isset($_POST['name'])            ||
+      !isset($_POST['address'])          ||
+      !isset($_POST['phone'])        ||
       !isset($_POST['password'])        ||
       !isset($_POST['confirmPassword']) ||
-      !isset($_POST['email']) ) {
-		$_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
-		$_SESSION['form_values'] = $_POST;
-		header("Location: $BASE_URL" . '/pages/users/new_regist.php');
-		exit;
-  }
-  else if ( empty($_POST['username'])        ||
-            empty($_POST['nome'])            ||
-            empty($_POST['morada'])          ||
-            empty($_POST['telefone'])        ||
-            empty($_POST['password'])        ||
-            empty($_POST['confirmPassword']) ||
-            empty($_POST['email']) ) {
+      !isset($_POST['email'])           ||
+      empty($_POST['username'])         ||
+      empty($_POST['name'])             ||
+      empty($_POST['address'])           ||
+      empty($_POST['phone'])         ||
+      empty($_POST['password'])         ||
+      empty($_POST['confirmPassword'])  ||
+      empty($_POST['email']) ) {
 		$_SESSION['error_messages'] = 'Alguns campos não foram preenchidos';
 		$_SESSION['form_values'] = $_POST;
 		header("Location: $BASE_URL" . '/pages/users/new_regist.php');
@@ -49,9 +44,9 @@
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
   }
-  else if( strlen($_POST['telefone']) != 9 || !ctype_digit($_POST['telefone']))
+  else if( strlen($_POST['phone']) != 9 || !ctype_digit($_POST['phone']))
   {
-    $_SESSION['error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
+    $_SESSION['error_messages'] = 'O seu phone não tem 9 digitos ou contém caracteres inválidos';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
@@ -82,10 +77,12 @@
 
   $username = strip_tags($_POST['username']);
   $password = hash("sha256", $_POST['password']); //strip_tags(?)
-  $name 	= strip_tags($_POST['nome']);
-  $phone    = strip_tags($_POST['telefone']);
-  $address  = strip_tags($_POST['morada']);
+  $name 	= strip_tags($_POST['name']);
+  $phone    = strip_tags($_POST['phone']);
+  $address  = strip_tags($_POST['address']);
   $email 	= strip_tags($_POST['email']);
+
+  $_SESSION['success_messages'] = 'Conta criada com sucesso';
 
   addNewUser($username, $name, $phone, $address, $password, $email);
   header("Location: $BASE_URL" . '/pages/books/list_books.php');

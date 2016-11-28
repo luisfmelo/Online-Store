@@ -2,7 +2,14 @@
   include_once('../../config/init.php');
   include_once('../../database/books.php');
 
-  $catRef = getCategoryRef($_POST['category'])[0][ref];
+  $title 		  	= $_GET['title'];
+  $author 		  = $_GET['author'];
+  $category 		= $_GET['category'];
+  $price 			  = $_GET['price'];
+  $description 	= $_GET['description'];
+  $stock		 	  = $_GET['stock'];
+
+  $catRef = getCategoryRef($category)[0][ref];
   $ref = $_GET['id'];
 
   /* Testa novos dados do livro:
@@ -10,23 +17,23 @@
         - Preço e stock não podem tomar valores negativos
         - em caso de alteração de categoria, deverá ser gerada uma nova referencia
   */
-  if ( $_POST['title'] === ""){
+  if ( $title === ""){
     $_SESSION['error_messages'] = 'O Titulo não pode estar em branco';
     header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
     exit;
   }
-  else if ( $_POST['author'] === ""){
+  else if ( $author === ""){
     $_SESSION['error_messages'] = 'O nome do Autor não pode estar em branco';
     header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
     exit;
   }
-  else if ( $_POST['price'] < 0 || $_POST['price'] === ""){
-    $_SESSION['error_messages'] = 'O Preço tem de ser positivo';
+  else if ( $price < 0 || $price === ""){
+    $_SESSION['error_messages'] = 'O Preço tem de ser positivo ou igual a 0';
     header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
     exit;
   }
-  else if ( $_POST['stock'] < 0 || $_POST['stock'] === ""){
-    $_SESSION['error_messages'] = 'O Stock tem de ser positivo';
+  else if ( $stock < 0 || $stock === ""){
+    $_SESSION['error_messages'] = 'O Stock tem de ser positivo ou igual a 0';
     header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
     exit;
   }
@@ -34,7 +41,7 @@
   // se alterar a categoria
   else if ($catRef !== strtoupper(substr($_GET['id'], 0, 3)))
   {
-    $catRef = getCategoryRef($_POST['category'])[0][ref];
+    $catRef = getCategoryRef($category)[0][ref];
 
     do{
       // RANDOM NUMBER entre 00000 e 99999
@@ -43,8 +50,9 @@
     } while (refExist($ref));
   }
 
+  updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description);
 
-  updateBookInfo($_GET['id'], $ref, $_POST['title'], $_POST['author'], $_POST['price'], $_POST['category'], $_POST['stock'], $_POST['description']);
+  $_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
 
   header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;

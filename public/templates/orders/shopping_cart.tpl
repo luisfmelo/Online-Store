@@ -8,7 +8,7 @@
     </h2>
 
     <section id="cart">
-    {if $CART_COUNTER != 0 }
+    {*if $CART_COUNTER != 0 *}
       {foreach $CART_ITEMS as $item}
         <article class='cartItem row'>
           <img class='cover' src='{$item.cover}'/>
@@ -45,7 +45,7 @@
           </div>
         </article>
       {/foreach}
-    {/if}
+    {*/if*}
     </section>
 
     <div class="messages" style="margin-bottom: 20px;">
@@ -69,7 +69,7 @@
       <strong>Total: </strong>
     </div>
     <div>
-      {$total} €
+      {$TOTAL} €
     </div>
   </div>
   <div>

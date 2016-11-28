@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 09:52:32
+/* Smarty version 3.1.30, created on 2016-11-28 11:02:12
   from "/var/www/public/templates/books/edit_book.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ecf6094b0d2_48028599',
+  'unifunc' => 'content_583c0eb4c05257_33740233',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cd1e0ca082255a26d0698c6c47f8a0ee426f5f0' => 
     array (
       0 => '/var/www/public/templates/books/edit_book.tpl',
-      1 => 1479462751,
+      1 => 1480331485,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/left_menu.tpl' => 1,
   ),
 ),false)) {
-function content_582ecf6094b0d2_48028599 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583c0eb4c05257_33740233 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="messages" style="margin-top: -20px;">
   <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -45,9 +45,7 @@ function content_582ecf6094b0d2_48028599 (Smarty_Internal_Template $_smarty_tpl)
           <strong>Referência:</strong>	<?php echo $_GET['id'];?>
  <br />
         </span>
-        <form method="POST" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/actions/books/change_book.php?id=<?php echo $_GET['id'];?>
-" class="myForms" id="editBook">
+        <form class="myForms" id="editBook">
     			Titulo:  <br />
           <input type = "text" name="title" value="<?php echo $_smarty_tpl->tpl_vars['BOOK']->value[0]['title'];?>
 "/><br>
@@ -85,7 +83,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
           <textarea rows="13" cols="50" name="description" value="dd"><?php echo $_smarty_tpl->tpl_vars['BOOK']->value[0]['description'];?>
 </textarea> <br />
 
-    			<input type = "submit" name="cmdsubmit" value="Alterar"/>
+    			<input type = "button"  onClick="EditBookCheck('<?php echo $_GET['id'];?>
+')" value="Alterar"/>
     		</form>
 
       </div>

@@ -4,12 +4,38 @@
 
 	$max_catRef_numbers = 5;
 
-	$title 			= $_GET['title'];
-	$author 		= $_GET['author'];
+	$title 		  	= $_GET['title'];
+	$author 		  = $_GET['author'];
 	$category 		= $_GET['category'];
-	$price 			= $_GET['price'];
+	$price 			  = $_GET['price'];
 	$description 	= $_GET['description'];
-	$stock		 	= $_GET['stock'];
+	$stock		 	  = $_GET['stock'];
+
+	/* Testa novos dados do livro:
+        - Titulo/Autor/preço/stock teem que ser preenchidos
+        - Preço e stock não podem tomar valores negativos
+        - em caso de alteração de categoria, deverá ser gerada uma nova referencia
+  */
+  if ( $title === ""){
+    $_SESSION['error_messages'] = 'O Titulo não pode estar em branco';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
+  else if ( $author === ""){
+    $_SESSION['error_messages'] = 'O nome do Autor não pode estar em branco';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
+  else if ( $price < 0 || $price === ""){
+    $_SESSION['error_messages'] = 'O Preço tem de ser positivo ou igual a 0';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
+  else if ( $stock < 0 || $stock === ""){
+    $_SESSION['error_messages'] = 'O Stock tem de ser positivo ou igual a 0';
+    header("Location: $BASE_URL/pages/books/edit_book.php?id=".$_GET['id']);
+    exit;
+  }
 
 	$categoryId = getCategoryId($category);
 
@@ -22,7 +48,8 @@
 		$ref = $shorterCategory . $categoryNumber; // CAT + NUMBER
 	} while (refExist($ref));
 
-  addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
-	header("Location: " . $BASE_URL . '/pages/users/stock_management.php?');
+	addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
+
+	header("Location: " . $BASE_URL . '/pages/books/view_book.php?id='.$ref);
 	exit;
 ?>

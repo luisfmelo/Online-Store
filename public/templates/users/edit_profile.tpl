@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form enctype="multipart/form-data" method="POST" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
+        <form method="POST" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
     			Nome:  <br />
           <input type = "text" name="name" value="{$PROFILE.0.name}"/><br>
     			Email:  <br />
@@ -21,17 +21,17 @@
           <input type = "password"	name="password"/><br>
     			Confirmar Password:  <br />
           <input type = "password"	name="confirmPassword"/><br>
-		
-    	  <input type = "submit" name="cmdsubmit" value="Alterar"/>
-    	
-    	</form>
-    			
+
+          <div class="messages formMessages" style="margin-top: 20px;">
+            {*include file='_messages/warn_msgs.tpl'*}
+              {include file='_messages/error_msgs.tpl'}
+          </div>
+
+          <input type = "submit" name="cmdsubmit" value="Alterar"/>
+      	</form>
+
       </div>
     </section>
-
-    <div class="messages" style="margin-bottom: 20px;">
-      {include file='_messages/warn_msgs.tpl'}
-    </div>
 
   </div>
 </div>

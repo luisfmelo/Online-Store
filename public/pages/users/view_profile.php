@@ -23,7 +23,7 @@
 
   $smarty->assign('PHOTO', $photo);
   $smarty->assign('PROFILE', $profile);
-  $smarty->assign('USERNAME', $username);
+  $smarty->assign('USERNAME', $_SESSION['username']);
 
   $smarty->display('common/header.tpl');
   $smarty->display('users/view_profile.tpl');

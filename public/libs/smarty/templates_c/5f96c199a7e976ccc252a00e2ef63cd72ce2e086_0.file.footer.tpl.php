@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 12:34:02
+/* Smarty version 3.1.30, created on 2016-11-21 10:24:02
   from "/var/www/public/templates/common/footer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5829af3a49b471_58076760',
+  'unifunc' => 'content_5832cb424ba395_52367599',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5f96c199a7e976ccc252a00e2ef63cd72ce2e086' => 
     array (
       0 => '/var/www/public/templates/common/footer.tpl',
-      1 => 1479126841,
+      1 => 1479723755,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5829af3a49b471_58076760 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5832cb424ba395_52367599 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
   </div>
   <footer>
@@ -32,6 +32,14 @@ function content_5829af3a49b471_58076760 (Smarty_Internal_Template $_smarty_tpl)
     <small>Copyright 2016 &#169; Lídia Cerqueira &amp; Luís Melo - SIEM 2016/2017</small>
   </footer>
 </body>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/libs/jquery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/validate.js"><?php echo '</script'; ?>
+>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /js/main.js"><?php echo '</script'; ?>

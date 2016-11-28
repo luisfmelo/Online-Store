@@ -1,28 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 10:44:56
+/* Smarty version 3.1.30, created on 2016-11-28 19:45:30
   from "/var/www/public/templates/users/edit_profile.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582edba81ef144_68082582',
+  'unifunc' => 'content_583c895ab27db4_53792648',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e731eb24c08b3686e03196f19a7656f6102832b1' => 
     array (
       0 => '/var/www/public/templates/users/edit_profile.tpl',
-      1 => 1479466025,
+      1 => 1480362300,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:common/left_menu.tpl' => 1,
-    'file:_messages/warn_msgs.tpl' => 1,
+    'file:_messages/error_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_582edba81ef144_68082582 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583c895ab27db4_53792648 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -55,17 +55,18 @@ function content_582edba81ef144_68082582 (Smarty_Internal_Template $_smarty_tpl)
     			Confirmar Password:  <br />
           <input type = "password"	name="confirmPassword"/><br>
 
-    			<input type = "submit" name="cmdsubmit" value="Alterar"/>
-
-    		</form>
-      </div>
-    </section>
-
-    <div class="messages" style="margin-bottom: 20px;">
-      <?php $_smarty_tpl->_subTemplateRender("file:_messages/warn_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+          <div class="messages formMessages" style="margin-top: 20px;">
+            
+              <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-    </div>
+          </div>
+
+          <input type = "submit" name="cmdsubmit" value="Alterar"/>
+      	</form>
+
+      </div>
+    </section>
 
   </div>
 </div>

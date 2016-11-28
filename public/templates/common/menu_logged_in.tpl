@@ -27,6 +27,7 @@
 {if ! $isADMIN }
 <li>
   <a href='{$BASE_URL}/pages/orders/shopping_cart.php'>
+    {$CART_COUNTER}
     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
   </a>
 </li>

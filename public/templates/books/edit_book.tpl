@@ -14,7 +14,7 @@
         <span>
           <strong>Referência:</strong>	{$smarty.get.id} <br />
         </span>
-        <form method="POST" action= "{$BASE_URL}/actions/books/change_book.php?id={$smarty.get.id}" class="myForms" id="editBook">
+        <form class="myForms" id="editBook">
     			Titulo:  <br />
           <input type = "text" name="title" value="{$BOOK.0.title}"/><br>
     			Autor:  <br />
@@ -36,7 +36,11 @@
           Descrição:		<br />
           <textarea rows="13" cols="50" name="description" value="dd">{$BOOK.0.description}</textarea> <br />
 
-    			<input type = "submit" name="cmdsubmit" value="Alterar"/>
+          <div class="messages formMessages" style="margin-top: 20px;">
+            {include file='_messages/warn_msgs.tpl'}
+          </div>
+          
+    			<input type = "button"  onClick="EditBookCheck('{$smarty.get.id}')" value="Alterar"/>
     		</form>
 
       </div>

@@ -25,6 +25,7 @@
 /** VARIAVEIS DE SESSAO: MENSAGENS **/
   $FORM_VALUES = $_SESSION['form_values'];
   $ERROR_MESSAGE =  $_SESSION['error_messages'];
+  $ERROR_MESSAGE_SPECIAL =  $_SESSION['special_error_messages'];
   $SUCCESS_MESSAGE = $_SESSION['success_messages'];
   $CART_MESSAGE = $_SESSION['cart_messages'];
   $INFO_MESSAGE = $_SESSION['info_messages'];
@@ -43,8 +44,10 @@
   $smarty->assign('GMAPS_API_KEY', $GMAPS_API_KEY);
   $smarty->assign('USERNAME', $_SESSION['username']);
   $smarty->assign('isADMIN', $_SESSION['admin']);
+  $smarty->assign('CART_COUNTER', $_SESSION['cart_counter']);
   $smarty->assign('FORM_VALUES', $_SESSION['form_values']);
   $smarty->assign('ERROR_MESSAGE', $ERROR_MESSAGE);
+  $smarty->assign('ERROR_MESSAGE_SPECIAL', $ERROR_MESSAGE_SPECIAL);
   $smarty->assign('SUCCESS_MESSAGE', $SUCCESS_MESSAGE);
   $smarty->assign('CART_MESSAGE', $CART_MESSAGE);
   $smarty->assign('INFO_MESSAGE', $INFO_MESSAGE);
@@ -52,6 +55,7 @@
 
   unset($_SESSION['form_values']);
   unset($_SESSION['error_messages']);
+  unset($_SESSION['special_error_messages']);
   unset($_SESSION['success_messages']);
   unset($_SESSION['cart_messages']);
   unset($_SESSION['info_messages']);

@@ -493,12 +493,12 @@ header {
     float: right;
 }
 
-#searchBar {
+.searchBar {
     border-radius: 0px;
     font-size: 20px;
     border: 1px solid #ccc;
     padding: 5px;
-    width: 1px;
+    width: 0px;
     visibility: hidden;
     display: inline;
     float: right;
@@ -508,13 +508,10 @@ header {
 }
 
 .expanded {
-    visibility: visible;
+    visibility: visible!important;
+    width:300px!important;
     display: inline;
-}
-
-.expanded {
     margin: 0;
-    background-color: #C61017;
 }
 
 

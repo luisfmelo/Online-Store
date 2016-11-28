@@ -1,7 +1,7 @@
 <div class="row filter">
   <div>
     Ordenar:
-      <select name="order" onchange="sortTheBooksNow()">
+      <select name="order" id="changeOrderBooks">
           {$smarty.get.sort}
           <option value='defaut'>Escolher</option>
           <option value='name_a'{(($smarty.get.sort=='name_a')?'selected':" ")}>Nome: A a Z</option>
@@ -12,7 +12,7 @@
   </div>
   <div>
     Livros por Pag:
-      <select name="numberBooks" onchange="sortTheNumberBooksNow()">
+      <select name="numberBooks" id="changeNoBooks">
           {$smarty.get.number_Books}
           <option value='6'>6</option>
           <option value='8' {(($smarty.get.number_Books=='8') ? ' selected': " ")}>8</option>
