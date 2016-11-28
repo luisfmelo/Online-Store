@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-23 21:03:10
+/* Smarty version 3.1.30, created on 2016-11-28 12:16:01
   from "/var/www/public/templates/users/new_regist.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5836040ebec870_06589032',
+  'unifunc' => 'content_583c20013cbc58_15147701',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4f8bd5dbaf57e9d0e0b9ae93a69b88bcc972a0c3' => 
     array (
       0 => '/var/www/public/templates/users/new_regist.tpl',
-      1 => 1479723110,
+      1 => 1480335353,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:_messages/error_success_msgs.tpl' => 1,
+    'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5836040ebec870_06589032 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583c20013cbc58_15147701 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,8 @@ function content_5836040ebec870_06589032 (Smarty_Internal_Template $_smarty_tpl)
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" name="NewRegist" method="post" onsubmit="validateRegister()">
+    <form class="login-form" name="NewRegist" id="newRegist" method="post" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/users/register.php">
 
       <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /index.php" id="auth_logo">
@@ -102,6 +104,12 @@ function content_5836040ebec870_06589032 (Smarty_Internal_Template $_smarty_tpl)
 
       </div>
 
+      <div class="messages formMessages" style="margin-top: 20px;">
+        <?php $_smarty_tpl->_subTemplateRender("file:_messages/warn_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+      </div>
+
       <input type="submit" class="log-btn" value="Registar" />
 
       <div class="goToRegister">
@@ -114,6 +122,14 @@ function content_5836040ebec870_06589032 (Smarty_Internal_Template $_smarty_tpl)
 
     </form>
   </body>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/libs/jquery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/validate.js"><?php echo '</script'; ?>
+>
   <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /js/main.js"><?php echo '</script'; ?>

@@ -36,6 +36,10 @@
           Descrição:		<br />
           <textarea rows="13" cols="50" name="description" value="dd">{$BOOK.0.description}</textarea> <br />
 
+          <div class="messages formMessages" style="margin-top: 20px;">
+            {include file='_messages/warn_msgs.tpl'}
+          </div>
+          
     			<input type = "button"  onClick="EditBookCheck('{$smarty.get.id}')" value="Alterar"/>
     		</form>
 

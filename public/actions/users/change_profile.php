@@ -12,24 +12,24 @@
   */
   if ( $_POST['password'] !== ""){
 	  $password_was_set = 1;
-      if ( $_POST['password'] !== $_POST['confirmPassword']){
-				$_SESSION['error_messages'] = 'Passwords não são iguais';
-				header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
-				exit;
-			}
+    if ( $_POST['password'] !== $_POST['confirmPassword']){
+			$_SESSION['special_error_messages'] = 'Passwords não são iguais';
+			header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
+			exit;
+		}
 	  else if( strlen($_POST['password']) < 5){
-			$_SESSION['error_messages'] = 'A Password deve ter pelo menos 5 caracteres';
+			$_SESSION['special_error_messages'] = 'A Password deve ter pelo menos 5 caracteres';
 			header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
 			exit;
 	  }
   }
   else if( strlen($_POST['phone']) != 9 || !ctype_digit($_POST['phone'])){
-    $_SESSION['error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
+    $_SESSION['special_error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
     header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
     exit;
   }
   else if( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-    $_SESSION['error_messages'] = 'Email inválido';
+    $_SESSION['special_error_messages'] = 'Email inválido';
     header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
     exit;
   }
@@ -43,11 +43,13 @@
   editUser($username, $name, $phone, $address, $email);
 
   if ($password_was_set){
-	 $password = hash("sha256", $_POST['password']);
+	  $password = hash("sha256", $_POST['password']);
 
-	 editUserPass($username, $password);
+    editUserPass($username, $password);
   }
-  
+
+  $_SESSION['success_messages'] = 'Dados Pessoais alterados com sucesso.';
+
   header("Location: $BASE_URL" . '/pages/users/view_profile.php');
 	exit;
 ?>
