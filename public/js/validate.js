@@ -65,7 +65,9 @@ function validateRegister(){
 
 }
 
-/* Verificação dos dados de um novo livro do lado do cliente */
+
+
+/* Verificação dos dados de um novo livro do lado do administrador */
 function NewBookCheck(){
 	var tmp = $('#newBook')[0];
 	var BookForm = {};
@@ -105,4 +107,47 @@ function NewBookCheck(){
 																													 "&category=" + encodeURIComponent(BookForm.category) +
 																													 "&price=" + encodeURIComponent(BookForm.price) +
 																													 "&stock=" + encodeURIComponent(BookForm.stock));
+}
+
+
+
+/* Verificação dos dados de um livro editado por um administrador */
+function EditBookCheck(ref){
+	var tmp = $('#editBook')[0];
+	var BookForm = {};
+	var msg = "";
+
+	for (var i= 0; i < 6; i++)
+		BookForm[tmp[i].name] = tmp[i].value;
+
+	BookForm.price = BookForm.price.replace(/,/g, '.');
+
+	if( (BookForm.title.length == 0) || (BookForm.author.length == 0) )
+		msg = "Titulo e Autor têm de ser preenchidos obrigatoriamente.";
+	else if ( BookForm.price === "" || BookForm.stock === "" )
+		msg = "O preço e o stock devem ser preenchidos.";
+	else if ( isNaN(Number(BookForm.price)) || isNaN(parseInt(BookForm.stock) ) )
+		msg = "O preço e o stock não devem conter letras.";
+	else if (BookForm.stock < 0)
+		msg = "Stock deve ser um número positivo ou 0.";
+	else if (BookForm.price <= 0)
+		msg = "Preço deve ser um valor positivo.";
+
+	if ( msg !== "" )
+	{
+		$('.formMessages').html("<div class='errorMsg'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> "+msg+"</div>");
+		return;
+	}
+
+	$('.formMessages').html("");
+
+	var r = confirm("Confirma as alterações?");
+	if ( r )
+		window.location.assign("../../actions/books/change_book.php?id=" + encodeURIComponent(ref) +
+																													  "&title=" + encodeURIComponent(BookForm.title) +
+																													  "&author=" + encodeURIComponent(BookForm.author) +
+																												 	  "&description=" + encodeURIComponent(BookForm.description) +
+																												 	  "&category=" + encodeURIComponent(BookForm.category) +
+																													  "&price=" + encodeURIComponent(BookForm.price) +
+																													  "&stock=" + encodeURIComponent(BookForm.stock));
 }
