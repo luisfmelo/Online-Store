@@ -11,18 +11,21 @@
     *   -> formato de email correto
     *   -> user unico
     */
+    
+    $username = strip_tags($_POST['username']);
+    
 
   if (!isset($_POST['username'])        ||
       !isset($_POST['name'])            ||
-      !isset($_POST['address'])          ||
-      !isset($_POST['phone'])        ||
+      !isset($_POST['address'])         ||
+      !isset($_POST['phone'])           ||
       !isset($_POST['password'])        ||
       !isset($_POST['confirmPassword']) ||
       !isset($_POST['email'])           ||
       empty($_POST['username'])         ||
       empty($_POST['name'])             ||
-      empty($_POST['address'])           ||
-      empty($_POST['phone'])         ||
+      empty($_POST['address'])          ||
+      empty($_POST['phone'])            ||
       empty($_POST['password'])         ||
       empty($_POST['confirmPassword'])  ||
       empty($_POST['email']) ) {
@@ -65,24 +68,22 @@
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
   }
-  else if ( !userExists($_POST['username']))
+  else if (!userExists($username))
   {
     $_SESSION['error_messages'] = 'Username já existe';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
   }
-
-  $_SESSION['username'] = $_POST['username'];
-
-  $username = strip_tags($_POST['username']);
-  $password = hash("sha256", $_POST['password']); //strip_tags(?)
+  
+  $password = hash("sha256", strip_tags($_POST['password'])); 
   $name 	= strip_tags($_POST['name']);
   $phone    = strip_tags($_POST['phone']);
   $address  = strip_tags($_POST['address']);
   $email 	= strip_tags($_POST['email']);
 
   $_SESSION['success_messages'] = 'Conta criada com sucesso';
+  $_SESSION['username'] = $username;
 
   addNewUser($username, $name, $phone, $address, $password, $email);
   header("Location: $BASE_URL" . '/pages/books/list_books.php');
