@@ -43,6 +43,12 @@ function setup2(){
       console.log(data);
     });
   })
+
+  $('.dropdown').hover(function(){
+    $( '.dropdown-content' ).slideDown( "slow" );
+  }, function(){
+    $( '.dropdown-content' ).slideUp( "slow" );
+  });
 }
 
 /* Get each GET parameter from URL*/
