@@ -46,6 +46,14 @@
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>
+            <a class= "favourite">
+            {if in_array($book.ref, $FAVOURITES)}
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            {else}
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+            {/if}
+              <span hidden>{$book.ref}</span>
+            </a>
             {/if}
 
             {* Caso não tenha em stock, mostra Esgotado *}

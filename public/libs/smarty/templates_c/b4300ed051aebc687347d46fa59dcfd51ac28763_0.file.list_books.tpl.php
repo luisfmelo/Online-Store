@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-21 19:43:43
+/* Smarty version 3.1.30, created on 2016-11-30 23:21:37
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58334e6f6837f6_18864177',
+  'unifunc' => 'content_583f5f01246a82_94600632',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1479757358,
+      1 => 1480547927,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_58334e6f6837f6_18864177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583f5f01246a82_94600632 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -101,6 +101,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
 '>
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
+            </a>
+            <a class= "favourite">
+            <?php if (in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            <?php } else { ?>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <?php }?>
+              <span hidden><?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
+</span>
             </a>
             <?php }?>
 

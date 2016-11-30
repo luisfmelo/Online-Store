@@ -130,4 +130,53 @@
     $stmt->execute( array('user' => $user) );
     return count($stmt->fetchAll()) == 0 ? 1 : 0;
   }
+
+/* Adiciona livro com referencia ref aos favoritos do utilizador */
+  function addFavourite ($ref, $user){
+    global $conn;
+
+    $query = "INSERT INTO e_store.likes
+              VALUES (DEFAULT, ?, (select id FROM e_store.books WHERE ref = ?));";
+
+    try{
+      $stmt = $conn->prepare($query);
+      $stmt->execute(array($user, $ref));
+    } catch(Exception $e){
+      return false;
+    }
+
+    return true;
+  }
+
+/* Adiciona livro com referencia ref aos favoritos do utilizador */
+  function removeFavourite ($ref, $user){
+    global $conn;
+
+    $query = "DELETE FROM e_store.likes
+              WHERE userid = ? AND
+                    bookid = (select id FROM e_store.books WHERE ref = ?) ;";
+
+    try{
+      $stmt = $conn->prepare($query);
+      $stmt->execute(array($user, $ref));
+    } catch(Exception $e){
+      return false;
+    }
+
+    return true;
+  }
+
+/* Get Favourite Books From a user */
+  function getFavouriteBooks($user){
+    global $conn;
+    $query = "SELECT ref
+              FROM e_store.likes
+              INNER JOIN e_store.users ON userid = users.id
+              INNER JOIN e_store.books ON bookid = books.id
+              WHERE username = :user;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('user' => $user) );
+    return $stmt->fetchAll();
+  }
 ?>

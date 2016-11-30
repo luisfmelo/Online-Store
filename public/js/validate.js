@@ -1,4 +1,4 @@
-$(document).ready(setup);
+$(setup);
 
 /*Verifica se a sting é nula */
 function isEmpty(str) {

@@ -1,6 +1,7 @@
 <?php
   include_once('../../config/init.php');
   include_once("$BASE_DIR/database/books.php");
+  include_once("$BASE_DIR/database/users.php");
 
   $categories = getBookCategories();
 
@@ -39,6 +40,13 @@
   if (isset($_GET['number_Books']))
     $param = $param . "&number_Books=" . $_GET['number_Books'];
 
+//Get favourite books for this user into array
+  $res = getFavouriteBooks($_SESSION['username']);
+  $fav = array();
+  foreach ($res as $key => $value) {
+    $fav[] = $value[ref];
+  }
+
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);
   $smarty->assign('previous', $previous);
@@ -46,6 +54,7 @@
   $smarty->assign('param', $param);
   $smarty->assign('CATEGORIES', $categories);
   $smarty->assign('BOOKS', $books);
+  $smarty->assign('FAVOURITES', $fav);
 
   $smarty->display('common/header.tpl');
   $smarty->display('books/list_books.tpl');

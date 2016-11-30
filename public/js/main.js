@@ -1,33 +1,49 @@
-/* Show/Hide Search Bar */
-$("#lupa").click(function() {
-    $('.searchBar').toggleClass('expanded')
-    $('.searchBar').focus();
-});
+$(setup2);
 
-/* Filter Books: number per page & order*/
-$('.filter div select').change(function() {
-    var params = get_url_params();
+function setup2(){
+  /* Show/Hide Search Bar */
+  $("#lupa").click(function() {
+      $('.searchBar').toggleClass('expanded')
+      $('.searchBar').focus();
+  });
 
-    params['sort'] = $("#changeOrderBooks option:selected").val();
-    params['number_Books'] = $("#changeNoBooks option:selected").val();
-    var url = get_new_url(params);
+  /* Filter Books: number per page & order*/
+  $('.filter div select').change(function() {
+      var params = get_url_params();
 
-    $.get( "../../api/getBooks.php?" + url, function( data ) {
-        $('#books').html(data);
+      params['sort'] = $("#changeOrderBooks option:selected").val();
+      params['number_Books'] = $("#changeNoBooks option:selected").val();
+      var url = get_new_url(params);
+
+      $.get( "../../api/getBooks.php?" + url, function( data ) {
+          $('#books').html(data);
+      });
+
+  });
+
+  /* Sort Order Client*/
+  $(".sortOrders").click(function() {
+      var params = get_url_params();
+
+      params['sort'] = $(this).hasClass('fa-arrow-down') ? "down" :
+                                                           "up";
+      var url = get_new_url(params);
+      window.location.assign(window.location.href.split('?')[0] + '?' + url);
+  });
+
+  $(".favourite").click(function(){
+    $(this).find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
+    var url;
+    url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o')) ? 'unfavourite' :
+                                                                              'favourite');
+    var ref = $(this).find(">span").html();
+    url = url + "&ref=" + ref;
+
+    $.get( "../../actions/users/change_favourites.php?" + url, function(data){
+      console.log(data);
     });
-
-});
-
-/* Sort Order Client*/
-$(".sortOrders").click(function() {
-    var params = get_url_params();
-
-    params['sort'] = $(this).hasClass('fa-arrow-down') ? "down" :
-                                                         "up";
-    var url = get_new_url(params);
-    window.location.assign(window.location.href.split('?')[0] + '?' + url);
-});
-
+  })
+}
 
 /* Get each GET parameter from URL*/
 function get_url_params() {
@@ -145,5 +161,3 @@ function alertStateChange(orderRef, isAdmin) {
         window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin +
             "&orderref=" + orderRef);
 }
-
-
