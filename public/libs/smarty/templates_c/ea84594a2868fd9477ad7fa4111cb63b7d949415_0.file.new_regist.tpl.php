@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-20 18:05:24
+/* Smarty version 3.1.30, created on 2016-11-29 08:32:45
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/new_regist.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5831e5e42cd124_52144068',
+  'unifunc' => 'content_583d3d2daae9e0_10518131',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ea84594a2868fd9477ad7fa4111cb63b7d949415' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/new_regist.tpl',
-      1 => 1479665098,
+      1 => 1480370272,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:_messages/error_success_msgs.tpl' => 1,
+    'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5831e5e42cd124_52144068 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583d3d2daae9e0_10518131 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,8 @@ function content_5831e5e42cd124_52144068 (Smarty_Internal_Template $_smarty_tpl)
   </head>
   <body>
     <div class="authent_bckgd_img"></div>
-    <form class="login-form" name="NewRegist" method="post" onsubmit="validateRegister()">
+    <form class="login-form" name="NewRegist" id="newRegist" method="post" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/users/register.php">
 
       <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /index.php" id="auth_logo">
@@ -57,21 +59,21 @@ function content_5831e5e42cd124_52144068 (Smarty_Internal_Template $_smarty_tpl)
 
       <!-- NAME -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['nome'];?>
+        <input type="text" class="form-control" placeholder="Nome" name="name" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['name'];?>
 ">
         <i class="fa fa-address-card" aria-hidden="true"></i>
       </div>
 
       <!-- MORADA -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Morada" name="morada" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['morada'];?>
+        <input type="text" class="form-control" placeholder="Morada" name="address" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['address'];?>
 ">
         <i class="fa fa-map-marker" aria-hidden="true"></i>
       </div>
 
       <!-- TELEFONE -->
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Telefone" name="telefone" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['telefone'];?>
+        <input type="text" class="form-control" placeholder="Telefone" name="phone" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['phone'];?>
 ">
         <i class="fa fa-phone"></i>
       </div>
@@ -102,6 +104,12 @@ function content_5831e5e42cd124_52144068 (Smarty_Internal_Template $_smarty_tpl)
 
       </div>
 
+      <div class="messages formMessages" style="margin-top: 20px;">
+        <?php $_smarty_tpl->_subTemplateRender("file:_messages/warn_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+      </div>
+
       <input type="submit" class="log-btn" value="Registar" />
 
       <div class="goToRegister">
@@ -114,6 +122,14 @@ function content_5831e5e42cd124_52144068 (Smarty_Internal_Template $_smarty_tpl)
 
     </form>
   </body>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/libs/jquery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/validate.js"><?php echo '</script'; ?>
+>
   <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /js/main.js"><?php echo '</script'; ?>
