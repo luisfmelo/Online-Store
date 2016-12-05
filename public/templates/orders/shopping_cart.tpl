@@ -15,7 +15,7 @@
 
           <div class='book-data'>
             <span class='title'>{$item.title}</span>
-              <i class='fa fa-trash' aria-hidden='true' onclick="deleteItem('{$item.ref}', '{$item.title}')"></i><br />
+              <i class='fa fa-trash cartRemove' aria-hidden='true' ref="{$item.ref}"></i><br />
               <span class='author'>{$item.author}</span><br /><br />
               <small class='cartQtt'>
                 Quantidade:

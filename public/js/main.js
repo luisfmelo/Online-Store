@@ -49,7 +49,17 @@ function setup2(){
   }, function(){
     $( '.dropdown-content' ).slideUp( "slow" );
   });
+
+/* Remove Item from Cart */
+  $(".cartRemove").click(function() {
+    window.location.assign(window.location.origin + "/actions/orders/delete_book.php?ref=" + $(this).attr('ref'));
+  });
+
+
+
 }
+
+
 
 /* Get each GET parameter from URL*/
 function get_url_params() {

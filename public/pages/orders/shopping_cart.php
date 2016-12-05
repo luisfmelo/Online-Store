@@ -14,6 +14,8 @@
     exit;
   }
 
+  print_r($_);
+
   $WARN_MESSAGE = '';
   $total = 0;
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-05 11:53:38
+/* Smarty version 3.1.30, created on 2016-12-05 12:22:03
   from "/var/www/public/templates/common/menu_logged_in.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_584555420aad17_71918533',
+  'unifunc' => 'content_58455beb7242c1_75620103',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0cfaa70e56ca4e457ba367d117164af8989988e1' => 
     array (
       0 => '/var/www/public/templates/common/menu_logged_in.tpl',
-      1 => 1480939250,
+      1 => 1480940964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_584555420aad17_71918533 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58455beb7242c1_75620103 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <li>
   <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -72,8 +72,10 @@ function content_584555420aad17_71918533 (Smarty_Internal_Template $_smarty_tpl)
 <li>
   <a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /pages/orders/shopping_cart.php'>
-    <?php echo $_smarty_tpl->tpl_vars['CART_COUNTER']->value;?>
+    <?php if ($_smarty_tpl->tpl_vars['CART_COUNTER']->value > 0) {?>
+      <?php echo $_smarty_tpl->tpl_vars['CART_COUNTER']->value;?>
 
+    <?php }?>
     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
   </a>
 </li>

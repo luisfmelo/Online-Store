@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-21 12:33:49
+/* Smarty version 3.1.30, created on 2016-12-05 12:11:03
   from "/var/www/public/templates/orders/shopping_cart.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5832e9ad5af898_55851064',
+  'unifunc' => 'content_5845595775ec62_78488163',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45aefadf53269de0f9ba5a4bd5b8c3212eb43555' => 
     array (
       0 => '/var/www/public/templates/orders/shopping_cart.tpl',
-      1 => 1479731628,
+      1 => 1480940202,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5832e9ad5af898_55851064 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5845595775ec62_78488163 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -49,9 +49,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
           <div class='book-data'>
             <span class='title'><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 </span>
-              <i class='fa fa-trash' aria-hidden='true' onclick="deleteItem('<?php echo $_smarty_tpl->tpl_vars['item']->value['ref'];?>
-', '<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
-')"></i><br />
+              <i class='fa fa-trash cartRemove' aria-hidden='true' ref="<?php echo $_smarty_tpl->tpl_vars['item']->value['ref'];?>
+"></i><br />
               <span class='author'><?php echo $_smarty_tpl->tpl_vars['item']->value['author'];?>
 </span><br /><br />
               <small class='cartQtt'>
