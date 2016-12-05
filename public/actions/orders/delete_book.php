@@ -3,10 +3,18 @@
   include_once($BASE_DIR .'/database/books.php');
 
   $ref = $_GET['ref'];
-  $n = $_SESSION['cart'][$ref];
-
   unset($_SESSION['cart'][$ref]);
-  $_SESSION['cart_counter'] = $_SESSION['cart_counter'] - $n;
+  $_SESSION['cart_counter'] = 0;
+
+  foreach($_GET as $item => $qtt)
+  {
+    if ($qtt <= 0)
+      unset($_SESSION['cart'][$item]);
+    else
+      $_SESSION['cart'][$item] = $qtt;
+
+    $_SESSION['cart_counter'] = $_SESSION['cart_counter'] + $qtt;
+  }
 
   $_SESSION['success_messages'] = "Item eliminado com sucesso!";
 

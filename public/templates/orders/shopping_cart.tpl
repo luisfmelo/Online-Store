@@ -4,7 +4,7 @@
   <div class="rightContent">
     <h2 class="bigTitle">
       <span>O meu Carrinho de Compras</span>
-      <i class="fa fa-refresh" aria-hidden="true" onclick="updateCart(false)"></i>
+      <i class="fa fa-refresh" aria-hidden="true" id='refresh'></i>
     </h2>
 
     <section id="cart">
@@ -73,7 +73,7 @@
     </div>
   </div>
   <div>
-    <a onclick="updateCart(1)" id="checkoutBtn" class='btn'>
+    <a id="checkoutBtn" class='btn'>
       Checkout
     </a>
   </div>

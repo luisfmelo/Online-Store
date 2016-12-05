@@ -55,6 +55,37 @@ function setup2(){
     window.location.assign(window.location.origin + "/actions/orders/delete_book.php?ref=" + $(this).attr('ref'));
   });
 
+/* Atualiza Carrinho de Compras */
+$('#refresh').click(function(){
+  var cart = $('#cart :input');
+  var err = 0;
+  var url = "../../actions/orders/update_cart.php?";
+
+  cart.each(function() {
+    if ( Number( $(this).val() ) >= 0 )
+      url += $(this)[0].name + "=" + $(this).val() + '&';
+    else{
+      err = 1;
+    }
+  }).promise().done(function () {
+    err ? window.location.assign("../../actions/orders/update_cart.php?error") :
+          window.location.assign(url);
+  });
+
+});
+
+/* Checkout */
+$('#checkoutBtn').click(function(){
+  var inputs, index;
+  var cart = $('#cart :input');
+  var url = "../../actions/orders/checkout.php?";
+
+  cart.each(function() {
+    if ( Number( $(this).val() ) >= 0 )
+      url += $(this)[0].name + "=" + $(this).val() + '&';
+  });
+  window.location.assign(url);
+});
 
 
 }

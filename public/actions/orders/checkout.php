@@ -2,6 +2,14 @@
   include_once('../../config/init.php');
   include_once('../../database/orders.php');
 
+  foreach($_GET as $item => $qtt)
+  {
+    if ($qtt <= 0)
+      unset($_SESSION['cart'][$item]);
+    else
+      $_SESSION['cart'][$item] = $qtt;
+  }
+  
   // Gerar Referencia da Encomenda to estilo Exxxxxxx (x: numero)
   $referencia = "E" . str_pad(rand(0, pow(10,7) - 1), 7, '0', STR_PAD_LEFT);
 

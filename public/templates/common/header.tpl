@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="messages" style="margin-bottom: 20px;">
+        <div class="messages" style="margin: 0 auto 20px auto;">
           {include file='_messages/error_success_msgs.tpl'}
           {include file='_messages/msg_cart_added.tpl'}
         </div>

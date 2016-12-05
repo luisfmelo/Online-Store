@@ -1,6 +1,12 @@
 <?php
   include_once('../../config/init.php');
 
+  if (isset($_GET['error']))
+  {
+    $_SESSION['info_messages'] = "Erro ao adicionar ao Carrinho!";
+    header('Location: ' . $BASE_URL . '/pages/orders/shopping_cart.php');
+    exit;
+  }
   foreach($_GET as $item => $qtt)
   {
     if ($qtt <= 0)
@@ -9,13 +15,8 @@
       $_SESSION['cart'][$item] = $qtt;
   }
 
-  // Pronto para fazer Checkout
-  if ($_GET['checkout'] == 1){
-    header('Location: ' . $BASE_URL . '/actions/orders/checkout.php');
-    exit;
-  }
   // Nenhum item no carrinho
-  else if ($_GET['checkout'] == -1){
+  if ($_SESSION['cart_counter'] <= 0){
     $_SESSION['info_messages'] = "Nenhum Item no Carrinho!";
     $_SESSION['cart_counter'] = 0;
     $_SESSION['total'] = 0;

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-05 12:11:03
+/* Smarty version 3.1.30, created on 2016-12-05 12:47:44
   from "/var/www/public/templates/orders/shopping_cart.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5845595775ec62_78488163',
+  'unifunc' => 'content_584561f098d089_60139801',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45aefadf53269de0f9ba5a4bd5b8c3212eb43555' => 
     array (
       0 => '/var/www/public/templates/orders/shopping_cart.tpl',
-      1 => 1480940202,
+      1 => 1480942504,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5845595775ec62_78488163 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584561f098d089_60139801 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -32,7 +32,7 @@ function content_5845595775ec62_78488163 (Smarty_Internal_Template $_smarty_tpl)
   <div class="rightContent">
     <h2 class="bigTitle">
       <span>O meu Carrinho de Compras</span>
-      <i class="fa fa-refresh" aria-hidden="true" onclick="updateCart(false)"></i>
+      <i class="fa fa-refresh" aria-hidden="true" id='refresh'></i>
     </h2>
 
     <section id="cart">
@@ -124,7 +124,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </div>
   </div>
   <div>
-    <a onclick="updateCart(1)" id="checkoutBtn" class='btn'>
+    <a id="checkoutBtn" class='btn'>
       Checkout
     </a>
   </div>

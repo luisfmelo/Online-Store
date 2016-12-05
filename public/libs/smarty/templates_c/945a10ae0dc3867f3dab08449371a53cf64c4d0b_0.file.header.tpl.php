@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-05 11:32:00
+/* Smarty version 3.1.30, created on 2016-12-05 17:12:07
   from "/var/www/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58455030c552b7_81965548',
+  'unifunc' => 'content_58459fe757b3a8_54345412',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '945a10ae0dc3867f3dab08449371a53cf64c4d0b' => 
     array (
       0 => '/var/www/public/templates/common/header.tpl',
-      1 => 1480937961,
+      1 => 1480957941,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_58455030c552b7_81965548 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58459fe757b3a8_54345412 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -98,7 +98,7 @@ function content_58455030c552b7_81965548 (Smarty_Internal_Template $_smarty_tpl)
           </div>
         </div>
 
-        <div class="messages" style="margin-bottom: 20px;">
+        <div class="messages" style="margin: 0 auto 20px auto;">
           <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

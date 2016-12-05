@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-30 23:21:37
+/* Smarty version 3.1.30, created on 2016-12-05 12:46:05
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583f5f01246a82_94600632',
+  'unifunc' => 'content_5845618da8d947_02293390',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1480547927,
+      1 => 1480941377,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_583f5f01246a82_94600632 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5845618da8d947_02293390 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
