@@ -169,7 +169,7 @@
 /* Get Favourite Books From a user */
   function getFavouriteBooks($user){
     global $conn;
-    $query = "SELECT ref
+    $query = "SELECT e_store.books.*
               FROM e_store.likes
               INNER JOIN e_store.users ON userid = users.id
               INNER JOIN e_store.books ON bookid = books.id

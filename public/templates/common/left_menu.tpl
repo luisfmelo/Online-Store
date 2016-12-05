@@ -28,5 +28,8 @@
 	<a class='itemMenu divlink' href='{$BASE_URL}/pages/orders/shopping_cart.php'>
 		Carrinho de Compras
 	</a>
+	<a class='itemMenu divlink' href='{$BASE_URL}/pages/users/wishlist.php'>
+		Meus Favoritos
+	</a>
 	{/if}
 </div>

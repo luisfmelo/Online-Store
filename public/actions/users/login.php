@@ -3,17 +3,17 @@
   include_once($BASE_DIR .'/database/users.php');
 
   $_SESSION['form_values'] = array();
-  
-  $username = strip_tags($_POST['username']);
-  $password = strip_tags($_POST['passoword']);
 
-  if (!$username || !$password) {
+  $username = strip_tags($_POST['username']);
+  $password = strip_tags($_POST['password']);
+
+  if (empty($username) || empty($password)) {
     $_SESSION['error_messages'] = 'Login Inválido';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . '/pages/users/login.php');
     exit;
   }
-  
+
   $password = hash("sha256", $password);
 
   if (isLoginCorrect($username, $password)) {

@@ -384,8 +384,8 @@ header {
 
 .rightMenu ul li {
     float: right;
-    margin-right: 5%;
-    padding-right: 10%;
+  //  margin-right: 5%;
+    padding: auto 7%;
 }
 
 .rightMenu ul li:first-child {
@@ -970,6 +970,7 @@ td {
 .map iframe, .additionalInfo{
     width:90%!important;
 }
+
 
 
 /*************************************************/

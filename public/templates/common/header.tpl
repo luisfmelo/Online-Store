@@ -15,7 +15,7 @@
     <div class="wrapper">
       <header>
         <div class="row upper-bar">
-          <div class="leftMenu">
+          <div class="leftMenu" style="width:60%">
             <ul class="navbar">
               <li>
                 <a href="{$BASE_URL}/pages/books/list_books.php">
@@ -36,7 +36,7 @@
               </li>-->
             </ul>
           </div>
-          <div class="rightMenu">
+          <div class="rightMenu" style="width:40%">
             <ul class="navbar">
             {if $USERNAME != ''}
               {include file='common/menu_logged_in.tpl'}

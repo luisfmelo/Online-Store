@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-21 11:14:17
+/* Smarty version 3.1.30, created on 2016-12-05 11:32:00
   from "/var/www/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5832d7094a9c99_78390612',
+  'unifunc' => 'content_58455030c552b7_81965548',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '945a10ae0dc3867f3dab08449371a53cf64c4d0b' => 
     array (
       0 => '/var/www/public/templates/common/header.tpl',
-      1 => 1479726826,
+      1 => 1480937961,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_5832d7094a9c99_78390612 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58455030c552b7_81965548 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@ function content_5832d7094a9c99_78390612 (Smarty_Internal_Template $_smarty_tpl)
     <div class="wrapper">
       <header>
         <div class="row upper-bar">
-          <div class="leftMenu">
+          <div class="leftMenu" style="width:60%">
             <ul class="navbar">
               <li>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -68,7 +68,7 @@ function content_5832d7094a9c99_78390612 (Smarty_Internal_Template $_smarty_tpl)
               </li>-->
             </ul>
           </div>
-          <div class="rightMenu">
+          <div class="rightMenu" style="width:40%">
             <ul class="navbar">
             <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value != '') {?>
               <?php $_smarty_tpl->_subTemplateRender("file:common/menu_logged_in.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
