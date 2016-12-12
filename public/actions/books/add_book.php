@@ -39,7 +39,7 @@
 
 	$categoryId = getCategoryId($category);
 
-	/* generate book's ref*/
+	// generate book's ref
 	$shorterCategory = strtoupper(substr($category, 0, 3)); // PICK CAT
 
 	do{
@@ -48,8 +48,8 @@
 		$ref = $shorterCategory . $categoryNumber; // CAT + NUMBER
 	} while (refExist($ref));
 
-	addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
+  addNewBook($ref, $title, $author, $price, $categoryId[0]['id'], $description,  $stock);
 
-	header("Location: " . $BASE_URL . '/pages/books/view_book.php?id='.$ref);
+  header("Location: " . $BASE_URL . '/pages/books/view_book.php?id='.$ref);
 	exit;
 ?>

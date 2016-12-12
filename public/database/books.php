@@ -217,7 +217,7 @@
     $search = $title . ' ' . $author . ' ' . $categoryName;
 
     $query = "INSERT INTO e_store.books
-              VALUES (DEFAULT, :ref, :title, :author, :price, :cat, :description, :stock, to_tsvector('portuguese', :search));";
+              VALUES (DEFAULT, :ref, :title, :author, :price, :cat, :description, :stock, DEFAULT, to_tsvector('portuguese', :search));";
 
     $stmt = $conn->prepare ($query);
     $stmt->execute( array('ref' => $ref,

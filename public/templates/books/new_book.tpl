@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form id="newBook" class="myForms">
+        <form id="newBook" class="myForms" name="NewRegist" method="get" action= "{$BASE_URL}/actions/books/add_book.php"
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />
@@ -31,7 +31,7 @@
             {include file='_messages/warn_msgs.tpl'}
           </div>
 
-    			<input type = "button" onClick="NewBookCheck()" value="Adicionar"></input>
+    			<input type = "submit" value="Adicionar"></input>
     		</form>
       </div>
     </section>

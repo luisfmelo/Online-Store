@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-23 10:56:56
+/* Smarty version 3.1.30, created on 2016-12-12 11:29:58
   from "/var/www/public/templates/books/new_book.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583575f8ee7eb5_75032042',
+  'unifunc' => 'content_584e8a36ef5b55_42984399',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '041346b769e1fcd64946239dcf243a4050a97b58' => 
     array (
       0 => '/var/www/public/templates/books/new_book.tpl',
-      1 => 1479898748,
+      1 => 1481542033,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_583575f8ee7eb5_75032042 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584e8a36ef5b55_42984399 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -36,7 +36,8 @@ function content_583575f8ee7eb5_75032042 (Smarty_Internal_Template $_smarty_tpl)
 
     <section id = "content">
       <div class="left">
-        <form id="newBook" class="myForms">
+        <form id="newBook" class="myForms" name="NewRegist" method="get" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/books/add_book.php"
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />
@@ -72,7 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
           </div>
 
-    			<input type = "button" onClick="NewBookCheck()" value="Adicionar"></input>
+    			<input type = "submit" value="Adicionar"></input>
     		</form>
       </div>
     </section>
