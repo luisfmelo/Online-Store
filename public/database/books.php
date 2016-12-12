@@ -126,9 +126,13 @@
 /* Apaga o livro com a referencia dada */
   function deleteBook($ref) {
     global $conn;
-    $query = "DELETE FROM e_store.books
+    /*$query = "DELETE FROM e_store.books
 							WHERE ref = :ref;";
-
+*/
+    $query = "UPDATE e_store.books
+              SET active = false
+              WHERE ref = :ref;";
+              
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref) );
   }

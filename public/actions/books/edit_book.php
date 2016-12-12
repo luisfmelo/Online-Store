@@ -2,12 +2,12 @@
   include_once('../../config/init.php');
   include_once('../../database/books.php');
 
-  $title 		  	= $_GET['title'];
-  $author 		  = $_GET['author'];
-  $category 		= $_GET['category'];
-  $price 			  = $_GET['price'];
-  $description 	= $_GET['description'];
-  $stock		 	  = $_GET['stock'];
+  $title 		  	= $_POST['title'];
+  $author 		  = $_POST['author'];
+  $category 		= $_POST['category'];
+  $price 			  = $_POST['price'];
+  $description 	= $_POST['description'];
+  $stock		 	  = $_POST['stock'];
 
   $catRef = getCategoryRef($category)[0][ref];
   $ref = $_GET['id'];
@@ -53,7 +53,6 @@
   updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description);
 
   $_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
-
   header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;
 ?>

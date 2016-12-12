@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form id="newBook" class="myForms" name="NewRegist" method="get" action= "{$BASE_URL}/actions/books/add_book.php"
+        <form id="newBook" class="myForms" name="NewBook" method="get" action= "{$BASE_URL}/actions/books/add_book.php"
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />

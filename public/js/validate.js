@@ -10,6 +10,14 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+/**
+  * TESTA FORMULARIO
+  *   -> Todos os dados devem ser preenchidos
+  *   -> minimo 5 caracteres para user
+  * 	-> maximo de 15 carateres para o nome
+  *   -> telefone deve ter 9 caracteres (numéricos)
+  *   -> formato de email correto
+  */
 function validateUserData(){
   var tmp = $(this)[0];
   var UserForm = {};
@@ -65,8 +73,7 @@ function NewBookCheck(){
 		var r = confirm("Confirma que pretende criar um novo livro com o titulo \'" +
 								 BookForm.title + "\', o autor " + BookForm.author + ", com stock de " +
 								 BookForm.stock + " e o preço " + BookForm.price + " ?");
-		if ( r )
-			return;
+		if ( r ) return;
 	}
 
 	$('.formMessages').html("<div class='errorMsg'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> "+msg+"</div>");
@@ -74,27 +81,10 @@ function NewBookCheck(){
 }
 
 
-
-
-function setup(){
-	/**
-	  * TESTA FORMULARIO
-	  *   -> Todos os dados devem ser preenchidos
-	  *   -> minimo 5 caracteres para user
-	  * 	-> maximo de 15 carateres para o nome
-	  *   -> telefone deve ter 9 caracteres (numéricos)
-	  *   -> formato de email correto
-	  */
-	$( "#newRegist" ).submit( validateUserData );
-  $( "#editProfile" ).submit( validateUserData );
-  $( "#newBook" ).submit( NewBookCheck );
-
-
-
-
 	/* Verificação dos dados de um livro editado por um administrador */
 	function EditBookCheck(ref){
 		var tmp = $('#editBook')[0];
+		var ref = $('#editBook').attr('ref');
 		var BookForm = {};
 		var msg = "";
 
@@ -113,24 +103,22 @@ function setup(){
 			msg = "Stock deve ser um número positivo ou 0.";
 		else if (BookForm.price <= 0)
 			msg = "Preço deve ser um valor positivo.";
-
-		if ( msg !== "" )
-		{
+    else {
+      var r = confirm("Confirma as alterações?");
+      if ( r ) return;
+	  }
+		if (msg !== "")
 			$('.formMessages').html("<div class='errorMsg'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> "+msg+"</div>");
-			return;
-		}
+    event.preventDefault();
 
-		$('.formMessages').html("");
-
-		var r = confirm("Confirma as alterações?");
-		if ( r )
-			window.location.assign("../../actions/books/change_book.php?id=" + encodeURIComponent(ref) +
-																														  "&title=" + encodeURIComponent(BookForm.title) +
-																														  "&author=" + encodeURIComponent(BookForm.author) +
-																													 	  "&description=" + encodeURIComponent(BookForm.description) +
-																													 	  "&category=" + encodeURIComponent(BookForm.category) +
-																														  "&price=" + encodeURIComponent(BookForm.price) +
-																														  "&stock=" + encodeURIComponent(BookForm.stock));
 	}
 
+
+
+
+function setup(){
+	$( "#newRegist" ).submit( validateUserData );
+  $( "#editProfile" ).submit( validateUserData );
+  $( "#newBook" ).submit( NewBookCheck );
+  $( "#editBook" ).submit( EditBookCheck );
 }
