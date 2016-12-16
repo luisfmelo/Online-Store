@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 10:27:07
+/* Smarty version 3.1.30, created on 2016-12-16 12:37:31
   from "/var/www/html/Online-Store/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853b36b30a1a5_71805903',
+  'unifunc' => 'content_5853d1fb73d7f1_20760626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b276c70bbacf02630b10630ca316ab778582ca29' => 
     array (
       0 => '/var/www/html/Online-Store/public/templates/common/header.tpl',
-      1 => 1481880048,
+      1 => 1481888248,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_5853b36b30a1a5_71805903 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5853d1fb73d7f1_20760626 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,11 @@ function content_5853b36b30a1a5_71805903 (Smarty_Internal_Template $_smarty_tpl)
     <title>Blooks</title>
     <meta charset="utf-8">
 
+    <link rel="icon"
+          type="image/png"
+          href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/images/icon.png">
+          
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
     <!-- Include da nossa folha de estilos CSS -->

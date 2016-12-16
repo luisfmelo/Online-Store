@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 12:22:24
+/* Smarty version 3.1.30, created on 2016-12-16 12:36:57
   from "/var/www/html/Online-Store/public/templates/users/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853ce70023119_38159269',
+  'unifunc' => 'content_5853d1d96279d6_51119018',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '788f0ca76c589b4c641853427f772b097d00056d' => 
     array (
       0 => '/var/www/html/Online-Store/public/templates/users/login.tpl',
-      1 => 1481887337,
+      1 => 1481888212,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/error_success_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5853ce70023119_38159269 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5853d1d96279d6_51119018 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>Blooks: Log in</title>
     <meta charset="utf-8">
-
+    <link rel="icon"
+          type="image/png"
+          href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/images/icon.png">
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
     <!-- Include da nossa folha de estilos CSS -->

@@ -3,7 +3,9 @@
   <head>
     <title>Blooks: Log in</title>
     <meta charset="utf-8">
-
+    <link rel="icon"
+          type="image/png"
+          href="{$BASE_URL}/images/icon.png">
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
     <!-- Include da nossa folha de estilos CSS -->
