@@ -1,2 +1,3 @@
 /public/config/dbconfig.php
 /.vagrant
+/public/libs/smarty/templates_c/*
