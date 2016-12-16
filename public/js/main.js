@@ -54,7 +54,10 @@ function setup2(){
 
 /* Remove Item from Cart */
   $(".cartRemove").click(function() {
-    window.location.assign(window.location.origin + "/actions/orders/delete_book.php?ref=" + $(this).attr('ref'));
+    url = window.location.origin + "/Online-Store/public/actions/orders/delete_book.php?ref=" + $(this).attr('ref');
+    $(this).parent().parent().fadeOut("fast", function(){
+      window.location.assign(url);
+    });
   });
 
 /* Atualiza Carrinho de Compras */
