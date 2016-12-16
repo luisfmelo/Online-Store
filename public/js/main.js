@@ -1,8 +1,10 @@
 $(setup2);
 
 function setup2(){
+  $(".messages").children().slideDown()
+
   /* Show/Hide Search Bar */
-  $("#lupa").click(function() {
+  $('#lupa').click(function() {
       $('.searchBar').toggleClass('expanded')
       $('.searchBar').focus();
   });
@@ -11,8 +13,8 @@ function setup2(){
   $('.filter div select').change(function() {
       var params = get_url_params();
 
-      params['sort'] = $("#changeOrderBooks option:selected").val();
-      params['number_Books'] = $("#changeNoBooks option:selected").val();
+      params['sort'] = $('#changeOrderBooks option:selected').val();
+      params['number_Books'] = $('#changeNoBooks option:selected').val();
       var url = get_new_url(params);
 
       $.get( "../../api/getBooks.php?" + url, function( data ) {
@@ -88,7 +90,12 @@ $('#checkoutBtn').click(function(){
 });
 
 
+  $('.close').click(function() {
+    $(this).parent().slideUp( "slow" );
+  });
+
 }
+/* End of jquery functionalities */
 
 
 
