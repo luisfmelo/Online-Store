@@ -15,6 +15,7 @@
   <div class="rightContent">
   {include file='books/filter.tpl'}
 
+
     <section id="books">
       {foreach $BOOKS as $book}
         <article class='book'>

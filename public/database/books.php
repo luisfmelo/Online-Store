@@ -51,15 +51,16 @@
   }
 
 /* Recebe array com a informação de apens alguns livros -> páginas */
-  function getSomeBooks($limit, $offset){
+  function getSomeBooks($limit, $offset, $all = false){
   	global $conn;
-  	$query = "SELECT *
-              FROM e_store.categories
-              INNER JOIN e_store.books
-              ON e_store.categories.id = e_store.books.category
-              WHERE e_store.books.active = true
-              ORDER BY books.ref ASC
-              LIMIT :limit OFFSET :offset;";
+    	$query =   "SELECT *
+                  FROM e_store.categories
+                  INNER JOIN e_store.books
+                  ON e_store.categories.id = e_store.books.category ";
+    if ( !$all )
+      $query .=  "WHERE e_store.books.active = true ";
+    $query    .= "ORDER BY books.ref ASC
+                  LIMIT :limit OFFSET :offset;";
 
       $stmt = $conn->prepare($query);
       $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
@@ -128,12 +129,12 @@
     return $stmt->fetchAll();
   }
 
-/* Apaga o livro com a referencia dada */
-  function deleteBook($ref) {
+/* Mudar Estado de um livro com a referencia dada */
+  function changeBookState($ref) {
     global $conn;
 
     $query = "UPDATE e_store.books
-              SET active = false
+              SET active = NOT(active)
               WHERE ref = :ref;";
 
     $stmt = $conn->prepare($query);

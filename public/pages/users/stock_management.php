@@ -31,7 +31,7 @@
 
   $previous = $page - 1;
 
-  $books = getSomeBooks($limit, $page*$limit); //getSomeBooks(limit, offset)
+  $books = getSomeBooks($limit, $page*$limit, true); //getSomeBooks(limit, offset)
 
   $smarty->assign('BOOKS', $books);
   $smarty->assign('MAX_NO_PAGE', $max_no_page);

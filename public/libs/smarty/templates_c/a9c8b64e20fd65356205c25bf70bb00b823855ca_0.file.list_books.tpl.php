@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 10:27:13
+/* Smarty version 3.1.30, created on 2016-12-16 16:25:22
   from "/var/www/html/Online-Store/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853b3718faec8_02108294',
+  'unifunc' => 'content_58540762420ff7_57758821',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a9c8b64e20fd65356205c25bf70bb00b823855ca' => 
     array (
       0 => '/var/www/html/Online-Store/public/templates/books/list_books.tpl',
-      1 => 1481880048,
+      1 => 1481892398,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_5853b3718faec8_02108294 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58540762420ff7_57758821 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -52,6 +52,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
   <div class="rightContent">
   <?php $_smarty_tpl->_subTemplateRender("file:books/filter.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
 
 
     <section id="books">
