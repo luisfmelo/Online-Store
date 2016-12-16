@@ -4,7 +4,7 @@
 
   $book_ref = $_GET['ref'];
 
-  deleteBook($book_id);
+  deleteBook($book_ref);
 
   header("Location: " . $BASE_URL . '/pages/users/stock_management.php?page=' . $page);
   exit;
