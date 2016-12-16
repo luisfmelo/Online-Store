@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 10:27:08
+/* Smarty version 3.1.30, created on 2016-12-16 12:22:24
   from "/var/www/html/Online-Store/public/templates/users/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853b36c772160_79250064',
+  'unifunc' => 'content_5853ce70023119_38159269',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '788f0ca76c589b4c641853427f772b097d00056d' => 
     array (
       0 => '/var/www/html/Online-Store/public/templates/users/login.tpl',
-      1 => 1481880048,
+      1 => 1481887337,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/error_success_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5853b36c772160_79250064 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5853ce70023119_38159269 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,6 +80,18 @@ function content_5853b36c772160_79250064 (Smarty_Internal_Template $_smarty_tpl)
 
     </form>
   </body>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/libs/jquery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/main.js"><?php echo '</script'; ?>
+>
 </html>
 <?php }
 }

@@ -45,4 +45,7 @@
 
     </form>
   </body>
+  <script src="{$BASE_URL}/libs/jquery/jquery-3.1.1.min.js"></script>
+  <script src="{$BASE_URL}/js/validate.js"></script>
+  <script src="{$BASE_URL}/js/main.js"></script>
 </html>

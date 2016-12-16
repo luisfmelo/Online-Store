@@ -136,7 +136,7 @@ function get_new_url(params) {
 
 
 /******************************************************************************/
-/* Informa a action sobre o modo a proceder */
+/* Informa a action sobre o modo a proceder *
 function updateCart(checkout) {
     var inputs, index;
     var cart = document.getElementById('cart');
