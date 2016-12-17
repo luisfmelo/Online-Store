@@ -15,7 +15,7 @@
             $fav[] = $value[ref];
       }
 
-	foreach ($books as $book) {
+/*	foreach ($books as $book) {
         $heart = (in_array($book[ref], $fav)) ? "fa-heart" : "fa-heart-o";
         $cover =
           file_exists('../images/covers/' . $book['ref'] . '.png')      ?
@@ -59,6 +59,6 @@
         echo "</article>";
       }
 
-
-//	echo json_encode($books);
+*/
+	echo json_encode($books);
 ?>

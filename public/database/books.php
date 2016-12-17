@@ -1,15 +1,17 @@
 <?php
 /* Retorna num array todos os livros bem como suas informações */
-  function listSomeBooks($search, $order, $limit, $offset) {
+  function listSomeBooks($search, $order, $limit, $offset, $all = false) {
     global $conn;
     $query =            "SELECT *
-                         FROM e_store.books ";
+                         FROM e_store.books
+                         WHERE ";
+    $query .= "e_store.books.active = " . (($all) ? "false " : "true ");
 
     if ($search != '')
     {
       $search = str_replace(' ', ' & ', $search);
       // $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%' ";
-      $query = $query . "WHERE phrase @@ to_tsquery('portuguese','$search') ";
+      $query = $query . "AND phrase @@ to_tsquery('portuguese','$search') ";
     }
 
     if ($order == 'name_a')
@@ -34,7 +36,8 @@
   function TotalNumberSearchedBooks($search) {
     global $conn;
     $query =            "SELECT COUNT(*)
-                         FROM e_store.books ";
+                         FROM e_store.books
+                         WHERE e_store.books.active = true ";
 
    if ($search != '')
    {
@@ -48,14 +51,16 @@
   }
 
 /* Recebe array com a informação de apens alguns livros -> páginas */
-  function getSomeBooks($limit, $offset){
+  function getSomeBooks($limit, $offset, $all = false){
   	global $conn;
-  	$query = "SELECT *
-              FROM e_store.categories
-              INNER JOIN e_store.books
-              ON e_store.categories.id = e_store.books.category
-              ORDER BY books.ref ASC
-              LIMIT :limit OFFSET :offset;";
+    	$query =   "SELECT *
+                  FROM e_store.categories
+                  INNER JOIN e_store.books
+                  ON e_store.categories.id = e_store.books.category ";
+    if ( !$all )
+      $query .=  "WHERE e_store.books.active = true ";
+    $query    .= "ORDER BY books.ref ASC
+                  LIMIT :limit OFFSET :offset;";
 
       $stmt = $conn->prepare($query);
       $stmt->execute( array('limit' => $limit, 'offset' => $offset) );
@@ -69,7 +74,7 @@
                          FROM e_store.categories
                          INNER JOIN e_store.books
                          ON e_store.categories.id = e_store.books.category
-                         WHERE e_store.categories.ref = :ref ";
+                         WHERE e_store.categories.ref = :ref AND e_store.books.active = true";
 
     if ($order == 'name_a')
       $query = $query . "ORDER BY e_store.books.title ASC";
@@ -94,7 +99,7 @@
               FROM e_store.categories
               INNER JOIN e_store.books
               ON e_store.categories.id = e_store.books.category
-              WHERE e_store.categories.ref = :ref;";
+              WHERE e_store.categories.ref = :ref AND e_store.books.active = true;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref) );
@@ -116,23 +121,22 @@
   function getNoBooks() {
     global $conn;
     $query = "SELECT COUNT(id)
-              FROM e_store.books;";
+              FROM e_store.books
+              WHERE e_store.books.active = true;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
   }
 
-/* Apaga o livro com a referencia dada */
-  function deleteBook($ref) {
+/* Mudar Estado de um livro com a referencia dada */
+  function changeBookState($ref) {
     global $conn;
-    /*$query = "DELETE FROM e_store.books
-							WHERE ref = :ref;";
-*/
+
     $query = "UPDATE e_store.books
-              SET active = false
+              SET active = NOT(active)
               WHERE ref = :ref;";
-              
+
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref) );
   }

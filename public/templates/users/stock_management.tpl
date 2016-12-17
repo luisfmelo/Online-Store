@@ -21,7 +21,11 @@
 					<td class='linkToUser'><a href='{$BASE_URL}/pages/books/view_book.php?id={$book.ref}'>{$book.title}</a></td>
 					<td> <input class='stock_input' type='text' name='stock' value='{$book.price}'> </td>
 					<td> <input class='stock_input' type='text' name='stock' value='{$book.stock}'> </td>
-					<td> <i onclick="deleteBookAlert('{$book.ref}')" class="fa fa-trash" aria-hidden="true"></i> </td>
+				{if !$book.active}
+					<td> <i class="fa fa-plus-circle stateChange" aria-hidden="true"></i> </td>
+				{else}
+					<td> <i class="fa fa-trash stateChange" aria-hidden="true"></i> </td></td>
+				{/if}
 					<td> <i onclick="stockChangeCheck('{$book.ref}', '{$PAGE}')" class="fa fa-floppy-o" aria-hidden="true"> </i> </td>
 			 </tr>
 			{/foreach}
