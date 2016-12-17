@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form id="newBook" class="myForms" name="NewBook" method="get" action= "{$BASE_URL}/actions/books/add_book.php"
+        <form id="newBook" enctype="multipart/form-data" class="myForms" name="NewBook" method="POST" action= "{$BASE_URL}/actions/books/add_book.php">
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />
@@ -26,14 +26,20 @@
           <input type = "text"	name="price"		</input> <br>
     			Stock:		<br />
           <input type = "text"	name="stock"		</input> <br>
+          
+          <input name="bookcover" type="file" id="photoUp"  />
 
           <div class="messages formMessages" style="margin-top: 20px;">
             {include file='_messages/warn_msgs.tpl'}
           </div>
 
-    			<input type = "submit" value="Adicionar"></input>
-    		</form>
+		  <input type = "submit" value="Adicionar"></input>
+    	</form>
       </div>
+
+    </section>
+        
+        
     </section>
 
 

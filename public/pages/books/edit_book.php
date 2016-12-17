@@ -18,7 +18,13 @@
     exit;
   }
 
+  $cover =
+    file_exists($IMG_DIR . '/covers/' . $_GET['id'] . '.png')   ?
+                $IMG_DIR . '/covers/' . $_GET['id'] . '.png'    :
+                $IMG_DIR . '/covers/default.png' ;
+                
   $smarty->assign('BOOK', $book);
+  $smarty->assign('COVER', $cover);
   $smarty->assign('CATEGORIES', $categories);
   $smarty->assign('USERNAME', $username);
 

@@ -14,7 +14,7 @@
         <span>
           <strong>Referência:</strong>	{$smarty.get.id} <br />
         </span>
-        <form id="editBook" ref="{$smarty.get.id}" class="myForms" name="EditBook" method="post" action= "{$BASE_URL}/actions/books/edit_book.php?id={$smarty.get.id}">
+        <form id="editBook" enctype="multipart/form-data" ref="{$smarty.get.id}" class="myForms" name="EditBook" method="post" action= "{$BASE_URL}/actions/books/edit_book.php?id={$smarty.get.id}">
     			Titulo:  <br />
           <input type = "text" name="title" value="{$BOOK.0.title}"/><br>
     			Autor:  <br />
@@ -35,11 +35,14 @@
           <input type = "text"		name="stock"	value="{$BOOK.0.stock}"/><br>
           Descrição:		<br />
           <textarea rows="13" cols="50" name="description" value="dd">{$BOOK.0.description}</textarea> <br />
+          
+
+		 <input style="margin-left:0" class="changePhoto" name="bookcover" type="file" id="photoUp"  />
 
           <div class="messages formMessages" style="margin-top: 20px;">
             {include file='_messages/warn_msgs.tpl'}
           </div>
-
+	  
           <input type = "submit" value="Alterar"/>
     		</form>
 
@@ -48,3 +51,7 @@
 
   </div>
 </div>
+
+<!--
+ADICIONAR DROP DOWN MENU COM DESCONTINUADO, ...
+ADICIONAR ESTADO AO VIEW_BOOK-->
