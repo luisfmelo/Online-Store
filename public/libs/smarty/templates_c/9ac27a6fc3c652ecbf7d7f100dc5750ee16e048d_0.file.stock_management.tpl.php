@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-20 15:13:41
+/* Smarty version 3.1.30, created on 2016-12-18 09:36:16
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/stock_management.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5831bda5c8d598_57866733',
+  'unifunc' => 'content_58565890990970_18456427',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9ac27a6fc3c652ecbf7d7f100dc5750ee16e048d' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/stock_management.tpl',
-      1 => 1479653190,
+      1 => 1482015816,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/left_menu.tpl' => 1,
   ),
 ),false)) {
-function content_5831bda5c8d598_57866733 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58565890990970_18456427 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
 	<?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -61,8 +61,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
 '> </td>
 					<td> <input class='stock_input' type='text' name='stock' value='<?php echo $_smarty_tpl->tpl_vars['book']->value['stock'];?>
 '> </td>
-					<td> <i onclick="deleteBookAlert('<?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
-')" class="fa fa-trash" aria-hidden="true"></i> </td>
+				<?php if (!$_smarty_tpl->tpl_vars['book']->value['active']) {?>
+					<td> <i class="fa fa-plus-circle stateChange" aria-hidden="true"></i> </td>
+				<?php } else { ?>
+					<td> <i class="fa fa-trash stateChange" aria-hidden="true"></i> </td></td>
+				<?php }?>
 					<td> <i onclick="stockChangeCheck('<?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
 ', '<?php echo $_smarty_tpl->tpl_vars['PAGE']->value;?>
 ')" class="fa fa-floppy-o" aria-hidden="true"> </i> </td>

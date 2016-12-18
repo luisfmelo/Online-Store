@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-21 15:57:20
+/* Smarty version 3.1.30, created on 2016-12-18 09:36:01
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583319600cbae2_24310230',
+  'unifunc' => 'content_58565881163e20_01412609',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '076f84e176ade8f1bcdf6629af4b1ac93a995433' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/list_books.tpl',
-      1 => 1479743838,
+      1 => 1482015816,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_583319600cbae2_24310230 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58565881163e20_01412609 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -52,6 +52,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
   <div class="rightContent">
   <?php $_smarty_tpl->_subTemplateRender("file:books/filter.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
 
 
     <section id="books">
@@ -101,6 +102,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
 '>
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
+            </a>
+            <a class= "favourite">
+            <?php if (in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            <?php } else { ?>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <?php }?>
+              <span hidden><?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>
+</span>
             </a>
             <?php }?>
 

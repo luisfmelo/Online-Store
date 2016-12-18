@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-28 22:52:38
+/* Smarty version 3.1.30, created on 2016-12-18 09:36:00
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583cb5365fabe2_56105932',
+  'unifunc' => 'content_58565880d5d549_33760548',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ecb38d033197656cc6645c7206678be5b5cef8d3' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/common/header.tpl',
-      1 => 1480370272,
+      1 => 1482015816,
       2 => 'file',
     ),
   ),
@@ -24,13 +24,18 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_583cb5365fabe2_56105932 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58565880d5d549_33760548 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>Blooks</title>
     <meta charset="utf-8">
+
+    <link rel="icon"
+          type="image/png"
+          href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/images/icon.png">
 
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
@@ -45,7 +50,7 @@ function content_583cb5365fabe2_56105932 (Smarty_Internal_Template $_smarty_tpl)
     <div class="wrapper">
       <header>
         <div class="row upper-bar">
-          <div class="leftMenu">
+          <div class="leftMenu" style="width:60%">
             <ul class="navbar">
               <li>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -68,7 +73,7 @@ function content_583cb5365fabe2_56105932 (Smarty_Internal_Template $_smarty_tpl)
               </li>-->
             </ul>
           </div>
-          <div class="rightMenu">
+          <div class="rightMenu" style="width:40%">
             <ul class="navbar">
             <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value != '') {?>
               <?php $_smarty_tpl->_subTemplateRender("file:common/menu_logged_in.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -98,7 +103,7 @@ function content_583cb5365fabe2_56105932 (Smarty_Internal_Template $_smarty_tpl)
           </div>
         </div>
 
-        <div class="messages" style="margin-bottom: 20px;">
+        <div class="messages" style="margin: 0 auto 20px auto;">
           <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

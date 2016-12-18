@@ -12,15 +12,11 @@
   $catRef = getCategoryRef($category)[0][ref];
   $ref = $_GET['id'];
   
-  if($_FILES['bookcover']['size']!=0){
+  if($_FILES['bookcover']['size']!=0)
 	$newFileUploaded = true;
-	print_r("true---");
-}
-
-  else{
-	  print_r("false---");
+  else
 	$newFileUploaded = false;
-}
+
 
   /* Testa novos dados do livro:
         - Titulo/Autor/preço/stock teem que ser preenchidos
@@ -89,9 +85,11 @@
 			$_SESSION['error_messages'] = 'Formato Inválido - Introduza Imagem com Extensão PNG';
 				 
   }
-	  
-  $_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
-  header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
+	
+	if($_SESSION['error_messages'] == "")  
+		$_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
+	
+	header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;
 ?>
 

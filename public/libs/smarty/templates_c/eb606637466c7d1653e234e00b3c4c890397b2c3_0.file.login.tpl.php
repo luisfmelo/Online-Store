@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 10:10:35
+/* Smarty version 3.1.30, created on 2016-12-18 09:36:06
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ec58b44ba60_47933064',
+  'unifunc' => 'content_5856588652d220_07709087',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb606637466c7d1653e234e00b3c4c890397b2c3' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/login.tpl',
-      1 => 1479459114,
+      1 => 1482015816,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/error_success_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_582ec58b44ba60_47933064 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5856588652d220_07709087 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>Blooks: Log in</title>
     <meta charset="utf-8">
-
+    <link rel="icon"
+          type="image/png"
+          href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/images/icon.png">
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
     <!-- Include da nossa folha de estilos CSS -->
@@ -80,6 +83,18 @@ function content_582ec58b44ba60_47933064 (Smarty_Internal_Template $_smarty_tpl)
 
     </form>
   </body>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/libs/jquery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/js/main.js"><?php echo '</script'; ?>
+>
 </html>
 <?php }
 }

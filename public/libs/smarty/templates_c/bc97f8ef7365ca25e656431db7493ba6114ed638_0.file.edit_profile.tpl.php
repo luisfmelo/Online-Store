@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 10:01:51
+/* Smarty version 3.1.30, created on 2016-12-18 10:08:54
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/edit_profile.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853bb8f26cdf1_01679581',
+  'unifunc' => 'content_58566036f0a338_47499227',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc97f8ef7365ca25e656431db7493ba6114ed638' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/edit_profile.tpl',
-      1 => 1480370272,
+      1 => 1482055589,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/error_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5853bb8f26cdf1_01679581 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58566036f0a338_47499227 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -36,7 +36,7 @@ function content_5853bb8f26cdf1_01679581 (Smarty_Internal_Template $_smarty_tpl)
 
     <section id = "content">
       <div class="left">
-        <form method="POST" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+        <form method="POST" enctype="multipart/form-data" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 /actions/users/change_profile.php" class="myForms" id="editProfile">
     			Nome:  <br />
           <input type = "text" name="name" value="<?php echo $_smarty_tpl->tpl_vars['PROFILE']->value[0]['name'];?>
@@ -62,6 +62,8 @@ function content_5853bb8f26cdf1_01679581 (Smarty_Internal_Template $_smarty_tpl)
 
           </div>
 
+		  <input style="margin-left:0" class="changePhoto" name="profileimage" type="file" id="photoUp"  />
+		 
           <input type = "submit" name="cmdsubmit" value="Alterar"/>
       	</form>
 

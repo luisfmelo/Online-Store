@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-29 08:32:45
+/* Smarty version 3.1.30, created on 2016-12-18 09:36:03
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/new_regist.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583d3d2daae9e0_10518131',
+  'unifunc' => 'content_585658830d6ff6_11691382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ea84594a2868fd9477ad7fa4111cb63b7d949415' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/users/new_regist.tpl',
-      1 => 1480370272,
+      1 => 1482015816,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_583d3d2daae9e0_10518131 (Smarty_Internal_Template $_smarty_tpl) {
+function content_585658830d6ff6_11691382 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,6 +30,11 @@ function content_583d3d2daae9e0_10518131 (Smarty_Internal_Template $_smarty_tpl)
     <title>Blooks: Novo Registo</title>
     <meta charset="utf-8">
 
+    <link rel="icon"
+          type="image/png"
+          href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/images/icon.png">
+          
     <!-- Include da font-stack escolhida -->
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand" rel="stylesheet">
     <!-- Include da nossa folha de estilos CSS -->
