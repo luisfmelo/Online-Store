@@ -33,18 +33,20 @@
 
 		<div class="row arrows">
 
-		{if $PAGE != 0}
+		{if $PAGE != 1}
 			<a href="{$BASE_URL}/pages/users/stock_management.php?page={$PREVIOUS}">
 				<i class='fa fa-angle-double-left' aria-hidden='true'></i>
 			</a>
 		{/if}
-		{for $i=0 to $MAX_NO_PAGE}
-			{if $i == $PAGE}
-				<a class="pageNumberSelected" href="{$BASE_URL}/pages/users/stock_management.php?page={$i}"> {$i+1} </a>
-			{else}
-				<a class="pageNumber" href="{$BASE_URL}/pages/users/stock_management.php?page={$i}"> {$i+1} </a>
-			{/if}
-		{/for}
+		{if $MAX_NO_PAGE > 1}
+			{for $i=1 to $MAX_NO_PAGE}
+				{if $i == $PAGE}
+					<a class="pageNumberSelected" href="{$BASE_URL}/pages/users/stock_management.php?page={$i}"> {$i} </a>
+				{else}
+					<a class="pageNumber" href="{$BASE_URL}/pages/users/stock_management.php?page={$i}"> {$i} </a>
+				{/if}
+			{/for}
+		{/if}
 		{if $NEXT != "NOTHING_TO_SHOW"}
 			<a href="{$BASE_URL}/pages/users/stock_management.php?page={$NEXT}">
 				<i class='fa fa-angle-double-right' aria-hidden='true'></i>

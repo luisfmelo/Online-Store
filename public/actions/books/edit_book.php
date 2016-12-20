@@ -2,15 +2,22 @@
   include_once('../../config/init.php');
   include_once('../../database/books.php');
 
-  $title 		  	= $_POST['title'];
+  $title 		  = $_POST['title'];
   $author 		  = $_POST['author'];
-  $category 		= $_POST['category'];
-  $price 			  = $_POST['price'];
-  $description 	= $_POST['description'];
-  $stock		 	  = $_POST['stock'];
-
+  $category 	  = $_POST['category'];
+  $price 		  = $_POST['price'];
+  $description 	  = $_POST['description'];
+  $stock		  = $_POST['stock'];
+  $state 		  = $_POST['state'];
+  
   $catRef = getCategoryRef($category)[0][ref];
   $ref = $_GET['id'];
+  
+  if($_FILES['bookcover']['size']!=0)
+	$newFileUploaded = true;
+  else
+	$newFileUploaded = false;
+
 
   /* Testa novos dados do livro:
         - Titulo/Autor/preço/stock teem que ser preenchidos
@@ -49,13 +56,51 @@
       $ref = $catRef . $categoryNumber; // CAT + NUMBER
     } while (refExist($ref));
     
-    if (file_exists($BASE_URL.'/images/covers/'.$_GET['id'].'.png'))
+    print_r($_GET['id'].'.png');
+
+    if (file_exists($BASE_URL.'/images/covers/'.$_GET['id'].'.png') && ($newFileUploaded == false))
 		rename($BASE_URL.'/images/covers/'.$_GET['id'].'.png', $BASE_URL.'/images/covers/'.$ref.'.png');
+	
   }
+  
+  if($state == 'ativo')
+	$active = TRUE;
+  
+  else
+	$active = FALSE; 
+	
+	print_r($active?"s":"n");
+	
+	print_r("OKK");
 
-  updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description);
+  updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description, $active);
+  
+  print_r("here");
+  
+  if ($newFileUploaded){
+		
+	    if ($_FILES['bookcover']['type'] == "image/png"){
 
-  $_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
-  header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
+			$originalFileName = $IMG_DIR . '/covers/tmp.png';
+			
+			move_uploaded_file($_FILES['bookcover']['tmp_name'], $originalFileName);
+
+			$result = @imagecreatefrompng($originalFileName);
+			
+			if(!$result)
+				$_SESSION['error_messages'] = 'Upload failed';			
+			else			
+				rename($IMG_DIR . '/covers/tmp.png', $originalFileName = $IMG_DIR . '/covers/' . $ref . '.png' );
+		}	
+		  else
+			$_SESSION['error_messages'] = 'Formato Inválido - Introduza Imagem com Extensão PNG';
+				 
+  }
+	
+	if($_SESSION['error_messages'] == "")  
+		$_SESSION['success_messages'] = 'Livro Atualizado com sucesso';
+	
+	header("Location: $BASE_URL" . '/pages/books/view_book.php?id=' . $ref);
 	exit;
 ?>
+

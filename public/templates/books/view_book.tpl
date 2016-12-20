@@ -43,16 +43,20 @@
             </span><br />
           {/if}
         </span>
+        <span>
+          <strong>Estado:</strong>		
+			{if $BOOK.0.active}
+			  Ativo <br />
+			{else}
+			   Descontinuado <br />
+			{/if}
+        </span>        
       </div>
       <div class="right">
         <div class="photo">
           <img src="{$COVER}" alt="" />
         </div>
-        <div class="changePhoto">
-			<form enctype="multipart/form-data" method="POST" action= "{$BASE_URL}/actions/books/update_book_coverage.php?id={$smarty.get.id}" >
-				<input name="bookcover" type="file" id="photoUp"  />
-			<input type="submit">
-        </div>
+
       </div>
     </section>
     <div class="description row">

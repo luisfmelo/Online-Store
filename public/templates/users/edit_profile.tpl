@@ -8,7 +8,7 @@
 
     <section id = "content">
       <div class="left">
-        <form method="POST" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
+        <form method="POST" enctype="multipart/form-data" action= "{$BASE_URL}/actions/users/change_profile.php" class="myForms" id="editProfile">
     			Nome:  <br />
           <input type = "text" name="name" value="{$PROFILE.0.name}"/><br>
     			Email:  <br />
@@ -27,6 +27,8 @@
               {include file='_messages/error_msgs.tpl'}
           </div>
 
+		  <input style="margin-left:0" class="changePhoto" name="profileimage" type="file" id="photoUp"  />
+		 
           <input type = "submit" name="cmdsubmit" value="Alterar"/>
       	</form>
 

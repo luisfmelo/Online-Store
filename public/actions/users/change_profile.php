@@ -3,6 +3,11 @@
   include_once('../../config/init.php');
 
   $password_was_set = 0;
+  
+  if($_FILES['profileimage']['size']!=0)
+	$newFileUploaded = true;
+  else
+	$newFileUploaded = false;
 
   /* Testa novos dados do User:
         - Password em branco -> não pretende altera-la
@@ -32,7 +37,7 @@
 			exit;
 	  }
   }
-  else if( strlen($phone) != 9 || !ctype_digit($phone){
+  else if( strlen($phone) != 9 || !ctype_digit($phone)){
     $_SESSION['special_error_messages'] = 'O seu telefone não tem 9 digitos ou contém caracteres inválidos';
     header("Location: $BASE_URL" . '/pages/users/edit_profile.php');
     exit;
@@ -50,9 +55,30 @@
 
     editUserPass($username, $password);
   }
+  
+    if ($newFileUploaded){
+		
+	    if ($_FILES['profileimage']['type'] == "image/png"){
 
-  $_SESSION['success_messages'] = 'Dados Pessoais alterados com sucesso.';
+			$originalFileName = $IMG_DIR . '/profiles/tmp.png';
+			
+			move_uploaded_file($_FILES['profileimage']['tmp_name'], $originalFileName);
 
-  header("Location: $BASE_URL" . '/pages/users/view_profile.php');
+			$result = @imagecreatefrompng($originalFileName);
+			
+			if(!$result)
+				$_SESSION['error_messages'] = 'Upload failed';			
+			else			
+				rename($IMG_DIR . '/profiles/tmp.png', $originalFileName = $IMG_DIR . '/profiles/' . $username . '.png' );
+		}	
+		  else
+			$_SESSION['error_messages'] = 'Formato Inválido - Introduza Imagem com Extensão PNG';
+				 
+  }
+  
+	if($_SESSION['error_messages'] == "")  
+		$_SESSION['success_messages'] = 'Dados Pessoais alterados com sucesso.';
+
+	header("Location: $BASE_URL" . '/pages/users/view_profile.php');
 	exit;
 ?>

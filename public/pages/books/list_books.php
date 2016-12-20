@@ -46,7 +46,7 @@
   foreach ($res as $key => $value) {
     $fav[] = $value[ref];
   }
-
+  
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);
   $smarty->assign('previous', $previous);

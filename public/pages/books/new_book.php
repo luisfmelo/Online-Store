@@ -13,8 +13,11 @@
     exit;
   }
   $categories = getBookCategories();
+  
+  $cover =  $IMG_DIR . '/covers/default.png' ;
 
   $smarty->assign('CATEGORIES', $categories);
+  $smarty->assign('COVER', $cover);
 
   $smarty->display('common/header.tpl');
   $smarty->display('books/new_book.tpl');

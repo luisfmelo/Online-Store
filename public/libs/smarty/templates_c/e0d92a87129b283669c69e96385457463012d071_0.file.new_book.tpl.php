@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 08:46:47
+/* Smarty version 3.1.30, created on 2016-12-17 21:17:57
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/new_book.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5853a9f7d5f3f5_23506400',
+  'unifunc' => 'content_5855ab85b49e00_50719241',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e0d92a87129b283669c69e96385457463012d071' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/new_book.tpl',
-      1 => 1481877944,
+      1 => 1482009471,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_5853a9f7d5f3f5_23506400 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5855ab85b49e00_50719241 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:common/left_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -36,8 +36,8 @@ function content_5853a9f7d5f3f5_23506400 (Smarty_Internal_Template $_smarty_tpl)
 
     <section id = "content">
       <div class="left">
-        <form id="newBook" class="myForms" name="NewBook" method="get" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/actions/books/add_book.php"
+        <form id="newBook" enctype="multipart/form-data" class="myForms" name="NewBook" method="POST" action= "<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+/actions/books/add_book.php">
     			Titulo:		<br />
           <input type = "text"	name="title"/> <br />
     			Autor:		<br />
@@ -66,6 +66,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
           <input type = "text"	name="price"		</input> <br>
     			Stock:		<br />
           <input type = "text"	name="stock"		</input> <br>
+          
+          <input name="bookcover" type="file" id="photoUp"  />
 
           <div class="messages formMessages" style="margin-top: 20px;">
             <?php $_smarty_tpl->_subTemplateRender("file:_messages/warn_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -73,9 +75,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
           </div>
 
-    			<input type = "submit" value="Adicionar"></input>
-    		</form>
+		  <input type = "submit" value="Adicionar"></input>
+    	</form>
       </div>
+
+    </section>
+        
+        
     </section>
 
 
