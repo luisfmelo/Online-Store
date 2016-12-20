@@ -8,7 +8,8 @@
   $price 		  = $_POST['price'];
   $description 	  = $_POST['description'];
   $stock		  = $_POST['stock'];
-
+  $state 		  = $_POST['state'];
+  
   $catRef = getCategoryRef($category)[0][ref];
   $ref = $_GET['id'];
   
@@ -61,10 +62,20 @@
 		rename($BASE_URL.'/images/covers/'.$_GET['id'].'.png', $BASE_URL.'/images/covers/'.$ref.'.png');
 	
   }
+  
+  if($state == 'ativo')
+	$active = TRUE;
+  
+  else
+	$active = FALSE; 
+	
+	print_r($active?"s":"n");
+	
+	print_r("OKK");
 
-  updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description);
+  updateBookInfo($_GET['id'], $ref, $title, $author, $price, $category,$stock, $description, $active);
   
-  
+  print_r("here");
   
   if ($newFileUploaded){
 		

@@ -28,12 +28,6 @@
     $next = $page + 1;
   $previous = $page - 1;
   
-  print_r("number of books" .$number_of_books[0]['count']);
-  print_r("------".$max_no_page);
-  for ($i=1; $i<=$max_no_page; $i++){
-	  print_r("$i----");
-  }
-  
   $max_no_page = ceil($max_no_page);
   print_r("-----".$max_no_page);
 

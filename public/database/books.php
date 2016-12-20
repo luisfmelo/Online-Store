@@ -188,7 +188,7 @@
   }
 
   /* Atualiza informações de um livro com uma dada referencia */
-  function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript){
+  function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript, $active){
     global $conn;
 
     $categoryName = getCategoryName($cat)['categoryname'];
@@ -202,8 +202,13 @@
                   category = :cat,
                   stock = :stock,
                   description = :descript,
-                  phrase = to_tsvector('portuguese', :search)
-              WHERE ref = :ref;";
+                  phrase = to_tsvector('portuguese', :search),";
+                  
+
+	$query .= (($active) ? "active = true " : "active = false ");
+		
+	$query .= "WHERE ref = :ref;";
+             
 
     $stmt = $conn->prepare ($query);
     $stmt->execute( array('ref' => $ref,
