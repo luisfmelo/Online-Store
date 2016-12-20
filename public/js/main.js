@@ -4,27 +4,13 @@ function setup2() {
     $(".messages").children().slideDown()
 
     /* Show/Hide Search Bar */
-    $('#lupa').click(function() {
+    $('#lupa').on('click', function() {
         $('.searchBar').toggleClass('expanded')
         $('.searchBar').focus();
     });
 
-    /* Filter Books: number per page & order*/
-    $('.filter div select').change(function() {
-        var params = get_url_params();
-
-        params['sort'] = $('#changeOrderBooks option:selected').val();
-        params['number_Books'] = $('#changeNoBooks option:selected').val();
-        var url = get_new_url(params);
-
-        $.get("../../api/getBooks.php?" + url, function(data) {
-            $('#books').html(data);
-        });
-
-    });
-
     /* Sort Order Client*/
-    $(".sortOrders").click(function() {
+    $(".sortOrders").on('click', function() {
         var params = get_url_params();
 
         params['sort'] = $(this).hasClass('fa-arrow-down')
@@ -34,19 +20,21 @@ function setup2() {
         window.location.assign(window.location.href.split('?')[0] + '?' + url);
     });
 
-    $(".favourite").click(function() {
+
+// Handle livros Favoritos - same as .click() -> data loaded by ajax call
+    $(document).delegate(".favourite","click",function(){
         $(this).find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
         var url;
         url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
-            ? 'unfavourite'
-            : 'favourite');
+                                                                ? 'unfavourite'
+                                                                : 'favourite');
         var ref = $(this).find(">span").html();
         url = url + "&ref=" + ref;
 
         $.get("../../actions/users/change_favourites.php?" + url, function(data) {
             console.log(data);
         });
-    })
+    });
 
     $('.dropdown').hover(function() {
         $('.dropdown-content').slideDown("slow");
@@ -55,7 +43,7 @@ function setup2() {
     });
 
     /* Remove Item from Cart */
-    $(".cartRemove").click(function() {
+    $(".cartRemove").on('click', function() {
         url = window.location.origin + "/Online-Store/public/actions/orders/delete_book.php?ref=" + $(this).attr('ref');
         $(this).parent().parent().fadeOut("fast", function() {
             window.location.assign(url);
@@ -63,7 +51,7 @@ function setup2() {
     });
 
     /* Atualiza Carrinho de Compras */
-    $('#refresh').click(function() {
+    $('#refresh').on('click', function() {
         var cart = $('#cart :input');
         var err = 0;
         var url = "../../actions/orders/update_cart.php?";
@@ -83,7 +71,7 @@ function setup2() {
     });
 
     /* Checkout */
-    $('#checkoutBtn').click(function() {
+    $('#checkoutBtn').on('click', function() {
         var inputs,
             index;
         var cart = $('#cart :input');
@@ -97,7 +85,7 @@ function setup2() {
         window.location.assign(url);
     });
 
-    $('.stateChange').click(function() {
+    $('.stateChange').on('click', function() {
         var book_ref = $(this).parent().parent().attr('class');
         $.get("../../actions/books/changeBookState.php?ref=" + book_ref);
         $(this).toggleClass('fa-trash').toggleClass('fa-plus-circle');
@@ -139,9 +127,37 @@ function setup2() {
         });
     });
 
-    $('.close').click(function() {
+    $('.close').on('click', function() {
         $(this).parent().slideUp("slow");
     });
+
+
+
+        $(document).delegate('.arrows .pageNumber', 'click', function(){
+            $('#futurePage').html($(this).html());
+        });
+
+        $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
+            var pg = Number($('#futurePage').html());
+            $('#futurePage').html(pg + 1);
+        });
+
+        $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
+            var pg = Number($('#futurePage').html());
+            $('#futurePage').html(pg - 1);
+        });
+
+
+
+//
+    $(document).delegate('.arrows a:not(.pageNumberSelected)', 'click', ajaxCall);
+
+
+    /* Filter Books: number per page & order*/
+    $('.filter div select').change(ajaxCall);
+
+
+
 
 }
 /* End of jquery functionalities */
@@ -168,6 +184,114 @@ function get_new_url(params) {
     });
     return url;
     //window.location.assign(url);
+}
+
+
+function ajaxCall() {
+    var params = get_url_params();
+
+    params['sort']          = $('#changeOrderBooks option:selected').val();
+    params['number_Books']  = $('#changeNoBooks option:selected').val();
+    params['page']          = ($('#futurePage').html() == undefined) ? 1 :
+                                                                       $('#futurePage').html();
+
+console.log($('#futurePage').html())
+    var url = get_new_url(params);
+    var html = "";
+    var pag = "";
+
+    $.get("../../api/getBooks.php?" + url, function(data) {
+        json = JSON.parse(data);
+
+        console.log(json);
+        var favs = $.map(json.fav, function(value, index) {
+                        return [value];
+                    });
+        $.each( json.livros, function( i, book ) {
+
+            $.get("../../images/covers/" + book.ref + ".png")
+                .done(function() {
+                    src = "../../images/covers/" + book.ref + ".png";
+                }).fail(function() {
+                    src = "../../images/covers/default.png";
+                }).always(function(){
+
+                    html += "<article class='book'>";
+                    html +=   "<a href='../../pages/books/view_book.php?id=" + book.ref + "'>";
+                    html +=     "<img class='cover' src='"+src+"'>";
+                    html +=   "</a>";
+                    html +=   "<div class='book-data'>";
+                    html +=   "<span class='title'>";
+                    html +=     "<a href='../../pages/books/view_book.php?id="+book.ref+"' class='titleLink'>";
+                    html +=       book.title;
+                    html +=     "</a>";
+                    html +=     "</span><br />";
+                    html +=     "<span class='author'>"+book.author+"</span><br />";
+                    html +=     "<span class='descript'>"+book.description+"</span><br />";
+                    html +=   "</div>";
+                    html +=   "<div class='addBtn'>";
+                    html +=     "<span class='price'>€ "+book.price+"</span><br />";
+                  if ( json.admin == 0){
+                    if ( book.stock != 0 ){
+                    html +=     "<a class='btn' href='../../actions/orders/add_book_to_cart.php?id="+book.ref+"'>";
+                    html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
+                    html +=         "Adicionar";
+                    html +=     "</a>";
+                    html +=     "<span class='inStock'>";
+                    html +=        "<small>Em Stock</small>";
+                    html +=     "</span>";
+                    }else {
+                    html +=     "<span class='soldOut'>";
+                    html +=         "<small>Esgotado</small>";
+                    html +=     "</span>";
+                    }
+                 }
+
+                  // Favoritos
+                  html +=     "<a class= 'favourite'>";
+                  if ( favs.indexOf(book.ref) != -1 )
+                    html +=       "<i class='fa fa-heart' aria-hidden='true'></i>";
+                  else
+                    html +=       "<i class='fa fa-heart-o' aria-hidden='true'></i>";
+                  html +=          "<span hidden>"+book.ref+"</span>"
+                  html +=      "</a>";
+                  html +=   "</div>";
+                  html += "</article>";
+
+                  $('#books').html(html);
+                });
+
+      });
+
+      var content = "";
+      var max_no_page = Math.ceil(Number(json.totalBooks)/ Number(json.nbooks));
+
+      console.log(max_no_page)
+
+      if ( json.page != 1 ){
+        content += "<a>";
+        content +=     "<i class='fa fa-angle-double-left' aria-hidden='true'></i>";
+        content += "</a>";
+      }
+
+      if (max_no_page > 1 )
+          for (var i = 1; i<= max_no_page; i++){
+            if ( i == json.page )
+            //console.log("ATUAL")
+              content += "<a class='pageNumberSelected'> " + i + " </a>";
+            else
+            //console.log("OUTRAS");//
+                content += "<a class='pageNumber'> " + i + " </a>";
+          }
+
+      if (json.page != max_no_page){
+          content += "<a>";
+          content +=   "<i class='fa fa-angle-double-right' aria-hidden='true'></i>";
+          content += "</a>";
+      }
+      $('.arrows').html(content);
+
+    });
 }
 
 /******************************************************************************/

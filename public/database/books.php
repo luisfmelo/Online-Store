@@ -103,7 +103,7 @@
 
     $stmt = $conn->prepare($query);
     $stmt->execute( array('ref' => $ref) );
-    return $stmt->fetch();
+    return $stmt->fetchAll();
   }
 
 /* Retorna todas as categorias existentes */

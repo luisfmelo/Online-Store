@@ -74,7 +74,7 @@
     </section>
 
     <div class="row arrows">
-	{if $page != 1}
+	{*if $page != 1}
 		<a href="{$BASE_URL}/pages/books/list_books.php?page={$previous}{$param}\">
 			<i class='fa fa-angle-double-left' aria-hidden='true'></i>
 		</a>
@@ -92,6 +92,28 @@
       <a href="{$BASE_URL}/pages/books/list_books.php?page={$next}{$param}">
         <i class='fa fa-angle-double-right' aria-hidden='true'></i>
       </a>
-    {/if}
+    {/if*}
+    {if $page != 1}
+      <a>
+        <i class='fa fa-angle-double-left' aria-hidden='true'></i>
+      </a>
+      {/if}
+      {if $max_no_page > 1}
+        {for $i=1 to $max_no_page}
+          {if $i == $page}
+            <a class="pageNumberSelected"> {$i} </a>
+          {else}
+            <a class="pageNumber"> {$i} </a>
+          {/if}
+        {/for}
+      {/if}
+      {if $next != "NOTHING_TO_SHOW"}
+        <a>
+          <i class='fa fa-angle-double-right' aria-hidden='true'></i>
+        </a>
+      {/if}
 	</div>
+  <span id='futurePage' style='display:none'>
+    {$page}
+  </span>
 </div>

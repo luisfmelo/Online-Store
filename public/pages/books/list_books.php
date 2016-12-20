@@ -13,7 +13,7 @@
 
   /* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id'])){
-	   $number_of_books = TotalNumberBooksByCategory($_GET['id'])['count'];
+	   $number_of_books = TotalNumberBooksByCategory($_GET['id'])[0]['count'];
      $books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $n_books_per_page, ($page-1) * $n_books_per_page);
   }
   else {

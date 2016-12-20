@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 16:25:22
+/* Smarty version 3.1.30, created on 2016-12-20 14:22:50
   from "/var/www/html/Online-Store/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58540762420ff7_57758821',
+  'unifunc' => 'content_585930aa2e4876_37780897',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a9c8b64e20fd65356205c25bf70bb00b823855ca' => 
     array (
       0 => '/var/www/html/Online-Store/public/templates/books/list_books.tpl',
-      1 => 1481892398,
+      1 => 1482240168,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_58540762420ff7_57758821 (Smarty_Internal_Template $_smarty_tpl) {
+function content_585930aa2e4876_37780897 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -136,47 +136,40 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </section>
 
     <div class="row arrows">
-	<?php if ($_smarty_tpl->tpl_vars['page']->value != 1) {?>
-		<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['previous']->value;
-echo $_smarty_tpl->tpl_vars['param']->value;?>
-\">
-			<i class='fa fa-angle-double-left' aria-hidden='true'></i>
-		</a>
-    <?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['max_no_page']->value > 1) {?>
-      <?php
+	
+    <?php if ($_smarty_tpl->tpl_vars['page']->value != 1) {?>
+      <a>
+        <i class='fa fa-angle-double-left' aria-hidden='true'></i>
+      </a>
+      <?php }?>
+      <?php if ($_smarty_tpl->tpl_vars['max_no_page']->value > 1) {?>
+        <?php
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['max_no_page']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['max_no_page']->value)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-        <?php if ($_smarty_tpl->tpl_vars['i']->value == $_smarty_tpl->tpl_vars['page']->value) {?>
-          <a class="pageNumberSelected" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['i']->value;
-echo $_smarty_tpl->tpl_vars['param']->value;?>
-"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+          <?php if ($_smarty_tpl->tpl_vars['i']->value == $_smarty_tpl->tpl_vars['page']->value) {?>
+            <a class="pageNumberSelected"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
  </a>
-        <?php } else { ?>
-          <a class="pageNumber" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['i']->value;
-echo $_smarty_tpl->tpl_vars['param']->value;?>
-"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+          <?php } else { ?>
+            <a class="pageNumber"> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
  </a>
-        <?php }?>
-      <?php }
+          <?php }?>
+        <?php }
 }
 ?>
 
-    <?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['next']->value != "NOTHING_TO_SHOW") {?>
-      <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-/pages/books/list_books.php?page=<?php echo $_smarty_tpl->tpl_vars['next']->value;
-echo $_smarty_tpl->tpl_vars['param']->value;?>
-">
-        <i class='fa fa-angle-double-right' aria-hidden='true'></i>
-      </a>
-    <?php }?>
+      <?php }?>
+      <?php if ($_smarty_tpl->tpl_vars['next']->value != "NOTHING_TO_SHOW") {?>
+        <a>
+          <i class='fa fa-angle-double-right' aria-hidden='true'></i>
+        </a>
+      <?php }?>
 	</div>
+  <span id='futurePage' style='display:none'>
+    <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+
+  </span>
 </div>
 <?php }
 }
