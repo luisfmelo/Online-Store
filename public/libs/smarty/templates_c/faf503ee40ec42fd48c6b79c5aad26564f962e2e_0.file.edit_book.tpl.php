@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-16 17:52:47
+/* Smarty version 3.1.30, created on 2016-12-20 08:52:45
   from "/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/edit_book.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_585429ef0c7bb4_72896183',
+  'unifunc' => 'content_5858f15db48ac0_09870604',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'faf503ee40ec42fd48c6b79c5aad26564f962e2e' => 
     array (
       0 => '/usr/users2/mieec2012/ee12023/public_html/Online-Store/public/templates/books/edit_book.tpl',
-      1 => 1481910664,
+      1 => 1482100919,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/warn_msgs.tpl' => 1,
   ),
 ),false)) {
-function content_585429ef0c7bb4_72896183 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5858f15db48ac0_09870604 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="messages" style="margin-top: -20px;">
   <?php $_smarty_tpl->_subTemplateRender("file:_messages/error_success_msgs.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

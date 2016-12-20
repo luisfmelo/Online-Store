@@ -14,24 +14,30 @@
   }
 
   /* página atual */
-  if(!isset($_GET['page']))
-		$page = 0;
-  else
-		$page = $_GET['page'];
+  $page = isset($_GET['page']) ? $_GET['page'] : 1;
+  
+  /* número de livros por página */
+  $n_books_per_page = 10;
 
   /* controlo icons previous/next */
-  $limit = 10;
   $number_of_books = getNoBooks();
-  $max_no_page = $number_of_books[0]['count'] / $limit;
-
-  if ($page + 1 > $max_no_page)
-		$next = "NOTHING_TO_SHOW";
+  $max_no_page = $number_of_books[0]['count'] / $n_books_per_page;
+  if ($page >= $max_no_page)
+    $next = "NOTHING_TO_SHOW";
   else
-		$next = $page + 1;
-
+    $next = $page + 1;
   $previous = $page - 1;
+  
+  print_r("number of books" .$number_of_books[0]['count']);
+  print_r("------".$max_no_page);
+  for ($i=1; $i<=$max_no_page; $i++){
+	  print_r("$i----");
+  }
+  
+  $max_no_page = ceil($max_no_page);
+  print_r("-----".$max_no_page);
 
-  $books = getSomeBooks($limit, $page*$limit, true); //getSomeBooks(limit, offset)
+  $books = getSomeBooks($n_books_per_page, ($page-1)*$n_books_per_page, true); //getSomeBooks(limit, offset)
 
   $smarty->assign('BOOKS', $books);
   $smarty->assign('MAX_NO_PAGE', $max_no_page);
