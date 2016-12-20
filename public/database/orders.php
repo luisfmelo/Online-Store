@@ -17,6 +17,10 @@
    Adiciona uma nova encomenda ao utiliador atual da Sessão*/
   function new_Order($ref, $total){
     global $conn;
+    
+    $ref 	= strip_tags($ref);
+    $total	= strip_tags($total);
+    
     $query = "INSERT INTO e_store.orders
               VALUES (DEFAULT,
                       :ref,
@@ -34,6 +38,9 @@
    a uma encomenda efetuada com uma dada referencia */
   function add_Books_to_Order($ref){
     global $conn;
+    
+    $ref 	= strip_tags($ref);
+    
     $query = "INSERT INTO e_store.productsordered
               VALUES ";
 
@@ -172,6 +179,9 @@
 /*Atualiza o estado de uma encomenda para ENVIADO*/
   function changeOrdersStateAdmin($orderref, $orderStateId) {
     global $conn;
+    
+    $orderref 		= strip_tags($orderref);
+    $orderStateId 	= strip_tags($orderStateId);
 
     $query = "UPDATE e_store.orders
               SET state='$orderStateId'
@@ -184,6 +194,9 @@
 /*Atualiza o Estado para RECEBIDO e a Data de Entrega*/
   function changeOrdersStateCustomer($orderref, $orderStateId) {
     global $conn;
+    
+    $orderref 		= strip_tags($orderref);
+    $orderStateId 	= strip_tags($orderStateId);
 
     $query = "UPDATE e_store.orders
               SET state='$orderStateId', deliverydate='" . date('Y-m-d G:i:s') . "'

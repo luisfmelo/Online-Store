@@ -29,6 +29,14 @@
 /* Adiciona um novo utilizador à Base de Dados */
   function addNewUser($user, $name, $phone, $addr, $pass, $email){
   	global $conn;
+  	
+  	$user 	= strip_tags($user);
+  	$name 	= strip_tags($name);
+  	$phone	= strip_tags($phone);
+  	$addr 	= strip_tags($addr);
+  	$pass 	= strip_tags($pass);
+  	$email 	= strip_tags($email);
+  	
     $query = "INSERT INTO e_store.users
               VALUES (DEFAULT, :user, :pass, :name, :email, :phone, :addr, false);";
 
@@ -72,6 +80,13 @@
 /* Edita dados do utilizador */
   function editUser($user, $name, $phone, $addr, $email){
     global $conn;
+    
+  	$user 	= strip_tags($user);
+  	$name 	= strip_tags($name);
+  	$phone	= strip_tags($phone);
+  	$addr 	= strip_tags($addr);
+  	$email 	= strip_tags($email);
+  	    
     $query = "UPDATE e_store.users
               SET name=:name, phone=:phone, address=:addr, email=:email
               WHERE username='$user';";
@@ -86,6 +101,10 @@
  /* Edita a Password do utilizador */
   function editUserPass($user, $pass){
     global $conn;
+    
+    $user = strip_tags($user);
+    $pass = strip_tags($pass);
+    
     $query = "UPDATE e_store.users
               SET password   = :pass
               WHERE username = :user";
@@ -134,6 +153,9 @@
 /* Adiciona livro com referencia ref aos favoritos do utilizador */
   function addFavourite ($ref, $user){
     global $conn;
+    
+    $ref	= strip_tags($ref);
+    $user	= strip_tags($user);
 
     $query = "INSERT INTO e_store.likes
               VALUES (DEFAULT, ?, (select id FROM e_store.books WHERE ref = ?));";
