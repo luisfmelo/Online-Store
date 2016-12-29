@@ -135,32 +135,38 @@ function setup2() {
 
     $(document).delegate('.arrows .pageNumber', 'click', function(){
         $('#futurePage').html($(this).html());
+        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg + 1);
+        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg - 1);
+        scrollToTop(800);
     });
 
 
-
-//
     $(document).delegate('.arrows a:not(.pageNumberSelected)', 'click', ajaxCall);
 
-
     /* Filter Books: number per page & order*/
-    $('.filter div select').change(ajaxCall);
+    $('.filter div select').change(function(){
+        $('#futurePage').html(1);
+        ajaxCall();
+    });
 
 
 
 
 }
 /* End of jquery functionalities */
+
+
+
 
 /* Get each GET parameter from URL*/
 function get_url_params() {
@@ -253,8 +259,6 @@ function ajaxCall() {
       var content = "";
       var max_no_page = Math.ceil(Number(json.totalBooks)/ Number(json.nbooks));
 
-      console.log(max_no_page)
-
       if ( json.page != 1 ){
         content += "<a>";
         content +=     "<i class='fa fa-angle-double-left' aria-hidden='true'></i>";
@@ -281,6 +285,11 @@ function ajaxCall() {
     });
 }
 
+function scrollToTop(time){
+    $('html, body').animate({
+        scrollTop: "0px"
+    }, time);
+}
 /******************************************************************************/
 /* Informa a action sobre o modo a proceder *
 function updateCart(checkout) {
