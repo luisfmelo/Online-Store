@@ -132,7 +132,7 @@
 /* Mudar Estado de um livro com a referencia dada */
   function changeBookState($ref) {
     global $conn;
-    
+
     $ref = strip_tags($ref);
 
     $query = "UPDATE e_store.books
@@ -180,7 +180,7 @@
 /* Atualiza informações de um livro com uma dada referencia - preço e stock apenas */
   function updateBook($ref, $price, $stock){
     global $conn;
-    
+
     $ref 	= strip_tags($ref);
     $price 	= strip_tags($price);
     $stock 	= strip_tags($stock);
@@ -196,7 +196,7 @@
   /* Atualiza informações de um livro com uma dada referencia */
   function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript, $active){
     global $conn;
-    
+
     $ref 		= strip_tags($ref);
     $newRef 	= strip_tags($newRef);
     $title 		= strip_tags($title);
@@ -206,7 +206,7 @@
     $stock 		= strip_tags($stock);
     $descript 	= strip_tags($descript);
     $active 	= strip_tags($active);
-    
+
     $categoryName = getCategoryName($cat)['categoryname'];
     $search = $title . ' ' . $author . ' ' . $categoryName;
 
@@ -219,12 +219,12 @@
                   stock = :stock,
                   description = :descript,
                   phrase = to_tsvector('portuguese', :search),";
-                  
+
 
 	$query .= (($active) ? "active = true " : "active = false ");
-		
+
 	$query .= "WHERE ref = :ref;";
-             
+
 
     $stmt = $conn->prepare ($query);
     $stmt->execute( array('ref' => $ref,
@@ -241,14 +241,14 @@
 /* Adiciona um novo livro à Base de Dados */
   function addNewBook($ref, $title, $author, $price, $cat, $description,  $stock){
   	global $conn;
-  	
+
     $ref 			= strip_tags($ref);
     $title 			= strip_tags($title);
     $author 		= strip_tags($author);
     $price 			= strip_tags($price);
     $cat 			= strip_tags($cat);
     $stock 			= strip_tags($stock);
-    $description 	= strip_tags($description);	
+    $description 	= strip_tags($description);
 
     $categoryName = getCategoryName($cat)['categoryname'];
     $search = $title . ' ' . $author . ' ' . $categoryName;

@@ -21,7 +21,7 @@ function setup2() {
     });
 
 
-// Handle livros Favoritos - same as .click() -> data loaded by ajax call
+    // Handle livros Favoritos - same as .click() -> data loaded by ajax call
     $(document).delegate(".favourite","click",function(){
         $(this).find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
         var url;
@@ -38,7 +38,7 @@ function setup2() {
 
     $('.dropdown').hover(function() {
         $('.dropdown-content').slideDown("slow");
-    }, function() {
+      }, function() {
         $('.dropdown-content').slideUp("slow");
     });
 
@@ -133,19 +133,19 @@ function setup2() {
 
 
 
-        $(document).delegate('.arrows .pageNumber', 'click', function(){
-            $('#futurePage').html($(this).html());
-        });
+    $(document).delegate('.arrows .pageNumber', 'click', function(){
+        $('#futurePage').html($(this).html());
+    });
 
-        $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
-            var pg = Number($('#futurePage').html());
-            $('#futurePage').html(pg + 1);
-        });
+    $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
+        var pg = Number($('#futurePage').html());
+        $('#futurePage').html(pg + 1);
+    });
 
-        $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
-            var pg = Number($('#futurePage').html());
-            $('#futurePage').html(pg - 1);
-        });
+    $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
+        var pg = Number($('#futurePage').html());
+        $('#futurePage').html(pg - 1);
+    });
 
 
 
@@ -194,73 +194,60 @@ function ajaxCall() {
     params['number_Books']  = $('#changeNoBooks option:selected').val();
     params['page']          = ($('#futurePage').html() == undefined) ? 1 :
                                                                        $('#futurePage').html();
-
-console.log($('#futurePage').html())
     var url = get_new_url(params);
     var html = "";
     var pag = "";
 
     $.get("../../api/getBooks.php?" + url, function(data) {
         json = JSON.parse(data);
-
         console.log(json);
         var favs = $.map(json.fav, function(value, index) {
                         return [value];
                     });
         $.each( json.livros, function( i, book ) {
+            html += "<article class='book'>";
+            html +=   "<a href='../../pages/books/view_book.php?id=" + book.ref + "'>";
+            html += "<img class='cover' src='../../images/covers/" + book.ref + ".png' onerror=\"this.src='../../images/covers/default.png'\" />";
+            html +=   "</a>";
+            html +=   "<div class='book-data'>";
+            html +=   "<span class='title'>";
+            html +=     "<a href='../../pages/books/view_book.php?id="+book.ref+"' class='titleLink'>";
+            html +=       book.title;
+            html +=     "</a>";
+            html +=     "</span><br />";
+            html +=     "<span class='author'>"+book.author+"</span><br />";
+            html +=     "<span class='descript'>"+book.description+"</span><br />";
+            html +=   "</div>";
+            html +=   "<div class='addBtn'>";
+            html +=     "<span class='price'>€ "+book.price+"</span><br />";
+          if ( json.admin == 0){
+            if ( book.stock != 0 ){
+            html +=     "<a class='btn' href='../../actions/orders/add_book_to_cart.php?id="+book.ref+"'>";
+            html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
+            html +=         "Adicionar";
+            html +=     "</a>";
+            html +=     "<span class='inStock'>";
+            html +=        "<small>Em Stock</small>";
+            html +=     "</span>";
+            }else {
+            html +=     "<span class='soldOut'>";
+            html +=         "<small>Esgotado</small>";
+            html +=     "</span>";
+            }
+         }
 
-            $.get("../../images/covers/" + book.ref + ".png")
-                .done(function() {
-                    src = "../../images/covers/" + book.ref + ".png";
-                }).fail(function() {
-                    src = "../../images/covers/default.png";
-                }).always(function(){
+          // Favoritos
+          html +=     "<a class= 'favourite'>";
+          if ( favs.indexOf(book.ref) != -1 )
+            html +=       "<i class='fa fa-heart' aria-hidden='true'></i>";
+          else
+            html +=       "<i class='fa fa-heart-o' aria-hidden='true'></i>";
+          html +=          "<span hidden>"+book.ref+"</span>"
+          html +=      "</a>";
+          html +=   "</div>";
+          html += "</article>";
 
-                    html += "<article class='book'>";
-                    html +=   "<a href='../../pages/books/view_book.php?id=" + book.ref + "'>";
-                    html +=     "<img class='cover' src='"+src+"'>";
-                    html +=   "</a>";
-                    html +=   "<div class='book-data'>";
-                    html +=   "<span class='title'>";
-                    html +=     "<a href='../../pages/books/view_book.php?id="+book.ref+"' class='titleLink'>";
-                    html +=       book.title;
-                    html +=     "</a>";
-                    html +=     "</span><br />";
-                    html +=     "<span class='author'>"+book.author+"</span><br />";
-                    html +=     "<span class='descript'>"+book.description+"</span><br />";
-                    html +=   "</div>";
-                    html +=   "<div class='addBtn'>";
-                    html +=     "<span class='price'>€ "+book.price+"</span><br />";
-                  if ( json.admin == 0){
-                    if ( book.stock != 0 ){
-                    html +=     "<a class='btn' href='../../actions/orders/add_book_to_cart.php?id="+book.ref+"'>";
-                    html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
-                    html +=         "Adicionar";
-                    html +=     "</a>";
-                    html +=     "<span class='inStock'>";
-                    html +=        "<small>Em Stock</small>";
-                    html +=     "</span>";
-                    }else {
-                    html +=     "<span class='soldOut'>";
-                    html +=         "<small>Esgotado</small>";
-                    html +=     "</span>";
-                    }
-                 }
-
-                  // Favoritos
-                  html +=     "<a class= 'favourite'>";
-                  if ( favs.indexOf(book.ref) != -1 )
-                    html +=       "<i class='fa fa-heart' aria-hidden='true'></i>";
-                  else
-                    html +=       "<i class='fa fa-heart-o' aria-hidden='true'></i>";
-                  html +=          "<span hidden>"+book.ref+"</span>"
-                  html +=      "</a>";
-                  html +=   "</div>";
-                  html += "</article>";
-
-                  $('#books').html(html);
-                });
-
+          $('#books').html(html);
       });
 
       var content = "";
