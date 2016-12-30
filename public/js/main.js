@@ -291,36 +291,6 @@ function scrollToTop(time){
     }, time);
 }
 /******************************************************************************/
-/* Informa a action sobre o modo a proceder *
-function updateCart(checkout) {
-    var inputs, index;
-    var cart = document.getElementById('cart');
-    var url = "../../actions/orders/update_cart.php?";
-
-    inputs = cart.getElementsByTagName('input');
-
-    for (index = 0; index < inputs.length; ++index)
-        if (Number(inputs[index].value) >= 0)
-            url += inputs[index].name + "=" + inputs[index].value + '&';
-
-    if (inputs.length == 0)
-        url += "checkout=-1";
-    else if (checkout == 1)
-        url += "checkout=1"
-    else
-        url += "checkout=0";
-
-    window.location.assign(url);
-};
-
-/* Pede confirmação para eliminar um livro */
-
-/* Pede confirmação para eliminar um user */
-function deleteCustomerAlert(username) {
-    var confirm_str = "Tem a certeza que pretende remover o cliente com a referência " + username + "?";
-    if (confirm(confirm_str))
-        window.location.assign("../../actions/users/eliminate_account.php?ref=" + username);
-    }
 
 function stockChangeCheck(ref, page) {
     var row = document.getElementsByClassName(ref)[0];

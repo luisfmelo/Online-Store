@@ -12,7 +12,6 @@
 				<th> Email		</th>
 				<th> Telefone	</th>
 				<th> Morada		</th>
-				<th>	</th>
 			</tr>
 			{foreach $CUSTOMERS as $customer}
 				<tr>
@@ -21,7 +20,6 @@
 					<td>{$customer.email}</td>
 					<td>{$customer.phone}</td>
 					<td>{$customer.address}</td>
-					<td> <i onclick="deleteCustomerAlert('{$customer.username}')" class="fa fa-trash" aria-hidden="true"></i> </td>
 				</tr>
 			{/foreach}
 		</table>
