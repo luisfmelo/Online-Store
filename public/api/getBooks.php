@@ -6,16 +6,19 @@
 	$page = $_GET['page'] == '' ? 1 : $_GET['page'];
 	$offset = ($page-1) * $_GET['number_Books'];
 	$nbooks = $_GET['number_Books'] == '' ? 6 : $_GET['number_Books'];
-  $totalBooks = (isset($_GET['id'])) ? TotalNumberBooksByCategory($_GET['id']) : getNoBooks();
+  $totalBooks = (isset($_GET['id'])) ? TotalNumberBooksByCategory($_GET['id'])[0]['count'] : getNoBooks()[0]['count'];
 
-	$books = listSomeBooks('', $_GET['sort'], $nbooks, $offset);
+	// obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador *
+  if (isset($_GET['id']))
+		$books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $nbooks, $offset);
+  else
+     $books = listSomeBooks('', $_GET['sort'], $nbooks, $offset);
 
-  $res = getFavouriteBooks($_SESSION['username']);
+	$res = getFavouriteBooks($_SESSION['username']);
   $fav = array();
   foreach ($res as $key => $value) {
-        $fav[] = $value[ref];
+		$fav[] = $value[ref];
   }
-
-  $json =  array('username' => $_SESSION['username'], 'admin' => $_SESSION['admin'], 'fav' => $fav, 'page' => $page, 'totalBooks' => $totalBooks[0]['count'], 'nbooks' => $nbooks, 'livros' => $books);
+  $json =  array('username' => $_SESSION['username'], 'admin' => $_SESSION['admin'], 'fav' => $fav, 'page' => $page, 'totalBooks' => $totalBooks, 'nbooks' => $nbooks, 'livros' => $books);
 	echo json_encode($json, JSON_FORCE_OBJECT);
 ?>

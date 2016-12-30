@@ -196,6 +196,9 @@ function get_new_url(params) {
 function ajaxCall() {
     var params = get_url_params();
 
+    if (/id=([^&]+)/.exec(url) != null )
+      params['id'] = /myParam=([^&]+)/.exec(url)[1];
+
     params['sort']          = $('#changeOrderBooks option:selected').val();
     params['number_Books']  = $('#changeNoBooks option:selected').val();
     params['page']          = ($('#futurePage').html() == undefined) ? 1 :
@@ -205,6 +208,7 @@ function ajaxCall() {
     var pag = "";
 
     $.get("../../api/getBooks.php?" + url, function(data) {
+        console.log("../../api/getBooks.php?" + url)
         json = JSON.parse(data);
         console.log(json);
         var favs = $.map(json.fav, function(value, index) {

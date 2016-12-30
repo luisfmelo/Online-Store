@@ -32,6 +32,31 @@
     return $stmt->fetchAll();
   }
 
+/* Recebe Array com informação de todos os livros de uma dada categoria */
+  function listSomeBooksByCategory($ref, $order, $limit, $offset) {
+    global $conn;
+    $query =            "SELECT *
+                         FROM e_store.categories
+                         INNER JOIN e_store.books
+                         ON e_store.categories.id = e_store.books.category
+                         WHERE e_store.categories.ref = :ref AND e_store.books.active = true ";
+
+    if ($order == 'name_a')
+      $query = $query . "ORDER BY e_store.books.title ASC";
+    else if ($order == 'name_z')
+      $query = $query . "ORDER BY e_store.books.title DESC";
+    else if ($order == 'price_d')
+      $query = $query . "ORDER BY e_store.books.price DESC";
+    else if ($order == 'price_c')
+      $query = $query . "ORDER BY e_store.books.price ASC";
+
+    $query = $query . " LIMIT :limit OFFSET :offset;";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array('ref' => $ref, 'limit' => $limit, 'offset' => $offset) );
+    return $stmt->fetchAll();
+  }
+
 /* Retorna o número total de livros resultantes de uma dada pesquisa */
   function TotalNumberSearchedBooks($search) {
     global $conn;
@@ -67,31 +92,17 @@
       return $stmt->fetchAll();
    }
 
-/* Recebe Array com informação de todos os livros de uma dada categoria */
-  function listSomeBooksByCategory($ref, $order, $limit, $offset) {
-    global $conn;
-    $query =            "SELECT *
-                         FROM e_store.categories
-                         INNER JOIN e_store.books
-                         ON e_store.categories.id = e_store.books.category
-                         WHERE e_store.categories.ref = :ref AND e_store.books.active = true";
+/* Retorna o numero de livros existentes na BD */
+ function getNoBooks() {
+   global $conn;
+   $query = "SELECT COUNT(id)
+             FROM e_store.books
+             WHERE e_store.books.active = true;";
 
-    if ($order == 'name_a')
-      $query = $query . "ORDER BY e_store.books.title ASC";
-    else if ($order == 'name_z')
-      $query = $query . "ORDER BY e_store.books.title DESC";
-    else if ($order == 'price_d')
-      $query = $query . "ORDER BY e_store.books.price DESC";
-    else if ($order == 'price_c')
-      $query = $query . "ORDER BY e_store.books.price ASC";
-
-    $query = $query . " LIMIT :limit OFFSET :offset;";
-
-    $stmt = $conn->prepare($query);
-    $stmt->execute( array('ref' => $ref, 'limit' => $limit, 'offset' => $offset) );
-    return $stmt->fetchAll();
-  }
-
+   $stmt = $conn->prepare($query);
+   $stmt->execute();
+   return $stmt->fetchAll();
+ }
 /* Retorna o número total de livros de uma dada categoria */
   function TotalNumberBooksByCategory($ref) {
     global $conn;
@@ -111,18 +122,6 @@
     global $conn;
     $query = "SELECT *
               FROM e_store.categories";
-
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    return $stmt->fetchAll();
-  }
-
-/* Retorna o numero de livros existentes na BD */
-  function getNoBooks() {
-    global $conn;
-    $query = "SELECT COUNT(id)
-              FROM e_store.books
-              WHERE e_store.books.active = true;";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -193,7 +192,7 @@
     $stmt->execute( array('ref' => $ref, 'price' => $price, 'stock' => $stock) );
   }
 
-  /* Atualiza informações de um livro com uma dada referencia */
+/* Atualiza informações de um livro com uma dada referencia */
   function updateBookInfo($ref, $newRef, $title, $author, $price, $cat, $stock, $descript, $active){
     global $conn;
 
@@ -221,9 +220,9 @@
                   phrase = to_tsvector('portuguese', :search),";
 
 
-	$query .= (($active) ? "active = true " : "active = false ");
+  	$query .= (($active) ? "active = true " : "active = false ");
 
-	$query .= "WHERE ref = :ref;";
+  	$query .= "WHERE ref = :ref;";
 
 
     $stmt = $conn->prepare ($query);
