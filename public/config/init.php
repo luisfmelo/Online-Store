@@ -30,6 +30,7 @@
   $CART_MESSAGE = $_SESSION['cart_messages'];
   $INFO_MESSAGE = $_SESSION['info_messages'];
   $WARN_MESSAGE = $_SESSION['warning_message'];
+  $REDIRECT = $_SESSION['redirect'];
 
 // Smarty Template Engine
   $smarty = new Smarty();
@@ -51,6 +52,7 @@
   $smarty->assign('SUCCESS_MESSAGE', $SUCCESS_MESSAGE);
   $smarty->assign('CART_MESSAGE', $CART_MESSAGE);
   $smarty->assign('INFO_MESSAGE', $INFO_MESSAGE);
+  $smarty->assign('REDIRECT', $REDIRECT);
   $smarty->assign('WARNING_MESSAGE', $WARN_MESSAGE);
 
   unset($_SESSION['form_values']);

@@ -3,6 +3,8 @@
   include_once("$BASE_DIR/database/books.php");
   include_once("$BASE_DIR/database/users.php");
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
   $categories = getBookCategories();
 
   /* número de livros por página */
@@ -46,7 +48,7 @@
   foreach ($res as $key => $value) {
     $fav[] = $value[ref];
   }
-  
+
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);
   $smarty->assign('previous', $previous);

@@ -4,6 +4,8 @@
   include_once('../../database/orders.php');
   include_once('../../database/books.php');
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
   if ( $_SESSION['username'] == '' )
   {
     header("Location: " . $BASE_URL . '/pages/users/login.php');
@@ -39,19 +41,17 @@
 		$orders = getOrdersAdmin($number_books_per_page, ($page-1) * $number_books_per_page, $_GET['sort']);
   else
   	$orders = getOrdersCustomer($username,$number_books_per_page, ($page-1) * $number_books_per_page);
-  	
+
   $smarty->assign('page', $page);
   $smarty->assign('next', $next);
   $smarty->assign('previous', $previous);
-  $smarty->assign('max_no_page', $max_no_page);	
-  	
+  $smarty->assign('max_no_page', $max_no_page);
+
   $smarty->assign('ORDERS', $orders);
   $smarty->assign('ISADMIN', $isAdmin);
-  
+
   $smarty->display('common/header.tpl');
   $smarty->display('orders/view_orders.tpl');
   $smarty->display('common/footer.tpl');
 
 ?>
-
-

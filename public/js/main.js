@@ -328,7 +328,6 @@ function stockChangeCheck(ref, page) {
 
 /* Pede confirmação para mudança de estado de uma encomenda */
 function alertStateChange(orderRef, isAdmin) {
-
     var r;
 
     r = (isAdmin == 1)

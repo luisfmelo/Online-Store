@@ -2,6 +2,8 @@
 	include_once('../../config/init.php');
   include_once('../../database/books.php');
 
+	$_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
 	if ( $_SESSION['username'] == '' )
   {
     header("Location: " . $BASE_URL . '/pages/users/login.php');
@@ -15,7 +17,7 @@
 
   /* página atual */
   $page = isset($_GET['page']) ? $_GET['page'] : 1;
-  
+
   /* número de livros por página */
   $n_books_per_page = 10;
 
@@ -27,7 +29,7 @@
   else
     $next = $page + 1;
   $previous = $page - 1;
-  
+
   $max_no_page = ceil($max_no_page);
   print_r("-----".$max_no_page);
 

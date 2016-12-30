@@ -11,9 +11,9 @@
     *   -> formato de email correto
     *   -> user unico
     */
-    
+
     $username = strip_tags($_POST['username']);
-    
+
 
   if (!isset($_POST['username'])        ||
       !isset($_POST['name'])            ||
@@ -75,8 +75,8 @@
     header("Location: $BASE_URL" . '/pages/users/new_regist.php');
     exit;
   }
-  
-  $password = hash("sha256", strip_tags($_POST['password'])); 
+
+  $password = hash("sha256", strip_tags($_POST['password']));
   $name 	= strip_tags($_POST['name']);
   $phone    = strip_tags($_POST['phone']);
   $address  = strip_tags($_POST['address']);
@@ -86,6 +86,11 @@
   $_SESSION['username'] = $username;
 
   addNewUser($username, $name, $phone, $address, $password, $email);
-  header("Location: $BASE_URL" . '/pages/books/list_books.php');
+
+  if ( $REDIRECT != '' )
+    header("Location: $REDIRECT");
+  else
+    header("Location: $BASE_URL" . '/pages/books/list_books.php');
+
   exit;
 ?>

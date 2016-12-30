@@ -28,6 +28,10 @@
     exit();
   }
 
-  header("Location: $BASE_URL" . '/pages/books/list_books.php');
+  if ( $REDIRECT != '' )
+    header("Location: $REDIRECT");
+  else
+    header("Location: $BASE_URL" . '/pages/books/list_books.php');
+
   exit;
 ?>

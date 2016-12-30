@@ -1,6 +1,3 @@
-<div class="messages" style="margin-top: -20px;">
-  {include file='_messages/error_success_msgs.tpl'}
-</div>
 <div class="row">
   {include file='common/left_menu.tpl'}
 
@@ -35,7 +32,7 @@
           <input type = "text"		name="stock"	value="{$BOOK.0.stock}"/><br>
           Descrição:		<br />
           <textarea rows="13" cols="50" name="description" value="dd">{$BOOK.0.description}</textarea> <br />
-          
+
            <Select name="state">
             <Option value='ativo'
               {if $BOOK.0.active}
@@ -48,13 +45,13 @@
               {/if}
               >Descontinuado</Option> <br/>
           </Select><br />
-		
+
 		 <input style="margin-left:0" class="changePhoto" name="bookcover" type="file" id="photoUp"  />
-		
+
           <div class="messages formMessages" style="margin-top: 20px;">
             {include file='_messages/warn_msgs.tpl'}
           </div>
-	  
+
           <input type = "submit" value="Alterar"/>
     		</form>
 

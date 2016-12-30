@@ -3,6 +3,8 @@
   include_once("$BASE_URL/database/users.php");
   include_once("$BASE_URL/database/books.php");
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
   $username = $_SESSION['username'];
 
   $book = getBookInfo($_GET['id']);
@@ -22,8 +24,8 @@
     file_exists($IMG_DIR . '/covers/' . $_GET['id'] . '.png')   ?
                 $IMG_DIR . '/covers/' . $_GET['id'] . '.png'    :
                 $IMG_DIR . '/covers/default.png' ;
-  
-      
+
+
   $smarty->assign('BOOK', $book);
   $smarty->assign('COVER', $cover);
   $smarty->assign('CATEGORIES', $categories);
