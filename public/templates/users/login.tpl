@@ -39,7 +39,7 @@
 
       <div class="goToRegister">
         Não tem conta?
-  			<a href="{$BASE_URL}/pages/users/new_regist.php">
+  			<a href="{$BASE_URL}/pages/users/register.php">
           Registe-se <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </a>
   		</div>
