@@ -23,16 +23,20 @@ function setup2() {
 
     // Handle livros Favoritos - same as .click() -> data loaded by ajax call
     $(document).delegate(".favourite","click",function(){
-        $(this).find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
-        var url;
-        url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
-                                                                ? 'unfavourite'
-                                                                : 'favourite');
-        var ref = $(this).find(">span").html();
+        var elem = $(this);
+
+        elem.find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
+        var url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
+                                                                  ? 'unfavourite'
+                                                                  : 'favourite');
+        var ref = elem.find(">span").html();
         url = url + "&ref=" + ref;
 
-        $.get("../../actions/users/change_favourites.php?" + url, function(data) {
-            console.log(data);
+        $.get("../../api/change_favourites.php?" + url, function(data) {
+          // Caso esteja na página da wishlist é que faz slide-up 
+          if(window.location.href.indexOf("wishlist.php") > -1) {
+            elem.parent().parent().slideUp();
+          }
         });
     });
 
