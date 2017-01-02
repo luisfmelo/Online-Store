@@ -94,10 +94,10 @@ function setup2() {
             msg += $(this).hasClass('fa-trash') ? 'novamente disponivel' : ' descontinuado';
 
         var tpl = "<div class='infoMsg' style='display:none'>";
-        tpl += "<i class='fa fa-exclamation-circle' aria-hidden='true'></i>";
-        tpl += msg;
-        tpl += "<a class='close' href='#'>X</a>";
-        tpl += "</div>";
+        tpl +=      "<i class='fa fa-exclamation-circle' aria-hidden='true'></i>";
+        tpl +=      msg;
+        tpl +=      "<a class='close' href='#'>X</a>";
+        tpl +=    "</div>";
 
       // Adiciona mensagem de informaçao
         $('.messages').html(tpl);
@@ -134,20 +134,20 @@ function setup2() {
 
 
     $(document).delegate('.arrows .pageNumber', 'click', function(){
+      scrollToTop(500);
         $('#futurePage').html($(this).html());
-        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
+      scrollToTop(500);
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg + 1);
-        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
+      scrollToTop(500);
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg - 1);
-        scrollToTop(800);
     });
 
 
