@@ -31,7 +31,6 @@
   $previous = $page - 1;
 
   $max_no_page = ceil($max_no_page);
-  print_r("-----".$max_no_page);
 
   $books = getSomeBooks($n_books_per_page, ($page-1)*$n_books_per_page, true); //getSomeBooks(limit, offset)
 

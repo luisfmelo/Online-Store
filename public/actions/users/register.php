@@ -87,7 +87,6 @@
 
   addNewUser($username, $name, $phone, $address, $password, $email);
 
-
   if ( $REDIRECT != '' )
     header("Location: /$REDIRECT");
   else
