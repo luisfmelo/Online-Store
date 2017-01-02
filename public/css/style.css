@@ -794,6 +794,14 @@ td {
     height: 140px;
 }
 
+.clone{
+  opacity: 0.6;
+  position: absolute;
+  height: 140px;
+  width: 100px;
+  z-index: 100;
+}
+
 .book-data, .addBtn {
     width: 100%;
     padding: 2% 4%;
