@@ -2,10 +2,17 @@
 	include_once('../../config/init.php');
   include_once($BASE_DIR .'/database/orders.php');
 
-	$isAdmin = $_GET['isAdmin'];
+	$_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
+	if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+	}
+
 	$orderRef = $_GET['orderref'];
 
-	if($isAdmin){
+	if($_SESSION['admin']){
 		$orderId = getIdByOrderState('ENVIADO');
 		changeOrdersStateAdmin($orderRef, $orderId[0]['id']);
 	}

@@ -91,7 +91,7 @@ function setup2() {
 
     $('.stateChange').on('click', function() {
         var book_ref = $(this).parent().parent().attr('class');
-        $.get("../../actions/books/changeBookState.php?ref=" + book_ref);
+        $.get("../api/changeBookState.php?ref=" + book_ref);
         $(this).toggleClass('fa-trash').toggleClass('fa-plus-circle');
 
         var msg = ' Livro com referência ' + book_ref;

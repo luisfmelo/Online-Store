@@ -2,6 +2,8 @@
   include_once('../../config/init.php');
   include_once('../../database/books.php');
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
   // Se não estiver houver carrinho... cria um.
   if ( is_null($_SESSION['cart']) )
   {

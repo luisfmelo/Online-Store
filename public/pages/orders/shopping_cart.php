@@ -4,19 +4,16 @@
   include_once('../../database/books.php');
 
   $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
-
-  if ( $_SESSION['username'] == '' )
+  /*if ( $_SESSION['username'] == '' )
   {
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
-  }
-  else if( $_SESSION['admin'] )
+  }*/
+  if( $_SESSION['admin'] )
   {
     header("Location: " . $BASE_URL . '/pages/books/list_books.php?');
     exit;
   }
-
-  print_r($_);
 
   $WARN_MESSAGE = '';
   $total = 0;

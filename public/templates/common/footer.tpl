@@ -5,7 +5,7 @@
         <a href="#" target="_blank"><img src="../images/linkedin.png" alt="linkedin" class="socialIcons"></a>
         <a href="#" target="_blank"><img src="../images/academic.png" alt="FEUP" class="socialIcons"></a>-->
     </div>
-    <small>Copyright 2016 &#169; Lídia Cerqueira &amp; Luís Melo - SIEM 2016/2017</small>
+    <small>Copyright 2016 &#169; Ldídia Cerqueira &amp; Luís Melo - SIEM 2016/2017</small>
   </footer>
 </body>
 <script src="{$BASE_URL}/libs/jquery/jquery-3.1.1.min.js"></script>

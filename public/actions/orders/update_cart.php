@@ -1,6 +1,8 @@
 <?php
   include_once('../../config/init.php');
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
   if (isset($_GET['error']))
   {
     $_SESSION['info_messages'] = "Erro ao adicionar ao Carrinho!";
