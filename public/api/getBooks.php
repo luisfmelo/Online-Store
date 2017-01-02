@@ -8,7 +8,12 @@
 	$nbooks = $_GET['number_Books'] == '' ? 6 : $_GET['number_Books'];
   $totalBooks = (isset($_GET['id'])) ? TotalNumberBooksByCategory($_GET['id']) : getNoBooks();
 
-	$books = listSomeBooks('', $_GET['sort'], $nbooks, $offset);
+	/* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
+  if (isset($_GET['id']))
+		$books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $nbooks, $offset);
+  else
+		$books = listSomeBooks('', $_GET['sort'], $nbooks, $offset);
+
 
   $res = getFavouriteBooks($_SESSION['username']);
   $fav = array();

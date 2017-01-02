@@ -33,7 +33,7 @@ function setup2() {
         url = url + "&ref=" + ref;
 
         $.get("../../api/change_favourites.php?" + url, function(data) {
-          // Caso esteja na página da wishlist é que faz slide-up 
+          // Caso esteja na página da wishlist é que faz slide-up
           if(window.location.href.indexOf("wishlist.php") > -1) {
             elem.parent().parent().slideUp();
           }
@@ -193,7 +193,6 @@ function get_new_url(params) {
         url += key + "=" + value + "&";
     });
     return url;
-    //window.location.assign(url);
 }
 
 
@@ -203,7 +202,7 @@ function ajaxCall() {
     params['sort']          = $('#changeOrderBooks option:selected').val();
     params['number_Books']  = $('#changeNoBooks option:selected').val();
     params['page']          = ($('#futurePage').html() == undefined) ? 1 :
-                                                                       $('#futurePage').html();
+                                                                       Number($('#futurePage').html());
     var url = get_new_url(params);
     var html = "";
     var pag = "";
