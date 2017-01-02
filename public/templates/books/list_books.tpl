@@ -41,9 +41,9 @@
           <div class='addBtn'>
             <span class='price'>€ {$book.price}</span><br />
 
-          {* So mostra botão de adicionar se não for admin, tiver sessao iniciada e ainda haver em stock *}
-          {if $USERNAME != '' && !$isADMIN && $book.stock != 0}
-            <a class='btn' href='{$BASE_URL}/actions/orders/add_book_to_cart.php?id={$book.ref}'>
+          {* So mostra botão de adicionar se não for admin e ainda haver em stock *}
+          {if !$isADMIN && $book.stock != 0}
+            <a class='btn' href='#'>
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>
@@ -58,12 +58,11 @@
             {/if}
 
             {* Caso não tenha em stock, mostra Esgotado *}
-            {* Em caso de não haver user logado, não mostra informação de stock *}
-          {if $book.stock != 0 && $USERNAME != ''}
+          {if $book.stock != 0 }
             <span class='inStock'>
               <small>Em Stock</small>
             </span>
-          {else if $book.stock == 0 && $USERNAME != ''}
+          {else if $book.stock == 0 }
             <span class='soldOut'>
               <small>Esgotado</small>
             </span>

@@ -185,7 +185,7 @@
     $stock 	= strip_tags($stock);
 
     $query = "UPDATE e_store.books
-              SET price = :price, stock = :$stock
+              SET price = :price, stock = :stock
               WHERE ref = :ref;";
 
     $stmt = $conn->prepare ($query);

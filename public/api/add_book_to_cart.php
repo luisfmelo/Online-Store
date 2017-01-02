@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once('../../config/init.php');
   include_once('../../database/books.php');
 
@@ -24,5 +25,8 @@
   }
 
   $_SESSION['cart_counter'] = $_SESSION['cart_counter'] + 1;
-  $_SESSION['cart_messages'] = "Livro adicionado com sucesso";
+  //$_SESSION['cart_messages'] = "Livro adicionado com sucesso";
+/*
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  exit;*/
 ?>

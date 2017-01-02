@@ -2,6 +2,14 @@
   include_once('../../config/init.php');
   include_once('../../database/orders.php');
 
+  $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
+
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+
   foreach($_GET as $item => $qtt)
   {
     if ($qtt <= 0)
@@ -9,7 +17,7 @@
     else
       $_SESSION['cart'][$item] = $qtt;
   }
-  
+
   // Gerar Referencia da Encomenda to estilo Exxxxxxx (x: numero)
   $referencia = "E" . str_pad(rand(0, pow(10,7) - 1), 7, '0', STR_PAD_LEFT);
 

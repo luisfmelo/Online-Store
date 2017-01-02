@@ -7,5 +7,5 @@
     exit;
   }
 
-  $smarty->display('users/login.tpl');
+  $smarty->display('users/register.tpl');
 ?>

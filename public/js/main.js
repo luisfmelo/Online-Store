@@ -20,19 +20,76 @@ function setup2() {
         window.location.assign(window.location.href.split('?')[0] + '?' + url);
     });
 
+    // ADD BOOK TO Cart
+    $(document).delegate(".addBtn .btn","click",function(){
+      var url = 'id=' + $(this).parent().find('.favourite').find('>span').html();
+      var elem = $(this);
+
+      $.get("../../api/add_book_to_cart.php?" + url, function(data) {
+        $('#cart span').html( (Number($('#cart span').html()) + 1) );
+      /*  var elem = $('.messages').first();
+        var msg =  "  <div class='infoMsg'' style='display:none''";
+        msg +=     "    <i class='fa fa-cart-plus' aria-hidden='true'></i>";
+        msg +=     "    Artigo Adicionado com Sucesso";
+        msg +=     "  </div>";
+        elem.html(msg);*/
+        var img = elem.parent().parent().find("img").eq(0);
+        if (img) {
+          var cart = $('.fa-shopping-cart');
+          var imgclone = img.clone()
+                  .offset({
+                  top: img.offset().top,
+                  left: img.offset().left
+              })
+                  .css({
+                  'opacity': '0.5',
+                      'position': 'absolute',
+                      'height': '150px',
+                      'width': '150px',
+                      'z-index': '100'
+              })
+                  .appendTo($('body'))
+                  .animate({
+                  'top': cart.offset().top + 10,
+                      'left': cart.offset().left + 10,
+                      'width': 75,
+                      'height': 75
+              }, 1000, 'easeInOutExpo');
+
+              setTimeout(function () {
+                  cart.effect("shake", {
+                      times: 2
+                  }, 200);
+              }, 1500);
+
+              imgclone.animate({
+                  'width': 0,
+                      'height': 0
+              }, function () {
+                  $(this).detach()
+              });
+        }
+
+      });
+    });
+
 
     // Handle livros Favoritos - same as .click() -> data loaded by ajax call
     $(document).delegate(".favourite","click",function(){
-        $(this).find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
-        var url;
-        url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
-                                                                ? 'unfavourite'
-                                                                : 'favourite');
-        var ref = $(this).find(">span").html();
+        var elem = $(this);
+
+        elem.find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
+        var url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
+                                                                  ? 'unfavourite'
+                                                                  : 'favourite');
+        var ref = elem.find(">span").html();
         url = url + "&ref=" + ref;
 
-        $.get("../../actions/users/change_favourites.php?" + url, function(data) {
-            console.log(data);
+        $.get("../../api/change_favourites.php?" + url, function(data) {
+          // Caso esteja na página da wishlist é que faz slide-up
+          if(window.location.href.indexOf("wishlist.php") > -1) {
+            elem.parent().parent().slideUp();
+          }
         });
     });
 
@@ -87,17 +144,17 @@ function setup2() {
 
     $('.stateChange').on('click', function() {
         var book_ref = $(this).parent().parent().attr('class');
-        $.get("../../actions/books/changeBookState.php?ref=" + book_ref);
+        $.get("../api/changeBookState.php?ref=" + book_ref);
         $(this).toggleClass('fa-trash').toggleClass('fa-plus-circle');
 
         var msg = ' Livro com referência ' + book_ref;
             msg += $(this).hasClass('fa-trash') ? 'novamente disponivel' : ' descontinuado';
 
         var tpl = "<div class='infoMsg' style='display:none'>";
-        tpl += "<i class='fa fa-exclamation-circle' aria-hidden='true'></i>";
-        tpl += msg;
-        tpl += "<a class='close' href='#'>X</a>";
-        tpl += "</div>";
+        tpl +=      "<i class='fa fa-exclamation-circle' aria-hidden='true'></i>";
+        tpl +=      msg;
+        tpl +=      "<a class='close' href='#'>X</a>";
+        tpl +=    "</div>";
 
       // Adiciona mensagem de informaçao
         $('.messages').html(tpl);
@@ -134,20 +191,20 @@ function setup2() {
 
 
     $(document).delegate('.arrows .pageNumber', 'click', function(){
+      scrollToTop(500);
         $('#futurePage').html($(this).html());
-        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-right', 'click', function(){
+      scrollToTop(500);
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg + 1);
-        scrollToTop(800);
     });
 
     $(document).delegate('.arrows a .fa-angle-double-left', 'click', function(){
+      scrollToTop(500);
         var pg = Number($('#futurePage').html());
         $('#futurePage').html(pg - 1);
-        scrollToTop(800);
     });
 
 
@@ -189,7 +246,6 @@ function get_new_url(params) {
         url += key + "=" + value + "&";
     });
     return url;
-    //window.location.assign(url);
 }
 
 
@@ -202,7 +258,7 @@ function ajaxCall() {
     params['sort']          = $('#changeOrderBooks option:selected').val();
     params['number_Books']  = $('#changeNoBooks option:selected').val();
     params['page']          = ($('#futurePage').html() == undefined) ? 1 :
-                                                                       $('#futurePage').html();
+                                                                       Number($('#futurePage').html());
     var url = get_new_url(params);
     var html = "";
     var pag = "";
@@ -232,7 +288,7 @@ function ajaxCall() {
             html +=     "<span class='price'>€ "+book.price+"</span><br />";
           if ( json.admin == 0){
             if ( book.stock != 0 ){
-            html +=     "<a class='btn' href='../../actions/orders/add_book_to_cart.php?id="+book.ref+"'>";
+            html +=     "<a class='btn' href='#'>";
             html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
             html +=         "Adicionar";
             html +=     "</a>";
@@ -332,12 +388,12 @@ function stockChangeCheck(ref, page) {
 
 /* Pede confirmação para mudança de estado de uma encomenda */
 function alertStateChange(orderRef, isAdmin) {
-    var r;
+  var r;
 
-    r = (isAdmin == 1)
-        ? confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?")
-        : confirm("Confirma que recebeu a encomenda " + orderRef + "?");
+  r = (isAdmin == 1)
+      ? confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?")
+      : confirm("Confirma que recebeu a encomenda " + orderRef + "?");
 
-    if (r == true)
-        window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin + "&orderref=" + orderRef);
-    }
+  if (r == true)
+      window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin + "&orderref=" + orderRef);
+}

@@ -2,6 +2,12 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'/database/books.php');
 
+  if ( !$_SESSION['admin'] )
+  {
+    header("Location: " . $BASE_URL . '/pages/books/list_books.php');
+    exit;
+  }
+    
   $ref = $_GET['ref'];
   unset($_SESSION['cart'][$ref]);
   $_SESSION['cart_counter'] = 0;

@@ -2,8 +2,15 @@
   include_once('../../database/users.php');
   include_once('../../config/init.php');
 
+
+  if ( $_SESSION['username'] == '' )
+  {
+    header("Location: " . $BASE_URL . '/pages/users/login.php');
+    exit;
+  }
+    
   $password_was_set = 0;
-  
+
   if($_FILES['profileimage']['size']!=0)
 	$newFileUploaded = true;
   else
@@ -15,7 +22,7 @@
         - Telefone tem que ter 9 caracteres (numéricos)
         - Email tem que obedecer ao estilo xx@yy.zz
   */
-  
+
   $username 		= $_SESSION['username'];
   $name 			= strip_tags($_POST['name']);
   $phone    		= strip_tags($_POST['phone']);
@@ -23,7 +30,7 @@
   $email 			= strip_tags($_POST['email']);
   $password 		= strip_tags($_POST['password']);
   $confirmPassword 	= strip_tags($_POST['confirmPassword']);
-  
+
   if ( $password !== ""){
 	  $password_was_set = 1;
     if ( $password !== $confirmPassword){
@@ -55,28 +62,28 @@
 
     editUserPass($username, $password);
   }
-  
+
     if ($newFileUploaded){
-		
+
 	    if ($_FILES['profileimage']['type'] == "image/png"){
 
 			$originalFileName = $IMG_DIR . '/profiles/tmp.png';
-			
+
 			move_uploaded_file($_FILES['profileimage']['tmp_name'], $originalFileName);
 
 			$result = @imagecreatefrompng($originalFileName);
-			
+
 			if(!$result)
-				$_SESSION['error_messages'] = 'Upload failed';			
-			else			
+				$_SESSION['error_messages'] = 'Upload failed';
+			else
 				rename($IMG_DIR . '/profiles/tmp.png', $originalFileName = $IMG_DIR . '/profiles/' . $username . '.png' );
-		}	
+		}
 		  else
 			$_SESSION['error_messages'] = 'Formato Inválido - Introduza Imagem com Extensão PNG';
-				 
+
   }
-  
-	if($_SESSION['error_messages'] == "")  
+
+	if($_SESSION['error_messages'] == "")
 		$_SESSION['success_messages'] = 'Dados Pessoais alterados com sucesso.';
 
 	header("Location: $BASE_URL" . '/pages/users/view_profile.php');
