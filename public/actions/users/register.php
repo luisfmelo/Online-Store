@@ -87,8 +87,9 @@
 
   addNewUser($username, $name, $phone, $address, $password, $email);
 
+
   if ( $REDIRECT != '' )
-    header("Location: $REDIRECT");
+    header("Location: /$REDIRECT");
   else
     header("Location: $BASE_URL" . '/pages/books/list_books.php');
 
