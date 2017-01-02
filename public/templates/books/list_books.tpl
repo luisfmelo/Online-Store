@@ -43,7 +43,7 @@
 
           {* So mostra botão de adicionar se não for admin e ainda haver em stock *}
           {if !$isADMIN && $book.stock != 0}
-            <a class='btn' href='#'>
+            <a class='btn'>
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>

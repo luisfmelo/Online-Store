@@ -27,12 +27,6 @@ function setup2() {
 
       $.get("../../api/add_book_to_cart.php?" + url, function(data) {
         $('#cart span').html( (Number($('#cart span').html()) + 1) );
-      /*  var elem = $('.messages').first();
-        var msg =  "  <div class='infoMsg'' style='display:none''";
-        msg +=     "    <i class='fa fa-cart-plus' aria-hidden='true'></i>";
-        msg +=     "    Artigo Adicionado com Sucesso";
-        msg +=     "  </div>";
-        elem.html(msg);*/
         var img = elem.parent().parent().find("img").eq(0);
         if (img) {
           var cart = $('.fa-shopping-cart');
@@ -288,7 +282,7 @@ function ajaxCall() {
             html +=     "<span class='price'>€ "+book.price+"</span><br />";
           if ( json.admin == 0){
             if ( book.stock != 0 ){
-            html +=     "<a class='btn' href='#'>";
+            html +=     "<a class='btn'>";
             html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
             html +=         "Adicionar";
             html +=     "</a>";
