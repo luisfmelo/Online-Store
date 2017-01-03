@@ -332,4 +332,17 @@
     $stmt->execute( array($ref) );
     return $stmt->fetchAll();
   }
+
+/*Retorna o stock de um livro com dada referencia */
+  function getStock($ref){
+    global $conn;
+
+    $query = "SELECT stock
+              FROM e_store.books
+              WHERE books.ref = ?";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute( array($ref) );
+    return $stmt->fetch()['stock'];
+  }
 ?>

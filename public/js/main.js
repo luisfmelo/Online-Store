@@ -99,7 +99,7 @@ function setup2() {
 
     /* Atualiza Carrinho de Compras */
     $('#refresh').on('click', function() {
-        var cart = $('#cart :input');
+        var cart = $('.cartQtt :input');
         var err = 0;
         var url = "../../actions/orders/update_cart.php?";
 
@@ -115,13 +115,14 @@ function setup2() {
                 : window.location.assign(url);
         });
 
+
     });
 
     /* Checkout */
     $('#checkoutBtn').on('click', function() {
         var inputs,
             index;
-        var cart = $('#cart :input');
+        var cart = $('.cartQtt :input');
         var url = "../../actions/orders/checkout.php?";
 
         cart.each(function() {

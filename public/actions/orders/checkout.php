@@ -1,6 +1,7 @@
 <?php
   include_once('../../config/init.php');
   include_once('../../database/orders.php');
+  include_once('../../database/books.php');
 
   $_SESSION['redirect'] = $BASE_URL . "/" . $BASE_URL . $_SERVER['REQUEST_URI'];
 
@@ -12,8 +13,11 @@
 
   foreach($_GET as $item => $qtt)
   {
+    $st = getStock($item);
     if ($qtt <= 0)
       unset($_SESSION['cart'][$item]);
+    else if( $st < $qtt)
+      $_SESSION['cart'][$item] = $st;
     else
       $_SESSION['cart'][$item] = $qtt;
   }
