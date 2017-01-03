@@ -91,10 +91,13 @@ function setup2() {
 
     /* Remove Item from Cart */
     $(".cartRemove").on('click', function() {
-        url = window.location.origin + "/Online-Store/public/actions/orders/delete_book.php?ref=" + $(this).attr('ref');
-        $(this).parent().parent().fadeOut("fast", function() {
-            window.location.assign(url);
-        });
+      var elem = $(this);
+
+      $.get("../../api/remove_from_cart.php?ref=" + elem.attr('ref'), function(res) {
+          //elem.parent().parent().parent().slideUp();
+          console.log(res['counter'])
+          $('#cart').find('>span').html(res['counter']);
+      });
     });
 
     /* Atualiza Carrinho de Compras */

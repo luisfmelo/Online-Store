@@ -344,5 +344,5 @@
     $stmt = $conn->prepare($query);
     $stmt->execute( array($ref) );
     return $stmt->fetch()['stock'];
-  }
+}
 ?>
