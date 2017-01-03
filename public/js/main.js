@@ -276,7 +276,7 @@ function ajaxCall() {
             html +=   "</div>";
             html +=   "<div class='addBtn'>";
             html +=     "<span class='price'>€ "+book.price+"</span><br />";
-          if ( json.admin == 0){
+          if ( json.admin == 0 || json.admin == null){
             if ( book.stock != 0 ){
             html +=     "<a class='btn'>";
             html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
@@ -294,9 +294,9 @@ function ajaxCall() {
 
           // Favoritos
           html +=     "<a class= 'favourite'>";
-          if ( favs.indexOf(book.ref) != -1 )
+          if ( favs.indexOf(book.ref) != -1 && json.username !== null )
             html +=       "<i class='fa fa-heart' aria-hidden='true'></i>";
-          else
+          else if ( favs.indexOf(book.ref) == -1 && json.username !== null )
             html +=       "<i class='fa fa-heart-o' aria-hidden='true'></i>";
           html +=          "<span hidden>"+book.ref+"</span>"
           html +=      "</a>";
