@@ -84,9 +84,7 @@ function setup2() {
     });
 
     $('.dropdown').hover(function() {
-        $('.dropdown-content').slideDown("slow");
-      }, function() {
-        $('.dropdown-content').slideUp("slow");
+        $('.dropdown-content').slideToggle("slow");
     });
 
 
