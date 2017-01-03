@@ -25,7 +25,7 @@
 
           <div class='addBtn'>
           {if $item.stock == 0}
-            {*}<span class='price'>€ 0</span><br />*}
+            <span class='price'>€ 0</span><br />
             <span class='soldOut'>
               <small>Esgotado</small>
             </span>

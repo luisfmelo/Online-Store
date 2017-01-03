@@ -7,7 +7,7 @@
     if (!isadmin)
       $query = $query . " INNER JOIN e_store.users ON orders.userid = users.id
                           WHERE username = '".$user."';";
-                          
+
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -17,10 +17,10 @@
    Adiciona uma nova encomenda ao utiliador atual da Sessão*/
   function new_Order($ref, $total){
     global $conn;
-    
+
     $ref 	= strip_tags($ref);
     $total	= strip_tags($total);
-    
+
     $query = "INSERT INTO e_store.orders
               VALUES (DEFAULT,
                       :ref,
@@ -38,27 +38,23 @@
    a uma encomenda efetuada com uma dada referencia */
   function add_Books_to_Order($ref){
     global $conn;
-    
+
     $ref 	= strip_tags($ref);
-    
+
     $query = "INSERT INTO e_store.productsordered
               VALUES ";
 
 
 /* Percorre carrinho de compras e constroi query*/
     foreach ($_SESSION['cart'] as $k => $b) {
-      if ( $k == "total" || $k == "checkout" )
-        continue;
       $query = $query . "(DEFAULT,
                           (select id from e_store.books where ref = '" . $k . "'),
-                          " . $b[0] . ",
+                          " . $b . ",
                           (select id from e_store.orders where ref = '" . $ref . "')), ";
     }
     $query = substr($query, 0, -2) . ";";
-
     $stmt = $conn->prepare($query);
     $stmt->execute();
-
   }
 
 /* Faz update do stock aos produtos em carrinho */
@@ -179,7 +175,7 @@
 /*Atualiza o estado de uma encomenda para ENVIADO*/
   function changeOrdersStateAdmin($orderref, $orderStateId) {
     global $conn;
-    
+
     $orderref 		= strip_tags($orderref);
     $orderStateId 	= strip_tags($orderStateId);
 
@@ -194,7 +190,7 @@
 /*Atualiza o Estado para RECEBIDO e a Data de Entrega*/
   function changeOrdersStateCustomer($orderref, $orderStateId) {
     global $conn;
-    
+
     $orderref 		= strip_tags($orderref);
     $orderStateId 	= strip_tags($orderStateId);
 
