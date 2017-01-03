@@ -47,6 +47,7 @@
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>
+          {/if}
             <a class= "favourite">
 
             {if $USERNAME != '' && in_array($book.ref, $FAVOURITES) }
@@ -56,7 +57,6 @@
             {/if}
               <span hidden>{$book.ref}</span>
             </a>
-            {/if}
 
             {* Caso não tenha em stock, mostra Esgotado *}
           {if $book.stock != 0 }

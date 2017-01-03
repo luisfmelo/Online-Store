@@ -37,11 +37,11 @@
               <i class='fa fa-cart-plus' aria-hidden='true'></i>
               Adicionar
             </a>
+          {/if}
             <a class= "favourite">
               <i class="fa fa-heart" aria-hidden="true"></i>
               <span hidden>{$book.ref}</span>
             </a>
-            {/if}
 
             {* Caso não tenha em stock, mostra Esgotado *}
             {* Em caso de não haver user logado, não mostra informação de stock *}
