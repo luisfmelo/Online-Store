@@ -48,17 +48,8 @@
               Adicionar
             </a>
           {/if}
-            <a class= "favourite">
 
-            {if $USERNAME != '' && in_array($book.ref, $FAVOURITES) }
-              <i class="fa fa-heart" aria-hidden="true"></i>
-            {elseif $USERNAME != '' && !in_array($book.ref, $FAVOURITES) }
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-            {/if}
-              <span hidden>{$book.ref}</span>
-            </a>
-
-            {* Caso não tenha em stock, mostra Esgotado *}
+          {* Caso não tenha em stock, mostra Esgotado *}
           {if $book.stock != 0 }
             <span class='inStock'>
               <small>Em Stock</small>
@@ -68,6 +59,15 @@
               <small>Esgotado</small>
             </span>
           {/if}
+          <a class= "favourite">
+
+          {if $USERNAME != '' && in_array($book.ref, $FAVOURITES) }
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          {elseif $USERNAME != '' && !in_array($book.ref, $FAVOURITES) }
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          {/if}
+            <span hidden>{$book.ref}</span>
+          </a>
         </div>
         </article>
         {/foreach}
