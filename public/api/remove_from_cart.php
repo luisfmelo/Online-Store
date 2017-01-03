@@ -21,7 +21,7 @@
   // atualizar Carrinho
   unset($_SESSION['cart'][$ref]);
 
-  $json =  array('counter' => $_SESSION['cart_counter'], 'total' => $_SESSION['total']);
+  $json = array('counter' => $_SESSION['cart_counter'], 'total' => $_SESSION['total']);
 	echo json_encode($json, JSON_FORCE_OBJECT);
 
 ?>

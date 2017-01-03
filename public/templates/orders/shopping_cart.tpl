@@ -68,7 +68,7 @@
     <div>
       <strong>Total: </strong>
     </div>
-    <div>
+    <div id='totalEuros'>
       {$TOTAL} €
     </div>
   </div>

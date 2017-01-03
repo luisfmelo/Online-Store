@@ -38,7 +38,9 @@
     <span>
       {if $CART_COUNTER > 0}
         {$CART_COUNTER}
-        {/if}
+      {else}
+        0
+      {/if}
     </span>
     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
   </a>

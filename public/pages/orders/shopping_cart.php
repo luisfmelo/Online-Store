@@ -49,6 +49,7 @@
     $_SESSION['total'] = $total;
 
 
+    $smarty->assign('USERNAME', $_SESSION['username']);
     $smarty->assign('CART_COUNTER', $_SESSION['cart_counter']);
     $smarty->assign('CART_ITEMS', $cart_items);
     $smarty->assign('BOOKS', $books);

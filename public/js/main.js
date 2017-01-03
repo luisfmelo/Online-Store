@@ -89,14 +89,18 @@ function setup2() {
         $('.dropdown-content').slideUp("slow");
     });
 
+
+
     /* Remove Item from Cart */
     $(".cartRemove").on('click', function() {
       var elem = $(this);
 
       $.get("../../api/remove_from_cart.php?ref=" + elem.attr('ref'), function(res) {
-          //elem.parent().parent().parent().slideUp();
-          console.log(res['counter'])
-          $('#cart').find('>span').html(res['counter']);
+          elem.parent().parent().slideUp();
+          res = JSON.parse(res);
+          $('#cart').find('>span').html(res.counter);
+          $('#totalEuros').html(res.total + ' €');
+
       });
     });
 
