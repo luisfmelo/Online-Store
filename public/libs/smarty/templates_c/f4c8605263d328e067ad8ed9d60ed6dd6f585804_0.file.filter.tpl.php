@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-21 11:39:06
+/* Smarty version 3.1.30, created on 2017-01-07 12:13:50
   from "/var/www/public/templates/books/filter.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5832dcda6a2fe6_26222018',
+  'unifunc' => 'content_5870db7ed84c35_40338486',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f4c8605263d328e067ad8ed9d60ed6dd6f585804' => 
     array (
       0 => '/var/www/public/templates/books/filter.tpl',
-      1 => 1479728344,
+      1 => 1483791209,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5832dcda6a2fe6_26222018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5870db7ed84c35_40338486 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row filter">
   <div>
