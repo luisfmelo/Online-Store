@@ -412,5 +412,5 @@ window.addEventListener('keyup', (e) => {
         });
 
   }
- // console.log(pressed)
+  console.log(pressed)
 });
