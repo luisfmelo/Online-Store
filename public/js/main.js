@@ -393,3 +393,24 @@ function alertStateChange(orderRef, isAdmin) {
   if (r == true)
       window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin + "&orderref=" + orderRef);
 }
+
+const pressed = [];
+const secretCode = 'godmode';
+window.addEventListener('keyup', (e) => {
+  pressed.push(e.key);
+  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  if (pressed.join('').includes(secretCode)){
+        $('body').fadeOut( "slow", function() {
+            $p = $('<h1 style="font-style: italic;text-align: center;margin: 30% auto;">"With great power comes great responsibility"</h1>');
+            $('body').html($p)
+                    .fadeIn("slow").fadeOut("slow")
+                    .fadeIn("slow").fadeOut("slow")
+                    .fadeIn("slow").fadeOut("slow")
+                    .fadeIn( "slow", function() {
+                        window.location.assign('https://github.com/luisfmelo/Online-Store');
+            });
+        });
+
+  }
+ // console.log(pressed)
+});
