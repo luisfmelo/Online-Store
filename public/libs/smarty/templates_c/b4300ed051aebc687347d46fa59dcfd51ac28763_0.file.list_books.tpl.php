@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-07 12:13:50
+/* Smarty version 3.1.30, created on 2017-01-16 17:43:31
   from "/var/www/public/templates/books/list_books.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5870db7ed45e97_91193433',
+  'unifunc' => 'content_587d06435b5399_33090218',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4300ed051aebc687347d46fa59dcfd51ac28763' => 
     array (
       0 => '/var/www/public/templates/books/list_books.tpl',
-      1 => 1483791209,
+      1 => 1484588609,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:books/filter.tpl' => 1,
   ),
 ),false)) {
-function content_5870db7ed45e97_91193433 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587d06435b5399_33090218 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- LISTA DE CATEGORIAS - ALINHADA À ESQUERDA -->
 <div class="row">
@@ -114,10 +114,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
             </span>
           <?php }?>
           <a class= "favourite">
-
-          <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value != '' && in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
+          <p><?php echo $_smarty_tpl->tpl_vars['ADMIN']->value;?>
+</p>
+          <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value != '' && !$_smarty_tpl->tpl_vars['isADMIN']->value && in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
             <i class="fa fa-heart" aria-hidden="true"></i>
-          <?php } elseif ($_smarty_tpl->tpl_vars['USERNAME']->value != '' && !in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
+          <?php } elseif ($_smarty_tpl->tpl_vars['USERNAME']->value != '' && !$_smarty_tpl->tpl_vars['isADMIN']->value && !in_array($_smarty_tpl->tpl_vars['book']->value['ref'],$_smarty_tpl->tpl_vars['FAVOURITES']->value)) {?>
             <i class="fa fa-heart-o" aria-hidden="true"></i>
           <?php }?>
             <span hidden><?php echo $_smarty_tpl->tpl_vars['book']->value['ref'];?>

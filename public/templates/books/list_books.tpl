@@ -60,10 +60,10 @@
             </span>
           {/if}
           <a class= "favourite">
-
-          {if $USERNAME != '' && in_array($book.ref, $FAVOURITES) }
+          <p>{$ADMIN}</p>
+          {if $USERNAME != '' && !$isADMIN && in_array($book.ref, $FAVOURITES) }
             <i class="fa fa-heart" aria-hidden="true"></i>
-          {elseif $USERNAME != '' && !in_array($book.ref, $FAVOURITES) }
+          {elseif $USERNAME != '' && !$isADMIN && !in_array($book.ref, $FAVOURITES) }
             <i class="fa fa-heart-o" aria-hidden="true"></i>
           {/if}
             <span hidden>{$book.ref}</span>

@@ -260,9 +260,7 @@ function ajaxCall() {
     var pag = "";
 
     $.get("../../api/getBooks.php?" + url, function(data) {
-        console.log("../../api/getBooks.php?" + url)
         json = JSON.parse(data);
-        console.log(json);
         var favs = $.map(json.fav, function(value, index) {
                         return [value];
                     });
@@ -282,12 +280,14 @@ function ajaxCall() {
             html +=   "</div>";
             html +=   "<div class='addBtn'>";
             html +=     "<span class='price'>€ "+book.price+"</span><br />";
-          if ( json.admin == 0 || json.admin == null){
+
             if ( book.stock != 0 ){
-            html +=     "<a class='btn'>";
-            html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
-            html +=         "Adicionar";
-            html +=     "</a>";
+                if ( json.admin == 0 || json.admin == null){
+                html +=     "<a class='btn'>";
+                html +=         "<i class='fa fa-cart-plus' aria-hidden='true'></i>";
+                html +=         "Adicionar";
+                html +=     "</a>";
+                }
             html +=     "<span class='inStock'>";
             html +=        "<small>Em Stock</small>";
             html +=     "</span>";
@@ -296,13 +296,13 @@ function ajaxCall() {
             html +=         "<small>Esgotado</small>";
             html +=     "</span>";
             }
-         }
+
 
           // Favoritos
           html +=     "<a class= 'favourite'>";
-          if ( favs.indexOf(book.ref) != -1 && json.username !== null )
+          if ( favs.indexOf(book.ref) != -1 && json.username !== null && json.admin != 1)
             html +=       "<i class='fa fa-heart' aria-hidden='true'></i>";
-          else if ( favs.indexOf(book.ref) == -1 && json.username !== null )
+          else if ( favs.indexOf(book.ref) == -1 && json.username !== null  && json.admin != 1)
             html +=       "<i class='fa fa-heart-o' aria-hidden='true'></i>";
           html +=          "<span hidden>"+book.ref+"</span>"
           html +=      "</a>";
