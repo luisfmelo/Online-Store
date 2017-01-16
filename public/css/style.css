@@ -363,6 +363,11 @@ header {
 /*    font-family: 'EB Garamond', serif;*/
 }
 
+.navbar li a i{
+    margin: auto 10px;
+    font-size: 24px;
+}
+
 .navbar li {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }

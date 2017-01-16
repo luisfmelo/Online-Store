@@ -1,7 +1,7 @@
 $(setup2);
 
 function setup2() {
-    $(".messages").children().slideDown()
+    $(".messages").children().slideDown();
 
     /* Show/Hide Search Bar */
     $('#lupa').on('click', function() {
