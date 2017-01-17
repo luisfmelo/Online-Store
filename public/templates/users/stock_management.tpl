@@ -26,7 +26,7 @@
 				{else}
 					<td> <i class="fa fa-trash stateChange" aria-hidden="true"></i> </td></td>
 				{/if}
-					<td> <i onclick="stockChangeCheck('{$book.ref}', '{$PAGE}')" class="fa fa-floppy-o" aria-hidden="true"> </i> </td>
+					<td> <i class='stock change' data-ref='{$book.ref}' data-page='{$PAGE}' class="fa fa-floppy-o" aria-hidden="true"> </i> </td>
 			 </tr>
 			{/foreach}
 		</table>

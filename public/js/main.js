@@ -198,10 +198,46 @@ function setup2() {
     );
     $('.orderReceived').on('click', function() {
         let ref = $(this).data().ref;
-        if (confirm("Confirma que recebeu a encomenda " + ref + "?")) 
+        if (confirm("Confirma que recebeu a encomenda " + ref + "?"))
             window.location.assign("../../actions/orders/change_order_state.php?orderref=" + ref);
         }
     );
+    $('.stockChange').on('click', funtion(){
+        let ref = $(this).data().ref;
+        let page = $(this).data().page;
+
+        var row = document.getElementsByClassName(ref)[0];
+        var price = row.getElementsByTagName('input')[0].value;
+        var stock = row.getElementsByTagName('input')[1].value;
+        var can_update = 1;
+
+        /* price - replace ',' for '.' */
+        price = price.replace(/,/g, '.');
+
+        /* check if price and stock contain letters */
+        if (isNaN(Number(price)) || isNaN(Number(stock))) {
+            alert("O preço e o stock não devem conter letras.");
+            can_update = 0;
+        }
+
+        /* price must be greater than 0*/
+        if (price <= 0) {
+            alert("O preço deve ser maior que 0.");
+            can_update = 0;
+        }
+
+        /* stock must be equal or greater than 0*/
+        if (stock < 0) {
+            alert("O stock deve ser um número não-negativo");
+            can_update = 0;
+        }
+
+        if (can_update == 1) {
+            var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price + " ?");
+            if (r == true)
+                window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
+            }
+    });
 }
 /* End of jquery functionalities */
 
@@ -330,40 +366,6 @@ function scrollToTop(time) {
     }, time);
 }
 /******************************************************************************/
-
-function stockChangeCheck(ref, page) {
-    var row = document.getElementsByClassName(ref)[0];
-    var price = row.getElementsByTagName('input')[0].value;
-    var stock = row.getElementsByTagName('input')[1].value;
-    var can_update = 1;
-
-    /* price - replace ',' for '.' */
-    price = price.replace(/,/g, '.');
-
-    /* check if price and stock contain letters */
-    if (isNaN(Number(price)) || isNaN(Number(stock))) {
-        alert("O preço e o stock não devem conter letras.");
-        can_update = 0;
-    }
-
-    /* price must be greater than 0*/
-    if (price <= 0) {
-        alert("O preço deve ser maior que 0.");
-        can_update = 0;
-    }
-
-    /* stock must be equal or greater than 0*/
-    if (stock < 0) {
-        alert("O stock deve ser um número não-negativo");
-        can_update = 0;
-    }
-
-    if (can_update == 1) {
-        var r = confirm("Pretende gravar o livro (referência " + ref + ") com stock=" + stock + " e preço=" + price + " ?");
-        if (r == true)
-            window.location.assign("../../actions/books/update_book.php?ref=" + ref + "&price=" + price + "&stock=" + stock + "&page=" + page);
-        }
-    }
 
 /* Pede confirmação para mudança de estado de uma encomenda */
 
