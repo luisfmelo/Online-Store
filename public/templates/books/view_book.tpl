@@ -15,7 +15,7 @@
     <section id = "content">
       <div class="left">
         <span>
-          <strong>Referência:</strong>	{$smarty.get.id} <br />
+          <strong>Referência:</strong>	<span class='ref'>{$smarty.get.id}</span> <br />
         </span>
         <span>
           <strong>Titulo:</strong>	  	{$BOOK.0.title} <br />
@@ -44,13 +44,13 @@
           {/if}
         </span>
         <span>
-          <strong>Estado:</strong>		
+          <strong>Estado:</strong>
 			{if $BOOK.0.active}
 			  Ativo <br />
 			{else}
 			   Descontinuado <br />
 			{/if}
-        </span>        
+        </span>
       </div>
       <div class="right">
         <div class="photo">
@@ -64,6 +64,13 @@
         <strong>Descrição:</strong>		{$BOOK.0.description} <br />
       </span>
     </div>
+
+    {if !$isADMIN && $BOOK.0.stock != 0}
+      <a class='addBook btn' style='float:right;margin-right:15%;'>
+        <i class='fa fa-cart-plus' aria-hidden='true'></i>
+        Adicionar
+      </a>
+    {/if}
 
 
     <div class="messages" style="margin-bottom: 20px;">
