@@ -202,7 +202,7 @@ function setup2() {
             window.location.assign("../../actions/orders/change_order_state.php?orderref=" + ref);
         }
     );
-    $('.stockChange').on('click', funtion(){
+    $('.stockChange').on('click', function() {
         let ref = $(this).data().ref;
         let page = $(this).data().page;
 
