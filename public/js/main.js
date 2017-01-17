@@ -34,7 +34,7 @@ function setup2() {
     // ADD BOOK TO Cart
     $(document).delegate(".addBtn .btn", "click", function() {
         var url = 'id=' + $(this).parent().find('.favourite').find('>span').html();
-        var img = $this.parent().parent().find("img").eq(0);
+        var img = $(this).parent().parent().find("img").eq(0);
 
         addBookToCart(img, url);
     });
