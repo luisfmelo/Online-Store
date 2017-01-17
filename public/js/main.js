@@ -50,7 +50,7 @@ function setup2() {
     $(document).delegate(".favourite", "click", function() {
         var elem = $(this);
 
-        elem.find(">:first-child").toggleClass('fa-heart-o').toggleClass('fa-heart');
+        elem.find("i:first").toggleClass('fa-heart-o').toggleClass('fa-heart');
         var url = "func=" + (($(this).find(">:first-child").hasClass('fa-heart-o'))
             ? 'unfavourite'
             : 'favourite');
