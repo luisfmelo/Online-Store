@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-07 12:13:50
+/* Smarty version 3.1.30, created on 2017-01-17 12:12:02
   from "/var/www/public/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5870db7ec67622_35570780',
+  'unifunc' => 'content_587e0a125604f6_65458397',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '945a10ae0dc3867f3dab08449371a53cf64c4d0b' => 
     array (
       0 => '/var/www/public/templates/common/header.tpl',
-      1 => 1483791209,
+      1 => 1484655101,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_messages/msg_cart_added.tpl' => 1,
   ),
 ),false)) {
-function content_5870db7ec67622_35570780 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587e0a125604f6_65458397 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,6 +99,8 @@ function content_5870db7ec67622_35570780 (Smarty_Internal_Template $_smarty_tpl)
 /actions/books/search.php" method="get">
                 <a class="divlink" id="lupa"><i class="fa fa-search" aria-hidden="true"></i></a>
                 <input class="searchBar" name="search" type="search" placeholder="Pesquise aqui...">
+                <ul id="autocomplete">
+                </ul>
               </form>
           </div>
         </div>

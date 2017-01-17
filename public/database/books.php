@@ -345,4 +345,16 @@
     $stmt->execute( array($ref) );
     return $stmt->fetch()['stock'];
 }
+
+/* Retorna referencia/titulo/autor de todos os livros */
+  function listSimpleBooks(){
+    global $conn;
+
+    $query = "SELECT ref, title, author
+              FROM e_store.books";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 ?>

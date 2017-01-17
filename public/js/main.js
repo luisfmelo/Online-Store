@@ -1,11 +1,22 @@
+const endpoint = '../../api/getSimpleBooks.php';
+const books = [];
+fetchData();
+
 $(setup2);
 
 function setup2() {
+    $('.searchBar').on('change', displayMatches);
+    $('.searchBar').on('keyup', displayMatches);
+
     $(".messages").children().slideDown();
 
     /* Show/Hide Search Bar */
     $('#lupa').on('click', function() {
-        $('.searchBar').toggleClass('expanded')
+        $('.searchBar').toggleClass('expanded');
+        if (!$('.searchBar').hasClass('expanded'))
+            $('#autocomplete').hide();
+        else
+            $('#autocomplete').show();
         $('.searchBar').focus();
     });
 
@@ -394,12 +405,16 @@ function alertStateChange(orderRef, isAdmin) {
       window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin + "&orderref=" + orderRef);
 }
 
+
+
+
+/* EASTER EGG */
 const pressed = [];
-const secretCode = 'godmode';
+const secretCode = 'GODMODE';
 window.addEventListener('keyup', (e) => {
   pressed.push(e.key);
   pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
-  if (pressed.join('').includes(secretCode)){
+  if (pressed.join('').toUpperCase().includes(secretCode)){
         $('body').fadeOut( "slow", function() {
             $p = $('<h1 style="font-style: italic;text-align: center;margin: 30% auto;">"With great power comes great responsibility"</h1>');
             $('body').html($p)
@@ -410,7 +425,41 @@ window.addEventListener('keyup', (e) => {
                         window.location.assign('https://github.com/luisfmelo/Online-Store');
             });
         });
-
   }
-  console.log(pressed)
+  //console.log(pressed)
 });
+
+
+/************ AUTOCOMPLETE *****************/
+
+function fetchData(){
+    $.get(endpoint, function(data) {
+        data = (JSON.parse(data));
+        books.push(...data);
+    });
+}
+
+function findMatches(wordToMatch, books) {
+    return books.filter(book => {
+        const regex = new RegExp(wordToMatch, 'gi'); //global + insensitive
+        return book.title.match(regex) || book.author.match(regex);
+    });
+}
+
+
+function displayMatches() {
+    const matchArray = findMatches(this.value, books);
+    const html = matchArray.map(book => {
+        const regex = RegExp(this.value, 'gi');
+        const title = book.title.replace(regex, `<span class='hl'>${this.value}</span>`);
+        const author = book.author.replace(regex, `<span class='hl'>${this.value}</span>`);
+        return `
+                  <li><a href='../../pages/books/view_book.php?id=${book.ref}'>
+                      <img src='${book.cover}' class='auto-img'/>
+                      <span class='auto-book'>${title},
+                      <br /><br> <strong>${author}</strong> </span>
+                  </a></li>
+                `;
+    }).join(''); 
+    $('#autocomplete').html(html);
+}
