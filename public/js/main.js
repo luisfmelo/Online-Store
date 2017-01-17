@@ -190,6 +190,18 @@ function setup2() {
         ajaxCall();
     });
 
+    $('.orderSent').on('click', function() {
+        let ref = $(this).data().ref;
+        if (confirm("Pretende alterar o estado da encomenda " + ref + " para ENVIADO?"))
+            window.location.assign("../../actions/orders/change_order_state.php?orderref=" + ref);
+        }
+    );
+    $('.orderReceived').on('click', function() {
+        let ref = $(this).data().ref;
+        if (confirm("Confirma que recebeu a encomenda " + ref + "?")) 
+            window.location.assign("../../actions/orders/change_order_state.php?orderref=" + ref);
+        }
+    );
 }
 /* End of jquery functionalities */
 
@@ -354,16 +366,6 @@ function stockChangeCheck(ref, page) {
     }
 
 /* Pede confirmação para mudança de estado de uma encomenda */
-function alertStateChange(orderRef, isAdmin) {
-    var r;
-
-    r = (isAdmin == 1)
-        ? confirm("Pretende alterar o estado da encomenda " + orderRef + " para ENVIADO?")
-        : confirm("Confirma que recebeu a encomenda " + orderRef + "?");
-
-    if (r == true)
-        window.location.assign("../../actions/orders/change_order_state.php?&isAdmin=" + isAdmin + "&orderref=" + orderRef);
-    }
 
 /************** ADD BOOK TO CART *************************/
 function addBookToCart(img, url) {

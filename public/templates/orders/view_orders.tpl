@@ -47,9 +47,9 @@
 
 
 					{if ( $ISADMIN && ($order.orderstatename == "PENDENTE"))}
-						<td style='border-bottom:0x;'><a class='btn' onclick="alertStateChange({$order.ref}, {$ISADMIN} )" > Enviar </td>
+						<td style='border-bottom:0x;'><a class='btn orderSent' data-ref='{$order.ref}'> Enviar </td>
 					{else if ( !$ISADMIN && ($order.orderstatename == "ENVIADO"))}
-						<td style='border-bottom:0x;'><a class='btn' onclick="alertStateChange({$order.ref}, {$ISADMIN} )" > Receber </td>
+						<td style='border-bottom:0x;'><a class='btn orderReceived' data-ref='{$order.ref}'> Receber </td>
 					{else}
 						<td> </td>
 					{/if}
