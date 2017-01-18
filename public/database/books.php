@@ -68,7 +68,7 @@
    {
      $search = str_replace(' ', ' & ', $search);
      //      $query = $query . "WHERE e_store.books.title ILIKE '%" . $search . "%' ";
-     $query = $query . "WHERE phrase @@ to_tsquery('portuguese','$search') ";
+     $query = $query . "AND phrase @@ to_tsquery('portuguese','$search') ";
    }
     $stmt = $conn->prepare($query);
     $stmt->execute();

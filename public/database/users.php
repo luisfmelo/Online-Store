@@ -129,6 +129,8 @@
     $ref	= strip_tags($ref);
     $user	= strip_tags($user);
 
+    removeFavourite($ref, $user);
+
     $query = "INSERT INTO e_store.likes
               VALUES (DEFAULT, ?, (select id FROM e_store.books WHERE ref = ?));";
 

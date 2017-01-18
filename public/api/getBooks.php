@@ -3,16 +3,18 @@
   include_once('../database/books.php');
   include_once('../database/users.php');
 
-	$page = $_GET['page'] == '' ? 1 : $_GET['page'];
+	$page   = $_GET['page'] == '' ? 1 : $_GET['page'];
 	$offset = ($page-1) * $_GET['number_Books'];
 	$nbooks = $_GET['number_Books'] == '' ? 6 : $_GET['number_Books'];
-  $totalBooks = (isset($_GET['id'])) ? TotalNumberBooksByCategory($_GET['id'])[0]['count'] : getNoBooks()[0]['count'];
+	$search = isset($_GET['search']) ? $_GET['search']  : '';
+	$n      = isset($_GET['search']) ? TotalNumberSearchedBooks($_GET['search'])['count'] : getNoBooks()[0]['count'];
+  $totalBooks = (isset($_GET['id'])) ? TotalNumberBooksByCategory($_GET['id'])[0]['count'] : $n;
 
 	/* obter livros de acordo com os "parâmetros" de pesquisa seleccionados pelo utilizador */
   if (isset($_GET['id']))
 		$books = listSomeBooksByCategory($_GET['id'], $_GET['sort'], $nbooks, $offset);
   else
-		$books = listSomeBooks('', $_GET['sort'], $nbooks, $offset);
+		$books = listSomeBooks($search, $_GET['sort'], $nbooks, $offset);
 
 	$res = getFavouriteBooks($_SESSION['username']);
   $fav = array();
