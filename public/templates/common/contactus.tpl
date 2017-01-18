@@ -61,7 +61,7 @@
       <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_css.css" target="_blank" download>
           CSS
       </a>
-      <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_T2.rar" target="_blank" download>
+      <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_T3.rar" target="_blank" download>
           ZIP
       </a>
     </div>
