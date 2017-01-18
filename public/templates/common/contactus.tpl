@@ -55,8 +55,8 @@
       </p>
     </div>
     <div class="row linkButtons">
-      <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_ppt.pptx" target="_blank" download>
-          PPT
+      <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_pdf.pdf" target="_blank" download>
+          Relatório
       </a>
       <a href="{$BASE_URL}/../downloads/201205960_201206020_SIEM_css.css" target="_blank" download>
           CSS
