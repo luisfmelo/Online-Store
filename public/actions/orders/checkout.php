@@ -10,6 +10,12 @@
     header("Location: " . $BASE_URL . '/pages/users/login.php');
     exit;
   }
+  
+  if (empty($_SESSION['cart'])){
+    $_SESSION['info_messages'] = "Nenhum item no Carrinho!";
+    header('Location: ' . $BASE_URL . '/pages/orders/shopping_cart.php');
+    exit;
+  }
 
   foreach($_GET as $item => $qtt)
   {
